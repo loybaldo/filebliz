@@ -26,10 +26,16 @@ To get started with Fileblizz, follow these steps:
 
 2. Open the project in VS Code.
 
-3. Run the project using the following command:
+3. Install the dependencies:
+
+    ```
+    npm install
+    ```
+
+4. Run the project using the following command:
 
     ```powershell
     npm start
     ```
 
-4. To view the project, go to your web browser and type in http://localhost:3000.
+5. To view the project, go to your web browser and type in http://localhost:3000.
