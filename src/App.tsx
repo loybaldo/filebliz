@@ -1,10 +1,12 @@
-import Button from "./components/button";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <Button label="Button"/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        
+      </Routes>
+    </BrowserRouter>
   );
 }
 
