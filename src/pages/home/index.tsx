@@ -1,12 +1,12 @@
 import React from "react";
-import { Container, Nav, Navbar, Button } from "react-bootstrap";
+import Header from "../../components/header";
 import "./home.css";
 
 
 function HomePage() {
     return (
         <React.Fragment>
-            
+            <Header/>
         </React.Fragment>
     );
 }
