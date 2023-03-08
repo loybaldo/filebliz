@@ -22,6 +22,7 @@ function Header() {
                     <Button href="/signin">SIGN IN</Button>
                 </Navbar.Collapse>
             </Container>
+
         </Navbar>
     );
 }

@@ -1,20 +1,15 @@
 import React from "react";
 import Header from "../../components/common/header";
 import Footer from "../../components/common/footer";
-import "./home.scss";
+import Title404 from "../../components/title";
+import "./404.scss";
 
 
 function HomePage() {
     return (
-
-        // dude my brain cant comprehend how I will be able to apply custom styles with bootstraps lul
-        // (never used bootstraps)
-        // - The Derfel
-
-        // 404 Page - Passing the task to you regarding <Routers/>
-
         <React.Fragment>
             <Header/>
+                <Title404/>
             <Footer/>
         </React.Fragment>
     );
