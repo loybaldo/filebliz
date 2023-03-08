@@ -11,16 +11,16 @@ function Header() {
                     {' '}
                     Fileblizz
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" style={{borderRadius: 15}}/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mx-auto my-2 my-lg-0" style={{ maxHeight: '200px' }} navbarScroll>
-                        <Nav.Link href="/home">Home</Nav.Link>
+                        <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/pricing">Pricing</Nav.Link>
                         <Nav.Link href="/account">Account</Nav.Link>
                         <Nav.Link href="/about">About us</Nav.Link>
                     </Nav>
-                    <Button href="/signin" variant="outline-primary" className="me-3">Log in</Button>
-                    <Button href="/signup">Sign up</Button>
+                    <Button href="/signin" variant="outline-primary" className="me-2" style={{borderRadius: 15}}>Log in</Button>
+                    <Button href="/signup" style={{borderRadius: 15}}>Sign up</Button>
                 </Navbar.Collapse>
             </Container>
 
