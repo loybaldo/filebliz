@@ -1,10 +1,22 @@
 // possibly add themes? tho idk where I should put that
 // I'll be leaving that up to you and tell me where I can put the theme variables
 
+@font-face {
+  font-family: poppins;
+  src: url("./assets/fonts/Poppins-Regular.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: poppins;
+  src: url("./assets/fonts/Poppins-Bold.ttf");
+  font-weight: bold;
+}
+
 * {
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-family: poppins;
   box-sizing: border-box;
 }
 
