@@ -5,7 +5,7 @@ import Title404 from "../../components/title";
 import "./404.scss";
 
 
-function HomePage() {
+function NotFoundPage() {
     return (
         <React.Fragment>
             <Header/>
@@ -15,4 +15,4 @@ function HomePage() {
     );
 }
 
-export default HomePage;
+export default NotFoundPage;
