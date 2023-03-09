@@ -1,10 +1,11 @@
 import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./footer.scss";
 
 
 function Footer() {
     return (
-        <Container fluid className="bg-dark p-4 text-white">
+        <Container fluid className="bg-light p-4">
             <footer className="page-footer font-small blue pt-4">
                 <Container className="text-center">
                     <div className="row">
@@ -18,26 +19,26 @@ function Footer() {
                         <div className="col-md-3 mb-md-0 mb-3">
                             <h5 className="text-uppercase">Navigation</h5>
                             <ul className="list-unstyled">
-                                <li><a href="#!" className="text-white">Home</a></li>
-                                <li><a href="#!" className="text-white">Pricing</a></li>
-                                <li><a href="#!" className="text-white">Account</a></li>
-                                <li><a href="#!" className="text-white">About Us</a></li>
+                                <li><Link to="/" style={{textDecoration: "none"}}>Home</Link></li>
+                                <li><Link to="/pricing" style={{textDecoration: "none"}}>Pricing</Link></li>
+                                <li><Link to="/account" style={{textDecoration: "none"}}>Account</Link></li>
+                                <li><Link to="/about" style={{textDecoration: "none"}}>About Us</Link></li>
                             </ul>
                         </div>
 
                         <div className="col-md-3 mb-md-0 mb-3">
                             <h5 className="text-uppercase">More Options</h5>
                             <ul className="list-unstyled">
-                                <li><a href="#!" className="text-white">Feedback</a></li>
-                                <li><a href="#!" className="text-white">Report a Problem</a></li>
-                                <li><a href="#!" className="text-white">Privacy Policy</a></li>
-                                <li><a href="#!" className="text-white">Terms & Conditions</a></li>
+                                <li><Link to="/feedback" style={{textDecoration: "none"}}>Feedback</Link></li>
+                                <li><Link to="/report" style={{textDecoration: "none"}}>Report a Problem</Link></li>
+                                <li><Link to="/privacy" style={{textDecoration: "none"}}>Privacy Policy</Link></li>
+                                <li><Link to="/terms" style={{textDecoration: "none"}}>Terms & Conditions</Link></li>
                             </ul>
                         </div>
                     </div>
                 </Container>
 
-                <div className="footer-copyright text-center py-3">© 2020 Copyright: Filebizz
+                <div className="footer-copyright text-center py-3">© 2023 Copyright: Filebizz
                 </div>
 
             </footer>
