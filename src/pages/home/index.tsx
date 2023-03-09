@@ -1,20 +1,22 @@
 import React from "react";
+import { Container } from "react-bootstrap";
+import "./home.scss";
 import Header from "../../components/common/header";
 import Footer from "../../components/common/footer";
-import "./home.scss";
+import Services from "../../components/services";
+import Slider from "../../components/slider";
+import Upload from "../../components/upload";
 
 
 function HomePage() {
     return (
-
-        // dude my brain cant comprehend how I will be able to apply custom styles with bootstraps lul
-        // (never used bootstraps)
-        // - The Derfel
-
-        // 404 Page - Passing the task to you regarding <Routers/>
-
         <React.Fragment>
             <Header/>
+            <Container className="p-4">
+                <Slider/>
+                <Upload/>
+            </Container>
+            <Services/>
             <Footer/>
         </React.Fragment>
     );
