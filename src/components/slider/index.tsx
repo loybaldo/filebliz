@@ -4,8 +4,7 @@ function Slider() {
     return (
         <Carousel>
             <Carousel.Item>
-                <img height="300px"
-                style={{objectFit: "cover"}}
+                <img style={{height: "100%", maxHeight: 400, minHeight: 350, aspectRatio: "16/9", objectFit: "cover"}}
                 className="d-block w-100"
                 src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpgholder.js/800x400?text=First slide&bg=373940"
                 alt="First slide"/>
@@ -15,8 +14,7 @@ function Slider() {
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <img height="300px"
-                style={{objectFit: "cover"}}
+                <img style={{height: "100%", maxHeight: 400, minHeight: 350, aspectRatio: "16/9", objectFit: "cover"}}
                 className="d-block w-100"
                 src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
                 alt="Second slide"/>
@@ -26,8 +24,7 @@ function Slider() {
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-                <img height="300px"
-                style={{objectFit: "cover"}}
+                <img style={{height: "100%", maxHeight: 400, minHeight: 350, aspectRatio: "16/9", objectFit: "cover"}}
                 className="d-block w-100"
                 src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
                 alt="Third slide"/>

@@ -12,9 +12,8 @@ function HomePage() {
     return (
         <React.Fragment>
             <Header/>
-            <Container className="p-4">
+            <Container fluid>
                 <Slider/>
-                <Upload/>
             </Container>
             <Services/>
             <Footer/>

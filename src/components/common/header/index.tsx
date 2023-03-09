@@ -4,7 +4,7 @@ import "./header.scss";
 
 function Header() {
     return (
-        <Navbar bg="white border-bottom" expand="lg" className="py-3" sticky="top" style={{zIndex: 9}}>
+        <Navbar bg="white border-bottom" expand="lg" sticky="top" style={{zIndex: 9}}>
             <Container fluid>
                 <Navbar.Brand href="#home">
                     <img alt="Fileblizz Logo" src="" width="30" height="30" className="d-inline-block align-top"/>
