@@ -20,7 +20,7 @@ function Header() {
                         <Nav.Link href="/about">About us</Nav.Link>
                     </Nav>
                     <Button href="/signin" variant="outline-primary" className="me-2" style={{borderRadius: 15}}>Log in</Button>
-                    <Button href="/signup" style={{borderRadius: 15}}>Sign up</Button>
+                    <Button href="/upload" style={{borderRadius: 15}}>Upload</Button>
                 </Navbar.Collapse>
             </Container>
 

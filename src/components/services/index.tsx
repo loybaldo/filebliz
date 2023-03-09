@@ -7,7 +7,7 @@ function Services() {
             <Container className="py-5 bg-light">
 
                 <Row className="text-center">
-                    <h3 className="fw-bold">Our Services</h3>
+                    <h2 className="fw-bold">Our Services</h2>
                 </Row>
 
                 <Container className="py-5 p-lg-5">
