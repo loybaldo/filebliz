@@ -14,7 +14,7 @@ function InternalServerErrorPage() {
                     alt="404 illustration"
                     style={{maxWidth: 350, minWidth: 250}}/>
                 <h1>Oops! Something went wrong</h1>
-                <p>Our team has been notified of the issue and is working hard to resolve it as soon as possible. Please try again later. We apologize for any inconvenience.</p>
+                <p className="mt-3 mx-auto" style={{width: "100%", maxWidth: 600}}>Our team has been notified of the issue and is working hard to resolve it as soon as possible. Please try again later. We apologize for any inconvenience.</p>
             </Container>
             <Footer/>
         </React.Fragment>
