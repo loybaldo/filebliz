@@ -16,7 +16,7 @@ function Slider() {
             <Carousel.Item>
                 <img style={{height: "100%", maxHeight: 400, minHeight: 350, aspectRatio: "16/9", objectFit: "cover"}}
                 className="d-block w-100"
-                src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
+                src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg"
                 alt="Second slide"/>
                 <Carousel.Caption>
                     <h3>Second slide label</h3>
@@ -26,7 +26,7 @@ function Slider() {
             <Carousel.Item>
                 <img style={{height: "100%", maxHeight: 400, minHeight: 350, aspectRatio: "16/9", objectFit: "cover"}}
                 className="d-block w-100"
-                src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRisv-yQgXGrto6OxQxX62JyvyQGvRsQQ760g&usqp=CAU"
                 alt="Third slide"/>
                 <Carousel.Caption>
                     <h3>Third slide label</h3>
