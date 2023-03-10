@@ -2,7 +2,7 @@ import { Carousel } from "react-bootstrap";
 
 function Slider() {
     return (
-        <Carousel>
+        <Carousel className="bg-dark p-0">
             <Carousel.Item>
                 <img style={{height: "100%", maxHeight: 400, minHeight: 350, aspectRatio: "16/9", objectFit: "cover"}}
                 className="d-block w-100"

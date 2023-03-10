@@ -12,9 +12,7 @@ function HomePage() {
     return (
         <React.Fragment>
             <Header/>
-            <Container fluid>
-                <Slider/>
-            </Container>
+            <Slider/>
             <Services/>
             <Footer/>
         </React.Fragment>
