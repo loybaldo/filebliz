@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 console.log(process.env.APP_ID);
 
 const root = ReactDOM.createRoot(
@@ -14,9 +15,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+{/*     
     <ThemeProvider>
       <App/>
-    </ThemeProvider>
+    </ThemeProvider> */}
   </React.StrictMode>
 );
 

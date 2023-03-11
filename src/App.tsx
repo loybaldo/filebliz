@@ -5,6 +5,9 @@ import HomePage from "./pages/home";
 import LoginPage from "./pages/login";
 import UploadPage from "./pages/upload";
 
+// const apikey = process.env.API_KEY;
+// console.log(apikey);
+
 function App() {
   return (
     <BrowserRouter>
