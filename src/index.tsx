@@ -8,17 +8,16 @@ import { ThemeProvider } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-console.log(process.env.APP_ID);
+console.log("Variable: " + process.env.APP_ID);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-{/*     
     <ThemeProvider>
       <App/>
-    </ThemeProvider> */}
+    </ThemeProvider>
   </React.StrictMode>
 );
 

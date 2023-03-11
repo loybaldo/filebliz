@@ -6,8 +6,8 @@ function Header() {
     return (
         <Navbar bg="white border-bottom" expand="lg" sticky="top" style={{zIndex: 9}}>
             <Container fluid>
-                <Navbar.Brand href="#home">
-                    <img alt="Fileblizz Logo" src="" width="30" height="30" className="d-inline-block align-top"/>
+                <Navbar.Brand href="#home" style={{fontFamily: "glacial indiference", fontWeight: "bold"}}>
+                    <img alt="Fileblizz Logo" src={require("../../../assets/logo-full192.png")} width="30" height="30" className="d-inline-block align-top"/>
                     {' '}
                     Fileblizz
                 </Navbar.Brand>
