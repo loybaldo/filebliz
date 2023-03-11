@@ -1,5 +1,4 @@
 import React from "react";
-import env from "react-dotenv";
 import "./home.scss";
 import Header from "../../components/common/header";
 import Footer from "../../components/common/footer";
