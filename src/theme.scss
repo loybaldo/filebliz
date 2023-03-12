@@ -1,0 +1,31 @@
+:root {
+    --primary-color: rgb(115, 90, 175);
+    --accent-color: rgb(236, 110, 0);
+    --shadow-color: rgba(115, 90, 175, 0.16)
+}
+
+
+@font-face {
+    font-family: "glacial indifference";
+    src: url("./assets/fonts/glacial-indifference/GlacialIndifference-Bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url("./assets/fonts/poppins/Poppins-Regular.ttf");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url("./assets/fonts/poppins/Poppins-Bold.ttf");
+    font-weight: bold;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: poppins;
+    box-sizing: border-box;
+}
