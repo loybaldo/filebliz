@@ -1,3 +1,4 @@
+import Button from "../button";
 import "./landing.scss"
 
 
@@ -10,7 +11,7 @@ function Landing() {
                     <p>With Fileblizz, you can easily share your files with anyone, anytime. Our user-friendly platform ensures that you can quickly upload and send your files to your friends, family, and colleagues without any hassle.</p>
                     <form>
                         <input type="file"/>
-                        <button type="submit">Upload</button>
+                        <Button label="Upload"/>
                     </form>
                 </div>
                 <div className="f-info"></div>

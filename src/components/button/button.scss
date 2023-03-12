@@ -1,0 +1,15 @@
+.f-btn {
+    height: 44px;
+    padding: 0 15px;
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    color: white;
+    border: none;
+    font-size: 14px;
+    box-shadow: 0 0 6px var(--shadow-color);
+    cursor: pointer;
+}
+
+.f-btn:hover {
+    background-color: var(--primary-color-hover);
+}
