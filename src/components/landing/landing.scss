@@ -14,6 +14,11 @@
     gap: 50px;
 }
 
+.f-landing .f-container .f-info {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 .f-landing .f-container .f-info:nth-child(1) p {
     margin-top: 15px;
 }
@@ -33,7 +38,7 @@
 }
 
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 768px) {
     .f-landing .f-container {
         grid-template-columns: repeat(1, 1fr);
     }
