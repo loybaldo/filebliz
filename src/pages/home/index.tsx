@@ -1,19 +1,9 @@
-import React from "react";
 import "./home.scss";
-import Header from "../../components/common/header";
-import Footer from "../../components/common/footer";
-import Services from "../../components/services";
-import Slider from "../../components/slider";
 
 
 function HomePage() {
     return (
-        <React.Fragment>
-            <Header/>
-            <Slider/>
-            <Services/>
-            <Footer/>
-        </React.Fragment>
+        <h1>Home Page!</h1>
     );
 }
 

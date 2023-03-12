@@ -1,21 +1,12 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NotFoundPage from "./pages/404";
-import InternalServerErrorPage from "./pages/500";
-import HomePage from "./pages/home";
-import LoginPage from "./pages/login";
-import UploadPage from "./pages/upload";
-
-// const apikey = process.env.API_KEY;
-// console.log(apikey);
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NotFoundPage from './pages/404';
+import HomePage from './pages/home';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={ <HomePage/> }/>
-        <Route path="/signin" element={ <LoginPage/> }/>
-        <Route path="/upload" element={ <UploadPage/> }/>
-        <Route path="/internal-server-error" element={ <InternalServerErrorPage/> }/>
         <Route path="*" element={ <NotFoundPage/> }/>
       </Routes>
     </BrowserRouter>
