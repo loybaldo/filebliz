@@ -10,8 +10,12 @@ function HomePage() {
         <>
             <Navigation/>
             <div style={{marginTop: 70}}></div>
-            <Landing/>
-            <Services/>
+            
+            <div className="mainView">
+                <Landing/>
+                <Services/>
+            </div>
+
             <Footer/>
             <div className="f-footer-spacer"></div>
         </>
