@@ -50,5 +50,13 @@
     .f-landing .f-container {
         grid-template-columns: repeat(1, 1fr);
     }
-    
+
+    .f-landing .f-container .f-info:nth-child(2) {
+        grid-row-start: 1;
+    }
+
+    .f-landing .f-container .f-info:nth-child(1) {
+        grid-row-start: 2;
+    }
+
 }

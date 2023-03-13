@@ -1,3 +1,4 @@
+import Advert from "../../components/advert";
 import Footer from "../../components/footer";
 import Landing from "../../components/landing";
 import Navigation from "../../components/navigation";
@@ -14,6 +15,11 @@ function HomePage() {
             <div className="mainView">
                 <Landing/>
                 <Services/>
+                
+                <div style={{padding: "0 20px"}}>
+                    <Advert/>
+                </div>
+                
             </div>
 
             <Footer/>
