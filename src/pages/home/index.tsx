@@ -1,3 +1,4 @@
+import Advert from "../../components/advert";
 import Footer from "../../components/footer";
 import Landing from "../../components/landing";
 import Navigation from "../../components/navigation";
@@ -12,6 +13,9 @@ function HomePage() {
             <div style={{marginTop: 70}}></div>
             <Landing/>
             <Services/>
+            <div style={{padding: "0 20px"}}>
+                <Advert/>
+            </div>
             <Footer/>
             <div className="f-footer-spacer"></div>
         </>
