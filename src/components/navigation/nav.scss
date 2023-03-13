@@ -9,6 +9,7 @@
     top: 0;
     left: 0;
     right: 0;
+    border-bottom: 1px solid #ddd;
 }
 
 .f-nav .f-branding {
@@ -43,24 +44,13 @@
     position: relative;
     text-decoration: none;
     color: black;
-}
-
-.f-nav .f-links .f-links-item .f-indicator {
-    width: 100%;
-    height: 4px;
-    background-color: white;
-    position: absolute;
-    bottom: 0;
-    border-radius: 10px;
+    border-bottom: 4px solid transparent;
 }
 
 .f-nav .f-links .f-links-active {
     font-weight: bold;
     color: var(--primary-color);
-}
-
-.f-nav .f-links .f-links-item .f-indicator-active {
-    background-color: var(--primary-color);
+    border-bottom: 4px solid var(--primary-color);
 }
 
 
@@ -88,10 +78,6 @@
     justify-content: center;
     text-decoration: none;
     color: black;
-}
-
-.f-btm-nav .f-btm-nav-active {
-    color: var(--primary-color)
 }
 
 @media only screen and (max-width: 768px) {
