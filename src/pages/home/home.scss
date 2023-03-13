@@ -1,0 +1,10 @@
+.f-footer-spacer {
+    height: 70px;
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .f-footer-spacer {
+        display: block;
+    }
+}
