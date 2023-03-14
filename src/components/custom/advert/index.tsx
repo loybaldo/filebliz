@@ -6,8 +6,7 @@ import "./advert.scss";
 function Advert() {
     return (
         <div className="f-advert">
-            <Loader/>
-            {/* <img src="" alt="Advertisement" /> */}
+            <img src="" alt="Advertisement" />
             <div>
                 <span>Upgrade to Premium</span>
                 <p>Unlock the ability to upload larger files and enjoy advanced sharing features. Upgrade now for an enhanced file sharing experience.</p>
