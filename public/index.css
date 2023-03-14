@@ -1,0 +1,26 @@
+* {
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0px;
+    overflow-x: hidden;
+}
+
+noscript {
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    font-size: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+    noscript {
+        margin: 18px;
+        text-align: center;
+    }
+}
