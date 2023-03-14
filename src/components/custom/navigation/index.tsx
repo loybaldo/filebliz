@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Button from "../common/button";
+import Button from "../../common/button";
 import Icon from "../icon";
 import Icons from "../icon/Icon";
 import "./nav.scss";
@@ -10,7 +10,7 @@ function Navigation() {
         <>
             <div className="f-nav">
                 <div className="f-branding">
-                    <img src={require("../../assets/logo-full192.png")} alt="Fileblizz Logo" />
+                    <img src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
                     <span>FILEBLIZ</span>
                 </div>
                 <nav className="f-links">

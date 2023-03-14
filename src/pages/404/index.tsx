@@ -1,6 +1,6 @@
-import Divider from "../../components/divider";
-import Footer from "../../components/footer";
-import Navigation from "../../components/navigation";
+import Divider from "../../components/custom/divider";
+import Footer from "../../components/custom/footer";
+import Navigation from "../../components/custom/navigation";
 import "./not-found.scss";
 
 

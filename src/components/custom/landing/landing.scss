@@ -1,0 +1,97 @@
+.f-landing {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+
+    .f-container {
+            width: 100%;
+            max-width: 1320px;
+            padding: 50px 20px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        
+        .f-info {
+                max-width: 600px;
+                margin: 0 auto;
+        }
+        
+        .f-info:nth-child(1) {
+
+            p {
+                    margin-top: 15px;
+            }
+
+            form {
+                margin-top: 50px;
+                background-color: white;
+                display: flex;
+                border-radius: 15px;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 0 12px var(--shadow-color);
+                
+                -webkit-user-select: none;
+                /* Safari */
+                -ms-user-select: none;
+                /* IE 10 and IE 11 */
+                user-select: none;
+                /* Standard syntax */
+                
+                label {
+                    //TODO change to theme color later
+                    color: black;
+                    width: 100%;
+                    padding: 20px 0px;
+                    margin: 0px 0px 0px 20px;
+                    cursor: pointer;
+                    
+                }
+                
+                button {
+                    margin: 10px;
+                }
+
+                &:hover {
+                    //TODO change to theme color later
+                    background-color: #e3e3e3;
+                }
+
+                &:active {
+                    filter: brightness(90%);
+                    background-color: #e3e3e3;
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+
+    .f-landing {
+
+        .f-container {
+            grid-template-columns: repeat(1, 1fr);
+
+            .f-info:nth-child(1) {
+                grid-row-start: 2;
+            }
+
+            .f-info:nth-child(2) {
+                grid-row-start: 1;
+            }
+
+        }
+
+    }
+
+
+}

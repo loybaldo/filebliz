@@ -8,8 +8,21 @@
     font-size: 14px;
     box-shadow: 0 0 6px var(--shadow-color);
     cursor: pointer;
-}
 
-.f-btn:hover {
-    background-color: var(--primary-color-hover);
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+
+    &:hover {
+        background-color: var(--primary-color-hover);
+    }
+
+    &:active {
+        background-color: var(--primary-color);
+        filter: brightness(140%);
+    }
+
 }
