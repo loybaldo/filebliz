@@ -1,7 +1,6 @@
 import Advert from "../../components/advert";
 import Footer from "../../components/footer";
 import Landing from "../../components/landing";
-import Loader from "../../components/loader";
 import Navigation from "../../components/navigation";
 import Services from "../../components/services";
 import "./home.scss";
