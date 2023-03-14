@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Button from "../button";
+import Button from "../common/button";
 import Icon from "../icon";
 import Icons from "../icon/Icon";
 import "./nav.scss";
