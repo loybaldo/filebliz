@@ -29,9 +29,12 @@
                 background-color: white;
                 display: flex;
                 border-radius: 15px;
+                justify-content: center;
+                align-items: center;
                 box-shadow: 0 0 12px var(--shadow-color);
 
                 input {
+                    border: none;
                     width: 100%;
                     height: 100%;
                 }
