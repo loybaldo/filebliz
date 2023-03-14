@@ -11,7 +11,7 @@ function HomePage() {
     return (
         <>
             <Navigation/>
-            <div style={{marginTop: 70}}></div>
+            <div style={{marginTop: 60}}></div>
             
             <div className="mainView">
                 <Landing/>
@@ -20,8 +20,6 @@ function HomePage() {
                 <div style={{padding: "0 20px"}}>
                     <Advert/>
                 </div>
-
-                <Loader/>
                 
             </div>
 
