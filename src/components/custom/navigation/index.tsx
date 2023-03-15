@@ -19,7 +19,7 @@ function Navigation() {
                     <Link className="f-links-item" to="/account">Account</Link>
                     <Link className="f-links-item" to="/about">About</Link>
                 </nav>
-                <Button label="Sign in"/>
+                <Button href="/signin" label="Sign in"/>
             </div>
 
             <nav className="f-btm-nav">
