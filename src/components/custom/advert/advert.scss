@@ -19,6 +19,7 @@
     }
 
     div {
+        padding: 20px 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -26,6 +27,7 @@
         text-align: center;
 
         span {
+            margin-top: 20px;
             font-size: 24px;
             font-weight: bold;
         }
@@ -44,5 +46,6 @@
     .f-advert {
         padding: 20px 20px 40px 20px;
         grid-template-columns: repeat(1, 1fr);
+
     }
 }
