@@ -1,3 +1,4 @@
+import Loader from "../../components/common/loader";
 import Advert from "../../components/custom/advert";
 import Footer from "../../components/custom/footer";
 import Landing from "../../components/custom/landing";
@@ -16,7 +17,6 @@ function HomePage() {
                 
                 <Landing/>
                 <Services/>
-                
                 <div style={{padding: "0 20px"}}>
                     <Advert/>
                 </div>
