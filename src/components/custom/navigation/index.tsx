@@ -15,7 +15,7 @@ function Navigation() {
                 </div>
                 <nav className="f-links">
                     <Link className="f-links-item f-links-active" to="/">Home</Link>
-                    <Link className="f-links-item" to="/pricing">pricing</Link>
+                    <Link className="f-links-item" to="/premium">Premium</Link>
                     <Link className="f-links-item" to="/account">Account</Link>
                     <Link className="f-links-item" to="/about">About</Link>
                 </nav>

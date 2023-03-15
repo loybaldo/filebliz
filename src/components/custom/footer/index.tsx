@@ -18,7 +18,7 @@ function Footer() {
                     </a>
                 </div>
                 <div>
-                    <span>Fileblizz, Copyright 2023</span>
+                    <span>Filebliz, Copyright 2023</span>
                 </div>
             </div>
         </footer>
