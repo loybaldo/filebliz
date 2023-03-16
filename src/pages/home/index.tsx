@@ -22,6 +22,8 @@ function HomePage() {
                 </div>
             </div>
 
+            <Loader type="wave"/>
+
             <Footer/>
             <div className="f-footer-spacer"></div>
         </>

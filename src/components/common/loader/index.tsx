@@ -1,14 +1,26 @@
 import "./loader.scss";
 
 
-function Loader() {
+interface LoaderInterface {
+    type?: "circle" | "wave"
+}
+
+
+function Loader({type}: LoaderInterface) {
     return (
-        <div className="f-loader">
+        (type === "circle") ?
+        (<div className="f-loader">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
-        </div>
+        </div>) :
+
+        (<div className="f-loader2">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>)
     );
 }
 
