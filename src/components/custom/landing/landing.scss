@@ -29,7 +29,6 @@
                 background-color: white;
                 display: flex;
                 border-radius: 15px;
-                justify-content: center;
                 align-items: center;
                 box-shadow: 0 0 12px var(--shadow-color);
                 
@@ -42,12 +41,14 @@
                 
                 label {
                     //TODO change to theme color later
-                    color: black;
                     width: 100%;
-                    padding: 20px 0px;
-                    margin: 0px 0px 0px 20px;
+                    color: black;
+                    padding: 0px 0px;
+                    margin: 0px 20px;
                     cursor: pointer;
-                    
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 
                 button {

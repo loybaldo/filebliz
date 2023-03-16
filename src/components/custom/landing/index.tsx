@@ -3,10 +3,12 @@ import "./landing.scss"
 
 
 function Landing() {
-    const fileInputStyle = {
-        border: "none",
-        backgroundColor: "transparent",
-        outline: "none"
+    
+    function handleFileChange(e: any) {
+        const fileName = e.target.files[0].name;
+        const label = e.target.previousElementSibling;
+        label.style.direction = 'rtl';
+        label.textContent = fileName;
     }
 
     return (
@@ -16,27 +18,11 @@ function Landing() {
 
                     <h1>Effortlessly Share Your Files with Fileblizz</h1>
                     <p>With Fileblizz, you can easily share your files with anyone, anytime. Our user-friendly platform ensures that you can quickly upload and send your files to your friends, family, and colleagues without any hassle.</p>
-                    
-                    {/* 
-                        I suggest turning the form into a component instead and leave the rest inside ./Home - Derfel
-
-                        TODO ?Refactor code
-                    */}
-
                     <form>
-                        <label htmlFor="file-upload" className="custom-file-upload" style={fileInputStyle}>
+                        <label htmlFor="file-upload" className="custom-file-upload" style={{border: "none", backgroundColor: "transparent", outline: "none"}}>
                             Choose Files
-                            
-                            {/*
-                                
-                                TODO needs extra JS to display file name here 
-                                
-                                ! - item not focusable/tabbable 
-
-                            */}
-
                         </label>
-                        <input id="file-upload" type="file"/>
+                        <input id="file-upload" type="file" onChange={handleFileChange}/>
                         <Button label="Upload"/>
                     </form>
 
