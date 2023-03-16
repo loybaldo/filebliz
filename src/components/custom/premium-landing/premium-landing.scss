@@ -1,0 +1,20 @@
+.f-prem-landing {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+
+    .f-container {
+        width: 100%;
+        max-width: 1320px;
+        height: 300px;
+        margin: 0 auto;
+        padding: 50px 20px;
+        text-align: center;
+
+        p {
+            max-width: 500px;
+            margin: 20px auto 0 auto;
+        }
+    }
+
+}
