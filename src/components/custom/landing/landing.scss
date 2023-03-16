@@ -18,7 +18,7 @@
         }
         
         .f-info:nth-child(1) {
-            animation: slideIndown 0.8s ease-in-out ;
+            animation: fade 0.4s ease-in-out ;
 
             p {
                     margin-top: 15px;
@@ -77,15 +77,13 @@
                 width: 100%;
                 height:300px;
                 border-radius: 5px;
-                animation: slideIndown 0.9s ease-in-out ;
+                animation: fade 0.5s ease-in-out ;
             }
-@keyframes slideIndown{
+@keyframes fade{
     from{
-        transform: translatey(-300px);
         opacity: 0;
     }
     to{
-        transform:translatey(0);
         opacity: 1;
     }
 }

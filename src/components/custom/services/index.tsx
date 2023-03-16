@@ -10,7 +10,7 @@ function Services() {
   useEffect(() => {
     const servicesSection = servicesRef.current;
     const handleScroll = () => {
-      if (servicesSection && window.scrollY >= servicesSection.offsetTop - window.innerHeight / 2) {
+      if (servicesSection && window.scrollY >= servicesSection.offsetTop - window.innerHeight /2) {
         setShowServices(true);
       }
     };
