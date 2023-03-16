@@ -22,7 +22,7 @@ function Navigation() {
                     <Link className={(location.pathname === "/account") ? "f-links-item f-links-active" : "f-links-item"} to="/account">Account</Link>
                     <Link className={(location.pathname === "/about") ? "f-links-item f-links-active" : "f-links-item"} to="/about">About</Link>
                 </nav>
-                <Button href="/signin" label="Sign in"/>
+                <Button href="/signin" label="Sign in" />
             </div>
 
             <nav className="f-btm-nav">
