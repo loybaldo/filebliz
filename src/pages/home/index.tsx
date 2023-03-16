@@ -1,3 +1,4 @@
+import Button from "../../components/common/button";
 import Loader from "../../components/common/loader";
 import Advert from "../../components/custom/advert";
 import Footer from "../../components/custom/footer";
