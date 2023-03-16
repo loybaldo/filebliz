@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "../../common/button";
 import Icon from "../icon";
 import Icons from "../icon/Icon";
@@ -6,6 +6,9 @@ import "./nav.scss";
 
 
 function Navigation() {
+    const location = useLocation();
+    console.log(location.pathname);
+
     return (
         <>
             <div className="f-nav">
@@ -14,10 +17,10 @@ function Navigation() {
                     <span>FILEBLIZ</span>
                 </div>
                 <nav className="f-links">
-                    <Link className="f-links-item f-links-active" to="/">Home</Link>
-                    <Link className="f-links-item" to="/premium">Premium</Link>
-                    <Link className="f-links-item" to="/account">Account</Link>
-                    <Link className="f-links-item" to="/about">About</Link>
+                    <Link className={(location.pathname === "/") ? "f-links-item f-links-active" : "f-links-item"} to="/">Home</Link>
+                    <Link className={(location.pathname === "/premium") ? "f-links-item f-links-active" : "f-links-item"} to="/premium">Premium</Link>
+                    <Link className={(location.pathname === "/account") ? "f-links-item f-links-active" : "f-links-item"} to="/account">Account</Link>
+                    <Link className={(location.pathname === "/about") ? "f-links-item f-links-active" : "f-links-item"} to="/about">About</Link>
                 </nav>
                 <Button href="/signin" label="Sign in"/>
             </div>
