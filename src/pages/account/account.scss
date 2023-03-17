@@ -1,0 +1,70 @@
+@import '../../index.scss';
+
+.f-account-container {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 65%, var(--primary-color) 65%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .f-no-account {
+        @include card;
+
+        margin-top: 100px;
+        padding: 120px 80px;
+        width: 60%;
+
+        a {
+            margin-top: 50px;
+        }
+
+    }
+
+    .f-account-overview {
+        // display: flex;
+        // flex-direction: row;
+        margin-top: 150px;
+        padding: 0px 90px;
+        background-color: white;
+        width: 100%;
+        
+        .f-account-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .f-account-photo {
+                display: flex;
+                flex-direction: row;
+                background-color: tan;
+
+                img {
+                    background-color: blue;
+                    border-radius: 100%;
+                    border: 8px solid black;
+                    width: 192px;
+                    height: 192px;
+                    position: relative;
+                    top: -96px;
+                }
+
+                // .f-account-name {
+
+                // }
+
+            }
+
+            .f-account-status {            
+                background-color: aqua;
+
+                .f-member-info {
+                    text-align: right;
+                }
+
+            }
+        }
+
+
+    }
+    
+}
