@@ -10,10 +10,10 @@ interface PricingCardInterface {
     price: number;
     shortDesc: string;
     features: string[];
-
+    action?: boolean;
 }
 
-function PricingCard({type, price, shortDesc, features}: PricingCardInterface) {
+function PricingCard({type, price, shortDesc, features, action = true}: PricingCardInterface) {
     return(
         <div className="f-pricing-card">
             <span> {type} </span>
@@ -26,7 +26,7 @@ function PricingCard({type, price, shortDesc, features}: PricingCardInterface) {
                 <li><Icon icon={Icons.check_circle_outline_bold}/> Lorem ipsum</li>
                 <li><Icon icon={Icons.check_circle_outline_bold}/> Lorem ipsum</li>
             </u>
-            <Button label="Purchase"/>
+            {(action) ? (<Button label="Purchase"/>) : null}
         </div>
     );
 }
