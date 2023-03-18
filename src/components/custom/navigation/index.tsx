@@ -26,7 +26,6 @@ function Navigation() {
             </div>
 
             <nav className="f-btm-nav">
-<<<<<<< HEAD
                 <Link className={(location.pathname === "/") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/">
                     <Icon icon={(location.pathname === "/") ? Icons.home : Icons.home_outline_bold}/>
                 </Link>
@@ -39,12 +38,6 @@ function Navigation() {
                 <Link className={(location.pathname === "/about") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/about">
                     <Icon icon={(location.pathname === "/about") ? Icons.question_circle : Icons.question_circle_outline_bold}/>
                 </Link>
-=======
-                <Link className={(location.pathname === "/") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/"><Icon icon={(location.pathname === "/") ? Icons.home : Icons.home_outline_bold}/></Link>
-                <Link className={(location.pathname === "/premium") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/premium"><Icon icon={(location.pathname === "/premium") ? Icons.store : Icons.store_outline_bold}/></Link>
-                <Link className={(location.pathname === "/no-account") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/no-account"><Icon icon={(location.pathname === "/no-account") ? Icons.user : Icons.user_outline_bold}/></Link>
-                <Link className={(location.pathname === "/about") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/about"><Icon icon={(location.pathname === "/about") ? Icons.question_circle : Icons.question_circle_outline_bold}/></Link>
->>>>>>> 5fe0f90576414b3db5254bef88768ae6f3e0ceae
             </nav>
         </>
     );
