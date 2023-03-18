@@ -12,8 +12,8 @@ function NoAccount() {
             <div className="f-account-container">
 
                 <div className="f-no-account">
-                    <h1>You're not signed in</h1>
-                    <span>Sign in to view your account</span>
+                    <h1>You're not signed in*</h1>
+                    <span>Sign in to view your... page to be revamped</span>
                     <Button label={"Sign In"} href={"/signin"} />
                     <Button label={"debug-go-to-account"} href={"/account"} />
                 </div>

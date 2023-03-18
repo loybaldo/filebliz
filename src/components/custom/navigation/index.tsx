@@ -11,7 +11,7 @@ function Navigation() {
 
     return (
         <>
-            <div className="f-nav">
+            <div className="f-nav" id="f-nav-id">
                 <div className="f-branding">
                     <img src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
                     <span>FILEBLIZ</span>

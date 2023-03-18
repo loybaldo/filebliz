@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={ <HomePage/> }/>
         <Route path="/premium" element={ <Pricing/> }/>
         <Route path="/no-account" element={<NoAccount /> }/>
-        <Route path="/account" element={ <Account accountName={'null'} memberInfo={'Premium'} expiryDay={1} expiryRange={'Month'} itemCount={69}/> }/>
+        <Route path="/account" element={ <Account/> }/>
         <Route path="/about" element={ <About/> }/>
         <Route path="/signin" element={ <SigninPage/> }/>
         <Route path="*" element={ <NotFoundPage/> }/>
