@@ -1,0 +1,11 @@
+.f-progress-bar {
+    height: 10px;
+    background-color: var(--primary-color-bg-light);
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .f-progress {
+        background-color: var(--primary-color);
+    }
+}
