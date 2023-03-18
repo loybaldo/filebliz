@@ -43,7 +43,8 @@
                     //TODO change to theme color later
                     width: 100%;
                     color: black;
-                    padding: 0px 0px;
+                    // do not change padding to fill the selection gaps unless you know what you're doing
+                    padding: 15px 0px;
                     margin: 0px 20px;
                     cursor: pointer;
                     white-space: nowrap;
@@ -74,7 +75,7 @@
 
 }
             .f-info:nth-child(2){
-                background-color: rgb(65, 48, 104);;
+                background-color: rgb(65, 48, 104);
                 width: 100%;
                 height:300px;
                 border-radius: 5px;

@@ -11,7 +11,7 @@ function Navigation() {
 
     return (
         <>
-            <div className="f-nav">
+            <div className="f-nav" id="f-nav-id">
                 <div className="f-branding">
                     <img src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
                     <span>FILEBLIZ</span>
@@ -19,13 +19,14 @@ function Navigation() {
                 <nav className="f-links">
                     <Link className={(location.pathname === "/") ? "f-links-item f-links-active" : "f-links-item"} to="/">Home</Link>
                     <Link className={(location.pathname === "/premium") ? "f-links-item f-links-active" : "f-links-item"} to="/premium">Premium</Link>
-                    <Link className={(location.pathname === "/account") ? "f-links-item f-links-active" : "f-links-item"} to="/account">Account</Link>
+                    <Link className={(location.pathname === "/no-account") ? "f-links-item f-links-active" : "f-links-item"} to="/no-account">Account</Link>
                     <Link className={(location.pathname === "/about") ? "f-links-item f-links-active" : "f-links-item"} to="/about">About</Link>
                 </nav>
                 <Button href="/signin" label="Sign in" style={{animation:"slidedown5 0.5s ease-in-out"}}/>
             </div>
 
             <nav className="f-btm-nav">
+<<<<<<< HEAD
                 <Link className={(location.pathname === "/") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/">
                     <Icon icon={(location.pathname === "/") ? Icons.home : Icons.home_outline_bold}/>
                 </Link>
@@ -38,6 +39,12 @@ function Navigation() {
                 <Link className={(location.pathname === "/about") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/about">
                     <Icon icon={(location.pathname === "/about") ? Icons.question_circle : Icons.question_circle_outline_bold}/>
                 </Link>
+=======
+                <Link className={(location.pathname === "/") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/"><Icon icon={(location.pathname === "/") ? Icons.home : Icons.home_outline_bold}/></Link>
+                <Link className={(location.pathname === "/premium") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/premium"><Icon icon={(location.pathname === "/premium") ? Icons.store : Icons.store_outline_bold}/></Link>
+                <Link className={(location.pathname === "/no-account") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/no-account"><Icon icon={(location.pathname === "/no-account") ? Icons.user : Icons.user_outline_bold}/></Link>
+                <Link className={(location.pathname === "/about") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/about"><Icon icon={(location.pathname === "/about") ? Icons.question_circle : Icons.question_circle_outline_bold}/></Link>
+>>>>>>> 5fe0f90576414b3db5254bef88768ae6f3e0ceae
             </nav>
         </>
     );
