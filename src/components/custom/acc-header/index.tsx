@@ -20,7 +20,7 @@ function AccountHeader() {
             <div className="f-acc-bg"></div>
             <div className="f-prof-container">
                 <div>
-                    <img src={(user?.photoURL) ? user?.photoURL! : DefaultProfilePic} alt="Profile" />
+                    <img src={(user?.photoURL) ? user?.photoURL! : DefaultProfilePic} alt={user?.displayName!} />
                     <span>{user?.displayName}</span>
                 </div>
                 <div>

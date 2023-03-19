@@ -15,8 +15,11 @@ function SigninPage() {
     }
 
     const signInWithFacebook = async () => {
-        // try { await signInWithPopup(auth, facebookAuthProvider)}
-        // catch (err) { console.log(err) }
+        facebookAuthProvider.addScope("public_profile");
+        try {
+            await signInWithPopup(auth, facebookAuthProvider);
+        }
+        catch (err) { console.log(err) }
     }
 
     return (
