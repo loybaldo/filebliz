@@ -1,4 +1,5 @@
 import "./acc-header.scss";
+import DefaultProfilePic from "../../../assets/default-profile.svg";
 
 
 function AccountHeader() {
@@ -7,7 +8,7 @@ function AccountHeader() {
             <div className="f-acc-bg"></div>
             <div className="f-prof-container">
                 <div>
-                    <img src="#" alt="Profile"/>
+                    <img src={DefaultProfilePic} alt="Profile"/>
                     <span>Istoy Batitoy</span>
                 </div>
                 <div>
