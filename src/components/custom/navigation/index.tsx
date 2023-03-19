@@ -7,7 +7,6 @@ import "./nav.scss";
 
 function Navigation() {
     const location = useLocation();
-    console.log(location.pathname);
 
     return (
         <>
@@ -19,7 +18,7 @@ function Navigation() {
                 <nav className="f-links">
                     <Link className={(location.pathname === "/") ? "f-links-item f-links-active" : "f-links-item"} to="/">Home</Link>
                     <Link className={(location.pathname === "/premium") ? "f-links-item f-links-active" : "f-links-item"} to="/premium">Premium</Link>
-                    <Link className={(location.pathname === "/no-account") ? "f-links-item f-links-active" : "f-links-item"} to="/no-account">Account</Link>
+                    <Link className={(location.pathname === "/account") ? "f-links-item f-links-active" : "f-links-item"} to="/account">Account</Link>
                     <Link className={(location.pathname === "/about") ? "f-links-item f-links-active" : "f-links-item"} to="/about">About</Link>
                 </nav>
                 <Button href="/signin" label="Sign in" style={{animation:"slidedown5 0.5s ease-in-out"}}/>

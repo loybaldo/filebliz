@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotFoundPage from './pages/404';
 import About from './pages/about';
-import Account from './pages/account';
-import NoAccount from './pages/no-account';
+import AccountPage from './pages/account';
 import HomePage from './pages/home';
-import Pricing from './pages/pricing';
+import PricingPage from './pages/pricing';
 import SigninPage from './pages/signin';
 
 function App() {
@@ -12,9 +11,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={ <HomePage/> }/>
-        <Route path="/premium" element={ <Pricing/> }/>
-        <Route path="/no-account" element={<NoAccount /> }/>
-        <Route path="/account" element={ <Account/> }/>
+        <Route path="/premium" element={ <PricingPage/> }/>
+        <Route path="/account" element={ <AccountPage/> }/>
         <Route path="/about" element={ <About/> }/>
         <Route path="/signin" element={ <SigninPage/> }/>
         <Route path="*" element={ <NotFoundPage/> }/>

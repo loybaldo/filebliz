@@ -17,24 +17,3 @@ code {
 input[type="file"] {
 	display: none;
 }
-
-// css for custom & common components
-// to be migrated - a suggestion by Derfel
-
-@mixin card {
-	-moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    
-    margin: 50px;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: 0px 10px 44px -19px var(--shadow-color);
-    -webkit-box-shadow: 0px 10px 44px -19px var(--shadow-color);
-    -moz-box-shadow: 0px 10px 44px -19px var(--shadow-color);
-
-    &:hover {
-        filter: brightness(97%);
-    }
-}
