@@ -1,4 +1,7 @@
+import { signOut, User } from "@firebase/auth";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { auth } from "../../../config/firebase";
 import Button from "../../common/button";
 import Icon from "../icon";
 import Icons from "../icon/Icon";
@@ -6,7 +9,28 @@ import "./nav.scss";
 
 
 function Navigation() {
+    const [user, setUser] = useState<User | null>(null);
     const location = useLocation();
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            setUser(user);
+        });
+        return unsubscribe;
+    }, []);
+
+    const logout = () => {
+        try { signOut(auth) }
+        catch (err) { console.log(err) }
+    }
+
+    const handleToggle = () => {
+        if (user) {
+            return (<Button onclick={logout} label="Logout" style={{animation:"slidedown5 0.5s ease-in-out"}}/>);
+        } else {
+            return (<Button href="/signin" label="Sign in" style={{animation:"slidedown5 0.5s ease-in-out"}}/>);
+        }
+    };
 
     return (
         <>
@@ -21,7 +45,8 @@ function Navigation() {
                     <Link className={(location.pathname === "/account") ? "f-links-item f-links-active" : "f-links-item"} to="/account">Account</Link>
                     <Link className={(location.pathname === "/about") ? "f-links-item f-links-active" : "f-links-item"} to="/about">About</Link>
                 </nav>
-                <Button href="/signin" label="Sign in" style={{animation:"slidedown5 0.5s ease-in-out"}}/>
+                {handleToggle()}
+                
             </div>
 
             <nav className="f-btm-nav">
