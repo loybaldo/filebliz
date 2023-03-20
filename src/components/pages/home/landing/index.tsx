@@ -7,7 +7,7 @@ function Landing() {
     
     function handleFileChange(e: any) {
         const fileName = e.target.files[0].name.trim();
-        const maxFileNameLength = 20;
+        const maxFileNameLength = 13;
         let displayFileName = fileName;
         if (fileName.length > maxFileNameLength) {
             const fileNameParts = fileName.split('.');
