@@ -10,6 +10,8 @@ import "./nav.scss";
 
 function Navigation() {
     const [user, setUser] = useState<User | null>(null);
+    const [prevScrollPos, setPrevScrollPos] = useState(0);
+    const [visible, setVisible] = useState(true);
     const location = useLocation();
 
     useEffect(() => {
@@ -32,9 +34,19 @@ function Navigation() {
         }
     };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollPos = window.pageYOffset;
+            setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+            setPrevScrollPos(currentScrollPos);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [prevScrollPos, visible]);
+
     return (
         <>
-            <div className="f-nav" id="f-nav-id">
+            <div className="f-nav" style={{top: (visible) ? 0 : -60 }}>
                 <div className="f-branding">
                     <img src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
                     <span>FILEBLIZ</span>
