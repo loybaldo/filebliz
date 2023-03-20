@@ -22,13 +22,13 @@ function Footer() {
         <footer className="f-footer">
             <div ref={footerRef} className="f-container">
                 <div className={`${showFooter ? "show" : "hidden"}`}>
-                    <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                    <a href="https://facebook.com" target="_blank" rel="noreferrer" title="Facebook">
                         <i className="fa-brands fa-facebook" style={{fontSize: 24}}></i>
                     </a>
-                    <a href="https://instagram.com" target="_blank" rel="noreferrer">
+                    <a href="https://instagram.com" target="_blank" rel="noreferrer" title="Instragram">
                         <i className="fa-brands fa-square-instagram" style={{fontSize: 24}}></i>
                     </a>
-                    <a href="https://twitter.com" target="_blank" rel="noreferrer">
+                    <a href="https://twitter.com" target="_blank" rel="noreferrer"  title="Twitter">
                         <i className="fa-brands fa-twitter" style={{fontSize: 24}}></i>
                     </a>
                 </div>
