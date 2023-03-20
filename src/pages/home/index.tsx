@@ -11,17 +11,13 @@ function HomePage() {
         <>
             <Navigation/>
             <div style={{marginTop: 60}}></div>
-            
             <div className="mainView">
-                
                 <Landing/>
                 <Services/>
                 <div style={{padding: "0 20px"}}>
                     <Advert/>
                 </div>
             </div>
-
-
             <Footer/>
             <div className="f-footer-spacer"></div>
         </>

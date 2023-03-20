@@ -3,7 +3,7 @@ import Navigation from "../../components/custom/navigation";
 import Offers from "../../components/custom/offers";
 import PremiumLanding from "../../components/custom/premium-landing";
 
-function Pricing() {
+function PricingPage() {
     return (
         <>
             <Navigation/>
@@ -16,4 +16,4 @@ function Pricing() {
     );
 }
 
-export default Pricing;
+export default PricingPage;

@@ -1,11 +1,12 @@
 import Button from "../../common/button";
 import "./advert.scss";
+import ImagePlaceholder from "../../../assets/image-placeholder.svg";
 
 
 function Advert() {
     return (
         <div className="f-advert">
-            <img src="" alt="Advertisement" />
+            <img src={ImagePlaceholder} alt="Advertisement" />
             <div>
                 <i className="fa-regular fa-crown" style={{fontSize: 24, color: "var(--accent-color)"}}></i>
                 <span>Upgrade to Premium</span>
