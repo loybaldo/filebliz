@@ -1,6 +1,6 @@
-import Button from "../../common/button";
-import Icon from "../icon";
-import Icons from "../icon/Icon";
+import Button from "../../../common/button";
+import Icon from "../../../common/icon";
+import Icons from "../../../common/icon/Icon";
 import "./pricing-card.scss";
 
 

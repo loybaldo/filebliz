@@ -1,7 +1,7 @@
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleAuthProvider, facebookAuthProvider } from "../../config/firebase";
-import Footer from "../../components/custom/footer";
-import Navigation from "../../components/custom/navigation";
+import Footer from "../../components/common/footer";
+import Navigation from "../../components/common/navigation";
 import "./signin.scss";
 import GoogleLogo from "../../assets/google.svg";
 import FacebookLogo from "../../assets/facebook.svg";

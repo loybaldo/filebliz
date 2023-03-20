@@ -1,3 +1,5 @@
+// FIXME declare this script inside ts
+
 let prevScrollpos = window.pageYOffset;
 window.onscroll = function () {
     let currentScrollPos = window.pageYOffset;

@@ -1,7 +1,7 @@
-import Footer from "../../components/custom/footer";
-import Navigation from "../../components/custom/navigation";
-import Offers from "../../components/custom/offers";
-import PremiumLanding from "../../components/custom/premium-landing";
+import Footer from "../../components/common/footer";
+import Navigation from "../../components/common/navigation";
+import Offers from "../../components/pages/pricing/offers";
+import PremiumLanding from "../../components/pages/pricing/premium-landing";
 
 function PricingPage() {
     return (

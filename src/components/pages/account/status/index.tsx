@@ -1,6 +1,6 @@
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import 'react-circular-progressbar/dist/styles.css';
-import Button from "../../common/button";
+import Button from "../../../common/button";
 import "./status.scss";
 
 

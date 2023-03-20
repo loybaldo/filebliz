@@ -1,5 +1,37 @@
 @import "./theme.scss";
 
+@font-face {
+	font-family: "glacial indifference";
+	src: url("./assets/fonts/glacial-indifference/GlacialIndifference-Bold.ttf");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: poppins;
+	src: url("./assets/fonts/poppins/Poppins-Regular.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: poppins;
+	src: url("./assets/fonts/poppins/Poppins-Bold.ttf");
+	font-weight: bold;
+}
+
+
+* {
+	padding: 0;
+	margin: 0;
+	font-family: poppins;
+	box-sizing: border-box;
+	transition: 0.3s;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
 #root {
 	overflow-x: hidden;
 }
@@ -9,11 +41,13 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
-}
-
 input[type="file"] {
 	display: none;
+}
+
+
+@media only screen and (max-width: 768px) {
+	* {
+		user-select: none;
+	}
 }

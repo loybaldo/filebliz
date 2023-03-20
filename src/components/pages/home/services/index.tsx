@@ -1,5 +1,5 @@
-import Icon from "../icon";
-import Icons from "../icon/Icon";
+import Icon from "../../../common/icon";
+import Icons from "../../../common/icon/Icon";
 import "./services.scss"
 
 function Services() {
