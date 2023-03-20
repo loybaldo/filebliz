@@ -1,16 +1,15 @@
 .f-prem-landing {
-    width: 100%;
-    background-color: var(--primary-color);
-    color: white;
+    color:black;
+    animation: fade 0.4s ease-in-out ;
 
     .f-container {
         width: 100%;
         max-width: 1320px;
-        height: 300px;
+        height: 250px;
         margin: 0 auto;
         padding: 50px 20px;
         text-align: center;
-
+       
         p {
             max-width: 500px;
             margin: 20px auto 0 auto;
@@ -18,3 +17,12 @@
     }
 
 }
+
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+ }

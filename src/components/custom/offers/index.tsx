@@ -6,8 +6,8 @@ function Offers() {
     return (
         <div className="f-offers">
             <PricingCard type="free" price={0} shortDesc="For Getting Started" features={["Lorem ipsum", "Dolor sit amet"]} action={false}/>
-            <PricingCard type="free" price={0} shortDesc="For Getting Started" features={["Lorem ipsum", "Dolor sit amet"]}/>
-            <PricingCard type="free" price={0} shortDesc="For Getting Started" features={["Lorem ipsum", "Dolor sit amet"]}/>
+            <PricingCard type="pro" price={10} shortDesc="For Getting Started" features={["Lorem ipsum", "Dolor sit amet"]}/>
+            <PricingCard type="premium" price={18} shortDesc="For Getting Started" features={["Lorem ipsum", "Dolor sit amet"]}/>
         </div>
     );
 }

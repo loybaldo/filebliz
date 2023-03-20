@@ -1,5 +1,4 @@
 import Button from "../../common/button";
-import Divider from "../divider";
 import Icon from "../icon";
 import Icons from "../icon/Icon";
 import "./pricing-card.scss";
@@ -17,16 +16,16 @@ function PricingCard({type, price, shortDesc, features, action = true}: PricingC
     return(
         <div className="f-pricing-card">
             <span> {type} </span>
-            <span> {price} /month</span>
+            <span> <b>{price}</b> Per Month</span>
             <p> {shortDesc} </p>
-            <Divider/>
             <u>
-                <li><Icon icon={Icons.check_circle_outline_bold}/> Lorem ipsum</li>
-                <li><Icon icon={Icons.check_circle_outline_bold}/> Lorem ipsum</li>
-                <li><Icon icon={Icons.check_circle_outline_bold}/> Lorem ipsum</li>
-                <li><Icon icon={Icons.check_circle_outline_bold}/> Lorem ipsum</li>
+                <li><Icon color="#46BC4A" icon={Icons.check_circle}/> Lorem ipsum dolor sit amet cons ectetur.</li>
+                <li><Icon icon={Icons.check_circle}/> Lorem ipsum dolor sit amet con sectetur.</li>
+                <li><Icon icon={Icons.check_circle}/> Lorem ipsum dolor sit amet con sectetur.</li>
+                <li><Icon icon={Icons.check_circle}/> Lorem ipsum dolor sit amet con sectetur.</li>
+                <li><Icon icon={Icons.check_circle}/> Lorem ipsum dolor sit amet con sectetur.</li>
             </u>
-            {(action) ? (<Button label="Purchase"/>) : null}
+            {(action) ? (<Button style={{margin:"25px"}} label="Purchase"/>) : null}
         </div>
     );
 }
