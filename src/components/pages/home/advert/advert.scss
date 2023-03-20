@@ -11,11 +11,12 @@
 
     .hidden{
         opacity: 0;
+        
 
     }
     .show{
         opacity: 1;
-        transition:0.1s ease-in-out;
+        transition:0.3s ease-in-out;
         transform: none;
        
       }
