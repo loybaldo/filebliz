@@ -6,10 +6,19 @@ import "./landing.scss"
 function Landing() {
     
     function handleFileChange(e: any) {
-        const fileName = e.target.files[0].name;
+        const fileName = e.target.files[0].name.trim();
+        const maxFileNameLength = 20;
+        let displayFileName = fileName;
+        if (fileName.length > maxFileNameLength) {
+            const fileNameParts = fileName.split('.');
+            const fileExtension = fileNameParts.pop();
+            const fileNameWithoutExtension = fileNameParts.join('.');
+            const shortenedFileNameWithoutExtension = fileNameWithoutExtension.slice(0, maxFileNameLength -3);
+            displayFileName = `${shortenedFileNameWithoutExtension}...${fileExtension}`;
+        }
         const label = e.target.previousElementSibling;
         label.style.direction = 'rtl';
-        label.textContent = fileName;
+        label.textContent = displayFileName;
     }
 
     return (
