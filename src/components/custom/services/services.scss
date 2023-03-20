@@ -6,6 +6,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
+    animation: fade 0.3s ease-in-out;
 
     .f-item {
         display: flex;
@@ -13,33 +14,15 @@
         text-align: center;
        
         //service animation
-        &.hidden:nth-child(1){
-            opacity: 0;
-
+        @keyframes fade {
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+            
         }
-        &.show:nth-child(1) {
-            opacity: 1;
-            transition:0.1s ease-in-out;
-            transform: none;
-           
-          }
-          &.hidden:nth-child(2){
-            opacity: 0;
-        }
-        &.show:nth-child(2) {
-            opacity: 1;
-            transition:0.2s ease-in-out;
-            transform: none;
-          }
-          &.hidden:nth-child(3){
-            opacity: 0;
-        }
-        &.show:nth-child(3) {
-            opacity: 1;
-            transition:0.3s ease-in-out;
-            transform: none;
-          }
-      
 
         span {
             margin-top: 20px;
