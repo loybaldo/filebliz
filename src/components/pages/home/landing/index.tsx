@@ -1,6 +1,6 @@
-import Button from "../../common/button";
+import Button from "../../../common/button";
+import GirlSmile from "../../../../assets/illus-ok.svg";
 import "./landing.scss"
-import GirlSmile from "../../../assets/illus-ok.svg";
 
 
 function Landing() {

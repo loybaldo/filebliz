@@ -28,34 +28,4 @@
     --twitter-color: rgb(29, 161, 242);
 }
 
-@font-face {
-    font-family: "glacial indifference";
-    src: url("./assets/fonts/glacial-indifference/GlacialIndifference-Bold.ttf");
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: poppins;
-    src: url("./assets/fonts/poppins/Poppins-Regular.ttf");
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: poppins;
-    src: url("./assets/fonts/poppins/Poppins-Bold.ttf");
-    font-weight: bold;
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    font-family: poppins;
-    box-sizing: border-box;
-    transition: 0.3s;
-}
-
-@media only screen and (max-width: 768px) {
-    * {
-        user-select: none;
-    }
-}
+// previous code moved to index.scss

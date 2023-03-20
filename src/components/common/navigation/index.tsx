@@ -2,7 +2,7 @@ import { signOut, User } from "@firebase/auth";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { auth } from "../../../config/firebase";
-import Button from "../../common/button";
+import Button from "../button";
 import Icon from "../icon";
 import Icons from "../icon/Icon";
 import "./nav.scss";

@@ -1,6 +1,6 @@
-import Button from "../../common/button";
+import Button from "../../../common/button";
 import "./advert.scss";
-import ImagePlaceholder from "../../../assets/image-placeholder.svg";
+import ImagePlaceholder from "../../../../assets/image-placeholder.svg";
 import { useEffect, useRef, useState } from "react";
 
 

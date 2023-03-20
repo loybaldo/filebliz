@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import DefaultProfilePic from "../../../assets/default-profile.svg";
+import DefaultProfilePic from "../../../../assets/default-profile.svg";
 import "./acc-header.scss";
-import { auth } from "../../../config/firebase";
+import { auth } from "../../../../config/firebase";
 import { User } from "firebase/auth";
 
 

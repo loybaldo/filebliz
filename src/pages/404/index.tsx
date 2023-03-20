@@ -1,5 +1,5 @@
-import Footer from "../../components/custom/footer";
-import Navigation from "../../components/custom/navigation";
+import Footer from "../../components/common/footer";
+import Navigation from "../../components/common/navigation";
 import "./not-found.scss";
 
 

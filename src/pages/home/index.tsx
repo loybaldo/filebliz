@@ -1,8 +1,8 @@
-import Advert from "../../components/custom/advert";
-import Footer from "../../components/custom/footer";
-import Landing from "../../components/custom/landing";
-import Navigation from "../../components/custom/navigation";
-import Services from "../../components/custom/services";
+import Advert from "../../components/pages/home/advert";
+import Footer from "../../components/common/footer";
+import Landing from "../../components/pages/home/landing";
+import Navigation from "../../components/common/navigation";
+import Services from "../../components/pages/home/services";
 import "./home.scss";
 
 
