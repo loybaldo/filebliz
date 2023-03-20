@@ -1,6 +1,8 @@
 .f-landing {
     width: 100%;
-    background-color: var(--primary-color);
+    background-image: url("../../../assets/landing-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
 
     .f-container {
@@ -74,13 +76,22 @@
     }
 
 }
-            .f-info:nth-child(2){
-                background-color: rgb(65, 48, 104);
-                width: 100%;
-                height:300px;
-                border-radius: 5px;
-                animation: fade 0.5s ease-in-out ;
-            }
+
+.f-info:nth-child(2){
+    width: 100%;
+    height:300px;
+    border-radius: 5px;
+    animation: fade 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 250px;
+    }
+
+}
+
 @keyframes fade{
     from{
         opacity: 0;

@@ -1,5 +1,6 @@
 import Button from "../../common/button";
 import "./landing.scss"
+import GirlSmile from "../../../assets/illus-ok.svg";
 
 
 function Landing() {
@@ -27,7 +28,9 @@ function Landing() {
                     </form>
 
                 </div>
-                <div className="f-info"></div>
+                <div className="f-info">
+                    <img src={GirlSmile} alt="Girl Smile" />
+                </div>
             </div>
         </div>
     );
