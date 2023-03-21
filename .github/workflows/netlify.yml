@@ -8,10 +8,9 @@ jobs:
     steps:
 
     - name: Install Machine Deps
-        uses: actions/setup-node@v3
-        with:
+      uses: actions/setup-node@v3
+      with:
           node-version: 18.15
-
 
 
   build-project:
