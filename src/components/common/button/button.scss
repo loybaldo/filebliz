@@ -3,22 +3,8 @@
 
 .f-btn {
     @include no-select;
-
-    width: fit-content;
-    height: 38px;
-    padding: 0 15px;
-    background-color: var(--primary-color);
-    border-radius: 15px;
-    color: white;
-    border: none;
-    font-size: 14px;
-    box-shadow: 0 0 6px var(--shadow-color);
+    @include button;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-
 
     &:hover {
         background-color: var(--primary-color-hover);

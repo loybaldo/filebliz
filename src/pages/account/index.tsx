@@ -3,7 +3,6 @@ import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
 import Status from "../../components/pages/account/status";
 import UploadList from "../../components/pages/account/upload-list";
-import "./account.scss";
 
 
 function AccountPage() {

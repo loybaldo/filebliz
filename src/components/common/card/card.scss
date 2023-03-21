@@ -4,14 +4,11 @@
     @include no-select;
     @include shadow;
 
-    margin: 50px;
-    padding: 20px;
+    @include marPad(50px, 20px);
     border-radius: 15px;
     background-color: white;
 
-
-
     &:hover {
-        filter: brightness(95%);
+        filter: brightness(97%);
     }
 }

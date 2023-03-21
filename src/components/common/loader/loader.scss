@@ -3,15 +3,13 @@
 
 // LOADER 1
 .f-loader {
-    width: 30px;
-    height: 30px;
+    @include wh(30px, 30px);
     margin: 10px;
     position: relative;
     animation: 1s rotate infinite linear;
 
     div {
-        width: 10px;
-        height: 10px;
+        @include wh(10px, 10px);
         position: absolute;
         background-color: var(--primary-color);
         border-radius: 50%;

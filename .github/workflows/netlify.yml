@@ -2,25 +2,52 @@ name: Build and Deploy to Netlify
 on: [push]
 
 jobs:
-  deploy-webpage:
-    name: Deploy Webpage
+  dependency-installation:
+    name: Install Deps
     runs-on: ubuntu-latest
     steps:
 
-#   Install Deps
-    name: Machine Node Installation
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - name: Install Machine Deps
+      uses: actions/setup-node@v3
       with:
-        node-version: 18.15
+          node-version: 18.15
 
-    name: Install Project Dependencies & Script Execution
-    - run: npm i
-    - run: npm run build
 
-#   Deploy Webpage with Netlify
-    name: Deploy Webpage with Netlify
-    - uses: nwtgck/actions-netlify@v2.0.0
+  build-project:
+    needs: dependency-installation
+    name: Build Project
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v3
+    - name: Install Dependencies
+      run: npm i
+    
+    - name: Build Project
+      run: npm run build
+
+    - name: Cache Builds
+      uses: actions/cache@v2.1.8
+      with:
+        path: |
+          ./node_modules
+          ./build
+          ${{ steps.node-cache-dir-path.outputs.dir }}
+
+        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}-${{ steps.node.outputs.version }}
+
+
+  webpage-deploy:
+    if: ${{ always() }}
+    needs: [dependency-installation, build-project]
+    name: Deploy Webpage
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+
+    - uses: actions/checkout@v3
+    - name: Deploy Webpage with Netlify
+      uses: nwtgck/actions-netlify@v2.0.0
       with:
         publish-dir: './build'
         production-branch: main
@@ -32,3 +59,30 @@ jobs:
       env:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
+  
+  
+  list-files:
+    needs: [dependency-installation, build-project]
+    name: List Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
+
+      - uses: actions/checkout@v1
+
+      - name: Fetch action
+        id: pl
+        uses: Rishabh510/Path-lister-action@master
+        with:
+          path: "./"
+
+      - name: Output results
+        run: |
+          echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
+          for i in ${{ steps.pl.outputs.paths }}; do
+          echo $i
+          done
