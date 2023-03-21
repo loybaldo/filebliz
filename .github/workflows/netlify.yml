@@ -23,7 +23,6 @@ jobs:
           overwrites-pull-request-comment: true
 
 
-      # ( Probably replace these with the results on netlify CLI )
         
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

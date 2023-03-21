@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.6",
     "netlify-cli": "^13.1.6"
   }
 }
