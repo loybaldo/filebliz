@@ -16,6 +16,7 @@ jobs:
 
   build-project:
     name: Build Project
+    runs-on: ubuntu-latest
     steps:
 #   Install Project Deps
     - run: npm i
@@ -24,6 +25,7 @@ jobs:
 
   webpage-deploy:
     name: Deploy Webpage
+    runs-on: ubuntu-latest
     environment: production
     steps:
 
