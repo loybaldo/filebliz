@@ -34,9 +34,7 @@ jobs:
           ./build
           ${{ steps.node-cache-dir-path.outputs.dir }}
 
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}-${{ steps.node.outputs.version }}
 
 
   webpage-deploy:
@@ -65,6 +63,7 @@ jobs:
   
   
   list-files:
+    needs: [dependency-installation, build-project]
     name: List Files
     runs-on: ubuntu-latest
     steps:
