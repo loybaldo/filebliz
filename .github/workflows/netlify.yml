@@ -4,7 +4,6 @@ on: [push]
 jobs:
   deploy-webpage:
     name: Deploy Webpage
-    working-directory: client
     runs-on: ubuntu-latest
     steps:
 
@@ -13,7 +12,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: "18.15"
-    - run: npm i
+    - run: npm i --prefix client
 
     - uses: actions/checkout@v2
     - name: Set up Python 3.7
@@ -35,7 +34,7 @@ jobs:
         echo $i
         done
 
-    - run: npm run build
+    - run: npm run build --prefix client
 
 #   Deploy Webpage with Netlify
     - uses: nwtgck/actions-netlify@v1.2
