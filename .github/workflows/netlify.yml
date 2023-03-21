@@ -21,9 +21,7 @@ jobs:
 
     - name: Install Project Deps
       uses: actions/checkout@v3
-      run: |
-        npm i
-        npm run build
+      run: [npm i, npm run build]
 
 
   webpage-deploy:
@@ -35,9 +33,7 @@ jobs:
     steps:
 
     - name: Deploy Webpage with Netlify
-      uses: |
-        actions/checkout@v3
-        nwtgck/actions-netlify@v2.0.0
+      uses: [actions/checkout@v3, nwtgck/actions-netlify@v2.0.0]
       with:
         publish-dir: './build'
         production-branch: main
