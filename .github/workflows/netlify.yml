@@ -32,8 +32,7 @@ jobs:
         path: |
           ./node_modules
           ./build
-          ${{ steps.node-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-build-${{ hashFiles('**/build') }}
 
 
   webpage-deploy:
@@ -69,27 +68,27 @@ jobs:
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
   
   
-  list-files:
-    needs: [dependency-installation, build-project]
-    name: List Files
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v1
-        with:
-          python-version: "3.7"
+  # list-files:
+  #   needs: [dependency-installation, build-project]
+  #   name: List Files
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Set up Python 3.7
+  #       uses: actions/setup-python@v1
+  #       with:
+  #         python-version: "3.7"
 
-      - uses: actions/checkout@v1
+  #     - uses: actions/checkout@v1
 
-      - name: Fetch action
-        id: pl
-        uses: Rishabh510/Path-lister-action@master
-        with:
-          path: "./"
+  #     - name: Fetch action
+  #       id: pl
+  #       uses: Rishabh510/Path-lister-action@master
+  #       with:
+  #         path: "./"
 
-      - name: Output results
-        run: |
-          echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
-          for i in ${{ steps.pl.outputs.paths }}; do
-          echo $i
-          done
+  #     - name: Output results
+  #       run: |
+  #         echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
+  #         for i in ${{ steps.pl.outputs.paths }}; do
+  #         echo $i
+  #         done
