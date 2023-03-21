@@ -101,6 +101,6 @@ input[type="file"] {
 
 @media only screen and (max-width: 768px) {
 	* {
-		user-select: none;
+		@include no-select;
 	}
 }
