@@ -8,6 +8,7 @@ Before running Fileblizz, make sure you have the following installed:
 
 - [Node JS](https://nodejs.org/)
 - [Git](https://git-scm.com/)
+- [Github Desktop (Optional)](https://desktop.github.com/)
 - [VS Code](https://code.visualstudio.com/)
 - [React CLI](https://www.npmjs.com/package/create-react-app)
 
@@ -22,7 +23,7 @@ npm install -g create-react-app
 
 To get started with Fileblizz, follow these steps:
 
-1. Download the code from https://github.com/loybaldo/fileblizz.
+1. Download the code from https://github.com/loybaldo/fileblizz or use [Github Desktop](https://desktop.github.com/) to clone this repository.
 
 2. Open the project in VS Code.
 

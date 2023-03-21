@@ -7,19 +7,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-#   Install Deps
-    name: Machine Node Installation
+#   Install Machine Deps
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
         node-version: 18.15
 
-    name: Install Project Dependencies & Script Execution
+#   Install Project Deps
     - run: npm i
     - run: npm run build
 
 #   Deploy Webpage with Netlify
-    name: Deploy Webpage with Netlify
     - uses: nwtgck/actions-netlify@v2.0.0
       with:
         publish-dir: './build'
