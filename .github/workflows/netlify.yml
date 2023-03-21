@@ -42,8 +42,9 @@ jobs:
     needs: [dependency-installation, build-project]
     name: Deploy Webpage
     runs-on: ubuntu-latest
-    environment: production
-    url: https://magnificent-pasca-ea900d.netlify.app/
+    environment: 
+      name: production
+      url: https://magnificent-pasca-ea900d.netlify.app/
     steps:
 
     - uses: actions/checkout@v3
