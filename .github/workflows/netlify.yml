@@ -51,7 +51,7 @@ jobs:
         path: |
           ./node_modules
           ./build
-        restore-keys: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-build-${{ hashFiles('**/build') }}
 
     - name: Deploy Webpage with Netlify
       uses: nwtgck/actions-netlify@v2.0.0
