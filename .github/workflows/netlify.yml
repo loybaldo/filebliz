@@ -19,13 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: actions/checkout@v3
-    - name: Install Dependencies
-      run: npm i
-    
-    - name: Build Project
-      run: npm run build
-
     - name: Cache Builds
       uses: actions/cache@v2.1.8
       with:
@@ -33,6 +26,15 @@ jobs:
           ./node_modules
           ./build
         key: ${{ runner.os }}-build-${{ hashFiles('**/build') }}
+        restore-keys: ${{ runner.os }}-build-${{ hashFiles('**/build') }}
+        
+    - uses: actions/checkout@v3
+    - name: Install Dependencies
+      run: npm i
+    
+    - name: Build Project
+      run: npm run build
+
 
 
   webpage-deploy:
@@ -51,6 +53,7 @@ jobs:
         path: |
           ./node_modules
           ./build
+        key: ${{ runner.os }}-build-${{ hashFiles('**/build') }}
         restore-keys: ${{ runner.os }}-build-${{ hashFiles('**/build') }}
 
     - name: Deploy Webpage with Netlify
