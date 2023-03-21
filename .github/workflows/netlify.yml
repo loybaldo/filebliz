@@ -1,28 +1,27 @@
-# .github/workflows/netlify.yml
-name: Build and Deploy to Netlify
-on:
-  push:
-  
+name: Path lister
+on: [push]
 jobs:
-  build:
+  list:
+    name: Path lister
     runs-on: ubuntu-latest
     steps:
-		- name: Path lister action
-  			uses: Rishabh510/Path-lister-action@1.0
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
 
+      - uses: actions/checkout@v2
 
-    #   - name: Deploy to Netlify
-    #     uses: nwtgck/actions-netlify@v1.2
-    #     with:
-    #       publish-dir: './build'
-    #       production-branch: main
-    #       github-token: ${{ secrets.GITHUB_TOKEN }}
-    #       deploy-message: "Deploy from GitHub Actions"
-    #       enable-pull-request-comment: false
-    #       enable-commit-comment: true
-    #       overwrites-pull-request-comment: true
+      - name: Fetch action
+        id: pl
+        uses: Rishabh510/Path-lister-action@master
+        with:
+          path: ".github/"
+          type: ".yml"
 
-    #     env:
-    #       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-    #       NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-    #     timeout-minutes: 1
+      - name: Output results
+        run: |
+          echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
+          for i in ${{ steps.pl.outputs.paths }}; do
+          echo $i
+          done
