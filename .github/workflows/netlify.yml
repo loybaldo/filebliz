@@ -2,7 +2,7 @@ name: Deploy Webpage
 on: [push]
 
 jobs:
-  list:
+  install-dependencies:
     name: Install Dependencies
     runs-on: ubuntu-latest
     steps:
@@ -20,6 +20,7 @@ jobs:
         python-version: "3.7"
     
 
+  deploy-to-netlify:
     name: Deploy to Netlify
     runs-on: ubuntu-latest
     steps:
@@ -36,7 +37,7 @@ jobs:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-
+  list-directories:
     name: List Directories for Debug
     runs-on: ubuntu-latest
     steps:
@@ -45,7 +46,7 @@ jobs:
       uses: Rishabh510/Path-lister-action@master
       with:
         path: "./"
-        
+
     - name: Output results
       run: |
         echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
