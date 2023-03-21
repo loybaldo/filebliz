@@ -1,8 +1,9 @@
 name: Deploy Webpage
 on: [push]
+
 jobs:
   list:
-    name: Deploy Webpage
+    name: Install Dependencies
     runs-on: ubuntu-latest
     steps:
 	    - uses: actions/checkout@v3
@@ -17,10 +18,12 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: "3.7"
+    
 
-
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.2
+    name: Deploy to Netlify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: './build'
           production-branch: main
@@ -29,13 +32,14 @@ jobs:
           enable-pull-request-comment: false
           enable-commit-comment: true
           overwrites-pull-request-comment: true
-
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
 
 
+    name: List Directories for Debug
+    runs-on: ubuntu-latest
+    steps:
       - name: Fetch action
         id: pl
         uses: Rishabh510/Path-lister-action@master
