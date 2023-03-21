@@ -3,25 +3,26 @@ on: [push]
 
 jobs:
   deploy-webpage:
-    name: Install Dependencies
+    name: Deploy Webpage
     runs-on: ubuntu-latest
     steps:
+
+#   Install Deps
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
         node-version: "18.15"
     - run: npm i
-    - run: npm run build
-
+    
+    - uses: actions/checkout@v2
     - name: Set up Python 3.7
       uses: actions/setup-python@v1
       with:
         python-version: "3.7"
 
+    - run: npm run build
 
-    name: Deploy to Netlify
-    runs-on: ubuntu-latest
-    steps:
+#   Deploy Webpage with Netlify
     - uses: nwtgck/actions-netlify@v1.2
       with:
         publish-dir: './build'
@@ -35,9 +36,7 @@ jobs:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-    name: List Directories for Debug
-    runs-on: ubuntu-latest
-    steps:
+#   List directories for Debug Validation
     - name: Fetch action
       id: pl
       uses: Rishabh510/Path-lister-action@master
