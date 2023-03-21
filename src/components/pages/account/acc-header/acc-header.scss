@@ -12,6 +12,8 @@
     display: flex;
     justify-content: space-between;
     transform: translateY(-100px);
+    //added
+    animation: fade 0.5s ease-in-out;
     
     div {
         margin: 0 20px;
@@ -59,7 +61,16 @@
         }
     }
 }
-
+//added
+@keyframes fade {
+    from{
+        opactiy:0;
+    }
+    to{
+        opcaity:1;
+    }
+    
+}
 
 @media only screen and (max-width: 768px) {
     .f-prof-container {

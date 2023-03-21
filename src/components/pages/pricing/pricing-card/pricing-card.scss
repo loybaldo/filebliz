@@ -78,6 +78,10 @@
         .f-icon {
             color: var(--info-color);
         }
+
+        .f-btn {
+            background-color: var(--info-color);
+        }
     }
 
     .f-pricing-card:nth-child(2)::before {
@@ -96,6 +100,10 @@
 
         .f-icon {
             color: var(--warn-color);
+        }
+
+        .f-btn {
+            background-color: var(--warn-color);
         }
     }
 
