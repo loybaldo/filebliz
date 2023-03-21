@@ -7,7 +7,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    	- uses: actions/checkout@v2
 		- name: Path lister action
   			uses: Rishabh510/Path-lister-action@1.0
 
