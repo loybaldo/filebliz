@@ -12,7 +12,7 @@ jobs:
       with:
           node-version: 18.15
           cache: 'npm'
-          cache-dependency-path: './package-lock.json'
+          cache-dependency-path: './/package-lock.json'
 
 
   build-project:
@@ -32,7 +32,8 @@ jobs:
       uses: actions/cache@v2.1.8
       with:
         path: |
-          **/node_modules
+          ./node_modules
+          ./build
           ${{ steps.node-cache-dir-path.outputs.dir }}
 
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
