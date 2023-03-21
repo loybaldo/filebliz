@@ -20,8 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    - uses: actions/checkout@v3
     - name: Install Dependencies
-      uses: actions/checkout@v3
       run: npm i
     
     - name: Build Project
