@@ -34,6 +34,7 @@ jobs:
     environment: production
     steps:
 
+    - uses: actions/checkout@v3
     - name: Deploy Webpage with Netlify
       uses: nwtgck/actions-netlify@v2.0.0
       with:
