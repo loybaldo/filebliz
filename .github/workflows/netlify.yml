@@ -6,9 +6,9 @@ jobs:
     name: Install Dependencies
     runs-on: ubuntu-latest
     steps:
-	  - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
-	    with:
+          with:
 	      node-version: 18.15
 	  - run: npm ci
 	  - run: npm i
