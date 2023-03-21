@@ -2,8 +2,8 @@ name: Build and Deploy to Netlify
 on: [push]
 
 jobs:
-  deploy-webpage:
-    name: Deploy Webpage
+  dependency-installation:
+    name: Install Deps
     runs-on: ubuntu-latest
     steps:
 
@@ -13,9 +13,19 @@ jobs:
       with:
         node-version: 18.15
 
+
+  build-project:
+    name: Build Project
+    steps:
 #   Install Project Deps
     - run: npm i
     - run: npm run build
+
+
+  webpage-deploy:
+    name: Deploy Webpage
+    environment: production
+    steps:
 
 #   Deploy Webpage with Netlify
     - uses: nwtgck/actions-netlify@v2.0.0
