@@ -1,10 +1,8 @@
+@import '../../../index.scss';
+
+
 .f-nav {
-    -webkit-user-select: none;
-    /* Safari */
-    -ms-user-select: none;
-    /* IE 10 and IE 11 */
-    user-select: none;
-    /* Standard syntax */
+    @include no-select;
 
     z-index: 10;
     height: 60px;
@@ -26,7 +24,6 @@
         img {
                 width: 30px;
                 height: 30px;
-                
         }
 
         span {
@@ -35,7 +32,6 @@
             font-size: 25px;
             letter-spacing: 2px;
             font-family: "glacial indifference";
-           
         }
     }
 

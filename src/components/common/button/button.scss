@@ -1,4 +1,10 @@
-.f-btn {width: fit-content;
+@import '../../../index.scss';
+
+
+.f-btn {
+    @include no-select;
+
+    width: fit-content;
     height: 38px;
     padding: 0 15px;
     background-color: var(--primary-color);
@@ -13,12 +19,6 @@
     justify-content: center;
     text-decoration: none;
 
-    -webkit-user-select: none;
-    /* Safari */
-    -ms-user-select: none;
-    /* IE 10 and IE 11 */
-    user-select: none;
-    /* Standard syntax */
 
     &:hover {
         background-color: var(--primary-color-hover);
