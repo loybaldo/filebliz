@@ -11,6 +11,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
           node-version: 18.15
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
 
   build-project:
@@ -19,11 +21,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Install Project Deps
+    - name: Install Dependencies
       uses: actions/checkout@v3
-      
-    - run: npm i
-    - run: npm run build
+      run: npm i
+    
+    - name: Build Project
+      run: npm run build
+
+    - name: Cache Builds
+      uses: actions/cache@v2.1.8
+      with:
+        path: |
+          **/node_modules
+          ${{ steps.node-cache-dir-path.outputs.dir }}
+
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-      
 
 
   webpage-deploy:
