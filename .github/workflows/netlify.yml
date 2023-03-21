@@ -15,6 +15,7 @@ jobs:
 
 
   build-project:
+    needs: dependency-installation
     name: Build Project
     runs-on: ubuntu-latest
     steps:
@@ -24,6 +25,8 @@ jobs:
 
 
   webpage-deploy:
+    if: ${{ always() }}
+    needs: [dependency-installation, build-project]
     name: Deploy Webpage
     runs-on: ubuntu-latest
     environment: production
