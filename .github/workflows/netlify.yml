@@ -33,8 +33,7 @@ jobs:
           ./node_modules
           ./build
           ${{ steps.node-cache-dir-path.outputs.dir }}
-
-        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}-${{ steps.node.outputs.version }}
+        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
 
 
   webpage-deploy:
@@ -46,6 +45,15 @@ jobs:
     steps:
 
     - uses: actions/checkout@v3
+
+    - name: Cache Restore
+      uses: ylemkimon/cache-restore@v2.1.3
+      with:
+        path: |
+          ./node_modules
+          ./build
+        restore-keys: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+
     - name: Deploy Webpage with Netlify
       uses: nwtgck/actions-netlify@v2.0.0
       with:
@@ -59,7 +67,7 @@ jobs:
       env:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 1
+        if: ${{ failure() }}
   
   
   list-files:
