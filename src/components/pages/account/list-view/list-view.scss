@@ -1,11 +1,20 @@
+@import '../../../../index.scss';
+
+
 .f-list-view {
+    @include no-select;
+    cursor: pointer;
+
+    background-color: white;
+    
     height: 60px;
     padding: 0 20px;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
     border-bottom: 1px solid #ddd;
-    //added
     animation: fade 0.3s ease-in-out;
 
     div {
@@ -16,12 +25,10 @@
 
     div:nth-child(1) {
         div {
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--primary-color-bg-light);
+            @include flex-center;
+            @include wh(38px, 38px);
+            
+            background-color: $primary-color-bg-light;
             border-radius: 50%;
         }
 
@@ -41,8 +48,8 @@
         justify-content: end;
 
         button {
-            width: 38px;
-            height: 38px;
+            @include wh(38px, 38px);
+            
             margin-left: 10px;
             border-radius: 50%;
             border: none;
@@ -54,8 +61,12 @@
             background-color: #ddd;
         }
     }
+
+    &:hover {
+        filter: brightness(95%);
+    }
 }
-//added
+
 @keyframes fade {
     from{
         opacity:0;
@@ -69,6 +80,7 @@
 @media only screen and (max-width: 768px) {
     .f-list-view {
         div:nth-child(1) {
+            display: inherit;
         }
 
         .f-size {

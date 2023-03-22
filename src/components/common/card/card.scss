@@ -1,14 +1,5 @@
 @import '../../../index.scss';
 
 .card {
-    @include no-select;
-    @include shadow;
-
-    @include marPad(50px, 20px);
-    border-radius: 15px;
-    background-color: white;
-
-    &:hover {
-        filter: brightness(97%);
-    }
+    @include card;
 }

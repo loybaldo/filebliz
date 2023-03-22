@@ -11,34 +11,31 @@
     div {
         @include wh(10px, 10px);
         position: absolute;
-        background-color: var(--primary-color);
+        background-color: $primary-color;
         border-radius: 50%;
     }
     
     div:nth-child(1) {
-        top: 0;
-        left: 0;
+        @include absolute-pos(0, 0, unset, unset);
         animation: 1s animate1 infinite;
     }
     
     div:nth-child(2) {
-        top: 0;
-        right: 0;
+        @include absolute-pos(0, unset, unset, 0);
         animation: 1s animate2 infinite;
     }
     
     div:nth-child(3) {
-        bottom: 0;
-        left: 0;
+        @include absolute-pos(0, 0, unset, unset);
         animation: 1s animate3 infinite;
     }
     
     div:nth-child(4) {
-        bottom: 0;
-        right: 0;
+        @include absolute-pos(0, unset, unset, 0);
         animation: 1s animate4 infinite;
     }
 }
+
 
 @keyframes rotate {
     0% { transform: rotate(0deg); }
@@ -70,23 +67,16 @@
 }
 
 
-
-
-
-
 // LOADER 2
 .f-loader2 {
-    width: 30px;
-    height: 30px;
+    @include wh(30px, 30px);
+    @include flex-center;
     margin: 10px;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
 
     div {
-        width: 6px;
-        height: 20px;
-        background-color: var(--primary-color);
+        @include wh(6px,20px);
+        background-color: $primary-color;
         border-radius: 10px;
     }
 
@@ -105,6 +95,7 @@
     }
     
 }
+
 
 @keyframes resize {
     0% { height: 20px; }

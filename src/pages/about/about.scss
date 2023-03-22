@@ -1,0 +1,7 @@
+@import '../../index.scss';
+
+.h1 {
+    @include wh(100vw, 100vh);
+    @include flex-center;
+    text-align: center;
+}

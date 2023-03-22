@@ -25,9 +25,9 @@ function SigninPage() {
     return (
         <>
             <Navigation/>
-            <div style={{maxWidth: 1320, margin: "60px auto 0 auto", padding: "50px 0", textAlign: "center"}}>
-                <h1>Sign In Using:</h1>
+            <div>
                 <div className="f-signin-container">
+                    <h1>Sign In Using:</h1>
                     <button onClick={signInWithGoogle}><img src={GoogleLogo} alt="Google Logo"/></button>
                     <button onClick={signInWithFacebook}><img src={FacebookLogo} alt="Facebook Logo"/></button>
                 </div>

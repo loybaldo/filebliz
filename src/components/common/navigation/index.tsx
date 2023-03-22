@@ -28,9 +28,9 @@ function Navigation() {
 
     const handleToggle = () => {
         if (user) {
-            return (<Button onclick={logout} label="Logout" style={{animation:"slidedown5 0.5s ease-in-out"}}/>);
+            return (<Button onclick={logout} label="Logout" style={{ animation: "slidedown5 0.5s ease-in-out" }} scrollToTop={false}/>);
         } else {
-            return (<Button href="/signin" label="Sign in" style={{animation:"slidedown5 0.5s ease-in-out"}}/>);
+            return (<Button href="/signin" label="Sign in" style={{ animation: "slidedown5 0.5s ease-in-out" }} scrollToTop={false}/>);
         }
     };
 

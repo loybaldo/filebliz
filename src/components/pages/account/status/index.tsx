@@ -4,7 +4,8 @@ import Button from "../../../common/button";
 import "./status.scss";
 
 
-function Status() {
+function Status() { 
+
     return (
         <>
             <div className="f-status">
@@ -23,7 +24,7 @@ function Status() {
                     <i className="fa-regular fa-crown" style={{fontSize: 24}}></i>
                     <p>Running out of storage?</p>
                     <p>Click the button below to check our premium plan.</p>
-                    <Button href="/premium" label="Go Premium" style={{marginLeft: "auto"}}/>
+                    <Button href="/premium" label="Go Premium" style={{ marginLeft: "auto" }} scrollToTop={true}/>
                 </div>
             </div>
         </>
