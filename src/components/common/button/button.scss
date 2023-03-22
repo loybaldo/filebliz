@@ -1,18 +1,6 @@
 @import '../../../index.scss';
 
-
 .f-btn {
     @include no-select;
-    @include button;
-    cursor: pointer;
-
-    &:hover {
-        background-color: var(--primary-color-hover);
-    }
-
-    &:active {
-        background-color: var(--primary-color);
-        filter: brightness(140%);
-    }
-
+    @include anchor-button;
 }

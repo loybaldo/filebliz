@@ -1,11 +1,16 @@
+@import '../../../../index.scss';
+
+
 .f-services {
+    @include marPad(0 auto, 50px 20px);
+    
     width: 100%;
     max-width: 1320px;
-    padding: 50px 20px;
-    margin: 0 auto;
+    
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
+
     animation: fade 0.3s ease-in-out;
 
     .f-item {

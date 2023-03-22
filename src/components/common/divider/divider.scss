@@ -1,7 +1,6 @@
 @import '../../../index.scss';
 
 .divider {
-    padding: 2px;
-    margin: 0px 0px 10px 0px;
-    background-color: var(--primary-color);
+    @include marPad(0px 0px 10px 0px, 2px);
+    background-color: $primary-color;
 }

@@ -1,33 +1,43 @@
+@import '../../../../index.scss';
+
+
 .f-status {
+    @include marPad(0 auto, 20px);
+    
     width: 100%;
     max-width: 1320px;
-    padding: 20px;
-    margin: 0 auto;
+    
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr 2fr;
-    //added
+
     animation: fade 0.3s ease-in-out;
 
+    
     .f-card {
-        padding: 20px;
-        background-color: var(--primary-color-bg-light);
+        @include card;
+        @include marPad(0px, 30px);
+        cursor: default;
+
+        background-color: $primary-color-bg-light;
         border-radius: 15px;
+
+        &:hover {
+            filter: none;
+        }
     }
 
     // Storage Card
     .f-card:nth-child(1) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex-center;
         flex-direction: column;
 
         div:nth-child(1) {
             width: 100%;
             max-width: 100px;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            flex-direction: column;
 
             span {
                 display: flex;
@@ -35,7 +45,6 @@
                 font-size: larger;
                 font-weight: bold;
             }
-
         }
 
         div:nth-child(2) {
@@ -51,12 +60,11 @@
 
             span::before {
                 content: "";
-                width: 15px;
-                height: 15px;
-                min-width: 15px;
-                min-height: 15px;
+                @include wh(15px, 15px);
+                @include min-wh(15px, 15px);
+
                 margin-right: 15px;
-                background-color: var(--primary-color);
+                background-color: $primary-color;
                 border-radius: 50%;
             }
 
@@ -64,14 +72,13 @@
                 background-color: #ccc;
             }
         }
-
     }
 
     // Advertisement Card
     .f-card:nth-child(2) {
         display: flex;
-        flex-direction: column;
         justify-content: center;
+        flex-direction: column;
 
         p:nth-child(2) {
             margin-top: 20px;
@@ -84,7 +91,8 @@
         }
     }
 }
-//added
+
+
 @keyframes fade {
     from{
         opacity:0;

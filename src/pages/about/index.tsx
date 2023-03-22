@@ -1,16 +1,15 @@
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
+import './about.scss';
 
 function About() {
     return (
         <>
             <Navigation />
-            <div style={{ marginTop: 60 }}></div>
 
-            <h1>Empty</h1>
+            <h1 className="h1">Empty</h1>
 
             <Footer />
-            <div className="f-footer-spacer"></div>
         </>
     );
 }

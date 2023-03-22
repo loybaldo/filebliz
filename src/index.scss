@@ -19,17 +19,143 @@
 }
 
 
+// ### [ CUSTOM MIXIN LIBRARY ] ###
+
+@mixin absolute-pos($top, $left, $bottom, $right) {
+	top: $top;
+	left: $left;
+	bottom: $bottom;
+	right: $right;	
+}
+
+@mixin focus-style {
+	&:focus, 
+	&:focus-within {
+		outline: none;
+	}
+	
+	&:focus-visible {
+		outline: 3px solid $primary-color-active;
+		outline-offset: 3px;
+		transition: none;
+	}
+}
+
+@mixin no-select {
+	-webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+@mixin shadow {
+	box-shadow: 0px 10px 44px -19px $shadow-color;
+    -webkit-box-shadow: 0px 10px 44px -19px $shadow-color;
+    -moz-box-shadow: 0px 10px 44px -19px $shadow-color;
+}
+
+@mixin flex-center {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin wh($w, $h) {
+	width: $w;
+	height: $h;
+}
+
+@mixin min-wh($w, $h) {
+	min-width: $w;
+	min-height: $h;
+}
+
+@mixin max-wh($w, $h) {
+	max-width: $w;
+	max-height: $h;
+}
+
+@mixin marPad($mar, $pad) {
+	margin: $mar;
+	padding: $pad;
+}
+
+@mixin scroll-bar-hide {
+	// Firefox
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+// MIXIN Components
+
+@mixin card {
+    @include no-select;
+    @include shadow;
+
+    @include marPad(50px, 20px);
+    border-radius: 15px;
+    background-color: $bg-color;
+	cursor: pointer;
+
+    &:hover {
+        filter: brightness(102%);
+    }
+
+	&:active {
+		filter: brightness(97%)
+	}
+}
+
+@mixin anchor-button {
+	@include shadow;
+	@include wh(fit-content, 38px);
+	@include marPad(unset, 0 15px);
+	@include focus-style;
+
+	display: flex;
+	@include flex-center;
+
+	background-color: $primary-color;
+	border-radius: 15px;
+	border: none;
+
+	cursor: pointer;
+
+	// hardcoded color
+	color: white;
+	font-size: 14px;
+	text-decoration: none;
+
+    &:hover {
+        background-color: $primary-color-hover;
+    }
+
+    &:active {
+        background-color: $primary-color;
+        filter: brightness(140%);
+    }
+}
+
+
+
+// ### [ INDEX STYLES ] ###
+
 * {
 	padding: 0;
 	margin: 0;
 	font-family: poppins;
 	box-sizing: border-box;
 	transition: 0.3s;
+	scroll-behavior: smooth;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 #root {
@@ -45,57 +171,12 @@ input[type="file"] {
 	display: none;
 }
 
-
-// ### [ MIXIN LIBRARY ] ###
-
-@mixin no-select {
-	-webkit-user-select: none;
-    /* Safari */
-    -ms-user-select: none;
-    /* IE 10 and IE 11 */
-    user-select: none;
-    /* Standard syntax */
+a {
+	@include focus-style;
 }
 
-@mixin shadow {
-	box-shadow: 0px 10px 44px -19px var(--shadow-color);
-    -webkit-box-shadow: 0px 10px 44px -19px var(--shadow-color);
-    -moz-box-shadow: 0px 10px 44px -19px var(--shadow-color);
-}
-
-@mixin flex-center {
-	display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-// for anchor tags/links
-@mixin button {
-	@include shadow;
-	@include wh(fit-content, 38px);
-	@include marPad(unset, 0 15px);
-	
-    display: flex;
-	@include flex-center;
-	
-    background-color: var(--primary-color);
-    border-radius: 15px;
-    border: none;
-
-	// hardcoded color
-    color: white;
-    font-size: 14px;
-    text-decoration: none;
-}
-
-@mixin wh($w, $h) {
-	width: $w;
-	height: $h;
-}
-
-@mixin marPad($mar, $pad) {
-	margin: $mar;
-	padding: $pad;
+button {
+	@include focus-style;
 }
 
 

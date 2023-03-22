@@ -1,10 +1,10 @@
-# Fileblizz
+# Filebliz
 
 Fileblizz is a file-sharing website designed to simplify the process of sharing files for students, teachers, creatives, and small business owners. With its intuitive interface, users can easily upload, share, and manage files, making it an ideal solution for collaborating on group projects or sending essential documents.
 
 ## Requirements
 
-Before running Fileblizz, make sure you have the following installed:
+Before running Filebliz, make sure you have the following installed:
 
 - [Node JS](https://nodejs.org/)
 - [Git](https://git-scm.com/)

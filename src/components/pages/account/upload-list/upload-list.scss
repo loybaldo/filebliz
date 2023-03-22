@@ -1,3 +1,6 @@
+@import '../../../../index.scss';
+
+
 .f-upload-list {
     width: 100%;
     max-width: 1320px;
@@ -5,6 +8,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+
     //added
     animation: fade 0.3s ease-in-out;
 
@@ -14,12 +18,13 @@
         font-weight: bold;
     }
 }
+
 //added
 @keyframes fade {
     from{
         opacity: 0;
     }
     to{
-        opcaity:1;
+        opacity: 1;
     }
 }

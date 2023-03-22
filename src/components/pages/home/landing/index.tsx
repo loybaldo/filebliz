@@ -26,14 +26,22 @@ function Landing() {
             <div className="f-container">
                 <div className="f-info">
 
-                    <h1>Effortlessly Share Your Files with Fileblizz</h1>
-                    <p>With Fileblizz, you can easily share your files with anyone, anytime. Our user-friendly platform ensures that you can quickly upload and send your files to your friends, family, and colleagues without any hassle.</p>
-                    <form>
+                    <h1>Effortlessly Share Your Files with Filebliz</h1>
+                    <p>With Filebliz, you can easily share your files with anyone, anytime. Our user-friendly platform ensures that you can quickly upload and send your files to your friends, family, and colleagues without any hassle.</p>
+                    
+                    {/* 
+                        [ OPTIONAL FEATURE ]
+                        FIXME Accessibility: add redirect function to open the file window when the tab-index has been located by the keyboard
+                    
+                        to remove: navigate to ./landing.scss > line 46 and delete the line
+                    */}
+
+                    <form tabIndex={0}>
                         <label htmlFor="file-upload" className="custom-file-upload" style={{border: "none", backgroundColor: "transparent", outline: "none"}}>
                             Choose Files
                         </label>
                         <input id="file-upload" type="file" onChange={handleFileChange}/>
-                        <Button label="Upload"/>
+                        <Button label="Upload" scrollToTop={false}/>
                     </form>
 
                 </div>

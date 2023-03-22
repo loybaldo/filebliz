@@ -10,7 +10,6 @@ function HomePage() {
     return (
         <>
             <Navigation/>
-            <div style={{marginTop: 60}}></div>
             <div className="mainView">
                 <Landing/>
                 <Services/>
