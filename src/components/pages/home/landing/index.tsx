@@ -5,21 +5,27 @@ import "./landing.scss"
 
 function Landing() {
     
-    function handleFileChange(e: any) {
-        const fileName = e.target.files[0].name.trim();
+    function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const fileName = e.target.files && e.target.files[0] && e.target.files[0].name.trim();
         const maxFileNameLength = 13;
         let displayFileName = fileName;
-        if (fileName.length > maxFileNameLength) {
-            const fileNameParts = fileName.split('.');
-            const fileExtension = fileNameParts.pop();
-            const fileNameWithoutExtension = fileNameParts.join('.');
-            const shortenedFileNameWithoutExtension = fileNameWithoutExtension.slice(0, maxFileNameLength -3);
-            displayFileName = `${shortenedFileNameWithoutExtension}...${fileExtension}`;
+        if (fileName && fileName.length > maxFileNameLength) {
+          const fileNameParts = fileName.split('.');
+          const fileExtension = fileNameParts.pop();
+          const fileNameWithoutExtension = fileNameParts.join('.');
+          const shortenedFileNameWithoutExtension = fileNameWithoutExtension.slice(
+            0,
+            maxFileNameLength - 3
+          );
+          displayFileName = `${shortenedFileNameWithoutExtension}...${fileExtension}`;
         }
-        const label = e.target.previousElementSibling;
-        label.style.direction = 'rtl';
-        label.textContent = displayFileName;
-    }
+        const label = e.target.previousElementSibling as HTMLLabelElement;
+        if (label) {
+          label.style.direction = 'rtl';
+          label.textContent = displayFileName;
+        }
+      }
+      
 
     return (
         <div className="f-landing">
