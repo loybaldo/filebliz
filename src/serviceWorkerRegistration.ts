@@ -125,6 +125,7 @@ function checkValidServiceWorker(swUrl: string, config?: Config) {
 			}
 		})
 		.catch(() => {
+			// Network error occurred while trying to fetch the service worker. Proceed as normal.
 			console.log('No internet connection found. App is running in offline mode.');
 		});
 }
