@@ -1,0 +1,38 @@
+@import "../../../index.scss";
+
+.f-alert {
+    padding: 20px;
+    display: flex;
+    border-radius: 15px;
+    color: white;
+
+    div {
+        margin-left: 20px;
+
+        p:nth-child(1) {
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        p:nth-child(2) {
+            margin-top: 10px;
+        }
+    }
+}
+
+
+.f-alert-ok {
+    background-color: $primary-color;
+}
+
+.f-alert-info {
+    background-color: $info-color;
+}
+
+.f-alert-warn {
+    background-color: $warn-color;
+}
+
+.f-alert-danger {
+    background-color: $danger-color;
+}

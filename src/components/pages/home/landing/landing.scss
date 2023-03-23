@@ -1,10 +1,11 @@
 @import '../../../../index.scss';
 
 .f-landing {
-    @include wh(100%, 100vh);
     @include flex-center;
     @include scroll-bar-hide;
-    
+    // [Do not set the landing component to vh]
+    width: 100%;
+    padding-top: 60px;
     background-image: url("../../../../assets/landing-bg.svg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -25,8 +26,7 @@
             margin: 0 auto;
 
             h1 {
-                font-size: 50px;
-                line-height: 57px;
+                font-size: xx-large;
             }
 
             &:nth-child(1) {

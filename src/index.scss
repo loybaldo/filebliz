@@ -95,7 +95,8 @@
 
 @mixin card {
     @include no-select;
-    @include shadow;
+	// [Do not add shadow]
+    // @include shadow;
 
     @include marPad(50px, 20px);
     border-radius: 15px;
