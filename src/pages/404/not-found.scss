@@ -5,11 +5,14 @@
     width: 100%;
     max-width: 1320px;
     margin: 0 auto;
-    text-align: center;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     img {
         width: 100%;
-        max-width: 300px;
+        max-width: 200px;
     }
 
     h2 {
@@ -22,5 +25,6 @@
         margin: 20px auto 0 auto;
         text-align: center;
         max-width: 500px;
+        margin-bottom: 30px;
     }
 }

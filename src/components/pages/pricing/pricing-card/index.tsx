@@ -20,7 +20,7 @@ function PricingCard({type, price, features, action = true}: PricingCardInterfac
                 <ul>
                     {features.map((item, index) => (<li key={index}><Icon icon={Icons.check_circle}/> {item} </li>))}
                 </ul>
-                {(action) ? (<Button style={{ margin: "25px" }} label="Purchase" scrollToTop={false}/>) : null}
+                {(action) ? (<Button style={{ margin: "25px" }} label="Purchase"/>) : null}
             </div>
         </div>
     );

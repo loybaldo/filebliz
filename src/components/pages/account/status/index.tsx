@@ -24,7 +24,7 @@ function Status() {
                     <i className="fa-regular fa-crown" style={{fontSize: 24}}></i>
                     <p>Running out of storage?</p>
                     <p>Click the button below to check our premium plan.</p>
-                    <Button href="/premium" label="Go Premium" style={{ marginLeft: "auto" }} scrollToTop={true}/>
+                    <Button href="/premium" label="Go Premium" style={{ marginLeft: "auto" }}/>
                 </div>
             </div>
         </>

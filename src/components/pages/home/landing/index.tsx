@@ -41,7 +41,7 @@ function Landing() {
                             Choose Files
                         </label>
                         <input id="file-upload" type="file" onChange={handleFileChange}/>
-                        <Button label="Upload" scrollToTop={false}/>
+                        <Button label="Upload"/>
                     </form>
 
                 </div>
