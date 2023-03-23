@@ -2,7 +2,7 @@ import ListView from "../list-view";
 import "./upload-list.scss";
 
 function UploadList() {
-    const items = Array.from({ length: 12 }, (_, index) => ({
+    const items = Array.from({ length: 15}, (_, index) => ({
         id: `item_${index}`,
         fileName: "my_files_unknown.dart",
         fileExt: "dart",

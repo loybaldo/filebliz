@@ -8,8 +8,6 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-
-    //added
     animation: fade 0.3s ease-in-out;
 
     .f-label {
@@ -17,9 +15,15 @@
         font-size: larger;
         font-weight: bold;
     }
+//added
+    .f-list-view p {
+        width: 200px; /* adjust as needed */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        }
 }
 
-//added
 @keyframes fade {
     from{
         opacity: 0;
@@ -27,4 +31,15 @@
     to{
         opacity: 1;
     }
+}
+//added 
+@media only screen and (max-width:768px) {
+
+    .f-list-view p {
+        max-width: 130px; /* adjust as needed */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        }
+    
 }
