@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Collapse from "../../components/common/collapse";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
@@ -5,6 +7,20 @@ import Offers from "../../components/pages/pricing/offers";
 import PremiumLanding from "../../components/pages/pricing/premium-landing";
 
 function PricingPage() {
+    const location = useLocation();
+    
+
+    useEffect(() => {
+        const APP_NAME = process.env.REACT_APP_NAME;
+        if (location.pathname === "/premium") {
+            document.title = `Premium - ${APP_NAME}`;
+        }
+
+        return () => {
+            document.title = APP_NAME!;
+        };
+    }, [location]);
+    
     const data = [
         {
             title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit?",

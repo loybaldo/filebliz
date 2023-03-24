@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-// removed uploadBytes | ESLINT Err/Warning | Causing Github Actions to not continue
-
 import { v4 as uuidv4 } from "uuid";
 import { storage } from "../../../../config/firebase";
 import Button from "../../../common/button";
@@ -39,11 +37,6 @@ function Landing() {
             });
         });
     };
-
-
-
-
-
     
     function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
         const files = e.target.files;
@@ -65,6 +58,13 @@ function Landing() {
         }
     }
 
+    const handleCopyLink = () => {
+        navigator.clipboard.writeText(downloadURL)
+            .then(() => {
+                console.log(`Copied ${downloadURL} to clipboard`)
+                setDownloadURL("");
+            }).catch((err) => console.error('Could not copy text: ', err));
+    }
       
 
     return (
@@ -91,9 +91,9 @@ function Landing() {
                 </div>
             </div>
 
-            <ModalLoading label={`Uploading (${progress}%)`} show={(uploading) ? true : false}/>
+            <ModalLoading label={(progress < 100) ? `Uploading (${progress}%)` : "Processing..."} show={(uploading) ? true : false}/>
         
-            {downloadURL && <ModalQR url={downloadURL} show={true} />}
+            {downloadURL && <ModalQR url={downloadURL} onclick={handleCopyLink} show={true} />}
         </>
     );
 }

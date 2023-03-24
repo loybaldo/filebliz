@@ -3,9 +3,19 @@ import Navigation from "../../components/common/navigation";
 import "./not-found.scss";
 import NotFoundIllustration from "../../assets/illus-error.svg";
 import Button from "../../components/common/button";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 
 function NotFoundPage() {
+    useEffect(() => {
+        const APP_NAME = process.env.REACT_APP_NAME;
+        document.title = "404 - Page Not Found";
+        return () => {
+            document.title = APP_NAME!;
+        };
+    }, []);
+    
     return (
         <>
             <Navigation/>
@@ -14,8 +24,8 @@ function NotFoundPage() {
                     <div className="f-not-found">
                         <img src={NotFoundIllustration} alt="Not Found Illustration" />
                         <h2>Oops! Page Not Found.</h2>
-                        <p>Lorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit amet</p>
-                        <Button label="Go Back To Home"/>
+                        <p>Sorry, the page you are looking for cannot be found. Please check the URL or go back to the homepage.</p>
+                        <Button label="Go Back To Home" href="/"/>
                     </div>
                 </div>
             <Footer/>

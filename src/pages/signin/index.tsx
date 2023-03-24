@@ -3,10 +3,24 @@ import Navigation from "../../components/common/navigation";
 import "./signin.scss";
 import GoogleLogo from "../../assets/google.svg";
 import FacebookLogo from "../../assets/facebook.svg";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../auth/auth-provider";
+import { useLocation } from "react-router-dom";
 
 function SigninPage() {
+  const location = useLocation();
+    
+    useEffect(() => {
+        const APP_NAME = process.env.REACT_APP_NAME;
+        if (location.pathname === "/signin") {
+            document.title = `Sign In - ${APP_NAME}`;
+        }
+
+        return () => {
+            document.title = APP_NAME!;
+        };
+    }, [location]);
+
   const { signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
 
   const handleGoogleSignIn = async () => {
