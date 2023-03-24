@@ -1,28 +1,47 @@
 import { useState } from "react";
-import { ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { storage } from "../../../../config/firebase";
 import Button from "../../../common/button";
 import GirlSmile from "../../../../assets/illus-ok.svg";
 import "./landing.scss";
 import ModalLoading from "../../../common/modal-loading";
+import ModalQR from "../../../common/modal-qr";
 
 
 function Landing() {
+    const [downloadURL, setDownloadURL] = useState("");
+    const [progress, setProgress] = useState(0);
     const [uploading, setUploading] = useState(false);
     const [file, setFile] = useState<File | null>(null);
 
 
     const handleUpload = () => {
-        console.log(file);
-        if(file == null) return;
+        if (file == null) return;
         setUploading(true);
 
-        const fileRef = ref(storage, `${process.env.REACT_APP_UPLOAD_PATH}/${ uuidv4() }`);
-        uploadBytes(fileRef, file).then(() => {
-            setUploading(false);
+        const fileRef = ref(storage, `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}`);
+        const uploadTask = uploadBytesResumable(fileRef, file);
+
+        uploadTask.on("state_changed", (snapshot) => {
+            const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(1);
+            setProgress(+progress);
+        }, (error) => {
+            console.error(error);
+        }, () => {
+            console.log("Upload complete");
+            getDownloadURL(fileRef).then((url) => {
+                setDownloadURL(url);
+                console.log("Download URL:", url);
+                setUploading(false);
+            });
         });
-    }
+    };
+
+
+
+
+
     
     function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
         const files = e.target.files;
@@ -70,7 +89,9 @@ function Landing() {
                 </div>
             </div>
 
-            <ModalLoading label="Uploading" show={(uploading) ? true : false}/>
+            <ModalLoading label={`Uploading (${progress}%)`} show={(uploading) ? true : false}/>
+        
+            {downloadURL && <ModalQR url={downloadURL} show={true} />}
         </>
     );
 }
