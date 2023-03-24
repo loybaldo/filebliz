@@ -19,8 +19,8 @@ function ListView({fileName, size}: ListViewInterface) {
             </div>
             <span className="f-size"> {size}Kb</span>
             <div>
-                <button><Icon icon={Icons.copy_outline_bold}/></button>
-                <button><Icon icon={Icons.trash_outline_bold}/></button>
+                <button><Icon icon={Icons.copy_outline_bold} title="Copy File"/></button>
+                <button><Icon icon={Icons.trash_outline_bold} title="Delete File"/></button>
             </div>
         </div>
     );

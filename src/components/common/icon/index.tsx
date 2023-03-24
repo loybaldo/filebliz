@@ -5,11 +5,12 @@ interface IconInterface {
     icon: string;
     size?: number;
     color?: string;
+    title?:string;
 }
 
-function Icon({ icon, size, color }: IconInterface) {
+function Icon({ icon, size, color,title }: IconInterface) {
     return (
-        <i className={"f-icon " + icon} style={{fontSize: size, color: color}}></i>
+        <i className={"f-icon " + icon} style={{fontSize: size, color: color}} title={title}></i>
     );
 }
 
