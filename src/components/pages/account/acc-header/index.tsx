@@ -1,27 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import DefaultProfilePic from "../../../../assets/default-profile.svg";
 import "./acc-header.scss";
-import { auth } from "../../../../config/firebase";
-import { User } from "firebase/auth";
+import { AuthContext } from "../../../../auth/auth-provider";
 
 
 function AccountHeader() {
-    const [user, setUser] = useState<User | null>(null);
-
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
-            setUser(user);
-        });
-        return unsubscribe;
-    }, []);
+    const { currentUser } = useContext(AuthContext);
 
     return(
         <>
             <div className="f-acc-bg"></div>
             <div className="f-prof-container">
                 <div>
-                    <img src={(user?.photoURL) ? user?.photoURL! : DefaultProfilePic} alt={user?.displayName!} />
-                    <span>{user?.displayName}</span>
+                    <img src={(currentUser?.photoURL) ? currentUser?.photoURL! : DefaultProfilePic} alt={currentUser?.displayName!} />
+                    <span>{currentUser?.displayName}</span>
                 </div>
                 <div>
                     <span>Premium member</span>

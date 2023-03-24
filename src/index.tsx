@@ -4,6 +4,7 @@ import './index.scss';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { AuthProvider } from './auth/auth-provider';
 
 
 const root = ReactDOM.createRoot(
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<React.StrictMode>
-		<App />
+		<AuthProvider>
+			<App />
+		</AuthProvider>
 	</React.StrictMode>
 );
 

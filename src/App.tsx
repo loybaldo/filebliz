@@ -1,20 +1,24 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useContext } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import NotFoundPage from './pages/404';
 import About from './pages/about';
 import AccountPage from './pages/account';
 import HomePage from './pages/home';
 import PricingPage from './pages/pricing';
 import SigninPage from './pages/signin';
+import { AuthContext } from './auth/auth-provider';
 
 function App() {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={ <HomePage/> }/>
-        <Route path="/premium" element={ <PricingPage/> }/>
-        <Route path="/account" element={ <AccountPage/> }/>
+        <Route path="/premium" element={ <PricingPage/> } />
+        <Route path="/account" element={ currentUser ? <AccountPage/> : <Navigate to="/signin" /> }/>
         <Route path="/about" element={ <About/> }/>
-        <Route path="/signin" element={ <SigninPage/> }/>
+        <Route path="/signin" element={ currentUser ? <AccountPage/> : <SigninPage/> }/>
         <Route path="*" element={ <NotFoundPage/> }/>
       </Routes>
     </BrowserRouter>

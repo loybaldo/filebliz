@@ -1,7 +1,6 @@
-import { signOut, User } from "@firebase/auth";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { auth } from "../../../config/firebase";
+import { AuthContext } from "../../../auth/auth-provider";
 import Button from "../button";
 import Icon from "../icon";
 import Icons from "../icon/Icon";
@@ -9,25 +8,13 @@ import "./nav.scss";
 
 
 function Navigation() {
-    const [user, setUser] = useState<User | null>(null);
+    const { currentUser, logout } = useContext(AuthContext);
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
     const location = useLocation();
 
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
-            setUser(user);
-        });
-        return unsubscribe;
-    }, []);
-
-    const logout = () => {
-        try { signOut(auth) }
-        catch (err) { console.log(err) }
-    }
-
     const handleToggle = () => {
-        if (user) {
+        if (currentUser) {
             return (<Button onclick={logout} label="Logout" style={{ animation: "slidedown5 0.5s ease-in-out" }}/>);
         } else {
             return (<Button href="/signin" label="Sign in" style={{ animation: "slidedown5 0.5s ease-in-out" }}/>);
