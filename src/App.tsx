@@ -16,9 +16,9 @@ function App() {
       <Routes>
         <Route path="/" element={ <HomePage/> }/>
         <Route path="/premium" element={ <PricingPage/> } />
-        <Route path="/account" element={ currentUser ? <AccountPage/> : <Navigate to="/signin" /> }/>
+        <Route path="/account" element={ currentUser ? <AccountPage/> : <Navigate to="/signin"/> }/>
         <Route path="/about" element={ <About/> }/>
-        <Route path="/signin" element={ currentUser ? <AccountPage/> : <SigninPage/> }/>
+        <Route path="/signin" element={ !currentUser ? <SigninPage/> : <Navigate to="/account"/> }/>
         <Route path="*" element={ <NotFoundPage/> }/>
       </Routes>
     </BrowserRouter>
