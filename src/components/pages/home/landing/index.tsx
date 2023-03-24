@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+// removed uploadBytes | ESLINT Err/Warning | Causing Github Actions to not continue
+
 import { v4 as uuidv4 } from "uuid";
 import { storage } from "../../../../config/firebase";
 import Button from "../../../common/button";
