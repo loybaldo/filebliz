@@ -1,10 +1,9 @@
+import { useEffect } from "react";
+import "./not-found.scss";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
-import "./not-found.scss";
-import NotFoundIllustration from "../../assets/illus-error.svg";
 import Button from "../../components/common/button";
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import NotFoundIllustration from "../../assets/illus-error.svg";
 
 
 function NotFoundPage() {

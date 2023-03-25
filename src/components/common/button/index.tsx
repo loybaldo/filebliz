@@ -7,7 +7,7 @@ interface ButtonInterface {
     href?: string;
     color?: string;
     style?: any;
-    onclick?: () => void; // idk what you did here, Im still learning react xd
+    onclick?: () => void;
 }
 
 

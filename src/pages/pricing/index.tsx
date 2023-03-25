@@ -6,10 +6,10 @@ import Navigation from "../../components/common/navigation";
 import Offers from "../../components/pages/pricing/offers";
 import PremiumLanding from "../../components/pages/pricing/premium-landing";
 
+
 function PricingPage() {
     const location = useLocation();
     
-
     useEffect(() => {
         const APP_NAME = process.env.REACT_APP_NAME;
         if (location.pathname === "/premium") {
@@ -42,7 +42,8 @@ function PricingPage() {
             title: "Lorem, ipsum dolor sit amet consectetur adipisicing?",
             desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quae provident maiores. Eius odit magni exercitationem neque, impedit nam eligendi reiciendis cum quo! Optio laboriosam accusantium tempora quos alias iste eos unde dolore sit a. Nesciunt officia delectus praesentium porro reprehenderit quam eligendi omnis? Veritatis odio laudantium voluptate officia, tempore inventore error aliquid sunt magnam laboriosam excepturi, iure qui at aperiam illo dolorum, nam ducimus accusamus. Temporibus, hic inventore! Molestias quibusdam odit nobis, minima dolore aliquam minus. Fuga architecto maiores quaerat molestias commodi voluptates debitis aliquam natus tempora nulla itaque sit adipisci quasi deserunt, error cupiditate deleniti doloremque reiciendis! Eum."      
         },
-    ]
+    ];
+    
     return (
         <>
             <Navigation/>

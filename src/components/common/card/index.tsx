@@ -9,16 +9,10 @@ interface CardInterface {
 
 function Card({ content, className, contentHeader } : CardInterface) {
     return (
-        (
         <div className={'card ' + className}>
-            <h1>
-                {contentHeader}
-            </h1>
-            <span>
-                {content}
-            </span>
+            <h1> {contentHeader} </h1>
+            <span> {content} </span>
         </div>
-        )
     );
 }
 

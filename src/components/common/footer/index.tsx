@@ -1,22 +1,21 @@
-import "./footer.scss";
 import { useEffect, useRef, useState } from "react";
+import "./footer.scss";
 
 
 function Footer() {
-
     const [showFooter, setShowFooter] = useState(false);
-        const footerRef = useRef<HTMLDivElement>(null);
+    const footerRef = useRef<HTMLDivElement>(null);
       
-        useEffect(() => {
-          const footerSection = footerRef.current;
-          const handleScroll = () => {
-            if (footerSection && window.scrollY >= footerSection.offsetTop - window.innerHeight /1.4) {
-              setShowFooter(true);
+    useEffect(() => {
+        const footerSection = footerRef.current;
+        const handleScroll = () => {
+            if (footerSection && window.scrollY >= footerSection.offsetTop - window.innerHeight / 1.4) {
+                setShowFooter(true);
             }
-          };
-          window.addEventListener("scroll", handleScroll);
-          return () => window.removeEventListener("scroll", handleScroll);
-        }, []);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
         <footer className="f-footer">

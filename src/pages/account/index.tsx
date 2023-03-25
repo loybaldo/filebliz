@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../auth/auth-provider";
 import AccountHeader from "../../components/pages/account/acc-header";
 import Footer from "../../components/common/footer";
@@ -6,7 +7,6 @@ import Navigation from "../../components/common/navigation";
 import Status from "../../components/pages/account/status";
 import UploadList from "../../components/pages/account/upload-list";
 import Alert from "../../components/common/alert";
-import { useLocation } from "react-router-dom";
 
 
 function AccountPage() {

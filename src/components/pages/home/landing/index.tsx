@@ -26,13 +26,11 @@ function Landing() {
         uploadTask.on("state_changed", (snapshot) => {
             const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(1);
             setProgress(+progress);
-        }, (error) => {
-            console.error(error);
+        }, (err) => {
+            console.error(err);
         }, () => {
-            console.log("Upload complete");
             getDownloadURL(fileRef).then((url) => {
                 setDownloadURL(url);
-                console.log("Download URL:", url);
                 setUploading(false);
             });
         });
@@ -61,7 +59,6 @@ function Landing() {
     const handleCopyLink = () => {
         navigator.clipboard.writeText(downloadURL)
             .then(() => {
-                console.log(`Copied ${downloadURL} to clipboard`)
                 setDownloadURL("");
             }).catch((err) => console.error('Could not copy text: ', err));
     }
@@ -91,7 +88,7 @@ function Landing() {
                 </div>
             </div>
 
-            <ModalLoading label={(progress < 100) ? `Uploading (${progress}%)` : "Processing..."} show={(uploading) ? true : false}/>
+            <ModalLoading label={(progress < 99) ? `Uploading (${progress}%)` : "Processing..."} show={(uploading) ? true : false}/>
         
             {downloadURL && <ModalQR url={downloadURL} onclick={handleCopyLink} show={true} />}
         </>

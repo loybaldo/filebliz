@@ -33,17 +33,17 @@ export const AuthProvider = ({ children }: Props) => {
 	}, []);
 
 	const logout = () => {
-		signOut(auth)
-		.then(() => { console.log("Action: Sign Out") })
-		.catch((error) => { console.error(error) });
+		signOut(auth).catch((err) => {
+			console.error(err);
+		});
 	};
 
 	const signInWithGoogle = async () => {
 		try {
 			const result = await signInWithPopup(auth, googleAuthProvider);
 			return result.user;
-		} catch (error) {
-			console.error(error);
+		} catch (err) {
+			console.error(err);
 			return null;
 		}
 	};
@@ -52,8 +52,8 @@ export const AuthProvider = ({ children }: Props) => {
 		try {
 			const result = await signInWithPopup(auth, facebookAuthProvider);
 			return result.user;
-		} catch (error) {
-			console.error(error);
+		} catch (err) {
+			console.error(err);
 			return null;
 		}
 	};
