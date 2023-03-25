@@ -45,9 +45,10 @@ function Landing() {
                     const downloadURL = await getDownloadURL(fileRef);
                     const fileInfo = {
                         uploader: currentUser.uid,
-                        fileId: uuidv4(),
-                        filename: file.name,
-                        fileType: file.type,
+                        id: uuidv4(),
+                        name: file.name,
+                        type: file.type,
+                        size: file.size,
                         dateUploaded: new Date().toISOString(),
                         downloadURL: downloadURL
                     };

@@ -30,13 +30,26 @@ function ListView({fileName, size, fileExt}: ListViewInterface) {
         }
     }
 
+    const formatFileSize = (size: number) => {
+        const kilobytes = size / 1024;
+        if (kilobytes < 1024) {
+            return `${kilobytes.toFixed(2)} Kb`;
+        }
+        const megabytes = kilobytes / 1024;
+        if (megabytes < 1024) {
+            return `${megabytes.toFixed(2)} Mb`;
+        }
+        const gigabytes = megabytes / 1024;
+        return `${gigabytes.toFixed(2)} Gb`;
+    }
+
     return(
         <div className="f-list-view">
             <div>
                 <div><Icon icon={handleIconType()}/></div>
                 <p> {fileName} </p>
             </div>
-            <span className="f-size"> {size}Kb</span>
+            <span className="f-size">{formatFileSize(size)}</span>
             <div>
                 <button><Icon icon={Icons.copy_outline_bold} title="Copy File"/></button>
                 <button><Icon icon={Icons.trash_outline_bold} title="Delete File"/></button>

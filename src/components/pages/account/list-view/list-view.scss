@@ -44,6 +44,10 @@
         width: fit-content;
     }
 
+    span {
+        white-space: nowrap;
+    }
+
     div:nth-child(3) {
         justify-content: end;
 
