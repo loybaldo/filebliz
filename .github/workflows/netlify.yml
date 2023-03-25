@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: production
-      url: https://magnificent-pasca-ea900d.netlify.app/
+      url: https://filebliz.netlify.app/
     steps:
 
     - uses: actions/checkout@v3
