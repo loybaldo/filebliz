@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { collection, addDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
-import { storage } from "../../../../config/firebase";
+import { AuthContext } from "../../../../auth/auth-provider";
+import { db, storage } from "../../../../config/firebase";
 import Button from "../../../common/button";
 import GirlSmile from "../../../../assets/illus-ok.svg";
 import "./landing.scss";
@@ -10,6 +12,7 @@ import ModalQR from "../../../common/modal-qr";
 
 
 function Landing() {
+    const { currentUser } = useContext(AuthContext);
     const [downloadURL, setDownloadURL] = useState("");
     const [progress, setProgress] = useState(0);
     const [uploading, setUploading] = useState(false);
@@ -23,16 +26,38 @@ function Landing() {
         const fileRef = ref(storage, `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}`);
         const uploadTask = uploadBytesResumable(fileRef, file);
 
+        // Track the upload percentage.
         uploadTask.on("state_changed", (snapshot) => {
             const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(1);
             setProgress(+progress);
         }, (err) => {
             console.error(err);
-        }, () => {
-            getDownloadURL(fileRef).then((url) => {
-                setDownloadURL(url);
-                setUploading(false);
-            });
+        }, async () => {
+            // Save the file for unknown users.
+            if (!currentUser) {
+                getDownloadURL(fileRef).then((url) => {
+                    setDownloadURL(url);
+                    setUploading(false);
+                });
+            }else {
+                // Save the file for authenticated users.
+                try {
+                    const downloadURL = await getDownloadURL(fileRef);
+                    const fileInfo = {
+                        uploader: currentUser.uid,
+                        fileId: uuidv4(),
+                        filename: file.name,
+                        fileType: file.type,
+                        dateUploaded: new Date().toISOString(),
+                        downloadURL: downloadURL
+                    };
+                    await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
+                    setDownloadURL(downloadURL);
+                    setUploading(false);
+                } catch (err) {
+                    console.error(err);
+                }
+            }
         });
     };
     
@@ -57,10 +82,10 @@ function Landing() {
     }
 
     const handleCopyLink = () => {
-        navigator.clipboard.writeText(downloadURL)
-            .then(() => {
-                setDownloadURL("");
-            }).catch((err) => console.error('Could not copy text: ', err));
+        navigator.clipboard.writeText(downloadURL).then(() => {
+            setDownloadURL("");
+            alert("Link copied to clipboard.");
+        }).catch((err) => console.error('Could not copy text: ', err));
     }
       
 
