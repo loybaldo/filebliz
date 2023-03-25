@@ -31,16 +31,14 @@ function ListView({fileName, size, fileExt}: ListViewInterface) {
     }
 
     const formatFileSize = (size: number) => {
-        const kilobytes = size / 1024;
-        if (kilobytes < 1024) {
-            return `${kilobytes.toFixed(2)} Kb`;
-        }
-        const megabytes = kilobytes / 1024;
-        if (megabytes < 1024) {
-            return `${megabytes.toFixed(2)} Mb`;
-        }
-        const gigabytes = megabytes / 1024;
-        return `${gigabytes.toFixed(2)} Gb`;
+        const CONVERSION_UNIT = 1024;
+        const kilobytes = size / CONVERSION_UNIT;
+        const megabytes = kilobytes / CONVERSION_UNIT;
+        const gigabytes = megabytes / CONVERSION_UNIT;
+
+        if (kilobytes < CONVERSION_UNIT) { return `${kilobytes % 1 === 0 ? kilobytes : kilobytes.toFixed(kilobytes < 10 ? 1 : 0)} Kb` }
+        if (megabytes < CONVERSION_UNIT) { return `${megabytes % 1 === 0 ? megabytes : megabytes.toFixed(megabytes < 10 ? 1 : 0)} Mb` }
+        return `${gigabytes.toFixed(1)} Gb`;
     }
 
     return(
