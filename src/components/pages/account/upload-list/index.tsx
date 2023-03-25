@@ -1,5 +1,5 @@
 import { collection, where, query, onSnapshot, DocumentData } from "firebase/firestore";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../auth/auth-provider";
 import { db } from "../../../../config/firebase";
 import ListView from "../list-view";
@@ -7,32 +7,20 @@ import "./upload-list.scss";
 
 
 interface FileDataInterface {
-    id: string; // fileId
-    uploader: string; // uploader
-    name: string; // filename
+    id: string;
+    uploader: string;
+    name: string;
     size: number;
-    type: string; // fileType
-    downloadURL: string; // downloadURL
-    dateUploaded: string; // dateUploaded
-
-    
-    
-    
-    
-    
-    
+    type: string;
+    downloadURL: string;
+    dateUploaded: string;
 }
 
 function UploadList() {
     const [files, setFiles] = useState<DocumentData>([]);
     const { currentUser } = useContext(AuthContext);
 
-    useEffect(() => {
-        const unsubscribe = getData();
-        return unsubscribe;
-    }, []);
-
-    const getData = () => {
+    const getData = useCallback(() => {
         const filesRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
         const q = query(filesRef, where("uploader", "==", currentUser?.uid));
         const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
@@ -40,7 +28,12 @@ function UploadList() {
             setFiles(filesList);
         });
         return unsubscribe;
-    }
+    }, [currentUser?.uid])
+
+    useEffect(() => {
+        const unsubscribe = getData();
+        return unsubscribe;
+    }, [getData]);
 
     return (
         <div className="f-upload-list">
