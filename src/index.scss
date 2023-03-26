@@ -172,6 +172,9 @@ input[type="file"] {
 	display: none;
 }
 
+
+// ### [ INDEX COMPONENT STYLES ] ###
+
 a {
 	@include focus-style;
 }
@@ -179,7 +182,6 @@ a {
 button {
 	@include focus-style;
 }
-
 
 @media only screen and (max-width: 768px) {
 	* {

@@ -1,4 +1,4 @@
-import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import { CircularProgressbar } from "react-circular-progressbar";
 import 'react-circular-progressbar/dist/styles.css';
 import Button from "../../../common/button";
 import "./status.scss";
@@ -6,13 +6,32 @@ import "./status.scss";
 
 function Status() { 
 
+    const color = 63
+
     return (
         <>
             <div className="f-status">
                 <div className="f-card">
                     <div>
                         <span>Storage</span>
-                        <CircularProgressbar value={63} text={`${63}%`} styles={buildStyles({textColor: "black"})}/>
+                        <CircularProgressbar
+                            value={color}
+                            text={`${color}%`}
+                            styles={
+                                {
+                                    root: {},
+                                    path: {
+                                        strokeLinecap: 'round',
+                                        // transition: 'stroke-dashoffset 0.5s ease 0s'
+                                    },
+                                    trail: {
+                                        strokeLinecap: 'butt',
+                                    },
+                                    text: {
+                                        fontSize: '16px',
+                                    },
+                                }
+                            }/>
                     </div>
                     <div>
                         <span>Used: 630Mb</span>

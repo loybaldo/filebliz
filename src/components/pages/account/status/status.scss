@@ -22,6 +22,16 @@
         background-color: $primary-color-bg-light;
         border-radius: 15px;
 
+        // <<<<< added <<<<<
+        .CircularProgressbar-path {
+            stroke: $primary-color;
+        }
+
+        .CircularProgressbar-text {
+            fill: $text-color;
+        }
+        // >>>>>>>>>>>>>>>>>
+
         &:hover {
             filter: none;
         }
