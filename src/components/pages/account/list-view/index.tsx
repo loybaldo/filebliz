@@ -9,9 +9,11 @@ interface ListViewInterface {
     fileName: string;
     fileExt: string;
     size: number;
+    url: string;
+    date: string;
 }
 
-function ListView({fileName, size, fileExt}: ListViewInterface) {
+function ListView({fileName, size, fileExt, url, date}: ListViewInterface) {
     const handleIconType = () => {
         const { VIDEOS, AUDIOS, IMAGES, DOCS, PACKAGES, CODES } = fileType;
         switch(true) {
@@ -38,19 +40,25 @@ function ListView({fileName, size, fileExt}: ListViewInterface) {
         const megabytes = kilobytes / CONVERSION_UNIT;
         const gigabytes = megabytes / CONVERSION_UNIT;
 
-        if (kilobytes < CONVERSION_UNIT) { return `${kilobytes % 1 === 0 ? kilobytes : kilobytes.toFixed(kilobytes < 10 ? 1 : 0)} Kb` }
-        if (megabytes < CONVERSION_UNIT) { return `${megabytes % 1 === 0 ? megabytes : megabytes.toFixed(megabytes < 10 ? 1 : 0)} Mb` }
+        if (kilobytes < CONVERSION_UNIT) { return `${kilobytes % 1 === 0 ? kilobytes : kilobytes.toFixed(kilobytes < 10 ? 1 : 0)} KB` }
+        if (megabytes < CONVERSION_UNIT) { return `${megabytes % 1 === 0 ? megabytes : megabytes.toFixed(megabytes < 10 ? 1 : 0)} MB` }
         return `${gigabytes.toFixed(1)} Gb`;
     }
 
     return(
         <div className="f-list-view">
-            <div>
-                <div><i className={handleIconType()}></i></div>
-                <p> {fileName} </p>
-            </div>
-            <span className="f-size">{formatFileSize(size)}</span>
-            <div>
+            <a className="f-list-clickable" href={url} target="_blank" rel="noreferrer">
+                <div className="f-list-trail">
+                    <div><i className={handleIconType()}></i></div>
+                    <p> {fileName} </p>
+                </div>
+                <div className="f-list-info">
+                    <span>{formatFileSize(size)}</span>
+                    <span>{new Intl.DateTimeFormat("en-US", {month: "short", day: "numeric", year: "numeric"}).format(new Date(date))}</span>
+                </div>
+            </a>
+
+            <div className="f-list-action">
                 <button><Icon icon={Icons.copy_outline_bold} title="Copy File"/></button>
                 <button><Icon icon={Icons.trash_outline_bold} title="Delete File"/></button>
             </div>

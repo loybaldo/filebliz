@@ -3,62 +3,66 @@
 
 .f-list-view {
     @include no-select;
-    cursor: pointer;
-
     background-color: white;
-    
     height: 60px;
     padding: 0 20px;
-
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
     border-bottom: 1px solid #ddd;
     animation: fade 0.3s ease-in-out;
 
-    div {
+    .f-list-clickable {
         width: 100%;
         display: flex;
         align-items: center;
-    }
+        justify-content: space-between;
+        text-decoration: none;
+        color: black;
 
-    div:nth-child(1) {
-        div {
-            @include flex-center;
-            @include wh(38px, 38px);
-            
-            background-color: $primary-color;
-            border-radius: 12px;
+        .f-list-trail {
+            display: flex;
+            align-items: center;
 
-            i {
-                font-size: 14px;
-                color: white;
+            div {
+                @include flex-center;
+                @include wh(38px, 38px);
+
+                background-color: $primary-color;
+                border-radius: 12px;
+
+                i {
+                    font-size: 14px;
+                    color: white;
+                }
+            }
+
+            p {
+                margin-left: 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
 
-        p {
-            margin-left: 10px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .f-list-info {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+
+            span {
+                width: fit-content;
+                white-space: nowrap;
+            }
         }
     }
 
-    .f-size {
-        width: fit-content;
-    }
-
-    span {
-        white-space: nowrap;
-    }
-
-    div:nth-child(3) {
-        justify-content: end;
+    .f-list-action {
+        display: flex;
+        align-items: center;
 
         button {
             @include wh(38px, 38px);
-            
+
             margin-left: 10px;
             border-radius: 50%;
             border: none;
@@ -77,23 +81,24 @@
 }
 
 @keyframes fade {
-    from{
-        opacity:0;
+    from {
+        opacity: 0;
     }
-    to{
-        opacity:1;
+
+    to {
+        opacity: 1;
     }
 }
 
 
 @media only screen and (max-width: 768px) {
     .f-list-view {
-        div:nth-child(1) {
-            display: inherit;
+    
+            .f-list-clickable {
+                .f-list-info {
+    
+                    display: none;
+                }
+            }
         }
-
-        .f-size {
-            display: none;
-        }
-    }
 }

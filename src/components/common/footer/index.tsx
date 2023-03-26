@@ -25,7 +25,7 @@ function Footer() {
                         <i className="fa-brands fa-facebook" style={{fontSize: 24}}></i>
                     </a>
                     <a href="https://instagram.com" target="_blank" rel="noreferrer" title="Instragram">
-                        <i className="fa-brands fa-square-instagram" style={{fontSize: 24}}></i>
+                        <i className="fa-brands fa-instagram" style={{fontSize: 24}}></i>
                     </a>
                     <a href="https://twitter.com" target="_blank" rel="noreferrer"  title="Twitter">
                         <i className="fa-brands fa-twitter" style={{fontSize: 24}}></i>

@@ -34,8 +34,8 @@ function Status() {
                             }/>
                     </div>
                     <div>
-                        <span>Used: 630Mb</span>
-                        <span>Free: 370Mb</span>
+                        <span>Used: 630MB</span>
+                        <span>Free: 370MB</span>
                     </div>
                 </div>
 

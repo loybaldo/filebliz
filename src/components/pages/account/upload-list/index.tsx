@@ -41,7 +41,7 @@ function UploadList() {
             {(files.length === 0) ? (<div className="f-upload-list-no-data">
                 <p>No Data</p>
             </div>) : null}
-            {files.map((file: FileDataInterface) => (<ListView key={Math.random()} id={file.id} fileName={file.name} size={file.size} fileExt={file.type.split("/")[1]}/>))}
+            {files.map((file: FileDataInterface) => (<ListView key={Math.random()} id={file.id} fileName={file.name} size={file.size} fileExt={file.type.split("/")[1]} url={file.downloadURL} date={file.dateUploaded.split("T")[0]}/>))}
         </div>
     );
 }
