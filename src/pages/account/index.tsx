@@ -28,7 +28,6 @@ function AccountPage() {
         <>
             <Navigation/>
             <AccountHeader/>
-            <Status/>
             <div style={{width: "100%", maxWidth: 1320, padding: "0 20px", margin: "0 auto"}}>
                 <Alert
                     type="info"
@@ -36,8 +35,9 @@ function AccountPage() {
                     message="Lorem ipsum dolor sit amet orem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit amet"
                 />
             </div>
+            <Status/>
             <UploadList/>
-            <Footer/>
+            <div style={{height: 100}}></div>
         </>
     );
 }
