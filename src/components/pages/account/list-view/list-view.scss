@@ -28,8 +28,13 @@
             @include flex-center;
             @include wh(38px, 38px);
             
-            background-color: $primary-color-bg-light;
-            border-radius: 50%;
+            background-color: $primary-color;
+            border-radius: 12px;
+
+            i {
+                font-size: 14px;
+                color: white;
+            }
         }
 
         p {

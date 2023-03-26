@@ -12,7 +12,7 @@ function Status() {
                 <div className="f-card">
                     <div>
                         <span>Storage</span>
-                        <CircularProgressbar value={63} text={`${63}%`} styles={buildStyles({pathColor: "var(--primary-color)", textColor: "black"})}/>
+                        <CircularProgressbar value={63} text={`${63}%`} styles={buildStyles({textColor: "black"})}/>
                     </div>
                     <div>
                         <span>Used: 630Mb</span>

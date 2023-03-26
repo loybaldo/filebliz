@@ -13,20 +13,22 @@ interface ListViewInterface {
 
 function ListView({fileName, size, fileExt}: ListViewInterface) {
     const handleIconType = () => {
-        const { VIDEOS, AUDIOS, IMAGES, DOCS, PACKAGES } = fileType;
+        const { VIDEOS, AUDIOS, IMAGES, DOCS, PACKAGES, CODES } = fileType;
         switch(true) {
             case VIDEOS.includes(fileExt):
-                return Icons.video;
+                return "fa-solid fa-film-simple";
             case AUDIOS.includes(fileExt):
-                return Icons.headphones;
+                return "fa-solid fa-music-note";
             case IMAGES.includes(fileExt):
-                return Icons.image;
+                return "fa-solid fa-image";
             case DOCS.includes(fileExt):
-                return Icons.file;
+                return "fa-solid fa-file-word";
             case PACKAGES.includes(fileExt):
-                return Icons.package;
+                return "fa-solid fa-file-zipper";
+            case CODES.includes(fileExt):
+                return "fa-solid fa-code";
             default:
-                return Icons.question_circle;
+                return "fa-solid fa-ghost";
         }
     }
 
@@ -44,7 +46,7 @@ function ListView({fileName, size, fileExt}: ListViewInterface) {
     return(
         <div className="f-list-view">
             <div>
-                <div><Icon icon={handleIconType()}/></div>
+                <div><i className={handleIconType()}></i></div>
                 <p> {fileName} </p>
             </div>
             <span className="f-size">{formatFileSize(size)}</span>

@@ -4,6 +4,7 @@ const fileType = {
     IMAGES: ["png", "jpg", "jpeg", "gif", "svg"],
     DOCS: ["pdf", "docx", "txt"],
     PACKAGES: ["rar", "zip"],
+    CODES: ["json", "dart", "js", "ts", "py", "cs", "cpp", "java", "html", "css", "scss"],
 }
 
 export default fileType
