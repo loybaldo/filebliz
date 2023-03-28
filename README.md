@@ -23,7 +23,7 @@ npm install -g create-react-app
 
 To get started with Fileblizz, follow these steps:
 
-1. Download the code from https://github.com/loybaldo/fileblizz or use [Github Desktop](https://desktop.github.com/) to clone this repository.
+1. Download the code from <https://github.com/loybaldo/fileblizz> or use [Github Desktop](https://desktop.github.com/) to clone this repository.
 
 2. Open the project in VS Code.
 
@@ -39,4 +39,4 @@ To get started with Fileblizz, follow these steps:
     npm start
     ```
 
-5. To view the project, go to your web browser and type in http://localhost:3000.
+5. To view the project, go to your web browser and type in <http://localhost:3000>.
