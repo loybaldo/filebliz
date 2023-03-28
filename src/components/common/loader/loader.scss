@@ -26,12 +26,12 @@
     }
     
     div:nth-child(3) {
-        @include absolute-pos(0, 0, unset, unset);
+        @include absolute-pos(unset, 0, 0, unset);
         animation: 1s animate3 infinite;
     }
     
     div:nth-child(4) {
-        @include absolute-pos(0, unset, unset, 0);
+        @include absolute-pos(unset, unset, 0, 0);
         animation: 1s animate4 infinite;
     }
 }
