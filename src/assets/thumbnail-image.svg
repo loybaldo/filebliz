@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 50 50">
+  <defs>
+    <clipPath id="clip-Image_Thumbnail">
+      <rect width="50" height="50"/>
+    </clipPath>
+  </defs>
+  <g id="Image_Thumbnail" data-name="Image Thumbnail" clip-path="url(#clip-Image_Thumbnail)">
+    <rect width="50" height="50" fill="#5cb846"/>
+    <path id="Path_3" data-name="Path 3" d="M1771.171,786.864l17.823-15.692,7.807,5.956,15.774-15.5,18.377,23.293v9.705h-59.781Z" transform="translate(-1776.927 -744)" fill="#448634"/>
+    <circle id="Ellipse_15" data-name="Ellipse 15" cx="5" cy="5" r="5" transform="translate(14 9)" fill="#fff" opacity="0.85"/>
+  </g>
+</svg>

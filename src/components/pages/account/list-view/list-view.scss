@@ -29,10 +29,10 @@
 
                 background-color: $primary-color;
                 border-radius: 12px;
+                overflow: hidden;
 
-                i {
-                    font-size: 14px;
-                    color: white;
+                img {
+                    width: 100%;
                 }
             }
 

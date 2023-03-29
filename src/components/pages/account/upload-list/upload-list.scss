@@ -10,10 +10,23 @@
     flex-direction: column;
     animation: fade 0.3s ease-in-out;
 
-    .f-label {
-        margin: 20px 0 20px 20px;
-        font-size: larger;
-        font-weight: bold;
+    .f-del-all-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .f-label {
+            margin: 20px 0 20px 20px;
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        .f-btn {
+            margin-right: 20px;
+            background-color: transparent;
+            color: $danger-color;
+            font-weight: bold;
+        }
     }
 
     .f-upload-list-no-data {

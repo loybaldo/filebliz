@@ -40,3 +40,25 @@ To get started with Fileblizz, follow these steps:
     ```
 
 5. To view the project, go to your web browser and type in <http://localhost:3000>.
+
+## Other commands
+
+- Build the project to production:
+
+    ```powershell
+    # This will generate a "build" folder.
+    npm run build
+    ```
+
+- Run the production build in <http://localhost:3000>:
+
+    ```powershell
+    # Install this first: npm install -g serve
+    serve -s build
+    ```
+
+- Run tests:
+
+    ```powershell
+    npm test
+    ```

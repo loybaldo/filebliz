@@ -2,6 +2,10 @@ import fileType from "../../../../utils/file-type";
 import Icon from "../../../common/icon";
 import Icons from "../../../common/icon/Icon";
 import "./list-view.scss";
+import ThumbnailImage from "../../../../assets/thumbnail-image.svg";
+import ThumbnailCode from "../../../../assets/thumbnail-code.svg";
+import ThumnailMusic from "../../../../assets//thumbnail-music.svg";
+import ThumbnailZip from "../../../../assets/thumbnail-zip.svg";
 
 
 interface ListViewInterface {
@@ -14,23 +18,20 @@ interface ListViewInterface {
 }
 
 function ListView({fileName, size, fileExt, url, date}: ListViewInterface) {
+    
     const handleIconType = () => {
-        const { VIDEOS, AUDIOS, IMAGES, DOCS, PACKAGES, CODES } = fileType;
+        const { AUDIOS, IMAGES, PACKAGES, CODES } = fileType;
         switch(true) {
-            case VIDEOS.includes(fileExt):
-                return "fa-solid fa-film-simple";
             case AUDIOS.includes(fileExt):
-                return "fa-solid fa-music-note";
+                return ThumnailMusic;
             case IMAGES.includes(fileExt):
-                return "fa-solid fa-image";
-            case DOCS.includes(fileExt):
-                return "fa-solid fa-file-word";
+                return ThumbnailImage;
             case PACKAGES.includes(fileExt):
-                return "fa-solid fa-file-zipper";
+                return ThumbnailZip;
             case CODES.includes(fileExt):
-                return "fa-solid fa-code";
+                return ThumbnailCode
             default:
-                return "fa-solid fa-ghost";
+                return ThumbnailZip;
         }
     }
 
@@ -49,7 +50,7 @@ function ListView({fileName, size, fileExt, url, date}: ListViewInterface) {
         <div className="f-list-view">
             <a className="f-list-clickable" href={url} target="_blank" rel="noreferrer">
                 <div className="f-list-trail">
-                    <div><i className={handleIconType()}></i></div>
+                    <div><img src={handleIconType()} alt={fileExt} /></div>
                     <p> {fileName} </p>
                 </div>
                 <div className="f-list-info">
