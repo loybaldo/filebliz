@@ -32,7 +32,7 @@ function Footer() {
                     </a>
                 </div>
                 <div className={`${showFooter ? "show" : "hidden"}`}>
-                    <span>Filebliz, Copyright 2019 {((new Date().getFullYear()) > 2019) ? ` - ${new Date().getFullYear()}` : null}</span>
+                    <span>Filebliz, Copyright 2023 {((new Date().getFullYear()) > 2023) ? ` - ${new Date().getFullYear()}` : null}</span>
                 </div>
             </div>
         </footer>

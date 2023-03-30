@@ -2,10 +2,12 @@ import fileType from "../../../../utils/file-type";
 import Icon from "../../../common/icon";
 import Icons from "../../../common/icon/Icon";
 import "./list-view.scss";
+import ThumbnailVideo from "../../../../assets/thumbnail-video.svg";
 import ThumbnailImage from "../../../../assets/thumbnail-image.svg";
 import ThumbnailCode from "../../../../assets/thumbnail-code.svg";
 import ThumnailMusic from "../../../../assets//thumbnail-music.svg";
 import ThumbnailZip from "../../../../assets/thumbnail-zip.svg";
+import ThumbnailUnknown from "../../../../assets/thumbnail-unknown.svg";
 
 
 interface ListViewInterface {
@@ -20,8 +22,10 @@ interface ListViewInterface {
 function ListView({fileName, size, fileExt, url, date}: ListViewInterface) {
     
     const handleIconType = () => {
-        const { AUDIOS, IMAGES, PACKAGES, CODES } = fileType;
+        const { AUDIOS, IMAGES, PACKAGES, CODES, VIDEOS } = fileType;
         switch(true) {
+            case VIDEOS.includes(fileExt):
+                return ThumbnailVideo;
             case AUDIOS.includes(fileExt):
                 return ThumnailMusic;
             case IMAGES.includes(fileExt):
@@ -31,7 +35,7 @@ function ListView({fileName, size, fileExt, url, date}: ListViewInterface) {
             case CODES.includes(fileExt):
                 return ThumbnailCode
             default:
-                return ThumbnailZip;
+                return ThumbnailUnknown;
         }
     }
 
@@ -43,7 +47,7 @@ function ListView({fileName, size, fileExt, url, date}: ListViewInterface) {
 
         if (kilobytes < CONVERSION_UNIT) { return `${kilobytes % 1 === 0 ? kilobytes : kilobytes.toFixed(kilobytes < 10 ? 1 : 0)} KB` }
         if (megabytes < CONVERSION_UNIT) { return `${megabytes % 1 === 0 ? megabytes : megabytes.toFixed(megabytes < 10 ? 1 : 0)} MB` }
-        return `${gigabytes.toFixed(1)} Gb`;
+        return `${gigabytes.toFixed(1)} GB`;
     }
 
     return(

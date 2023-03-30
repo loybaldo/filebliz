@@ -62,3 +62,5 @@ To get started with Fileblizz, follow these steps:
     ```powershell
     npm test
     ```
+
+> **_NOTE:_**  Careful running production mode
