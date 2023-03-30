@@ -1,5 +1,6 @@
 import "./feedbacks.scss";
 import DefaultProfilePic from "../../../../assets/default-profile.svg";
+import Button from "../../../common/button";
 
 
 function Feedbacks() {
@@ -43,6 +44,11 @@ function Feedbacks() {
                     </div>
 
                 </div>
+
+                <form className="f-feed-input" action="#" method="post">
+                    <textarea name="feedbackMsg" id="" placeholder="Write your feedback"></textarea>
+                    <Button label="Submit"/>
+                </form>
             </div>
         </>
     );

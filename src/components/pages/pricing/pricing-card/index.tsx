@@ -20,9 +20,27 @@ function PricingCard({type, price, features, action = true}: PricingCardInterfac
                 <ul>
                     {features.map((item, index) => (<li key={index}><Icon icon={Icons.check_circle}/> {item} </li>))}
                 </ul>
-                {/* {(action) ? (<Button style={{ margin: "25px" }} label="Purchase"/>) : null} */}
                 <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID! }}>
-                    <PayPalButtons style={{ layout: "horizontal", height: 38, shape: "pill", label: "subscribe", tagline: true }}/>
+                    <PayPalButtons 
+                        style={{ layout: "horizontal", height: 38, shape: "pill", tagline: true }}
+                        createOrder={(data, actions) => {
+                            return actions.order
+                                .create({
+                                    purchase_units: [
+                                        {
+                                            amount: {
+                                                currency_code: "USD",
+                                                value: "18",
+                                            },
+                                        },
+                                    ],
+                                })
+                                .then((orderId) => {
+                                    // Your code here after create the order
+                                    return orderId;
+                                });
+                        }}
+                    />
                 </PayPalScriptProvider>
             </div>
         </div>

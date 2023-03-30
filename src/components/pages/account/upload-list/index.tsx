@@ -26,7 +26,6 @@ function UploadList() {
         const q = query(filesRef, where("uploader", "==", currentUser?.uid), orderBy("dateUploaded", "desc"));
         const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
             const filesList = snapshot.docs.map((doc) => doc.data());
-            console.log(snapshot.docs)
             setFiles(filesList);
         });
         return unsubscribe;
@@ -48,7 +47,6 @@ function UploadList() {
 
     return (
         <div className="f-upload-list">
-            {console.log(files)}
             <div className="f-del-all-wrapper">
                 <span className="f-label">Uploaded ({files.length})</span>
                 <Button label="Delete All" onclick={handleDeleteAll}/>

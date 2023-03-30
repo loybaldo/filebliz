@@ -7,7 +7,7 @@ interface ButtonInterface {
     href?: string;
     color?: string;
     style?: any;
-    onclick?: () => void;
+    onclick?: () => any;
 }
 
 

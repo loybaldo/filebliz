@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "./footer.scss";
 
 
@@ -32,7 +33,10 @@ function Footer() {
                     </a>
                 </div>
                 <div className={`${showFooter ? "show" : "hidden"}`}>
-                    <span>Filebliz, Copyright 2023 {((new Date().getFullYear()) > 2023) ? ` - ${new Date().getFullYear()}` : null}</span>
+                    <span style={{display: "inline-block", textAlign: "center"}}>Filebliz, Copyright&copy; 2023{((new Date().getFullYear()) > 2023) ? ` - ${new Date().getFullYear()}` : null}. By using Filebliz, you agree to our &nbsp;
+                        <Link to="/privacy" style={{color: "white", fontWeight: "bold"}}>privacy policy</Link> and &nbsp;
+                        <Link to="/terms"  style={{color: "white", fontWeight: "bold"}}>terms &amp; conditions</Link>.
+                    </span>
                 </div>
             </div>
         </footer>
