@@ -1,3 +1,4 @@
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import Button from "../../../common/button";
 import Icon from "../../../common/icon";
 import Icons from "../../../common/icon/Icon";
@@ -20,7 +21,10 @@ function PricingCard({type, price, features, action = true}: PricingCardInterfac
                 <ul>
                     {features.map((item, index) => (<li key={index}><Icon icon={Icons.check_circle}/> {item} </li>))}
                 </ul>
-                {(action) ? (<Button style={{ margin: "25px" }} label="Purchase"/>) : null}
+                {/* {(action) ? (<Button style={{ margin: "25px" }} label="Purchase"/>) : null} */}
+                <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID! }}>
+                    <PayPalButtons style={{ layout: "horizontal" }} />
+                </PayPalScriptProvider>
             </div>
         </div>
     );

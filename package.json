@@ -3,6 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@paypal/paypal-js": "^5.1.6",
+		"@paypal/react-paypal-js": "^7.8.3",
 		"firebase": "^9.17.2",
 		"qrcode.react": "^3.1.0",
 		"react": "^18.2.0",
@@ -36,20 +38,20 @@
 	},
 	"eslintConfig": {
 		"extends": [
-		"react-app",
-		"react-app/jest"
+			"react-app",
+			"react-app/jest"
 		]
 	},
 	"browserslist": {
 		"production": [
-		">0.2%",
-		"not dead",
-		"not op_mini all"
+			">0.2%",
+			"not dead",
+			"not op_mini all"
 		],
 		"development": [
-		"last 1 chrome version",
-		"last 1 firefox version",
-		"last 1 safari version"
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
 		]
 	},
 	"devDependencies": {
