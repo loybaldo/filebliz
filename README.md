@@ -1,5 +1,7 @@
 # Filebliz
 
+![Filebliz Banner](./src/assets/banner.jpg)
+
 Fileblizz is a file-sharing website designed to simplify the process of sharing files for students, teachers, creatives, and small business owners. With its intuitive interface, users can easily upload, share, and manage files, making it an ideal solution for collaborating on group projects or sending essential documents.
 
 ## Requirements
