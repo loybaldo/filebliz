@@ -43,7 +43,8 @@ To get started with Fileblizz, follow these steps:
 
 ## Other commands
 
-- Build the project to production:
+- Build the project for production:
+Use this command to generate a "build" folder for your project.
 
     ```powershell
     # This will generate a "build" folder.
@@ -51,16 +52,18 @@ To get started with Fileblizz, follow these steps:
     ```
 
 - Run the production build in <http://localhost:3000>:
+After building the project for production, use this command to serve the production build locally at <http://localhost:3000>.
 
     ```powershell
-    # Install this first: npm install -g serve
+    # First, install serve: npm install -g serve
     serve -s build
     ```
 
 - Run tests:
+Use this command to run tests for your project.
 
     ```powershell
     npm test
     ```
 
-> **_NOTE:_**  Careful running production mode
+> **_NOTE:_**  It is important to exercise caution when running your project in production mode. Running in production mode can have consequences for the stability, security, and availability of your application. It can even result in data loss or corruption, so always make sure to have backups of your data and be prepared to respond quickly to any issues that may arise.
