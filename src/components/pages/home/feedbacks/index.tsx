@@ -5,7 +5,7 @@ import DefaultProfilePic from "../../../../assets/default-profile.svg";
 function Feedbacks() {
     return (
         <>
-            <div style={{width: "100%", padding: "0 20px", margin: "50px auto"}}>
+            <div style={{width: "100%", padding: "40px 20px", margin: "20px auto 0 auto", backgroundColor: "#efefef"}}>
                 <span className="f-feed-label">Feedbacks</span>
                 <div className="f-feed">
                     

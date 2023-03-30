@@ -7,6 +7,7 @@
     display: flex;
     margin: 0 auto;
     font-size: x-large;
+    font-weight: bold;
 }
 
 .f-feed {
@@ -19,9 +20,9 @@
 
     .f-feed-item {
         padding: 20px;
-        background-color: white;
+        // background-color: white;
         border-radius: 15px;
-        box-shadow: 0 3px 18px rgba(0, 0, 0, 0.10);
+        // box-shadow: 0 3px 18px rgba(0, 0, 0, 0.10);
 
         .f-feed-info {
             display: flex;
