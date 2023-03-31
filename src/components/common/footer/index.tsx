@@ -33,8 +33,8 @@ function Footer() {
                     </a>
                 </div>
                 <div className={`${showFooter ? "show" : "hidden"}`}>
-                    <span style={{display: "inline-block", textAlign: "center"}}>Filebliz, Copyright&copy; 2023{((new Date().getFullYear()) > 2023) ? ` - ${new Date().getFullYear()}` : null}. By using Filebliz, you agree to our &nbsp;
-                        <Link to="/privacy" style={{color: "white", fontWeight: "bold"}}>privacy policy</Link> and &nbsp;
+                    <span style={{display: "inline-block", textAlign: "center"}}>Filebliz, Copyright&copy; 2023{((new Date().getFullYear()) > 2023) ? ` - ${new Date().getFullYear()}` : null}. By using Filebliz, you agree to our&nbsp;
+                        <Link to="/privacy" style={{color: "white", fontWeight: "bold"}}>privacy policy</Link> and&nbsp;
                         <Link to="/terms"  style={{color: "white", fontWeight: "bold"}}>terms &amp; conditions</Link>.
                     </span>
                 </div>

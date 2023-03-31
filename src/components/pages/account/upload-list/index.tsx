@@ -18,8 +18,8 @@ interface FileDataInterface {
 }
 
 function UploadList() {
-    const [files, setFiles] = useState<DocumentData>([]);
     const { currentUser } = useContext(AuthContext);
+    const [files, setFiles] = useState<DocumentData>([]);
 
     const getData = useCallback(() => {
         const filesRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);

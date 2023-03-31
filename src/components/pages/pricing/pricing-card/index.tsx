@@ -35,14 +35,17 @@ function PricingCard({type, price, features, action = true}: PricingCardInterfac
 
     // This will check and handle if the user approved the payment.
     const handleOnApproved = async (data: OnApproveData, actions: OnApproveActions) => {
+        const currentDate = new Date();
+        const proExpiration = new Date(currentDate.setMonth(currentDate.getMonth() + parseInt(process.env.REACT_APP_PRO_EXPIRATION_MONTHS!))).getTime();
+        const premiumExpiration = new Date(currentDate.setFullYear(currentDate.getFullYear() + parseInt(process.env.REACT_APP_PREMIUM_EXPIRATION_YEARS!))).getTime();
         const purchaseInfo = {
             userId: currentUser?.uid,
             type: type,
             usedStorage: 0,
             datePurchased: new Date().getTime(),
+            dateExpires: (type === "pro") ? proExpiration : premiumExpiration,
         }
         await addDoc(collection(db, process.env.REACT_APP_PUCHASE_TABLE!), purchaseInfo);
-
     }
     
     return(
