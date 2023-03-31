@@ -1,4 +1,9 @@
+import { useContext } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { OnApproveActions, OnApproveData } from "@paypal/paypal-js";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../../../config/firebase";
+import { AuthContext } from "../../../../auth/auth-provider";
 import Icon from "../../../common/icon";
 import Icons from "../../../common/icon/Icon";
 import "./pricing-card.scss";
@@ -12,6 +17,34 @@ interface PricingCardInterface {
 }
 
 function PricingCard({type, price, features, action = true}: PricingCardInterface) {
+    const { currentUser } = useContext(AuthContext);
+
+    // This will create the order of the user.
+    const handleCreateOrder = async (data: any, actions: any) => {
+        console.log(currentUser?.uid);
+        const order = await actions?.order?.create({
+        purchase_units: [{
+            amount: {
+                currency_code: "USD",
+                value: price.toString(),
+            },
+        }],
+    });
+    return order;
+    };
+
+    // This will check and handle if the user approved the payment.
+    const handleOnApproved = async (data: OnApproveData, actions: OnApproveActions) => {
+        const purchaseInfo = {
+            userId: currentUser?.uid,
+            type: type,
+            usedStorage: 0,
+            datePurchased: new Date().getTime(),
+        }
+        await addDoc(collection(db, process.env.REACT_APP_PUCHASE_TABLE!), purchaseInfo);
+
+    }
+    
     return(
         <div className="f-pricing-card">
             <div style={{padding: 25, display: "flex", flexDirection: "column", alignItems: "center"}}>
@@ -20,28 +53,13 @@ function PricingCard({type, price, features, action = true}: PricingCardInterfac
                 <ul>
                     {features.map((item, index) => (<li key={index}><Icon icon={Icons.check_circle}/> {item} </li>))}
                 </ul>
-                <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID! }}>
+                {(type === "free") ? null : (<PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID! }}>
                     <PayPalButtons 
                         style={{ layout: "horizontal", height: 38, shape: "pill", tagline: true }}
-                        createOrder={(data, actions) => {
-                            return actions.order
-                                .create({
-                                    purchase_units: [
-                                        {
-                                            amount: {
-                                                currency_code: "USD",
-                                                value: "18",
-                                            },
-                                        },
-                                    ],
-                                })
-                                .then((orderId) => {
-                                    // Your code here after create the order
-                                    return orderId;
-                                });
-                        }}
+                        createOrder={handleCreateOrder}
+                        onApprove={handleOnApproved}
                     />
-                </PayPalScriptProvider>
+                </PayPalScriptProvider>)}
             </div>
         </div>
     );
