@@ -1,0 +1,142 @@
+@import '../../../index.scss';
+
+.f-landing {
+    @include flex-center;
+    @include scroll-bar-hide;
+    // [Do not set the landing component to vh]
+    width: 100%;
+    padding-top: 60px;
+    background-image: url("../../../assets/landing-bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    overflow-y: scroll;
+
+    .f-container {
+        width: 100%;
+        max-width: 1320px;
+        padding: 50px 20px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+        
+        .f-info {
+            max-width: 600px;
+            margin: 0 auto;
+
+            h1 {
+                font-size: xx-large;
+            }
+
+            &:nth-child(1) {
+                animation: fade 0.4s ease-in-out;
+            
+                p {
+                    margin-top: 15px;
+                }
+            
+                .f-form {
+                    @include card;
+                    @include marPad(0, 0);
+                    @include no-select;
+                    @include flex-center;
+                    justify-content: unset;
+                    
+                    @include focus-style;
+            
+                    margin-top: 50px;
+                    background-color: $bg-color;
+                    border-radius: 15px;
+                    text-align: left;
+            
+            
+                    label {
+            
+                        //TODO change to theme color later
+                        width: 100%;
+                        color: black;
+                        // do not change padding to fill the selection gaps unless you know what you're doing
+                        padding: 15px 0px;
+                        margin: 0px 20px;
+                        cursor: pointer;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+            
+                    button {
+                        margin: 10px;
+                    }
+            
+                    &:hover {
+                        //TODO change to theme color later
+                        background-color: $bg-color-accent;
+                    }
+            
+                    &:active {
+                        filter: brightness(90%);
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                @include wh(100%, 300px);
+                border-radius: 5px;
+                animation: fade 0.5s ease-in-out;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            
+                img {
+                    width: 250px;
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes slideIndown1{
+    from{
+        transform: translatey(-300px);
+        opacity: 0;
+    }
+    to{
+        transform:translatey(0);
+        opacity: 1;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+
+
+    .f-landing {
+
+        .f-container {
+            grid-template-columns: repeat(1, 1fr);
+            
+            .f-info:nth-child(1) {
+                grid-row-start: 2;
+            }
+
+            .f-info:nth-child(2) {
+                grid-row-start: 1;
+            }
+
+        }
+
+    }
+
+
+}

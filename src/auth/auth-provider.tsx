@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, ReactNode } from 'react';
+import { useState, useEffect, createContext, ReactNode } from 'react';
 import { User, signOut, signInWithPopup } from 'firebase/auth';
 import { auth, googleAuthProvider, facebookAuthProvider } from '../config/firebase';
 
@@ -26,9 +26,8 @@ export const AuthProvider = ({ children }: Props) => {
 
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged((user) => { setCurrentUser(user) });
-
 		return () => {
-		unsubscribe();
+			unsubscribe();
 		};
 	}, []);
 

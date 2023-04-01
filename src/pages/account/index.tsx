@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../auth/auth-provider";
-import AccountHeader from "../../components/pages/account/acc-header";
+import AccountHeader from "../../components/widgets/acc-header";
 import Navigation from "../../components/common/navigation";
-import Status from "../../components/pages/account/status";
-import UploadList from "../../components/pages/account/upload-list";
+import Status from "../../components/widgets/status";
+import UploadList from "../../components/widgets/upload-list";
 import Alert from "../../components/common/alert";
 
 

@@ -3,8 +3,8 @@ import { useLocation } from "react-router-dom";
 import Collapse from "../../components/common/collapse";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
-import Offers from "../../components/pages/pricing/offers";
-import PremiumLanding from "../../components/pages/pricing/premium-landing";
+import Offers from "../../components/widgets/offers";
+import PremiumLanding from "../../components/widgets/premium-landing";
 
 
 function PricingPage() {

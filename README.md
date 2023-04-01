@@ -68,4 +68,4 @@ Use this command to run tests for your project.
     npm test
     ```
 
-> **_NOTE:_**  It is important to exercise caution when running your project in production mode. Running in production mode can have consequences for the stability, security, and availability of your application. It can even result in data loss or corruption, so always make sure to have backups of your data and be prepared to respond quickly to any issues that may arise.
+> **_NOTE:_**  It is important to exercise caution when running in production mode. Running in production mode can have consequences for the stability, security, and availability of the application. It can even result in data loss or corruption, so always make sure to have backups of your data and be prepared to respond quickly to any issues that may arise.

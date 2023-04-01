@@ -1,0 +1,104 @@
+@import '../../../index.scss';
+
+
+.f-list-view {
+    @include no-select;
+    background-color: white;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    animation: fade 0.3s ease-in-out;
+
+    .f-list-clickable {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none;
+        color: black;
+
+        .f-list-trail {
+            display: flex;
+            align-items: center;
+
+            div {
+                @include flex-center;
+                @include wh(38px, 38px);
+                background-color: $primary-color;
+                // border-radius: 12px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            p {
+                margin-left: 10px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .f-list-info {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+
+            span {
+                width: fit-content;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .f-list-action {
+        display: flex;
+        align-items: center;
+
+        button {
+            @include wh(38px, 38px);
+
+            margin-left: 10px;
+            border-radius: 50%;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ddd;
+        }
+    }
+
+    &:hover {
+        filter: brightness(95%);
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .f-list-view {
+    
+            .f-list-clickable {
+                .f-list-info {
+    
+                    display: none;
+                }
+            }
+        }
+}

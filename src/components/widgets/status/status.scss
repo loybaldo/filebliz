@@ -1,0 +1,120 @@
+@import '../../../index.scss';
+
+
+.f-status {
+    @include marPad(0 auto, 20px);
+    
+    width: 100%;
+    max-width: 1320px;
+    
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 2fr;
+
+    animation: fade 0.3s ease-in-out;
+
+    
+    .f-card {
+        @include card;
+        @include marPad(0px, 30px);
+        cursor: default;
+
+        background-color: $primary-color-bg-light;
+        border-radius: 15px;
+
+        // <<<<< added <<<<<
+        .CircularProgressbar-path {
+            stroke: $primary-color;
+        }
+
+        .CircularProgressbar-text {
+            fill: $text-color;
+        }
+        // >>>>>>>>>>>>>>>>>
+
+        &:hover {
+            filter: none;
+        }
+    }
+
+    // Storage Card
+    .f-card:nth-child(1) {
+        @include flex-center;
+        flex-direction: column;
+
+        div:nth-child(1) {
+            width: 100%;
+            max-width: 100px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            span {
+                display: flex;
+                margin-bottom: 20px;
+                font-size: larger;
+                font-weight: bold;
+            }
+        }
+
+        div:nth-child(2) {
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+
+            span {
+                display: flex;
+                align-items: center;
+            }
+
+            span::before {
+                content: "";
+                @include wh(15px, 15px);
+                @include min-wh(15px, 15px);
+
+                margin-right: 15px;
+                background-color: $primary-color;
+                border-radius: 50%;
+            }
+
+            span:nth-child(2)::before {
+                background-color: #ccc;
+            }
+        }
+    }
+
+    // Advertisement Card
+    .f-card:nth-child(2) {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+        p:nth-child(2) {
+            margin-top: 20px;
+            font-size: x-large;
+            font-weight: bold;
+        }
+
+        p:nth-child(3) {
+            margin: 10px 0 30px 0;
+        }
+    }
+}
+
+
+@keyframes fade {
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .f-status {
+        grid-template-columns: 1fr;
+    }
+}

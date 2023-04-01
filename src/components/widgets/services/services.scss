@@ -1,0 +1,84 @@
+@import '../../../index.scss';
+
+
+.f-services {
+    @include marPad(0 auto, 50px 20px);
+    
+    width: 100%;
+    max-width: 1320px;
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+
+    animation: fade 0.3s ease-in-out;
+
+    .f-item {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+       
+        //service animation
+        @keyframes fade {
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+            
+        }
+
+        span {
+            margin-top: 20px;
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        p {
+            max-width: 400px;
+            margin: 15px auto 0 auto;
+        }
+    }
+
+    .f-item:nth-child(1) {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        
+    }
+    
+    .f-item:nth-child(2) {
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+    
+    .f-item:nth-child(3) {
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+} 
+
+
+@media only screen and (max-width: 768px) {
+
+    .f-services {
+        grid-template-columns: 1fr;
+
+        .f-item:nth-child(1) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+        .f-item:nth-child(2) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+        .f-item:nth-child(3) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+    }
+
+}

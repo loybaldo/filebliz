@@ -1,10 +1,10 @@
-import Advert from "../../components/pages/home/advert";
-import Footer from "../../components/common/footer";
-import Landing from "../../components/pages/home/landing";
-import Navigation from "../../components/common/navigation";
-import Services from "../../components/pages/home/services";
 import "./home.scss";
-import Feedbacks from "../../components/pages/home/feedbacks";
+import Advert from "../../components/widgets/advert";
+import Footer from "../../components/common/footer";
+import Landing from "../../components/widgets/landing";
+import Navigation from "../../components/common/navigation";
+import Services from "../../components/widgets/services";
+import Feedbacks from "../../components/widgets/feedbacks";
 
 
 function HomePage() {

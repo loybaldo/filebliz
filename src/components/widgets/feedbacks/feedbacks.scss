@@ -1,0 +1,84 @@
+@import "../../../index.scss";
+
+.f-feed-label {
+    width: fit-content;
+    margin: 40px auto;
+    text-align: center;
+    display: flex;
+    margin: 0 auto;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.f-feed {
+    width: 100%;
+    max-width: 1320px;
+    margin: 60px auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+
+    .f-feed-item {
+        border-radius: 15px;
+
+        .f-feed-info {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 38px;
+                height: 38px;
+                background-color: #ddd;
+                border-radius: 50%;
+            }
+
+            div {
+                margin-left: 15px;
+                display: flex;
+                flex-direction: column;
+
+                span:nth-child(1) {
+                    font-weight: bold;
+                }
+
+                span:nth-child(2) {
+                    font-size: small;
+                }
+            }
+        }
+
+        p {
+            margin-top: 15px;
+        }
+    }
+}
+
+.f-feed-input {
+    width: 100%;
+    max-width: 1320px;
+    margin: 40px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        height: 150px;
+        max-height: 150px;
+        min-height: 150px;
+        margin-bottom: 20px;
+        padding: 15px;
+        outline-color: $primary-color;
+        border-radius: 15px;
+        overflow: hidden;
+        font-size: medium;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .f-feed {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

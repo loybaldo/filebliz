@@ -1,0 +1,23 @@
+@import '../../../index.scss';
+
+
+.f-offers {
+    max-width: 1320px;
+    width: 100%;
+
+    @include marPad(0 auto, 40px);
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .f-offers {
+        grid-template-columns: 1fr;
+        margin-top: 40px;
+    }
+    
+}

@@ -1,0 +1,30 @@
+@import '../../../index.scss';
+
+
+.f-prem-landing {
+    color:black;
+    animation: fade 0.4s ease-in-out ;
+
+    .f-container {
+        @include marPad(0 auto,50px 20px);
+        @include wh(100%, 250px);
+        
+        max-width: 1320px;
+        text-align: center;
+       
+        p {
+            max-width: 500px;
+            margin: 20px auto 0 auto;
+        }
+    }
+
+}
+
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+ }

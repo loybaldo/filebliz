@@ -1,0 +1,71 @@
+@import '../../../index.scss';
+
+
+.f-upload-list {
+    width: 100%;
+    max-width: 1320px;
+    padding-bottom: 50px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    animation: fade 0.3s ease-in-out;
+
+    .f-del-all-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .f-label {
+            margin: 20px 0 20px 20px;
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        .f-btn {
+            margin-right: 20px;
+            background-color: $danger-color;
+        }
+    }
+
+    .f-upload-list-no-data {
+        margin: 0 20px;
+        background-color: #efefef;
+        border-radius: 15px;
+
+        p {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: larger;
+        }
+    }
+
+    .f-list-view p {
+        width: 200px; /* adjust as needed */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        }
+}
+
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+//added 
+@media only screen and (max-width:768px) {
+
+    .f-list-view p {
+        max-width: 130px; /* adjust as needed */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        }
+    
+}
