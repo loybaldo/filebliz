@@ -11,10 +11,16 @@ const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
 
+if (process.env.NODE_ENV !== "development") {
+	console.log = () => {}
+	console.error = () => {}
+	console.debug = () => {}
+}
+
 root.render(
 	<React.StrictMode>
 		<AuthProvider>
-			<App />
+			<App/>
 		</AuthProvider>
 	</React.StrictMode>
 );
