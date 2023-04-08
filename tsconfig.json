@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "public/navOverscroll.js"  ]
+, "public/navOverscroll.js", "setupTests.ts"  ]
 }

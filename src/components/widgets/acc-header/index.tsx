@@ -12,7 +12,7 @@ function AccountHeader() {
 
     // Get the user membership records.
     const getMembership = useCallback(() => {
-        const filesRef = collection(db, process.env.REACT_APP_PUCHASE_TABLE!);
+        const filesRef = collection(db, process.env.REACT_APP_PURCHASE_TABLE!);
         const q = query(filesRef, where("userId", "==", currentUser?.uid), orderBy("datePurchased", "desc"));
         const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
             const membershipList = snapshot.docs.map((doc) => doc.data());

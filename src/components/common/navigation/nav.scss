@@ -15,7 +15,7 @@
     
     @include absolute-pos(0,0, unset ,0);
     
-    border-bottom: 1px solid #ddd;
+    // border-bottom: 1px solid #ddd;
 
     .f-branding {
         @include flex-center;
@@ -44,7 +44,6 @@
 
             @include flex-center;
             flex-direction: column;
-
             position: relative;
             text-decoration: none;
             color: black;
@@ -52,7 +51,6 @@
 
             .f-indicator {
                 @include wh(100%, 4px);
-
                 background-color: white;
                 position: absolute;
                 bottom: 0;
@@ -74,6 +72,95 @@
     }
 
 }
+
+
+
+
+
+
+.f-nav-theme {
+    @include no-select;
+    @include flex-center;
+    justify-content: space-between;
+
+    z-index: 800;
+    position: fixed;
+
+    height: 60px;
+    padding: 0 20px;
+    background-color: $primary-color;
+
+    @include absolute-pos(0, 0, unset, 0);
+
+    // border-bottom: 1px solid #ddd;
+
+    .f-branding {
+        @include flex-center;
+        justify-content: unset;
+
+        img {
+            @include wh(30px, 30px);
+        }
+
+        span {
+            margin-left: 10px;
+            font-weight: bold;
+            font-size: 25px;
+            letter-spacing: 2px;
+            font-family: "glacial indifference";
+            color: white;
+        }
+    }
+
+    .f-links {
+        height: 100%;
+        display: flex;
+
+        .f-links-item {
+            height: 100%;
+            margin: 0 15px;
+
+            @include flex-center;
+            flex-direction: column;
+            position: relative;
+            text-decoration: none;
+            color: white;
+            border-bottom: 4px solid transparent;
+
+            .f-indicator {
+                @include wh(100%, 4px);
+                background-color: white;
+                position: absolute;
+                bottom: 0;
+                border-radius: 10px;
+            }
+
+            .f-indicator-active {
+                background-color: white;
+            }
+
+        }
+
+        .f-links-active {
+            font-weight: bold;
+            color: white;
+            border-bottom: 4px solid white;
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 // Bottom Navigation
 .f-btm-nav {
@@ -102,121 +189,8 @@
 
 }
 
-
-/*
-    =========================[⚠️]=========================
-    
-    I hardly recommend this to be disabled and/or
-    have this animation played once across the webapp
-    via JS/TS
-    
-    - WARNING: Unnecessary Animations
-        Can potentially induce eye strain to users and/or
-        drastically impact user's anxiety, accessibility,
-        and muscle coordination.
-    
-    ======================================================
-
-
-    ### Navigation Animation ###
-
-.f-branding img,
-.f-branding span {
-    animation: slidedown 0.4s ease-in-out;
-}
-
-.f-links-item:nth-child(1) {
-    animation: slidedown1 0.4s ease-in-out;
-}
-
-.f-links-item:nth-child(2) {
-    animation: slidedown2 0.5s ease-in-out;
-}
-
-.f-links-item:nth-child(3) {
-    animation: slidedown3 0.6s ease-in-out;
-}
-
-.f-links-item:nth-child(4) {
-    animation: slidedown4 0.7s ease-in-out;
-}
-
-@keyframes slidedown {
-    from {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slidedown1 {
-    from {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slidedown2 {
-    from {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slidedown3 {
-    from {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slidedown4 {
-    from {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slidedown5 {
-    from {
-        transform: translateX(100px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-*/
-
-
 @media only screen and (max-width: 768px) {
-    .f-nav .f-links {
+    .f-nav, .f-nav-theme {
         display: none;
     }
 

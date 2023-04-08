@@ -1,9 +1,3 @@
-// [NOTE]
-// Ayaw na i-edit ang mga components na nahuman kay na test na ang responsivenes
-// possible na mada-ot ang layout pag sa mobile view. Avoid adding shadows sa mga naka light
-// colors kay dili ma-klaro ang edge, I-follow ninyo ang naa sa UI design. Ask for permission
-// first, pag naa moy i-remove na features. Thank you!
-
 // TEXT COLOR
 $text-color: #000000;
 
@@ -15,7 +9,7 @@ $primary-color: #735aaf;
 $accent-color: #ec6e00;
 $shadow-color: #00000029;
 
-// STATE [Need more defenition of this variable usage]
+// STATE
 $primary-color-bg-light: #f1eef7;
 
 // ACTIONS

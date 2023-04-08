@@ -56,12 +56,12 @@ function PricingCard({type, price, features, action = true}: PricingCardInterfac
                 <ul>
                     {features.map((item, index) => (<li key={index}><Icon icon={Icons.check_circle}/> {item} </li>))}
                 </ul>
-                {(type === "free") ? null : (<PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID! }}>
+                {(!action) ? null :
+                (<PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID! }}>
                     <PayPalButtons 
                         style={{ layout: "horizontal", height: 38, shape: "pill", tagline: true }}
                         createOrder={handleCreateOrder}
-                        onApprove={handleOnApproved}
-                    />
+                        onApprove={handleOnApproved}/>
                 </PayPalScriptProvider>)}
             </div>
         </div>

@@ -7,7 +7,7 @@
 
     .f-container {
         @include marPad(0 auto,50px 20px);
-        @include wh(100%, 250px);
+        @include wh(100%, auto);
         
         max-width: 1320px;
         text-align: center;
@@ -27,4 +27,17 @@
     to{
         opacity: 1;
     }
- }
+}
+
+
+
+
+@media only screen and (max-width:768px) {
+    .f-prem-landing {
+
+        .f-container {
+            padding-top: unset;
+    
+        }
+    }
+}

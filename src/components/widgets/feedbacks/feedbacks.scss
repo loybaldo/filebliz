@@ -53,29 +53,6 @@
     }
 }
 
-.f-feed-input {
-    width: 100%;
-    max-width: 1320px;
-    margin: 40px auto 0 auto;
-    display: flex;
-    flex-direction: column;
-
-    textarea {
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
-        height: 150px;
-        max-height: 150px;
-        min-height: 150px;
-        margin-bottom: 20px;
-        padding: 15px;
-        outline-color: $primary-color;
-        border-radius: 15px;
-        overflow: hidden;
-        font-size: medium;
-    }
-}
-
 
 @media only screen and (max-width: 768px) {
     .f-feed {

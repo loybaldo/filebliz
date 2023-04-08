@@ -11,9 +11,11 @@ const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
 
+// WARNING: Logs from dependencies are not blocked. Only the logs from our code are blocked.
 if (process.env.NODE_ENV !== "development") {
 	console.log = () => {}
 	console.error = () => {}
+	console.warn = () => {}
 	console.debug = () => {}
 }
 

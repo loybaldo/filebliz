@@ -15,9 +15,9 @@ function Navigation() {
 
     const handleToggle = () => {
         if (currentUser) {
-            return (<Button onclick={logout} label="Logout" style={{ animation: "slidedown5 0.5s ease-in-out" }}/>);
+            return (<Button onclick={logout} label="Logout" style={{ animation: "slidedown5 0.5s ease-in-out", border: (location.pathname === "/") ? "1px solid white" :  "unset"}}/>);
         } else {
-            return (<Button href="/signin" label="Sign in" style={{ animation: "slidedown5 0.5s ease-in-out" }}/>);
+            return (<Button href="/signin" label="Sign in" style={{ animation: "slidedown5 0.5s ease-in-out", border: (location.pathname === "/") ? "1px solid white" :  "unset"}}/>);
         }
     };
 
@@ -33,7 +33,7 @@ function Navigation() {
 
     return (
         <>
-            <div className="f-nav" style={{top: (visible) ? 0 : -60 }}>
+            <div className={(location.pathname === "/") ? "f-nav-theme" : "f-nav"} style={{top: (visible) ? 0 : -60 }}>
                 <div className="f-branding">
                     <img src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
                     <span>FILEBLIZ</span>
@@ -55,11 +55,11 @@ function Navigation() {
                 <Link className={(location.pathname === "/premium") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/premium">
                     <Icon icon={(location.pathname === "/premium") ? Icons.store : Icons.store_outline_bold}/>
                 </Link>
+                <Link className={(location.pathname === "/about") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/about">
+                    <Icon icon={(location.pathname === "/about") ? Icons.users_three : Icons.users_three_outline_bold}/>
+                </Link>
                 <Link className={(location.pathname === "/account") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/account">
                     <Icon icon={(location.pathname === "/account") ? Icons.user : Icons.user_outline_bold}/>
-                </Link>
-                <Link className={(location.pathname === "/about") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/about">
-                    <Icon icon={(location.pathname === "/about") ? Icons.question_circle : Icons.question_circle_outline_bold}/>
                 </Link>
             </nav>
         </>
