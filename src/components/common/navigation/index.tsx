@@ -11,13 +11,13 @@ function Navigation() {
     const { currentUser, logout } = useContext(AuthContext);
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
-    const location = useLocation();
+    const pathName = useLocation().pathname;
 
     const handleToggle = () => {
         if (currentUser) {
-            return (<Button onclick={logout} label="Logout" style={{ animation: "slidedown5 0.5s ease-in-out", border: (location.pathname === "/") ? "1px solid white" :  "unset"}}/>);
+            return (<Button onclick={logout} label="Logout" style={{ animation: "slidedown5 0.5s ease-in-out", border: (pathName === "/") ? "1px solid white" :  "unset"}}/>);
         } else {
-            return (<Button href="/signin" label="Sign in" style={{ animation: "slidedown5 0.5s ease-in-out", border: (location.pathname === "/") ? "1px solid white" :  "unset"}}/>);
+            return (<Button href="/signin" label="Sign in" style={{ animation: "slidedown5 0.5s ease-in-out", border: (pathName === "/") ? "1px solid white" :  "unset"}}/>);
         }
     };
 
@@ -33,33 +33,37 @@ function Navigation() {
 
     return (
         <>
-            <div className={(location.pathname === "/") ? "f-nav-theme" : "f-nav"} style={{top: (visible) ? 0 : -60 }}>
+            <div className={(pathName === "/") ? "f-nav-theme" : "f-nav"} style={{top: (visible) ? 0 : -60 }}>
                 <div className="f-branding">
                     <img src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
                     <span>FILEBLIZ</span>
                 </div>
                 <nav className="f-links">
-                    <Link className={(location.pathname === "/") ? "f-links-item f-links-active" : "f-links-item"} to="/">Home</Link>
-                    <Link className={(location.pathname === "/premium") ? "f-links-item f-links-active" : "f-links-item"} to="/premium">Premium</Link>
-                    <Link className={(location.pathname === "/account") ? "f-links-item f-links-active" : "f-links-item"} to="/account">Account</Link>
-                    <Link className={(location.pathname === "/about") ? "f-links-item f-links-active" : "f-links-item"} to="/about">About</Link>
+                    <Link className={(pathName === "/") ? "f-links-item f-links-active" : "f-links-item"} to="/">Home</Link>
+                    <Link className={(pathName === "/premium") ? "f-links-item f-links-active" : "f-links-item"} to="/premium">Premium</Link>
+                    <Link className={(pathName === "/account") ? "f-links-item f-links-active" : "f-links-item"} to="/account">Account</Link>
+                    <Link className={(pathName === "/about") ? "f-links-item f-links-active" : "f-links-item"} to="/about">About</Link>
                 </nav>
                 {handleToggle()}
                 
             </div>
 
             <nav className="f-btm-nav">
-                <Link className={(location.pathname === "/") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/">
-                    <Icon icon={(location.pathname === "/") ? Icons.home : Icons.home_outline_bold}/>
+                <Link className={(pathName === "/") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/">
+                    <Icon icon={(pathName === "/") ? Icons.home : Icons.home_outline_bold}/>
+                    <span>Home</span>
                 </Link>
-                <Link className={(location.pathname === "/premium") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/premium">
-                    <Icon icon={(location.pathname === "/premium") ? Icons.store : Icons.store_outline_bold}/>
+                <Link className={(pathName === "/premium") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/premium">
+                    <Icon icon={(pathName === "/premium") ? Icons.store : Icons.store_outline_bold}/>
+                    <span>Premium</span>
                 </Link>
-                <Link className={(location.pathname === "/about") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/about">
-                    <Icon icon={(location.pathname === "/about") ? Icons.users_three : Icons.users_three_outline_bold}/>
+                <Link className={(pathName === "/about") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/about">
+                    <Icon icon={(pathName === "/about") ? Icons.comments: Icons.comments_outline_bold}/>
+                    <span>About</span>
                 </Link>
-                <Link className={(location.pathname === "/account") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/account">
-                    <Icon icon={(location.pathname === "/account") ? Icons.user : Icons.user_outline_bold}/>
+                <Link className={(pathName === "/account") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"}  to="/account">
+                    <Icon icon={(pathName === "/account") ? Icons.user : Icons.user_outline_bold}/>
+                    <span>Account</span>
                 </Link>
             </nav>
         </>

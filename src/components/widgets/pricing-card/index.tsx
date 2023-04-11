@@ -1,12 +1,13 @@
 import { useContext } from "react";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { OnApproveActions, OnApproveData } from "@paypal/paypal-js";
+import { usePayPalScriptReducer, PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { addDoc, collection } from "firebase/firestore";
+import { OnApproveActions, OnApproveData } from "@paypal/paypal-js";
 import { db } from "../../../config/firebase";
 import { AuthContext } from "../../../auth/auth-provider";
 import Icon from "../../common/icon";
 import Icons from "../../common/icon/Icon";
 import "./pricing-card.scss";
+import Loader from "../../common/loader";
 
 
 interface PricingCardInterface {
@@ -16,8 +17,16 @@ interface PricingCardInterface {
     action?: boolean;
 }
 
-function PricingCard({type, price, features, action = true}: PricingCardInterface) {
+interface PaypalButtonInterface {
+    type: "free" | "pro" | "premium";
+    price: number;
+}
+
+
+
+function PaypalButton({type, price}: PaypalButtonInterface) {
     const { currentUser } = useContext(AuthContext);
+    const [{ isPending, isRejected }] = usePayPalScriptReducer();
 
     // This will create the order of the user.
     const handleCreateOrder = async (data: any, actions: any) => {
@@ -45,9 +54,23 @@ function PricingCard({type, price, features, action = true}: PricingCardInterfac
             datePurchased: new Date().getTime(),
             dateExpires: (type === "pro") ? proExpiration : premiumExpiration,
         }
-        await addDoc(collection(db, process.env.REACT_APP_PUCHASE_TABLE!), purchaseInfo);
+        await addDoc(collection(db, process.env.REACT_APP_PURCHASE_TABLE!), purchaseInfo);
     }
     
+    return (
+        <>
+            {(isPending || isRejected) ? <Loader/> : null}
+            <PayPalButtons 
+                style={{ layout: "horizontal", height: 38, shape: "pill", tagline: true }}
+                createOrder={handleCreateOrder}
+                onApprove={handleOnApproved}/>
+        </>
+    )
+}
+
+
+
+function PricingCard({type, price, features, action = true}: PricingCardInterface) {
     return(
         <div className="f-pricing-card">
             <div style={{padding: 25, display: "flex", flexDirection: "column", alignItems: "center"}}>
@@ -58,10 +81,7 @@ function PricingCard({type, price, features, action = true}: PricingCardInterfac
                 </ul>
                 {(!action) ? null :
                 (<PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID! }}>
-                    <PayPalButtons 
-                        style={{ layout: "horizontal", height: 38, shape: "pill", tagline: true }}
-                        createOrder={handleCreateOrder}
-                        onApprove={handleOnApproved}/>
+                    <PaypalButton type={type} price={price}/>
                 </PayPalScriptProvider>)}
             </div>
         </div>

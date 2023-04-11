@@ -6,6 +6,7 @@ import "./footer.scss";
 function Footer() {
     const [showFooter, setShowFooter] = useState(false);
     const footerRef = useRef<HTMLDivElement>(null);
+    const appFirstPublished = parseInt(process.env.REACT_APP_FIRST_PUBLISHED!);
       
     useEffect(() => {
         const footerSection = footerRef.current;
@@ -33,7 +34,7 @@ function Footer() {
                     </a>
                 </div>
                 <div className={`${showFooter ? "show" : "hidden"}`}>
-                    <span style={{display: "inline-block", textAlign: "center"}}>Filebliz, Copyright&copy; 2023{((new Date().getFullYear()) > 2023) ? ` - ${new Date().getFullYear()}` : null}. By using Filebliz, you agree to our&nbsp;
+                    <span style={{display: "inline-block", textAlign: "center"}}>Filebliz, Copyright&copy; {appFirstPublished} {((new Date().getFullYear()) > appFirstPublished) ? ` - ${new Date().getFullYear()}` : null}. By using Filebliz, you agree to our&nbsp;
                         <Link to="/privacy" style={{color: "white", fontWeight: "bold"}}>privacy policy</Link> and&nbsp;
                         <Link to="/terms"  style={{color: "white", fontWeight: "bold"}}>terms &amp; conditions</Link>.
                     </span>

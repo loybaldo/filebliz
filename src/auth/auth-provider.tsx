@@ -26,9 +26,7 @@ export const AuthProvider = ({ children }: Props) => {
 
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged((user) => { setCurrentUser(user) });
-		return () => {
-			unsubscribe();
-		};
+		return () => { unsubscribe() };
 	}, []);
 
 	const logout = () => {
