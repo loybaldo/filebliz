@@ -1,5 +1,6 @@
 @import "./theme.scss";
 
+
 @font-face {
 	font-family: "glacial indifference";
 	src: url("./assets/fonts/glacial-indifference/GlacialIndifference-Bold.ttf");
@@ -153,6 +154,8 @@
 	box-sizing: border-box;
 	transition: 0.3s;
 	scroll-behavior: smooth;
+	// layout debug
+	// outline: solid 1px;
 }
 
 code {

@@ -1,0 +1,58 @@
+[1mdiff --git a/package-lock.json b/package-lock.json[m
+[1mindex 6e5f0c3..dbcc816 100644[m
+[1m--- a/package-lock.json[m
+[1m+++ b/package-lock.json[m
+[36m@@ -1,11 +1,11 @@[m
+ {[m
+[31m-	"name": "fileblizz",[m
+[32m+[m	[32m"name": "filebliz",[m
+ 	"version": "1.0.0",[m
+ 	"lockfileVersion": 3,[m
+ 	"requires": true,[m
+ 	"packages": {[m
+ 		"": {[m
+[31m-			"name": "fileblizz",[m
+[32m+[m			[32m"name": "filebliz",[m
+ 			"version": "1.0.0",[m
+ 			"dependencies": {[m
+ 				"@paypal/paypal-js": "^5.1.6",[m
+[1mdiff --git a/src/App.tsx b/src/App.tsx[m
+[1mindex 750771e..8275d3d 100644[m
+[1m--- a/src/App.tsx[m
+[1m+++ b/src/App.tsx[m
+[36m@@ -7,6 +7,7 @@[m [mimport AccountPage from './pages/account';[m
+ import HomePage from './pages/home';[m
+ import PricingPage from './pages/pricing';[m
+ import SigninPage from './pages/signin';[m
+[32m+[m[32mimport Dashboard from './pages/dashboard';[m
+ [m
+ [m
+ function App() {[m
+[36m@@ -20,6 +21,7 @@[m [mfunction App() {[m
+ 				<Route path="/account" element={ (currentUser) ? <AccountPage/> : <Navigate to="/signin"/> }/>[m
+ 				<Route path="/about" element={ <About/> }/>[m
+ 				<Route path="/signin" element={ (!currentUser) ? <SigninPage/> : <Navigate to="/account"/> }/>[m
+[32m+[m				[32m<Route path="/dashboard" element={ <Dashboard/> }/>[m
+ 				<Route path="*" element={ <NotFoundPage/> }/>[m
+ 			</Routes>[m
+ 		</BrowserRouter>[m
+[1mdiff --git a/src/index.scss b/src/index.scss[m
+[1mindex 7b7760c..4f19974 100644[m
+[1m--- a/src/index.scss[m
+[1m+++ b/src/index.scss[m
+[36m@@ -1,5 +1,6 @@[m
+ @import "./theme.scss";[m
+ [m
+[32m+[m
+ @font-face {[m
+ 	font-family: "glacial indifference";[m
+ 	src: url("./assets/fonts/glacial-indifference/GlacialIndifference-Bold.ttf");[m
+[36m@@ -153,6 +154,8 @@[m
+ 	box-sizing: border-box;[m
+ 	transition: 0.3s;[m
+ 	scroll-behavior: smooth;[m
+[32m+[m	[32m// layout debug[m
+[32m+[m	[32m// outline: solid 1px;[m
+ }[m
+ [m
+ code {[m

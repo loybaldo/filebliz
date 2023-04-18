@@ -7,6 +7,7 @@ import AccountPage from './pages/account';
 import HomePage from './pages/home';
 import PricingPage from './pages/pricing';
 import SigninPage from './pages/signin';
+import Dashboard from './pages/dashboard';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 				<Route path="/account" element={ (currentUser) ? <AccountPage/> : <Navigate to="/signin"/> }/>
 				<Route path="/about" element={ <About/> }/>
 				<Route path="/signin" element={ (!currentUser) ? <SigninPage/> : <Navigate to="/account"/> }/>
+				<Route path="/dashboard" element={ <Dashboard/> }/>
 				<Route path="*" element={ <NotFoundPage/> }/>
 			</Routes>
 		</BrowserRouter>
