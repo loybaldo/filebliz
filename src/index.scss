@@ -1,5 +1,5 @@
+// # Global Import
 @import "./styling/theme.scss";
-
 
 @font-face {
 	font-family: "glacial indifference";
@@ -8,19 +8,50 @@
 }
 
 @font-face {
-	font-family: poppins;
+	font-family: 'poppins';
 	src: url("./assets/fonts/poppins/Poppins-Regular.ttf");
 	font-weight: normal;
 }
 
 @font-face {
-	font-family: poppins;
+	font-family: 'poppins';
 	src: url("./assets/fonts/poppins/Poppins-Bold.ttf");
 	font-weight: bold;
 }
 
 
-// ### [ CUSTOM MIXIN LIBRARY ] ###
+// ==========================
+// [    global variables    ]
+// ==========================
+
+$global-transition: 0.3s;
+
+$media-query-mobile: 768px;
+$media-query-wide: 2000px;
+// $media-query-default: 1920px;
+
+
+// ==========================
+// [    component mixins    ]
+// --------------------------
+//  Declare internal
+//  attributes with unset 
+//  value to disable 
+//  when applied
+// ==========================
+
+@mixin transition {
+	transition: $global-transition;
+}
+
+@mixin global-max-width($class) {
+	@if $class == 0 {
+		max-width: 80%;
+	}
+	@else if $class == 1 {
+		max-width: 1320px;
+	}
+}
 
 @mixin absolute-pos($top, $left, $bottom, $right) {
 	top: $top;
@@ -44,11 +75,11 @@
 
 @mixin no-select {
 	-webkit-user-select: none;
-    /* Safari */
+    // Safari
     -ms-user-select: none;
-    /* IE 10 and IE 11 */
+    // IE 10 and IE 11
     user-select: none;
-    /* Standard syntax */
+    // Standard syntax
 }
 
 @mixin shadow {
@@ -78,7 +109,7 @@
 	max-height: $h;
 }
 
-@mixin marPad($mar, $pad) {
+@mixin mar-pad($mar, $pad) {
 	margin: $mar;
 	padding: $pad;
 }
@@ -92,14 +123,15 @@
 	}
 }
 
-// MIXIN Components
+
+// ==========================
+// [    component styles    ]
+// ==========================
 
 @mixin card {
     @include no-select;
-	// [Do not add shadow]
-    // @include shadow;
+    @include mar-pad(50px, 20px);
 
-    @include marPad(50px, 20px);
     border-radius: 15px;
     background-color: $bg-color;
 	cursor: pointer;
@@ -116,10 +148,8 @@
 @mixin anchor-button {
 	@include shadow;
 	@include wh(fit-content, 38px);
-	@include marPad(unset, 0 15px);
+	@include mar-pad(unset, 0 15px);
 	@include focus-style;
-
-	display: flex;
 	@include flex-center;
 
 	background-color: $primary-color;
@@ -128,7 +158,7 @@
 
 	cursor: pointer;
 
-	// hardcoded color
+	// FIXME hardcoded color	
 	color: white;
 	font-size: 14px;
 	text-decoration: none;
@@ -144,15 +174,24 @@
 }
 
 
+// ==================================
+// [    Custom Bootstrap Methods    ]
+// ==================================
 
-// ### [ INDEX STYLES ] ###
+// empty
+
+
+// ==============
+// [    root    ]
+// ==============
 
 * {
-	padding: 0;
-	margin: 0;
-	font-family: poppins;
+	@include mar-pad(0, 0);
+	@include transition();
+
+	overflow-x: hidden;
+	font-family: 'poppins';
 	box-sizing: border-box;
-	transition: 0.3s;
 	scroll-behavior: smooth;
 	// layout debug
 	// outline: solid 1px;
@@ -160,10 +199,6 @@
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-#root {
-	overflow-x: hidden;
 }
 
 body {
@@ -175,9 +210,7 @@ input[type="file"] {
 	display: none;
 }
 
-
-// ### [ INDEX COMPONENT STYLES ] ###
-
+// TODO anchor tag deprecation
 a {
 	@include focus-style;
 }
@@ -186,7 +219,7 @@ button {
 	@include focus-style;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: $media-query-mobile) {
 	* {
 		@include no-select;
 	}

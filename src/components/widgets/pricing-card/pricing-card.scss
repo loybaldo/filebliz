@@ -1,6 +1,6 @@
 @import '../../../index.scss';
 
-
+// TODO might be globalized?
 @mixin card-style($background-color, $color) {
     background-color: $background-color;
 
@@ -27,11 +27,12 @@
 
 .f-pricing-card {
     @include card;
-    @include marPad(unset, unset);
+    @include mar-pad(unset, unset);
     cursor: default;
 
     overflow: hidden;
 
+    // FIXME hardcoded color
     background-color: white;
     border-radius: 15px;
     display: flex;

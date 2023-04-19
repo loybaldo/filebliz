@@ -2,14 +2,15 @@
 
 
 .f-prem-landing {
+    // FIXME hardcoded color
     color:black;
     animation: fade 0.4s ease-in-out ;
 
     .f-container {
-        @include marPad(0 auto,50px 20px);
+        @include mar-pad(0 auto,50px 20px);
         @include wh(100%, auto);
+        @include global-max-width(0);
         
-        max-width: 1320px;
         text-align: center;
        
         p {
@@ -17,8 +18,8 @@
             margin: 20px auto 0 auto;
         }
     }
-
 }
+
 
 @keyframes fade {
     from{
@@ -30,14 +31,18 @@
 }
 
 
-
-
-@media only screen and (max-width:768px) {
+@media only screen and (max-width: $media-query-mobile) {
     .f-prem-landing {
 
         .f-container {
             padding-top: unset;
     
         }
+    }
+}
+
+@media only screen and (min-width: $media-query-wide) {
+    .f-container {
+        @include global-max-width(1);
     }
 }

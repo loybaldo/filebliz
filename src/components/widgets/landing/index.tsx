@@ -109,7 +109,7 @@ function Landing() {
 
                     </div>
                     <div className="f-info">
-                        <img src={GirlSmile} alt="Girl Smile" />
+                        <img draggable="false" src={GirlSmile} alt="Girl Smile" />
                     </div>
                 </div>
             </div>

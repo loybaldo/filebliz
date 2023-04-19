@@ -3,21 +3,22 @@
 
 .f-list-view {
     @include no-select;
+    // FIXME hardcoded color
     background-color: white;
     height: 60px;
     padding: 0 20px;
     display: flex;
     align-items: center;
+    // FIXME hardcoded color
     border-bottom: 1px solid #ddd;
     animation: fade 0.3s ease-in-out;
 
     .f-list-clickable {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
+        @include wh(100%, 100%);
+        @include flex-center;
         justify-content: space-between;
         text-decoration: none;
+        // FIXME hardcoded color
         color: black;
 
         .f-list-trail {
@@ -28,7 +29,6 @@
                 @include flex-center;
                 @include wh(38px, 38px);
                 background-color: $primary-color;
-                // border-radius: 12px;
                 overflow: hidden;
 
                 img {
@@ -71,6 +71,7 @@
         }
 
         button:hover {
+            // FIXME hardcoded color
             background-color: #ddd;
         }
     }
@@ -93,12 +94,10 @@
 
 @media only screen and (max-width: 768px) {
     .f-list-view {
-    
-            .f-list-clickable {
-                .f-list-info {
-    
-                    display: none;
-                }
+        .f-list-clickable {
+            .f-list-info {
+                display: none;
             }
         }
+    }
 }

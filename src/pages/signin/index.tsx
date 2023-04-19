@@ -38,10 +38,10 @@ function SigninPage() {
 				<div className="f-signin-container">
 				<h1>Sign In Using:</h1>
 				<button onClick={handleGoogleSignIn}>
-					<img src={GoogleLogo} alt="Google Logo" />
+					<img draggable="false" src={GoogleLogo} alt="Google Logo" />
 				</button>
 				<button onClick={handleFacebookSignIn}>
-					<img src={FacebookLogo} alt="Facebook Logo" />
+					<img draggable="false" src={FacebookLogo} alt="Facebook Logo" />
 				</button>
 				</div>
 			</div>

@@ -14,9 +14,7 @@ function HomePage() {
             <div className="mainView">
                 <Landing/>
                 <Services/>
-                <div style={{padding: "0 20px"}}>
-                    <Advert/>
-                </div>
+                <Advert/>
                 <Feedbacks/>
             </div>
             <Footer/>

@@ -35,7 +35,7 @@ function Navigation() {
         <>
             <div className={(pathName === "/") ? "f-nav-theme" : "f-nav"} style={{top: (visible) ? 0 : -60 }}>
                 <div className="f-branding">
-                    <img src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
+                    <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
                     <span>FILEBLIZ</span>
                 </div>
                 <nav className="f-links">

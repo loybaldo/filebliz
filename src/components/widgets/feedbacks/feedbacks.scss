@@ -1,61 +1,75 @@
 @import "../../../index.scss";
 
-.f-feed-label {
-    width: fit-content;
-    margin: 40px auto;
-    text-align: center;
-    display: flex;
-    margin: 0 auto;
-    font-size: x-large;
-    font-weight: bold;
-}
 
-.f-feed {
+.f-feed-container {
+    @include mar-pad(unset, 140px 80px);
     width: 100%;
-    max-width: 1320px;
-    margin: 60px auto 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    background-color: #efefef;
 
-    .f-feed-item {
-        border-radius: 15px;
+    .f-feed-label {
+        width: fit-content;
+        margin: 10px auto;
+        text-align: center;
+        display: flex;
+        font-size: x-large;
+        font-weight: bold;
+    }
 
-        .f-feed-info {
-            display: flex;
-            align-items: center;
+    .f-feed {
+        @include global-max-width(0);
 
-            img {
-                width: 38px;
-                height: 38px;
-                background-color: #ddd;
-                border-radius: 50%;
-            }
+        margin: 60px auto 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
 
-            div {
-                margin-left: 15px;
+        .f-feed-item {
+            border-radius: 15px;
+            // text-align: justify;
+
+            .f-feed-info {
                 display: flex;
-                flex-direction: column;
+                align-items: center;
 
-                span:nth-child(1) {
-                    font-weight: bold;
+                img {
+                    @include wh(38px, 38px);
+
+                    // FIXME Hardcoded Color
+                    background-color: #ddd;
+                    border-radius: 50%;
                 }
 
-                span:nth-child(2) {
-                    font-size: small;
+                div {
+                    margin-left: 15px;
+                    display: flex;
+                    flex-direction: column;
+
+                    span:nth-child(1) {
+                        font-weight: bold;
+                    }
+
+                    span:nth-child(2) {
+                        font-size: small;
+                    }
                 }
             }
-        }
 
-        p {
-            margin-top: 15px;
+            p {
+                margin-top: 15px;
+            }
         }
     }
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: $media-query-mobile) {
     .f-feed {
         grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media only screen and (min-width: $media-query-wide) {
+    .f-feed {
+        @include global-max-width(1);
     }
 }

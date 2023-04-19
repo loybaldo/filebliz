@@ -1,11 +1,13 @@
 # TODO (For Programmers)
 
 ### TODO A
-- [ ] Refactor all SCSS files
+- [X] Refactor all SCSS files
+- [X] Redesign Page Layouts (covers: majority) !! postponed half of it once everything is finished
 - [ ] *Migrate modal system (making it reusable and customizable)
-- [ ] implement theme switcher
-- [ ] Redesign Page Layouts (covers: majority)
+- [ ] Rebase Alert Box (Allow Children)
+- [ ] fix press enter function when selecting files
 - [ ] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)
+- [ ] implement theme switcher
 
 <hr/>
 
@@ -39,3 +41,13 @@
 
 ### TODO E (Requires: `Everything`)
 - [ ] Style for Mobile UI
+
+<hr/>
+
+## Slam's Checklists
+- [X] Refactor SCSS Files
+    - - [X] identify areas that needs to be globalized
+    - - [X] migrate scss code that can be globalized in index.scss
+- [X] Redesign Needed Pages (can be postponed)
+- [ ] Implement Theme Switcher
+    - - [ ] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)

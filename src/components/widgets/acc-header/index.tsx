@@ -45,7 +45,7 @@ function AccountHeader() {
             <div className="f-acc-bg"></div>
             <div className="f-prof-container">
                 <div>
-                    <img src={(currentUser?.photoURL) ? currentUser?.photoURL! : DefaultProfilePic} alt={currentUser?.displayName!} />
+                    <img draggable="false" src={(currentUser?.photoURL) ? currentUser?.photoURL! : DefaultProfilePic} alt={currentUser?.displayName!} />
                     <span>{currentUser?.displayName}</span>
                 </div>
                 <div>

@@ -7,10 +7,9 @@
 }
 
 .f-prof-container {
-    @include max-wh(1320px, 120px);
-    width: 100%;
+    @include global-max-width(0);
+    
     margin: 0 auto;
-
     display: flex;
     justify-content: space-between;
 
@@ -80,9 +79,9 @@
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: $media-query-mobile) {
+
     .f-prof-container {
-        max-height: 320px;
         flex-direction: column;
 
         div:nth-child(1) {
@@ -99,5 +98,11 @@
             align-items: center;
             transform: unset;
         }
+    }
+}
+
+@media only screen and (min-width: $media-query-wide) {
+    .f-prof-container {
+        @include global-max-width(1);
     }
 }

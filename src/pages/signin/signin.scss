@@ -2,7 +2,7 @@
 
 
 .f-signin-container {
-    @include marPad(0, 0);
+    @include mar-pad(0, 0);
     @include wh(100vw, 100vh);
     @include flex-center;
     flex-direction: column;

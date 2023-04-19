@@ -11,6 +11,7 @@
 
     height: 60px;
     padding: 0 20px;
+    // FIXME Hardcoded Color
     background-color: white;
     
     @include absolute-pos(0,0, unset ,0);
@@ -46,11 +47,14 @@
             flex-direction: column;
             position: relative;
             text-decoration: none;
+            // FIXME Hardcoded Color
             color: black;
             border-bottom: 4px solid transparent;
-
+            
             .f-indicator {
                 @include wh(100%, 4px);
+
+                // FIXME Hardcoded Color
                 background-color: white;
                 position: absolute;
                 bottom: 0;
@@ -74,15 +78,12 @@
 }
 
 
-
-
-
-
 .f-nav-theme {
     @include no-select;
     @include flex-center;
     justify-content: space-between;
 
+    // afaik you can only use values [ -1 | 0 | 1 ]
     z-index: 800;
     position: fixed;
 
@@ -108,6 +109,8 @@
             font-size: 25px;
             letter-spacing: 2px;
             font-family: "glacial indifference";
+
+            // FIXME Hardcoded Color
             color: white;
         }
     }
@@ -124,11 +127,15 @@
             flex-direction: column;
             position: relative;
             text-decoration: none;
+
+            // FIXME Hardcoded Color
             color: white;
             border-bottom: 4px solid transparent;
 
             .f-indicator {
                 @include wh(100%, 4px);
+
+                // FIXME Hardcoded Color
                 background-color: white;
                 position: absolute;
                 bottom: 0;
@@ -136,12 +143,14 @@
             }
 
             .f-indicator-active {
+                //FIXME Hardcoded Color
                 background-color: white;
             }
 
         }
 
         .f-links-active {
+            // FIXME Hardcoded Color
             font-weight: bold;
             color: white;
             border-bottom: 4px solid white;
@@ -152,27 +161,19 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
 // Bottom Navigation
 .f-btm-nav {
+    @include absolute-pos(unset, 0, 0, 0);
+
     height: 60px;
+    // FIXME
     background-color: white;
     display: none;
     align-items: center;
     justify-content: space-around;
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+
+    // FIXME
     border-top: 1px solid #ddd;
     z-index: 800;
 
@@ -180,6 +181,8 @@
         @include wh(100%, 100%);
         @include flex-center;
         text-decoration: none;
+
+        // FIXME
         color: black;
         display: flex;
         flex-direction: column;
@@ -190,6 +193,8 @@
     }
 
     .f-btm-nav-active {
+
+        // FIXME
         color: black;
 
         span {
@@ -198,7 +203,8 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: $media-query-mobile) {
     .f-nav, .f-nav-theme {
         display: none;
     }

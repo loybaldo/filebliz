@@ -54,7 +54,7 @@ function ListView({fileName, size, fileExt, url, date}: ListViewInterface) {
         <div className="f-list-view">
             <a className="f-list-clickable" href={url} target="_blank" rel="noreferrer">
                 <div className="f-list-trail">
-                    <div><img src={handleIconType()} alt={fileExt} /></div>
+                    <div><img draggable="false" src={handleIconType()} alt={fileExt} /></div>
                     <p> {fileName} </p>
                 </div>
                 <div className="f-list-info">
