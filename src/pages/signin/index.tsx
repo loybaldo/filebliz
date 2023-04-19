@@ -37,6 +37,7 @@ function SigninPage() {
 			<div>
 				<div className="f-signin-container">
 				<h1>Sign In Using:</h1>
+				{/* FIXME hardcoded button where an existing button component exists */}
 				<button onClick={handleGoogleSignIn}>
 					<img draggable="false" src={GoogleLogo} alt="Google Logo" />
 				</button>

@@ -45,10 +45,11 @@ $media-query-wide: 2000px;
 }
 
 @mixin global-max-width($class) {
-	@if $class == 0 {
+	@if $class ==0 {
 		max-width: 80%;
 	}
-	@else if $class == 1 {
+
+	@else if $class ==1 {
 		max-width: 1320px;
 	}
 }
@@ -57,16 +58,18 @@ $media-query-wide: 2000px;
 	top: $top;
 	left: $left;
 	bottom: $bottom;
-	right: $right;	
+	right: $right;
 }
 
 @mixin focus-style {
-	&:focus, 
+
+	&:focus,
 	&:focus-within {
 		outline: none;
 	}
-	
+
 	&:focus-visible {
+		z-index: 0;
 		outline: 3px solid $primary-color-active;
 		outline-offset: 3px;
 		transition: none;
@@ -75,23 +78,23 @@ $media-query-wide: 2000px;
 
 @mixin no-select {
 	-webkit-user-select: none;
-    // Safari
-    -ms-user-select: none;
-    // IE 10 and IE 11
-    user-select: none;
-    // Standard syntax
+	// Safari
+	-ms-user-select: none;
+	// IE 10 and IE 11
+	user-select: none;
+	// Standard syntax
 }
 
 @mixin shadow {
 	box-shadow: 0px 10px 44px -19px $shadow-color;
-    -webkit-box-shadow: 0px 10px 44px -19px $shadow-color;
-    -moz-box-shadow: 0px 10px 44px -19px $shadow-color;
+	-webkit-box-shadow: 0px 10px 44px -19px $shadow-color;
+	-moz-box-shadow: 0px 10px 44px -19px $shadow-color;
 }
 
 @mixin flex-center {
 	display: flex;
-    align-items: center;
-    justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
 
 @mixin wh($w, $h) {
@@ -129,22 +132,23 @@ $media-query-wide: 2000px;
 // ==========================
 
 @mixin card {
-    @include no-select;
-    @include mar-pad(50px, 20px);
+	@include no-select;
+	@include mar-pad(50px, 20px);
 
-    border-radius: 15px;
-    background-color: $bg-color;
+	border-radius: 15px;
+	background-color: $bg-color;
 	cursor: pointer;
 
-    &:hover {
-        filter: brightness(102%);
-    }
+	&:hover {
+		filter: brightness(102%);
+	}
 
 	&:active {
 		filter: brightness(97%)
 	}
 }
 
+// FIXME add fill
 @mixin anchor-button {
 	@include shadow;
 	@include wh(fit-content, 38px);
@@ -152,25 +156,27 @@ $media-query-wide: 2000px;
 	@include focus-style;
 	@include flex-center;
 
-	background-color: $primary-color;
+	background-color: $info-color;
 	border-radius: 15px;
 	border: none;
 
 	cursor: pointer;
 
-	// FIXME hardcoded color	
-	color: white;
+	// FIXME hardcoded color
+	// FIXME extract or creat e a new default color for buttons 
+	color: $text-color-permanent;
+	fill: $text-color-permanent;
 	font-size: 14px;
 	text-decoration: none;
 
-    &:hover {
-        background-color: $primary-color-hover;
-    }
+	&:hover {
+		background-color: $info-color;
+	}
 
-    &:active {
-        background-color: $primary-color;
-        filter: brightness(140%);
-    }
+	&:active {
+		background-color: $info-color;
+		filter: brightness(140%);
+	}
 }
 
 
@@ -178,7 +184,81 @@ $media-query-wide: 2000px;
 // [    Custom Bootstrap Methods    ]
 // ==================================
 
-// empty
+// # Buttons
+// TODO Can be extracted into a mixin
+.primary {
+	background-color: $primary-color;
+
+	&:hover {
+		background-color: $primary-color-hover;
+	}
+
+	&:active {
+		background-color: $primary-color;
+		filter: brightness(140%);
+	}
+}
+
+.p-accent {
+	background-color: $accent-color;
+
+	&:hover {
+		// TODO add this
+		background-color: $accent-color;
+	}
+
+	&:active {
+		filter: brightness(140%);
+	}
+}
+
+.safe {
+	background-color: $safe-color;
+
+	&:hover {
+		background-color: $safe-color;
+	}
+
+	&:active {
+		filter: brightness(140%);
+	}
+}
+
+.info {
+	background-color: $info-color;
+
+	&:hover {
+		background-color: $info-color;
+	}
+
+	&:active {
+		filter: brightness(140%);
+	}
+}
+
+.warn {
+	background-color: $warn-color;
+
+	&:hover {
+		background-color: $warn-color;
+	}
+
+	&:active {
+		filter: brightness(140%);
+	}
+}
+
+.danger {
+	background-color: $danger-color;
+
+	&:hover {
+		background-color: $danger-color;
+	}
+
+	&:active {
+		filter: brightness(140%);
+	}
+}
 
 
 // ==============

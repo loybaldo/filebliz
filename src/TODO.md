@@ -6,8 +6,8 @@
 - [ ] *Migrate modal system (making it reusable and customizable)
 - [ ] Rebase Alert Box (Allow Children)
 - [ ] fix press enter function when selecting files
-- [ ] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)
-- [ ] implement theme switcher
+- [X] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)
+- [X] implement theme switcher
 
 <hr/>
 
@@ -49,5 +49,5 @@
     - - [X] identify areas that needs to be globalized
     - - [X] migrate scss code that can be globalized in index.scss
 - [X] Redesign Needed Pages (can be postponed)
-- [ ] Implement Theme Switcher
-    - - [ ] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)
+- [X] Implement Theme Switcher
+    - - [X] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)

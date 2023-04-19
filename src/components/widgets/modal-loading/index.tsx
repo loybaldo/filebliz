@@ -1,5 +1,5 @@
 import "./modal-loading.scss";
-import Loader from "../loader";
+import Loader from "../../common/loader";
 
 
 interface ModalLoadingInterface {
@@ -7,6 +7,7 @@ interface ModalLoadingInterface {
     show?: boolean;
 }
 
+// FIXME make resuable
 function ModalLoading({label, show}: ModalLoadingInterface) {
     return (
         <div className="f-modal-loading" style={{display: (show) ? "flex" : "none"}}>

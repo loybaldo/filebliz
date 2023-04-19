@@ -7,8 +7,8 @@ import { db, storage } from "../../../config/firebase";
 import Button from "../../common/button";
 import GirlSmile from "../../../assets/illus-ok.svg";
 import "./landing.scss";
-import ModalLoading from "../../common/modal-loading";
-import ModalQR from "../../common/modal-qr";
+import ModalLoading from "../modal-loading";
+import ModalQR from "../../widgets/modal-qr";
 
 
 function Landing() {
@@ -39,7 +39,7 @@ function Landing() {
                     setDownloadURL(url);
                     setUploading(false);
                 });
-            }else {
+            } else {
                 // Save the file for authenticated users.
                 try {
                     const downloadURL = await getDownloadURL(fileRef);
@@ -61,7 +61,7 @@ function Landing() {
             }
         });
     };
-    
+
     function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
         const files = e.target.files;
         if (files != null && files.length > 0) {
@@ -88,7 +88,7 @@ function Landing() {
             alert("Link copied to clipboard.");
         }).catch((err) => console.error('Could not copy text: ', err));
     }
-      
+
 
     return (
         <>
@@ -98,13 +98,13 @@ function Landing() {
 
                         <h1>Effortlessly Share Your Files with Filebliz</h1>
                         <p>With Filebliz, you can easily share your files with anyone, anytime. Our user-friendly platform ensures that you can quickly upload and send your files to your friends, family, and colleagues without any hassle.</p>
-                        
+
                         <div className="f-form" tabIndex={0}>
-                            <label htmlFor="file-upload" className="custom-file-upload" style={{border: "none", backgroundColor: "transparent", outline: "none"}}>
+                            <label htmlFor="file-upload" className="custom-file-upload" style={{ border: "none", backgroundColor: "transparent", outline: "none" }}>
                                 Choose Files
                             </label>
-                            <input id="file-upload" type="file" onChange={handleFileChange}/>
-                            <Button onclick={handleUpload} label="Upload"/>
+                            <input id="file-upload" type="file" onChange={handleFileChange} />
+                            <Button onclick={handleUpload} classItem={"primary"}>Upload</Button>
                         </div>
 
                     </div>
@@ -114,8 +114,8 @@ function Landing() {
                 </div>
             </div>
 
-            <ModalLoading label={(progress < 99) ? `Uploading (${progress}%)` : "Processing..."} show={(uploading) ? true : false}/>
-        
+            <ModalLoading label={(progress < 99) ? `Uploading (${progress}%)` : "Processing..."} show={(uploading) ? true : false} />
+
             {downloadURL && <ModalQR url={downloadURL} onclick={handleCopyLink} show={true} />}
         </>
     );

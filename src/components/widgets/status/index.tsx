@@ -2,11 +2,17 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import 'react-circular-progressbar/dist/styles.css';
 import Button from "../../common/button";
 import "./status.scss";
+import { useNavigate } from "react-router-dom";
 
 
 function Status() { 
 
     const color = 63
+
+    const history = useNavigate();
+    let handleClick = () => {
+        history('/premium');
+    };
 
     return (
         <>
@@ -43,7 +49,7 @@ function Status() {
                     <i className="fa-regular fa-crown" style={{fontSize: 24}}></i>
                     <p>Running out of storage?</p>
                     <p>Click the button below to check our premium plan.</p>
-                    <Button href="/premium" label="Go Premium" style={{ marginLeft: "auto" }}/>
+                    <Button onclick={handleClick} classItem={"primary"} > Go Premium </Button>
                 </div>
             </div>
         </>

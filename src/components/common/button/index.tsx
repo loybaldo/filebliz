@@ -1,23 +1,17 @@
-import { Link } from "react-router-dom";
 import "./button.scss"
 
 
 interface ButtonInterface {
-    label: string;
-    href?: string;
-    color?: string;
-    style?: any;
-    onclick?: () => any;
+    classItem: string
+    children?: React.ReactNode
+    onclick?: () => any
 }
 
 
-function Button({ label, href, color, style, onclick }: ButtonInterface) {
-
+export default function Button({ onclick, children, classItem }: ButtonInterface) {
     return (
-        (href)?
-        (<Link className="f-btn" to={href} style={{backgroundColor: color, ...style}}> {label} </Link>) :
-        (<button className="f-btn" style={style} onClick={onclick}> {label} </button>)
+        <button className={"f-btn " + classItem} onClick={onclick}> 
+            {children}
+        </button>
     );
 }
-
-export default Button;
