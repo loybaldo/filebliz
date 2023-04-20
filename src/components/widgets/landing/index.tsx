@@ -9,6 +9,7 @@ import GirlSmile from "../../../assets/illus-ok.svg";
 import "./landing.scss";
 import ModalLoading from "../modal-loading";
 import ModalQR from "../../widgets/modal-qr";
+// import svg from "../../../assets/landing-bg.svg"
 
 
 function Landing() {
@@ -17,7 +18,6 @@ function Landing() {
     const [progress, setProgress] = useState(0);
     const [uploading, setUploading] = useState(false);
     const [file, setFile] = useState<File | null>(null);
-
 
     const handleUpload = () => {
         if (file == null) return;
@@ -86,6 +86,7 @@ function Landing() {
         navigator.clipboard.writeText(downloadURL).then(() => {
             setDownloadURL("");
             alert("Link copied to clipboard.");
+            window.location.reload();
         }).catch((err) => console.error('Could not copy text: ', err));
     }
 
@@ -99,11 +100,11 @@ function Landing() {
                         <h1>Effortlessly Share Your Files with Filebliz</h1>
                         <p>With Filebliz, you can easily share your files with anyone, anytime. Our user-friendly platform ensures that you can quickly upload and send your files to your friends, family, and colleagues without any hassle.</p>
 
-                        <div className="f-form" tabIndex={0}>
+                        <div className="f-form" tabIndex={0} role="button">
                             <label htmlFor="file-upload" className="custom-file-upload" style={{ border: "none", backgroundColor: "transparent", outline: "none" }}>
                                 Choose Files
                             </label>
-                            <input id="file-upload" type="file" onChange={handleFileChange} />
+                            <input role="button" id="file-upload" type="file" onChange={handleFileChange} />
                             <Button onclick={handleUpload} classItem={"primary"}>Upload</Button>
                         </div>
 
@@ -112,6 +113,7 @@ function Landing() {
                         <img draggable="false" src={GirlSmile} alt="Girl Smile" />
                     </div>
                 </div>
+                <div className="f-background"></div>
             </div>
 
             <ModalLoading label={(progress < 99) ? `Uploading (${progress}%)` : "Processing..."} show={(uploading) ? true : false} />

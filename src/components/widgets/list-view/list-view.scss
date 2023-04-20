@@ -3,14 +3,13 @@
 
 .f-list-view {
     @include no-select;
-    // FIXME hardcoded color
-    background-color: white;
+    background-color: $bg-color-accent;
     height: 60px;
     padding: 0 20px;
     display: flex;
     align-items: center;
-    // FIXME hardcoded color
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $text-color-alt;
+
     animation: fade 0.3s ease-in-out;
 
     .f-list-clickable {
@@ -18,8 +17,7 @@
         @include flex-center;
         justify-content: space-between;
         text-decoration: none;
-        // FIXME hardcoded color
-        color: black;
+        color: $text-color;
 
         .f-list-trail {
             display: flex;
@@ -29,7 +27,6 @@
                 @include flex-center;
                 @include wh(38px, 38px);
                 background-color: $primary-color;
-                overflow: hidden;
 
                 img {
                     width: 100%;
@@ -39,7 +36,6 @@
             p {
                 margin-left: 10px;
                 white-space: nowrap;
-                overflow: hidden;
                 text-overflow: ellipsis;
             }
         }
@@ -60,20 +56,25 @@
         display: flex;
         align-items: center;
 
+        // TODO conver this into a bootstrap
         button {
             @include wh(38px, 38px);
-
-            margin-left: 10px;
+            @include mar-pad(0px 0px 0px 10px, 0px);
+            
             border-radius: 50%;
             border: none;
             background-color: transparent;
             cursor: pointer;
+
+            &:hover {
+                background-color: $primary-color;
+            }
+            
+            .f-icon {
+                fill: $text-color;
+            }
         }
 
-        button:hover {
-            // FIXME hardcoded color
-            background-color: #ddd;
-        }
     }
 
     &:hover {
@@ -92,7 +93,7 @@
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: $media-query-mobile) {
     .f-list-view {
         .f-list-clickable {
             .f-list-info {

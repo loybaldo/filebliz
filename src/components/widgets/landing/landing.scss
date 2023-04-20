@@ -3,20 +3,16 @@
 .f-landing {
     @include flex-center;
     @include scroll-bar-hide;
-    // FIXME revert : [Do not set the landing component to vh]
-    width: 100%;
-    padding-top: 80px;
-    background-image: url("../../../assets/landing-bg.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    // FIXME hardcoded color
-    color: white;
-    overflow-y: scroll;
+    // NOTE revert : [Do not set the landing component to vh]
+    @include wh(100%, 100vh);
+    color: $text-color-permanent;
+    // overflow-y: scroll;
 
     .f-container {
         @include global-max-width(0);
         @include mar-pad(0 auto, 50px 20px);
 
+        position: absolute;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 50px;
@@ -54,9 +50,8 @@
                     label {
                         @include mar-pad(0px 20px, 15px 0px);
 
-                        //FIXME hardcoded color
                         width: 100%;
-                        color: black;
+                        color: $text-color;
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
@@ -64,7 +59,7 @@
                     }
 
                     button {
-                        margin: 10px;
+                        @include mar-pad(10px, 0px 24px);
                     }
 
                     &:hover {
@@ -90,6 +85,17 @@
             }
         }
     }
+
+    .f-background {
+        @include wh(100%, 100%);
+
+        z-index: -1;
+        padding-top: 80px;
+        background-image: url("../../../assets/landing-bg.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: $splash-filter;
+    }
 }
 
 
@@ -103,6 +109,7 @@
     }
 }
 
+// NOTE unused
 @keyframes slideIndown1 {
     from {
         transform: translatey(-300px);
@@ -122,6 +129,7 @@
 
         .f-container {
             grid-template-columns: repeat(1, 1fr);
+            @include global-max-width(2);
 
             .f-info:nth-child(1) {
                 grid-row-start: 2;

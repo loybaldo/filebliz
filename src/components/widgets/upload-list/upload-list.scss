@@ -27,7 +27,7 @@
 
     .f-upload-list-no-data {
         margin: 0 20px;
-        background-color: #efefef;
+        background-color: $bg-color-accent;
         border-radius: 15px;
 
         p {
@@ -38,8 +38,8 @@
     }
 
     .f-list-view p {
-        // TODO locate this
-        width: 200px; /* adjust as needed */
+        width: 200px;
+        /* adjust as needed */
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -48,10 +48,11 @@
 
 
 @keyframes fade {
-    from{
+    from {
         opacity: 0;
     }
-    to{
+
+    to {
         opacity: 1;
     }
 }
@@ -59,10 +60,15 @@
 
 @media only screen and (max-width: $media-query-mobile) {
     .f-list-view p {
-        max-width: 130px; /* adjust as needed */
+        max-width: 130px;
+        /* adjust as needed */
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .f-upload-list {
+        @include global-max-width(2);
     }
 }
 

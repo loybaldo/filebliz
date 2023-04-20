@@ -5,10 +5,8 @@
     @include flex-center;
 
     position: fixed;
-
-    // FIXME
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    background-color: $shadow-color;
+    // z-index: 1000;
 
     .f-modal-loading-wrapper {
         @include flex-center;
@@ -18,8 +16,7 @@
         min-height: 200px;
         margin: 0 30px;
 
-        // FIXME 
-        background-color: white;
+        background-color: $bg-color;
         border-radius: 15px;
 
         flex-direction: column;

@@ -2,17 +2,16 @@
 
 
 .f-prem-landing {
-    // FIXME hardcoded color
-    color:black;
-    animation: fade 0.4s ease-in-out ;
+    color: $text-color;
+    animation: fade 0.4s ease-in-out;
 
     .f-container {
-        @include mar-pad(0 auto,50px 20px);
+        @include mar-pad(0 auto, 50px 20px);
         @include wh(100%, auto);
         @include global-max-width(0);
-        
+
         text-align: center;
-       
+
         p {
             max-width: 500px;
             margin: 20px auto 0 auto;
@@ -22,10 +21,11 @@
 
 
 @keyframes fade {
-    from{
+    from {
         opacity: 0;
     }
-    to{
+
+    to {
         opacity: 1;
     }
 }
@@ -36,7 +36,7 @@
 
         .f-container {
             padding-top: unset;
-    
+            @include global-max-width(2);
         }
     }
 }

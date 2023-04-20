@@ -15,6 +15,7 @@
     .f-offers {
         grid-template-columns: 1fr;
         margin-top: 40px;
+        @include global-max-width(2);
     }
 }
 

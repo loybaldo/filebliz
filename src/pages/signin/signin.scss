@@ -12,22 +12,4 @@
     {
         margin-top: 20px;
     }
-
-    button {
-        @include no-select;
-        @include wh(30px, 30px);
-        @include flex-center;
-        @include shadow;
-        
-        margin: 0 10px;
-        box-shadow: 0 3px 6px $shadow-color;
-        border-radius: 50%;
-        background-color: $bg-color;
-        border: none;
-        cursor: pointer;
-
-        img {
-            width: 24px;
-        }
-    }
 }

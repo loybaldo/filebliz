@@ -32,15 +32,13 @@
 
     overflow: hidden;
 
-    // FIXME hardcoded color
-    background-color: white;
+    background-color: $bg-color;
     border-radius: 15px;
     display: flex;
     align-items: center;
-    flex-direction: column;
     text-align: center;
+    flex-direction: column;
 
-    transition: 0.3s ease-in-out;
     animation: fade 0.5s ease-in-out;
 
     span:nth-child(1) {
@@ -75,12 +73,11 @@
         margin-bottom: 40px;
 
         li {
-            margin: 5px;
+            @include mar-pad(5px, 0 30px);
             font-size: 13px;
             display: flex;
             align-items: center;
             text-align: left;
-            padding: 0 30px;
             width: 100%;
             gap: 15px;
         }

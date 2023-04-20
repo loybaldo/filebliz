@@ -1,14 +1,16 @@
 @import "../../../index.scss";
 
+// HERE change bg
 
 .f-feed-container {
     @include mar-pad(unset, 140px 80px);
     width: 100%;
-    background-color: #efefef;
+    background-color: $bg-color-accent;
+    margin-bottom: 50px;
 
     .f-feed-label {
         width: fit-content;
-        margin: 10px auto;
+        margin: auto;
         text-align: center;
         display: flex;
         font-size: x-large;
@@ -34,8 +36,7 @@
                 img {
                     @include wh(38px, 38px);
 
-                    // FIXME Hardcoded Color
-                    background-color: #ddd;
+                    background-color: $bg-color-accent;
                     border-radius: 50%;
                 }
 
@@ -63,8 +64,14 @@
 
 
 @media only screen and (max-width: $media-query-mobile) {
-    .f-feed {
-        grid-template-columns: repeat(1, 1fr);
+
+    .f-feed-container {
+        padding: 30px;
+
+        .f-feed {
+            grid-template-columns: repeat(1, 1fr);
+            @include global-max-width(2);
+        }
     }
 }
 

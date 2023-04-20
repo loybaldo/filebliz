@@ -26,7 +26,7 @@ function NotFoundPage() {
         <>
             <Navigation/>
 
-                <div style={{marginTop: 60, padding: 20}}>
+                <div>
                     <div className="f-not-found">
                         <img draggable="false" src={NotFoundIllustration} alt="Not Found Illustration" />
                         <h2>Oops! Page Not Found.</h2>

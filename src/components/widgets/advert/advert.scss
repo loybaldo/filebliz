@@ -5,7 +5,7 @@
     @include mar-pad(50px auto 100px auto, 20px);
     @include global-max-width(0);
 
-    background-color: $primary-color-bg-light;
+    background-color: $bg-color-accent;
     border-radius: 15px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -17,9 +17,7 @@
 
     .show {
         opacity: 1;
-        transition: 0.3s ease-in-out;
         transform: none;
-
     }
 
     img {
@@ -65,6 +63,7 @@
     .f-advert {
         padding: 20px 20px 40px 20px;
         grid-template-columns: repeat(1, 1fr);
+        @include global-max-width(2);
     }
 }
 

@@ -24,8 +24,7 @@
 // [    global variables    ]
 // ==========================
 
-$global-transition: 0.3s;
-
+$global-transition: 0.15s;
 $media-query-mobile: 768px;
 $media-query-wide: 2000px;
 // $media-query-default: 1920px;
@@ -48,9 +47,12 @@ $media-query-wide: 2000px;
 	@if $class ==0 {
 		max-width: 80%;
 	}
-
 	@else if $class ==1 {
 		max-width: 1320px;
+	}
+	// FIXME some parts aren't eligible for this | PLEASE HAVE THE COMPONENTS MARGINS/PADDING GLOBALIZED FOR LEFT AND RIGHT SPACING
+	@else if $class ==2 {
+		max-width: 370px;
 	}
 }
 
@@ -69,7 +71,6 @@ $media-query-wide: 2000px;
 	}
 
 	&:focus-visible {
-		z-index: 0;
 		outline: 3px solid $primary-color-active;
 		outline-offset: 3px;
 		transition: none;
@@ -148,7 +149,6 @@ $media-query-wide: 2000px;
 	}
 }
 
-// FIXME add fill
 @mixin anchor-button {
 	@include shadow;
 	@include wh(fit-content, 38px);
@@ -156,14 +156,13 @@ $media-query-wide: 2000px;
 	@include focus-style;
 	@include flex-center;
 
+	// extract or create a new default color for buttons 
 	background-color: $info-color;
 	border-radius: 15px;
 	border: none;
 
 	cursor: pointer;
 
-	// FIXME hardcoded color
-	// FIXME extract or creat e a new default color for buttons 
 	color: $text-color-permanent;
 	fill: $text-color-permanent;
 	font-size: 14px;
@@ -176,6 +175,10 @@ $media-query-wide: 2000px;
 	&:active {
 		background-color: $info-color;
 		filter: brightness(140%);
+	}
+
+	img {
+		fill: unset;
 	}
 }
 
@@ -260,6 +263,48 @@ $media-query-wide: 2000px;
 	}
 }
 
+.ctrl {
+	@include flex-center();
+	@include scroll-bar-hide();
+	@include mar-pad(0, 6px);
+
+	background-color: $primary-color;
+	border-radius: 100%;
+
+	&:hover {
+		background-color: $primary-color-hover;
+	}
+	
+	&:active {
+		background-color: $primary-color-hover;
+		filter: brightness(140%);
+	}
+}
+
+.btn-mini {
+	@include mar-pad(0, 0);
+	@include no-select;
+	@include wh(30px, 30px);
+	@include flex-center;
+	@include shadow;
+
+	background-color: unset;
+	fill: none;
+	// box-shadow: 0 3px 6px $shadow-color;
+	border-radius: 50%;
+	border: none;
+	cursor: pointer;
+
+	&:hover,
+	&:active {
+		background-color: unset;
+	}
+
+	:nth-child(n) {
+		width: 24px;
+	}
+}
+
 
 // ==============
 // [    root    ]
@@ -269,7 +314,6 @@ $media-query-wide: 2000px;
 	@include mar-pad(0, 0);
 	@include transition();
 
-	overflow-x: hidden;
 	font-family: 'poppins';
 	box-sizing: border-box;
 	scroll-behavior: smooth;
@@ -282,6 +326,8 @@ code {
 }
 
 body {
+	background-color: $bg-color;
+	color: $text-color;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -290,7 +336,6 @@ input[type="file"] {
 	display: none;
 }
 
-// TODO anchor tag deprecation
 a {
 	@include focus-style;
 }

@@ -51,3 +51,7 @@
 - [X] Redesign Needed Pages (can be postponed)
 - [X] Implement Theme Switcher
     - - [X] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)
+
+    - - [X] globalize transition system
+    - - [X] fix inconsistencies color
+    - - [ ] fix press enter function when selecting files

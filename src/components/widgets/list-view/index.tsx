@@ -8,6 +8,7 @@ import ThumbnailCode from "../../../assets/thumbnail-code.svg";
 import ThumnailMusic from "../../../assets//thumbnail-music.svg";
 import ThumbnailZip from "../../../assets/thumbnail-zip.svg";
 import ThumbnailUnknown from "../../../assets/thumbnail-unknown.svg";
+import Button from "../../common/button";
 
 
 interface ListViewInterface {
@@ -64,8 +65,8 @@ function ListView({fileName, size, fileExt, url, date}: ListViewInterface) {
             </a>
 
             <div className="f-list-action">
-                <button><Icon icon={Icons.copy_outline_bold} title="Copy File"/></button>
-                <button><Icon icon={Icons.trash_outline_bold} title="Delete File"/></button>
+                <Button classItem={""}><Icon icon={Icons.copy_outline_bold} title="Copy File"/></Button>
+                <Button classItem={""}><Icon icon={Icons.trash_outline_bold} title="Delete File"/></Button>
             </div>
         </div>
     );

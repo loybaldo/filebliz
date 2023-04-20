@@ -3,10 +3,10 @@
 
 .f-not-found {
     @include global-max-width(0);
-    @include mar-pad(0 auto, 100px 0);
+    @include mar-pad(auto , 0);
     @include flex-center;
+    @include wh(100%, 100vh);
 
-    justify-content: unset;
     flex-direction: column;
 
     img {

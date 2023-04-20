@@ -6,21 +6,18 @@
     @include flex-center;
 
     position: fixed;
-    
-    // FIXME
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    background-color: $shadow-color;
+    // z-index: 1000;
 
     .f-modal-qr-wrapper {
         @include mar-pad(0 30px, 40px 20px);
         @include flex-center;
-        
+
         width: 100%;
         max-width: 400px;
         min-height: 200px;
 
-        // FIXME
-        background-color: white;
+        background-color: $bg-color;
         border-radius: 15px;
         flex-direction: column;
 

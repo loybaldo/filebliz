@@ -35,8 +35,8 @@ function Footer() {
                 </div>
                 <div className={`${showFooter ? "show" : "hidden"}`}>
                     <span style={{display: "inline-block", textAlign: "center"}}>Filebliz, Copyright&copy; {appFirstPublished} {((new Date().getFullYear()) > appFirstPublished) ? ` - ${new Date().getFullYear()}` : null}. By using Filebliz, you agree to our&nbsp;
-                        <Link to="/privacy" style={{color: "white", fontWeight: "bold"}}>privacy policy</Link> and&nbsp;
-                        <Link to="/terms"  style={{color: "white", fontWeight: "bold"}}>terms &amp; conditions</Link>.
+                        <Link to="/privacy">privacy policy</Link> and&nbsp;
+                        <Link to="/terms" >terms &amp; conditions</Link>.
                     </span>
                 </div>
             </div>

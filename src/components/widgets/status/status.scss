@@ -15,7 +15,7 @@
         @include mar-pad(0px, 30px);
         cursor: default;
 
-        background-color: $primary-color-bg-light;
+        background-color: $bg-color-accent;
         border-radius: 15px;
 
         .CircularProgressbar-path {
@@ -72,8 +72,7 @@
             }
 
             span:nth-child(2)::before {
-                // FIXME Hardcoded color
-                background-color: #ccc;
+                background-color: $bg-color-accent;
             }
         }
     }
@@ -109,6 +108,7 @@
 
 @media only screen and (max-width: $media-query-mobile) {
     .f-status {
+        @include global-max-width(2);
         grid-template-columns: 1fr;
     }
 }

@@ -12,6 +12,7 @@
 
 @media only screen and (max-width: $media-query-mobile) {
     .f-footer-spacer {
+        @include global-max-width(2);
         display: block;
     }
 }

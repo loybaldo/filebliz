@@ -4,30 +4,36 @@ import { AuthContext } from "../../../auth/auth-provider";
 import Button from "../button";
 import Icon from "../icon";
 import Icons from "../icon/Icon";
-import "./nav.scss";
 import ThemeSwitcher from "../../widgets/ThemeSwitcher";
+// import Divider from "../divider";
+import "./nav.scss";
 
 
-function Navigation() {
+export default function Navigation() {
     const { currentUser, logout } = useContext(AuthContext);
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
     const pathName = useLocation().pathname;
 
-    const history = useNavigate();
+    /********/ const history = useNavigate();
 
-    let handleClick = () => {
-        history('/signin');
-    };
+    /********/ // FIXME [Optimization] Combine these functions into one
+    /********/ let handleClickA = () => {
+    /********/     history('/signin');
+    /********/ };
+
+    /********/ let handleClickB = () => {
+    /********/     history('/');
+    /********/ };
 
     const handleToggle = () => {
         if (currentUser) {
             return (
-                <Button onclick={logout} classItem={"primary"} > Logout </Button>
+                <Button onclick={logout} classItem={"primary special-signin"} > Logout </Button>
             );
         } else {
             return (
-                <Button onclick={handleClick} classItem={"primary"}> Sign in </Button>
+                <Button onclick={handleClickA} classItem={"primary special-signin"}> Sign in </Button>
             );
         }
     };
@@ -43,23 +49,49 @@ function Navigation() {
     }, [prevScrollPos, visible]);
 
     return (
-        <>
-            <div className={(pathName === "/") ? "f-nav-theme" : "f-nav"} style={{ top: (visible) ? 0 : -60 }}>
-                <div className="f-branding">
+        <>  
+            {/* Desktop Navigation 
+
+                FIXME
+                Rebase this code to only add an
+                additional class instead of 
+                changing the entire class name.
+                
+                vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+            */}
+            <div className={(pathName === "/") ? "f-nav n-theme" : "f-nav"} style={{ top: (visible) ? 0 : -60 }}>
+            {/*
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            */}
+
+                <Button classItem="f-branding" onclick={handleClickB}>
                     <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
                     <span>FILEBLIZ</span>
-                </div>
+                </Button>
+                {/* INFO: applied clickability to Logo
+
+                    <div className="f-branding">
+                    <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
+                    <span>FILEBLIZ</span>
+                    </div> 
+                */}
+
                 <nav className="f-links">
                     <Link className={(pathName === "/") ? "f-links-item f-links-active" : "f-links-item"} to="/">Home</Link>
                     <Link className={(pathName === "/premium") ? "f-links-item f-links-active" : "f-links-item"} to="/premium">Premium</Link>
                     <Link className={(pathName === "/account") ? "f-links-item f-links-active" : "f-links-item"} to="/account">Account</Link>
                     <Link className={(pathName === "/about") ? "f-links-item f-links-active" : "f-links-item"} to="/about">About</Link>
                 </nav>
-                <ThemeSwitcher/>
-                {handleToggle()}
+
+                <div className="f-nav-functions">
+                    <ThemeSwitcher/>
+                    <div></div>
+                    {handleToggle()}
+                </div>
 
             </div>
-
+            
+            {/* Mobile Navigation */}
             <nav className="f-btm-nav">
                 <Link className={(pathName === "/") ? "f-btm-nav-item f-btm-nav-active" : "f-btm-nav-item"} to="/">
                     <Icon icon={(pathName === "/") ? Icons.home : Icons.home_outline_bold} />
@@ -81,5 +113,3 @@ function Navigation() {
         </>
     );
 }
-
-export default Navigation;

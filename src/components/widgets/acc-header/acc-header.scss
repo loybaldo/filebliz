@@ -30,7 +30,7 @@
 
             border-radius: 50%;
             border: 10px solid $bg-color;
-            background-color: $primary-color-bg-light;
+            background-color: $bg-color;
         }
 
         span {
@@ -83,6 +83,7 @@
 
     .f-prof-container {
         flex-direction: column;
+        @include global-max-width(2);
 
         div:nth-child(1) {
             flex-direction: column;

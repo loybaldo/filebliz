@@ -3,5 +3,6 @@
 
 .divider {
     @include mar-pad(0px 0px 10px 0px, 2px);
-    background-color: $primary-color;
+    @include wh(100%, 100%);
+    background-color: $text-color;
 }

@@ -11,9 +11,6 @@ $primary-color: var(--primary-color);
 $accent-color: var(--accent-color);
 $shadow-color: var(--shadow-color);
 
-// STATE
-$primary-color-bg-light: var(--primary-color-bg-light);
-
 // ACTIONS
 $primary-color-hover: var(--primary-color-hover);
 $accent-color-hover: var(--accent-color-hover);
@@ -37,9 +34,14 @@ $facebook-color: var(--facebook-color);
 $instagram-color: var(--instagram-color);
 $twitter-color: var(--twitter-color);
 
+// FILTER FUNCTIONS
+$splash-filter: var(--splash-filter);
+
 :root {
     // TEXT COLOR
     --text-color: #000000;
+    --text-color-alt: #292929;
+    --text-color-permanent: #ffffff;
 
     // THEME COLORS
     --bg-color: #ffffff;
@@ -49,8 +51,8 @@ $twitter-color: var(--twitter-color);
     --accent-color: #ec6e00;
     --shadow-color: #00000029;
 
-    // STATE
-    --primary-color-bg-light: #f1eef7;
+    // STATE ??? DEBRECATED | Identify relations
+    // --primary-color-bg-light: #110627;
 
     // ACTIONS
     --primary-color-hover: #604d8b;
@@ -74,24 +76,23 @@ $twitter-color: var(--twitter-color);
     --facebook-color: #1877f2;
     --instagram-color: #833ab4;
     --twitter-color: #1da1f2;
+
+    // FILTER FUNCTIONS
+    --splash-filter: brightness(100%);
 }
 
 [data-theme="dark"] {
     // TEXT COLOR
     --text-color: #ffffff;
-    --text-color-alt: #000000;
-    --text-color-permanent: #ffffff;
+    --text-color-alt: #f0eaff;
 
     // THEME COLORS
-    --bg-color: #000000;
+    --bg-color: #0f091c;
     --bg-color-accent: #221b31;
 
-    --primary-color: #735aaf;
-    --accent-color: #ec6e00;
+    --primary-color: #4c3581;
+    --accent-color: #b05709;
     --shadow-color: #00000029;
-
-    // STATE
-    --primary-color-bg-light: #110627;
 
     // ACTIONS
     --primary-color-hover: #604d8b;
@@ -101,18 +102,21 @@ $twitter-color: var(--twitter-color);
     --accent-color-active: #ff8f2d;
 
     // COLOR MESSAGE
-    --safe-color: #46BC4A;
-    --info-color: #428AEA;
-    --warn-color: #EC6E00;
-    --danger-color: #EC0000;
+    --safe-color: #2d9e31;
+    --info-color: #306fc0;
+    --warn-color: #b75d0e;
+    --danger-color: #c01818;
 
-    --safe-color-light: #ECF8EC;
-    --info-color-light: #EBF3FD;
-    --warn-color-light: #FDF0E5;
-    --danger-color-light: #FDE5E5;
+    --safe-color-light: #1b361b;
+    --info-color-light: #16202c;
+    --warn-color-light: #302218;
+    --danger-color-light: #231010;
 
     // BRANDS COLORS
     --facebook-color: #1877f2;
     --instagram-color: #833ab4;
     --twitter-color: #1da1f2;
+
+    // FILTER FUNCTIONS
+    --splash-filter: brightness(64%) saturate(131%);
 }
