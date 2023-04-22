@@ -5,7 +5,7 @@
 - [X] Redesign Page Layouts (covers: majority) !! postponed half of it once everything is finished
 - [ ] *Migrate modal system (making it reusable and customizable)
 - [ ] Rebase Alert Box (Allow Children)
-- [ ] fix press enter function when selecting files
+- [X] fix press enter function when selecting files
 - [X] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)
 - [X] implement theme switcher
 
@@ -51,7 +51,12 @@
 - [X] Redesign Needed Pages (can be postponed)
 - [X] Implement Theme Switcher
     - - [X] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)
-
     - - [X] globalize transition system
     - - [X] fix inconsistencies color
-    - - [ ] fix press enter function when selecting files
+
+    - - [X] fix press enter function when selecting files
+    - - [X] *Migrate modal system (making it reusable and customizable)
+        - [X] incorporate universal modal and modify upload methods
+        - [X] update DOM for upload progress
+
+    - - [ ] Rebase Alert Box (Allow Children)

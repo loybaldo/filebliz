@@ -26,8 +26,8 @@ function AccountHeader() {
         return unsubscribe;
     }, [getMembership]);
 
-    // May bugs.... Balikan ra nako ni, kay mag return siya ug 13 months bisan 1 year ang expiration.
-    const handleMembershipTimeLeft = () =>{
+    // May bugs.... Balikan ra nako ni, kay mag return siya ug 13 months bisan 1 year ang expiration. | chatgpt mo lang yan xD
+    const handleMembershipTimeLeft = () => {
         const dateExpires = new Date(memberships[0].dateExpires);
         const diffTime = dateExpires.getTime() - Date.now();
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -40,11 +40,12 @@ function AccountHeader() {
         }
     }
 
-    return(
+    return (
         <>
             <div className="f-acc-bg"></div>
             <div className="f-prof-container">
                 <div>
+                    {/* INFO: 'currentUser?.photoURL' this code occasionally throws 403 error, consider encasing it with a try & catch? or with a for/while loop?*/}
                     <img draggable="false" src={(currentUser?.photoURL) ? currentUser?.photoURL! : DefaultProfilePic} alt={currentUser?.displayName!} />
                     <span>{currentUser?.displayName}</span>
                 </div>

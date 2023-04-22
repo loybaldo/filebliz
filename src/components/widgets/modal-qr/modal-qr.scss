@@ -2,33 +2,11 @@
 
 
 .f-modal-qr {
-    @include absolute-pos(0, 0, 0, 0);
     @include flex-center;
-
-    position: fixed;
-    background-color: $shadow-color;
-    // z-index: 1000;
-
-    .f-modal-qr-wrapper {
-        @include mar-pad(0 30px, 40px 20px);
-        @include flex-center;
-
-        width: 100%;
-        max-width: 400px;
-        min-height: 200px;
-
-        background-color: $bg-color;
-        border-radius: 15px;
-        flex-direction: column;
-
-        .f-header {
-            margin-bottom: 30px;
-            font-size: x-large;
-            font-weight: bold;
-        }
-
-        .f-btn:nth-child(3) {
-            margin-top: 50px;
-        }
+    @include mar-pad(0, 20px);
+    flex-direction: column;
+    
+    button {
+        @include mar-pad(20px 0px, 20px);
     }
 }

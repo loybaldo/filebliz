@@ -2,17 +2,25 @@ import "./button.scss"
 
 
 interface ButtonInterface {
-    classItem: string
+    classItem: string // primary | p-accent | safe | info | warn | danger | ctrl | ctrl-b
     children?: React.ReactNode
-    // TODO
-    // style?: string
+    disabled?: boolean
+    tabIndex?: number
+    style?: string
     onclick?: () => any
+    onKeyDown?: (event: any) => any
 }
 
 
-export default function Button({ onclick, children, classItem }: ButtonInterface) {
+export default function Button({ onclick, children, classItem, disabled, tabIndex, style, onKeyDown }: ButtonInterface) {
     return (
-        <button className={"f-btn " + classItem} onClick={onclick}>
+        <button disabled={disabled}
+                tabIndex={tabIndex}
+                className={"f-btn " + classItem}
+                // style={style} <- ? wha
+                onClick={onclick}
+                onKeyDown={onKeyDown}
+        >
             {children}
         </button>
     );

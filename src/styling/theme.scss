@@ -8,6 +8,7 @@ $bg-color: var(--bg-color);
 $bg-color-accent: var(--bg-color-accent);
 
 $primary-color: var(--primary-color);
+$primary-accent-color: var(--primary-accent-color);
 $accent-color: var(--accent-color);
 $shadow-color: var(--shadow-color);
 
@@ -23,6 +24,7 @@ $safe-color: var(--safe-color);
 $info-color: var(--info-color);
 $warn-color: var(--warn-color);
 $danger-color: var(--danger-color);
+$disabled-color: var(--disabled-color);
 
 $safe-color-light: var(--safe-color-light);
 $info-color-light: var(--info-color-light);
@@ -48,6 +50,7 @@ $splash-filter: var(--splash-filter);
     --bg-color-accent: #f1eef7;
 
     --primary-color: #735aaf;
+    --primary-accent-color: #4b65ba;
     --accent-color: #ec6e00;
     --shadow-color: #00000029;
 
@@ -66,6 +69,7 @@ $splash-filter: var(--splash-filter);
     --info-color: #428AEA;
     --warn-color: #EC6E00;
     --danger-color: #EC0000;
+    --disabled-color: #797979;
 
     --safe-color-light: #ECF8EC;
     --info-color-light: #EBF3FD;
@@ -90,7 +94,8 @@ $splash-filter: var(--splash-filter);
     --bg-color: #0f091c;
     --bg-color-accent: #221b31;
 
-    --primary-color: #4c3581;
+    --primary-color: #4b377e;
+    --primary-accent-color: #32379d;
     --accent-color: #b05709;
     --shadow-color: #00000029;
 
@@ -106,6 +111,7 @@ $splash-filter: var(--splash-filter);
     --info-color: #306fc0;
     --warn-color: #b75d0e;
     --danger-color: #c01818;
+    --disabled-color: #3b3b3b;
 
     --safe-color-light: #1b361b;
     --info-color-light: #16202c;

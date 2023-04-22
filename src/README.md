@@ -107,13 +107,13 @@ element {
 ```
 - creates a style preset for a card component
 - values can be manipulated/overwritten
-### anchor-button
+### button
 ```CSS
 /* from index.scss */
-@mixin anchor-button
+@mixin button
 /* Usage */
 element {
-    @include anchor-button;
+    @include button;
 }
 ```
 - creates a style preset for a button component

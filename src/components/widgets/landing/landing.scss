@@ -7,7 +7,7 @@
     @include wh(100%, 100vh);
     color: $text-color-permanent;
     // overflow-y: scroll;
-
+    
     .f-container {
         @include global-max-width(0);
         @include mar-pad(0 auto, 50px 20px);
@@ -35,31 +35,42 @@
                 .f-form {
                     @include card;
                     @include mar-pad(0, 0);
+                    @include wh(100%, 60px);
                     @include no-select;
                     @include flex-center;
                     justify-content: unset;
 
                     @include focus-style;
 
-                    margin-top: 50px;
-                    background-color: $bg-color;
+                    // margin-top: 50px;
+                    background: none;
                     border-radius: 15px;
                     text-align: left;
 
+                    transform: translateY(-60px);
 
-                    label {
-                        @include mar-pad(0px 20px, 15px 0px);
-
+                    .f-form-container {
+                        @include flex-center;
+                        
                         width: 100%;
-                        color: $text-color;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        cursor: pointer;
-                    }
+                        justify-content: space-between;
+                        
+                        label {
+                            @include mar-pad(0px 20px, 15px 0px);
+                            
+                            z-index: 1000;
+                            position: relative;
+                            width: 100%;
+                            color: $text-color;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            cursor: pointer;
+                        }
 
-                    button {
-                        @include mar-pad(10px, 0px 24px);
+                        button {
+                            @include mar-pad(10px, 0px 24px);
+                        }
                     }
 
                     &:hover {
@@ -70,6 +81,26 @@
                     &:active {
                         filter: brightness(90%);
                     }
+                }
+
+                .f-form-background {
+                    @include wh(100%, 60px);
+
+                    z-index: 0;
+                    position: relative;
+                    border-radius: 15px;
+                    background-color: $bg-color;
+
+                    transform: translateY(60px);
+                }
+
+                .f-progress-bar {
+                    z-index: 0;
+                    position: relative;
+                    border-radius: 15px;
+                    background-color: $primary-accent-color;
+
+                    transform: translateY(0px);
                 }
             }
 

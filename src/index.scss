@@ -71,7 +71,7 @@ $media-query-wide: 2000px;
 	}
 
 	&:focus-visible {
-		outline: 3px solid $primary-color-active;
+		outline: 3px solid $info-color;
 		outline-offset: 3px;
 		transition: none;
 	}
@@ -149,7 +149,7 @@ $media-query-wide: 2000px;
 	}
 }
 
-@mixin anchor-button {
+@mixin button {
 	@include shadow;
 	@include wh(fit-content, 38px);
 	@include mar-pad(unset, 0 15px);
@@ -206,11 +206,11 @@ $media-query-wide: 2000px;
 	background-color: $accent-color;
 
 	&:hover {
-		// TODO add this
 		background-color: $accent-color;
 	}
-
+	
 	&:active {
+		background-color: $accent-color;
 		filter: brightness(140%);
 	}
 }
@@ -221,8 +221,9 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $safe-color;
 	}
-
+	
 	&:active {
+		background-color: $safe-color;
 		filter: brightness(140%);
 	}
 }
@@ -233,8 +234,9 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $info-color;
 	}
-
+	
 	&:active {
+		background-color: $info-color;
 		filter: brightness(140%);
 	}
 }
@@ -245,8 +247,9 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $warn-color;
 	}
-
+	
 	&:active {
+		background-color: $warn-color;
 		filter: brightness(140%);
 	}
 }
@@ -257,8 +260,9 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $danger-color;
 	}
-
+	
 	&:active {
+		background-color: $danger-color;
 		filter: brightness(140%);
 	}
 }
@@ -279,6 +283,14 @@ $media-query-wide: 2000px;
 		background-color: $primary-color-hover;
 		filter: brightness(140%);
 	}
+}
+
+.ctrl-b {
+	@include flex-center();
+	@include scroll-bar-hide();
+	@include mar-pad(0, 20px);
+
+	border-radius: 100%;
 }
 
 .btn-mini {
@@ -305,6 +317,25 @@ $media-query-wide: 2000px;
 	}
 }
 
+.disabled {
+	background-color: $disabled-color;
+	cursor: not-allowed;
+
+	&:hover {
+		background-color: $disabled-color;
+	}
+	
+	&:active {
+		background-color: $disabled-color;
+		filter: brightness(140%);
+	}
+}
+
+// # Card
+
+.card {
+	@include card();
+}
 
 // ==============
 // [    root    ]
@@ -319,6 +350,10 @@ $media-query-wide: 2000px;
 	scroll-behavior: smooth;
 	// layout debug
 	// outline: solid 1px;
+}
+
+.disable-events {
+	pointer-events: none;
 }
 
 code {
