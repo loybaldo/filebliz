@@ -149,6 +149,7 @@ function Landing() {
     const handleCopyLink = () => {
         navigator.clipboard.writeText(downloadURL).then(() => {
             setDownloadURL("");
+            closeModal();
             alert("Link copied to clipboard.");
 
             // added, reload to temporarily get rid of file selected in system since we dont have a cancel method yet. check Line 125 for referemce

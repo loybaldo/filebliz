@@ -3,7 +3,7 @@
 ### TODO A
 - [X] Refactor all SCSS files
 - [X] Redesign Page Layouts (covers: majority) !! postponed half of it once everything is finished
-- [ ] *Migrate modal system (making it reusable and customizable)
+- [X] *Migrate modal system (making it reusable and customizable)
 - [ ] Rebase Alert Box (Allow Children)
 - [X] fix press enter function when selecting files
 - [X] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)
