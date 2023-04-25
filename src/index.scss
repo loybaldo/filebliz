@@ -1,25 +1,6 @@
 // # Global Import
 @import "./styling/theme.scss";
 
-@font-face {
-	font-family: "glacial indifference";
-	src: url("./assets/fonts/glacial-indifference/GlacialIndifference-Bold.ttf");
-	font-weight: bold;
-}
-
-@font-face {
-	font-family: 'poppins';
-	src: url("./assets/fonts/poppins/Poppins-Regular.ttf");
-	font-weight: normal;
-}
-
-@font-face {
-	font-family: 'poppins';
-	src: url("./assets/fonts/poppins/Poppins-Bold.ttf");
-	font-weight: bold;
-}
-
-
 // ==========================
 // [    global variables    ]
 // ==========================
@@ -345,7 +326,7 @@ $media-query-wide: 2000px;
 	@include mar-pad(0, 0);
 	@include transition();
 
-	font-family: 'poppins';
+	font-family: 'Poppins';
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 	// layout debug

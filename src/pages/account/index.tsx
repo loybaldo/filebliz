@@ -30,13 +30,13 @@ function AccountPage() {
             <AccountHeader/>
 
             
-            <div className="f-toast">
+            {/* <div className="f-toast">
                 <Alert
                     type="info"
                     title="Subscription will expire in 3 days"
                     message="Lorem ipsum dolor sit amet orem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit amet"
                 />
-            </div>
+            </div> */}
 
             <Status/>
             <UploadList/>
