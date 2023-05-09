@@ -24,12 +24,9 @@ function AccountHeader() {
             return `Expires in ${diffMonths - 1} months`;
         }
     }
-    
-      
 
     return (
         <>
-        {console.log(memberships[0])}
             <div className="f-acc-bg"></div>
             <div className="f-prof-container">
                 <div>

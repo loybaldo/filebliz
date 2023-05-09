@@ -86,9 +86,7 @@ export const AuthProvider = ({ children }: Props) => {
   };
 
   return (
-    <AuthContext.Provider
-      value={{ currentUser, memberships, logout, signInWithGoogle, signInWithFacebook, getMembership }}
-    >
+    <AuthContext.Provider value={{ currentUser, memberships, logout, signInWithGoogle, signInWithFacebook, getMembership }}>
       {children}
     </AuthContext.Provider>
   );
