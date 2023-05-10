@@ -2,12 +2,22 @@
 
 .f-signin-container {
     @include mar-pad(0, 0);
-    @include wh(100vw, 100vh);
-    @include flex-center;
-    flex-direction: column;
+    @include wh(100%, 100vh);
+    display: flex;
+    flex-direction: row;
 
-    :nth-child(2),
-    :nth-child(3) {
-        margin-top: 20px;
+    .f-s-background {
+        @include mar-pad(unset, unset);
+        @include wh(50%, 100%);
+
+        z-index: -1;
+        background-image: url("../../assets/landing-bg.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: $splash-filter;
+    }
+
+    .f-s-container {
+        
     }
 }

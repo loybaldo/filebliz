@@ -1,13 +1,13 @@
 import { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../auth/auth-provider";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
 import GoogleLogo from "../../assets/google.svg";
 import FacebookLogo from "../../assets/facebook.svg";
 import Button from "../../components/common/button";
-import "./signin.scss";
 import pagetitle from "../.scripts/pagetitle";
+import "./signin.scss";
 
 
 function SigninPage() {
@@ -39,20 +39,36 @@ function SigninPage() {
 
 	return (
 		<>
-			<Navigation />
-			<div>
-				<div className="f-signin-container">
-					<h1>Sign In Using:</h1>
+			<div className="f-signin-container">
 
-					<Button onclick={handleGoogleSignIn} classItem={"btn-mini"}>
-						<img draggable="false" src={GoogleLogo} alt="Google Logo" />
-					</Button>
-					<Button onclick={handleFacebookSignIn} classItem={"btn-mini"} >
-						<img draggable="false" src={FacebookLogo} alt="Facebook Logo" />
-					</Button>
+				<div className="f-s-background"></div>
+
+				<div className="f-s-container">
+					<div className="card">
+						<h3>Sign In with email</h3>
+
+						<form action="">
+							<input type="email" name="" id="" />
+							<input type="password" />
+							<input className="f-btn" type="submit" value="Sign In" />
+							<span>have an account? Login
+								<Link to={"/signin"}>here</Link>
+							</span>
+						</form>
+
+						<span>or Sign In using</span>
+
+						<Button onclick={handleGoogleSignIn} classItem={"btn-mini"}>
+							<img draggable="false" src={GoogleLogo} alt="Google Logo" />
+						</Button>
+						<Button onclick={handleFacebookSignIn} classItem={"btn-mini"} >
+							<img draggable="false" src={FacebookLogo} alt="Facebook Logo" />
+						</Button>
+
+						<Link to={"/"}>go back</Link>
+					</div>
 				</div>
 			</div>
-			<Footer />
 		</>
 	);
 }
