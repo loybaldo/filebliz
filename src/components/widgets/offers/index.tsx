@@ -36,13 +36,15 @@ function Offers() {
         if ((remainingTime < 0)) { return false };
         return true;
     }
-    
+
     return (
         <>
+            {console.log(currentUser === null)}
+            {console.log(isMembershipValid())}
             <div className="f-offers">
-                <PricingCard type="free" price={0} features={data.free} action={false}/>
-                <PricingCard type="pro" price={10} features={data.pro} action={(!isMembershipValid() && currentUser) ? true : false}/>
-                <PricingCard type="premium" price={18} features={data.premium} action={(!isMembershipValid() && currentUser) ? true : false}/>
+                <PricingCard type="free" price={0} features={data.free} action={false} />
+                <PricingCard type="pro" price={10} features={data.pro} action={(!isMembershipValid() && currentUser) ? true : false} />
+                <PricingCard type="premium" price={18} features={data.premium} action={(!isMembershipValid() && currentUser) ? true : false} />
             </div>
         </>
     );

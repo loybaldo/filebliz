@@ -17,7 +17,7 @@ export default function Navigation() {
 
     /********/ const history = useNavigate();
 
-    /********/ // FIXME [Optimization] Combine these functions into one
+    /********/ // TODO: [Optimization] Combine these functions into one
     /********/ let handleClickA = () => {
     /********/     history('/signin');
     /********/ };
@@ -52,7 +52,7 @@ export default function Navigation() {
         <>  
             {/* Desktop Navigation 
 
-                FIXME
+                TODO: OPTIONAL
                 Rebase this code to only add an
                 additional class instead of 
                 changing the entire class name.

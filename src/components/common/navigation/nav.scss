@@ -1,5 +1,4 @@
-@import '../../../index.scss';
-
+@import "../../../index.scss";
 
 .f-nav {
     @include no-select;
@@ -8,7 +7,7 @@
 
     justify-content: space-between;
     // afaik you can only use values [ -1 | 0 | 1 ]
-    z-index: 1;
+    z-index: 1000;
     position: fixed;
     height: 60px;
     padding: 0 20px;
@@ -72,7 +71,6 @@
     }
 }
 
-
 // ================================
 // [    duplicated for theming    ]
 // ================================
@@ -99,7 +97,6 @@
         border: 1px solid $text-color-permanent;
     }
 }
-
 
 // Mobile Navigation
 .f-btm-nav {
@@ -135,7 +132,6 @@
         }
     }
 }
-
 
 @media only screen and (max-width: $media-query-mobile) {
     .f-nav,

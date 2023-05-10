@@ -7,7 +7,7 @@
     @include wh(100%, 100vh);
     color: $text-color-permanent;
     // overflow-y: scroll;
-    
+
     .f-container {
         @include global-max-width(0);
         @include mar-pad(0 auto, 50px 20px);
@@ -46,18 +46,19 @@
                     background: none;
                     border-radius: 15px;
                     text-align: left;
-
+                    z-index: 1;
+                    position: relative;
                     transform: translateY(-60px);
 
                     .f-form-container {
                         @include flex-center;
-                        
+
                         width: 100%;
                         justify-content: space-between;
-                        
+
                         label {
                             @include mar-pad(0px 20px, 15px 0px);
-                            
+
                             z-index: 1000;
                             position: relative;
                             width: 100%;
@@ -74,8 +75,7 @@
                     }
 
                     &:hover {
-                        //TODO change to theme color later
-                        background-color: $bg-color-accent;
+                        background-color: $bg-color-accent-x;
                     }
 
                     &:active {
@@ -91,16 +91,21 @@
                     border-radius: 15px;
                     background-color: $bg-color;
 
-                    transform: translateY(60px);
+                    transform: translateY(0px);
+
+                    // &:hover {
+                    //     background-color: $bg-color-accent;
+                    // }
+                    // doesn't work
                 }
 
                 .f-progress-bar {
-                    z-index: 0;
+                    z-index: 1;
                     position: relative;
                     border-radius: 15px;
                     background-color: $primary-accent-color;
 
-                    transform: translateY(0px);
+                    transform: translateY(60px);
                 }
             }
 

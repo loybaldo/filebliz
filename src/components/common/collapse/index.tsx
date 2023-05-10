@@ -9,13 +9,13 @@ interface CollapseInterface {
     desc: string;
 }
 
-function Collapse({title, desc}: CollapseInterface) {
+function Collapse(props: CollapseInterface) {
     const [visible, setVisible] = useState(false);
 
     const toggleVisibility = () => {
         if (visible) {
             setVisible(false);
-        }else {
+        } else {
             setVisible(true);
         }
     }
@@ -23,10 +23,10 @@ function Collapse({title, desc}: CollapseInterface) {
     return (
         <div className="f-collapse">
             <div onClick={toggleVisibility}>
-                <Icon icon={(visible) ? Icons.chevron_down : Icons.chevron_right}/>
-                <p> {title} </p>
+                <Icon icon={(visible) ? Icons.chevron_down : Icons.chevron_right} />
+                <p> {props.title} </p>
             </div>
-            <p className="f-desc" style={{height: (visible) ? "fit-content" : 0}}> {desc} </p>
+            <p className="f-desc" style={{ height: (visible) ? "fit-content" : 0, padding: (visible) ? "15px 0px 30px 0px" : "unset" }}> {props.desc} </p>
         </div>
     );
 }

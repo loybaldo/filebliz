@@ -1,5 +1,4 @@
-@import '../../../index.scss';
-
+@import "../../../index.scss";
 
 .f-list-view {
     @include no-select;
@@ -60,7 +59,7 @@
         button {
             @include wh(38px, 38px);
             @include mar-pad(0px 0px 0px 10px, 0px);
-            
+
             border-radius: 50%;
             border: none;
             background-color: transparent;
@@ -69,12 +68,11 @@
             &:hover {
                 background-color: $primary-color;
             }
-            
+
             .f-icon {
                 fill: $text-color;
             }
         }
-
     }
 
     &:hover {
@@ -91,7 +89,6 @@
         opacity: 1;
     }
 }
-
 
 @media only screen and (max-width: $media-query-mobile) {
     .f-list-view {

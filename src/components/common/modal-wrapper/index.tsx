@@ -12,49 +12,70 @@ interface ModalProps {
     onMouseLeave?: () => void
 }
 
-const Modal = ({ modalTitle, isOpen, onClose, children, onMouseEnter, onMouseLeave }: ModalProps) => {
-    if (!isOpen) return null;
+export default function Modal(props: ModalProps) {
+    if (!props.isOpen) return null;
 
     return (
-        <div className="f-modal" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <div className="f-modal" onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave}>
+            
             <div className="f-modal-wrapper card">
+                {/* 
+                    HEADER
+                */}
                 <div className='f-modal-header'>
-                    <h1>{modalTitle}</h1>
-                    <Button classItem={'ctrl'} onclick={onClose}><Close /></Button>
+                    <h1>{props.modalTitle}</h1>
+                    <Button classItem={'ctrl'} onclick={props.onClose}><Close /></Button>
                 </div>
-                {children}
+
+                {/* 
+                    MODAL CONTENT
+                */}
+                {props.children}
             </div>
-            <div className="f-modal-background" onClick={onClose} />
+
+            <div className="f-modal-background" onClick={props.onClose} />
         </div>
     );
 };
 
-export default Modal;
 
+/*=======================[ INTERNAL USAGE ]=======================*/
 
-/*======================[ INTERNAL USAGE ]======================*/ 
+/********/  // /***************[ TO USE THE MODAL ]***************/
+/********/  // insert <Modal></Modal> with the necessarry parameters
+/********/  // and copy and paste the following code inside your 
+/********/  // component below:
 
+/********/  // /***************[ COPY THESE CODES ]***************/
+/********/  //
 /********/  // const [showModal, setShowModal] = useState(false);
 /********/  //
 /********/  // // Open Modal
-/********/  // const openModal = () => {
+/********/  // function openModal() {
 /********/  //     setShowModal(true);
 /********/  //     document.body.classList.add('disable-events');
 /********/  //     document.addEventListener('keydown', handleEscapeKeyPress);
 /********/  //
-/********/  //     const outsideElements = document.querySelectorAll('button'); // you could also add other selectors
+/********/  //     // you could also add other selectors e.g.; ...rAll('button, div, a, ...');
+/********/  //     const outsideElements = document.querySelectorAll('button');
 /********/  //     outsideElements.forEach((element) => {
 /********/  //         element.setAttribute('tabindex', '-1');
 /********/  //     });
 /********/  // };
 /********/  //
-/********/  // const handleEscapeKeyPress = (event: KeyboardEvent) => {
+/********/  // function handleMouseEnter() {
+/********/  //     document.body.classList.remove('disable-events');
+/********/  // };
+/********/  //
+/********/  // // Keybind Listner
+/********/  // function handleEscapeKeyPress(event: KeyboardEvent) {
 /********/  //     if (event.key === 'Escape') {
 /********/  //         closeModal();
 /********/  //     }
 /********/  // };
 /********/  //
-/********/  // const closeModal = () => {
+/********/  // // Closes Modal
+/********/  // function closeModal() {
 /********/  //     setShowModal(false);
 /********/  //     document.removeEventListener('keydown', handleEscapeKeyPress);
 /********/  //
@@ -64,7 +85,4 @@ export default Modal;
 /********/  //     });
 /********/  // };
 /********/  //
-/********/  // // Disable mouse events
-/********/  // const handleMouseEnter = () => {
-/********/  //     document.body.classList.remove('disable-events');
-/********/  // };
+/*===============================[]===============================*/

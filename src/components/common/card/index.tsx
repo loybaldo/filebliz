@@ -7,11 +7,11 @@ interface CardInterface {
     contentHeader: string
 }
 
-function Card({ content, className, contentHeader } : CardInterface) {
+function Card(props: CardInterface) {
     return (
-        <div className={'card ' + className}>
-            <h1> {contentHeader} </h1>
-            <span> {content} </span>
+        <div className={'card ' + props.className}>
+            <h1> {props.contentHeader} </h1>
+            <span> {props.content} </span>
         </div>
     );
 }

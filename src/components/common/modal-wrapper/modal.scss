@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
 .f-modal {
     @include absolute-pos(0, 0, 0, 0);
@@ -8,8 +8,8 @@
     z-index: 800;
 
     .f-modal-wrapper {
-        @include mar-pad(auto, auto);
-        @include wh(50%, 50%);
+        @include mar-pad(auto, 30px 30px 10px 30px);
+        // @include wh(50%, 50%);
 
         z-index: 1000;
         display: flex;
@@ -23,6 +23,7 @@
             border-bottom: 1px solid $text-color-alt;
 
             button {
+                pointer-events: all;
                 @include wh(30px, 30px);
                 display: inline-flex;
             }

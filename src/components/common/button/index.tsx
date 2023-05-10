@@ -2,7 +2,7 @@ import "./button.scss"
 
 
 interface ButtonInterface {
-    classItem: string // primary | p-accent | safe | info | warn | danger | ctrl | ctrl-b
+    classItem: string               // primary | p-accent | safe | info | warn | danger | ctrl | ctrl-b
     children?: React.ReactNode
     disabled?: boolean
     tabIndex?: number
@@ -12,16 +12,18 @@ interface ButtonInterface {
 }
 
 
-export default function Button({ onclick, children, classItem, disabled, tabIndex, style, onKeyDown }: ButtonInterface) {
+export default function Button(props: ButtonInterface) {
     return (
-        <button disabled={disabled}
-                tabIndex={tabIndex}
-                className={"f-btn " + classItem}
-                // style={style} <- ? wha
-                onClick={onclick}
-                onKeyDown={onKeyDown}
+        <button disabled={props.disabled}
+            tabIndex={props.tabIndex}
+            className={"f-btn " + props.classItem}
+            // style={style} <- ? wha
+            onClick={props.onclick}
+            onKeyDown={props.onKeyDown}
+
+        // NOTE Use useNavigate from `react-router-dom` if you want to use the button as a navigator.
         >
-            {children}
+            {props.children}
         </button>
     );
 }

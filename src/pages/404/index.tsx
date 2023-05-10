@@ -21,20 +21,20 @@ function NotFoundPage() {
     let handleClick = () => {
         history('/');
     };
-    
+
     return (
         <>
-            <Navigation/>
+            <Navigation />
 
-                <div>
-                    <div className="f-not-found">
-                        <img draggable="false" src={NotFoundIllustration} alt="Not Found Illustration" />
-                        <h2>Oops! Page Not Found.</h2>
-                        <p>Sorry, the page you are looking for cannot be found. Please check the URL or go back to the homepage.</p>
-                        <Button onclick={handleClick} classItem={"primary"}>Go Back To Home</Button>
-                    </div>
+            <div>
+                <div className="f-not-found">
+                    <img draggable="false" src={NotFoundIllustration} alt="Not Found Illustration" />
+                    <h2>Oops! Page Not Found.</h2>
+                    <p>Sorry, the page you are looking for cannot be found. Please check the URL or go back to the homepage.</p>
+                    <Button onclick={handleClick} classItem={"primary"}>Go Back To Home</Button>
                 </div>
-            <Footer/>
+            </div>
+            <Footer />
         </>
     );
 }

@@ -1,15 +1,13 @@
-@import '../../index.scss';
-
+@import "../../index.scss";
 
 .f-signin-container {
     @include mar-pad(0, 0);
     @include wh(100vw, 100vh);
     @include flex-center;
     flex-direction: column;
-    
+
     :nth-child(2),
-    :nth-child(3)
-    {
+    :nth-child(3) {
         margin-top: 20px;
     }
 }

@@ -1,9 +1,8 @@
 @import "../../index.scss";
 
-
 .f-not-found {
     @include global-max-width(0);
-    @include mar-pad(auto , 0);
+    @include mar-pad(auto, 0);
     @include flex-center;
     @include wh(100%, 100vh);
 
@@ -28,7 +27,7 @@
 }
 
 @media only screen and (min-width: $media-query-wide) {
-    .f-not-found{
+    .f-not-found {
         @include global-max-width(1);
     }
 }

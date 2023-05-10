@@ -1,18 +1,50 @@
-@import '../../index.scss';
+@import "../../index.scss";
 
+.f-premium-parent {
+    @include flex-center;
+    @include wh(100%, 100vh);
+    padding-top: 60px;
+    flex-direction: column;
+    overflow: hidden;
+}
 
 .f-faq-container {
-    @include mar-pad(0 auto, 20);
+    @include mar-pad(0 auto, 20px 30px 60px 30px);
     @include global-max-width(0);
 
     span {
-        display: flex;
+        @include no-select;
+        @include flex-center;
+
+        @include mar-pad(0, 30px 0);
+
         margin-bottom: 20;
         font-size: x-large;
+        font-weight: bold;
+    }
+}
+
+.f-campaign {
+    @include flex-center;
+    @include wh(100%, 420px);
+    flex-direction: column;
+    background-color: $bg-color-accent;
+
+    h1,
+    span {
+        padding: 5px;
+    }
+
+    button {
+        margin-top: 20px;
     }
 }
 
 @media only screen and (min-width: $media-query-wide) {
+    .f-premium-parent {
+        height: 100%;
+    }
+
     .f-faq-container {
         @include global-max-width(1);
     }

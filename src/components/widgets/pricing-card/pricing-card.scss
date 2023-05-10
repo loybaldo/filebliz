@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
 // TODO might be globalized?
 @mixin card-style($background-color, $color) {
@@ -12,18 +12,17 @@
         background-color: $color;
     }
 
-    &:hover {
-        transform: translateY(-10px);
-    }
+    // &:hover {
+    //     transform: translateY(-10px);
+    // }
 
     &::before {
         content: "";
         @include wh(100%, 15px);
-    
+
         background-color: $color;
     }
 }
-
 
 .f-pricing-card {
     @include card;
@@ -87,7 +86,6 @@
         @include card-style($safe-color-light, $safe-color);
     }
 
-
     &:nth-child(2) {
         @include card-style($info-color-light, $info-color);
     }
@@ -96,7 +94,6 @@
         @include card-style($warn-color-light, $warn-color);
     }
 }
-
 
 @keyframes fade {
     from {
