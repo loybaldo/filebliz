@@ -1,6 +1,6 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
 .f-btn {
     @include no-select;
-    @include anchor-button;
+    @include button;
 }

@@ -1,23 +1,29 @@
-import { Link } from "react-router-dom";
 import "./button.scss"
 
 
 interface ButtonInterface {
-    label: string;
-    href?: string;
-    color?: string;
-    style?: any;
-    onclick?: () => any;
+    classItem: string               // primary | p-accent | safe | info | warn | danger | ctrl | ctrl-b
+    children?: React.ReactNode
+    disabled?: boolean
+    tabIndex?: number
+    style?: string
+    onclick?: () => any
+    onKeyDown?: (event: any) => any
 }
 
 
-function Button({ label, href, color, style, onclick }: ButtonInterface) {
-
+export default function Button(props: ButtonInterface) {
     return (
-        (href)?
-        (<Link className="f-btn" to={href} style={{backgroundColor: color, ...style}}> {label} </Link>) :
-        (<button className="f-btn" style={style} onClick={onclick}> {label} </button>)
+        <button disabled={props.disabled}
+            tabIndex={props.tabIndex}
+            className={"f-btn " + props.classItem}
+            // style={style} <- ? wha
+            onClick={props.onclick}
+            onKeyDown={props.onKeyDown}
+
+        // NOTE Use useNavigate from `react-router-dom` if you want to use the button as a navigator.
+        >
+            {props.children}
+        </button>
     );
 }
-
-export default Button;

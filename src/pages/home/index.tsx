@@ -10,16 +10,14 @@ import Feedbacks from "../../components/widgets/feedbacks";
 function HomePage() {
     return (
         <>
-            <Navigation/>
+            <Navigation />
             <div className="mainView">
-                <Landing/>
-                <Services/>
-                <div style={{padding: "0 20px"}}>
-                    <Advert/>
-                </div>
-                <Feedbacks/>
+                <Landing />
+                <Services />
+                <Advert />
+                <Feedbacks />
             </div>
-            <Footer/>
+            <Footer />
             <div className="f-footer-spacer"></div>
         </>
     );

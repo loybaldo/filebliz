@@ -1,5 +1,4 @@
-@import '../../../index.scss';
-
+@import "../../../index.scss";
 
 .f-acc-bg {
     @include wh(100%, 300px);
@@ -7,10 +6,9 @@
 }
 
 .f-prof-container {
-    @include max-wh(1320px, 120px);
-    width: 100%;
-    margin: 0 auto;
+    @include global-max-width(0);
 
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 
@@ -31,7 +29,7 @@
 
             border-radius: 50%;
             border: 10px solid $bg-color;
-            background-color: $primary-color-bg-light;
+            background-color: $bg-color;
         }
 
         span {
@@ -67,7 +65,6 @@
     }
 }
 
-
 @keyframes fade {
     from {
         opacity: 0;
@@ -76,14 +73,12 @@
     to {
         opacity: 1;
     }
-
 }
 
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: $media-query-mobile) {
     .f-prof-container {
-        max-height: 320px;
         flex-direction: column;
+        @include global-max-width(2);
 
         div:nth-child(1) {
             flex-direction: column;
@@ -99,5 +94,11 @@
             align-items: center;
             transform: unset;
         }
+    }
+}
+
+@media only screen and (min-width: $media-query-wide) {
+    .f-prof-container {
+        @include global-max-width(1);
     }
 }

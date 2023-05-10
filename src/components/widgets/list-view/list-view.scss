@@ -1,24 +1,22 @@
-@import '../../../index.scss';
-
+@import "../../../index.scss";
 
 .f-list-view {
     @include no-select;
-    background-color: white;
+    background-color: $bg-color-accent;
     height: 60px;
     padding: 0 20px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $text-color-alt;
+
     animation: fade 0.3s ease-in-out;
 
     .f-list-clickable {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
+        @include wh(100%, 100%);
+        @include flex-center;
         justify-content: space-between;
         text-decoration: none;
-        color: black;
+        color: $text-color;
 
         .f-list-trail {
             display: flex;
@@ -28,8 +26,6 @@
                 @include flex-center;
                 @include wh(38px, 38px);
                 background-color: $primary-color;
-                // border-radius: 12px;
-                overflow: hidden;
 
                 img {
                     width: 100%;
@@ -39,7 +35,6 @@
             p {
                 margin-left: 10px;
                 white-space: nowrap;
-                overflow: hidden;
                 text-overflow: ellipsis;
             }
         }
@@ -60,18 +55,23 @@
         display: flex;
         align-items: center;
 
+        // TODO conver this into a bootstrap
         button {
             @include wh(38px, 38px);
+            @include mar-pad(0px 0px 0px 10px, 0px);
 
-            margin-left: 10px;
             border-radius: 50%;
             border: none;
             background-color: transparent;
             cursor: pointer;
-        }
 
-        button:hover {
-            background-color: #ddd;
+            &:hover {
+                background-color: $primary-color;
+            }
+
+            .f-icon {
+                fill: $text-color;
+            }
         }
     }
 
@@ -90,15 +90,12 @@
     }
 }
 
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: $media-query-mobile) {
     .f-list-view {
-    
-            .f-list-clickable {
-                .f-list-info {
-    
-                    display: none;
-                }
+        .f-list-clickable {
+            .f-list-info {
+                display: none;
             }
         }
+    }
 }

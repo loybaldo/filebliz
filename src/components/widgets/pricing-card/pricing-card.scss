@@ -1,6 +1,6 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
-
+// TODO might be globalized?
 @mixin card-style($background-color, $color) {
     background-color: $background-color;
 
@@ -19,27 +19,25 @@
     &::before {
         content: "";
         @include wh(100%, 15px);
-    
+
         background-color: $color;
     }
 }
 
-
 .f-pricing-card {
     @include card;
-    @include marPad(unset, unset);
+    @include mar-pad(unset, unset);
     cursor: default;
 
     overflow: hidden;
 
-    background-color: white;
+    background-color: $bg-color;
     border-radius: 15px;
     display: flex;
     align-items: center;
-    flex-direction: column;
     text-align: center;
+    flex-direction: column;
 
-    transition: 0.3s ease-in-out;
     animation: fade 0.5s ease-in-out;
 
     span:nth-child(1) {
@@ -74,12 +72,11 @@
         margin-bottom: 40px;
 
         li {
-            margin: 5px;
+            @include mar-pad(5px, 0 30px);
             font-size: 13px;
             display: flex;
             align-items: center;
             text-align: left;
-            padding: 0 30px;
             width: 100%;
             gap: 15px;
         }
@@ -89,7 +86,6 @@
         @include card-style($safe-color-light, $safe-color);
     }
 
-
     &:nth-child(2) {
         @include card-style($info-color-light, $info-color);
     }
@@ -98,7 +94,6 @@
         @include card-style($warn-color-light, $warn-color);
     }
 }
-
 
 @keyframes fade {
     from {

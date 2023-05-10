@@ -1,0 +1,13 @@
+@import "../../index.scss";
+
+// TODO migrate toast to index for custom bootstrap
+.f-toast {
+    @include mar-pad(0 auto, 0 20px);
+    @include global-max-width(0);
+}
+
+@media only screen and (min-width: $media-query-wide) {
+    .f-toast {
+        @include global-max-width(1);
+    }
+}

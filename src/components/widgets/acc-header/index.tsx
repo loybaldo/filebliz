@@ -1,51 +1,36 @@
-import { useCallback, useContext, useEffect, useState } from "react";
-import { DocumentData, collection, query, where, orderBy, onSnapshot } from "firebase/firestore";
+import { useContext } from "react";
+import { AuthContext } from "../../../auth/auth-provider";
 import DefaultProfilePic from "../../../assets/default-profile.svg";
 import "./acc-header.scss";
-import { AuthContext } from "../../../auth/auth-provider";
-import { db } from "../../../config/firebase";
 
 
 function AccountHeader() {
-    const { currentUser } = useContext(AuthContext);
-    const [memberships, setMemberships] = useState<DocumentData>([]);
+    const { currentUser, memberships } = useContext(AuthContext);
 
-    // Get the user membership records.
-    const getMembership = useCallback(() => {
-        const filesRef = collection(db, process.env.REACT_APP_PURCHASE_TABLE!);
-        const q = query(filesRef, where("userId", "==", currentUser?.uid), orderBy("datePurchased", "desc"));
-        const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
-            const membershipList = snapshot.docs.map((doc) => doc.data());
-            setMemberships(membershipList);
-        });
-        return unsubscribe;
-    }, [currentUser?.uid])
-
-    useEffect(() => {
-        const unsubscribe = getMembership();
-        return unsubscribe;
-    }, [getMembership]);
-
-    // May bugs.... Balikan ra nako ni, kay mag return siya ug 13 months bisan 1 year ang expiration.
-    const handleMembershipTimeLeft = () =>{
+    // May bugs.... Balikan ra nako ni, kay mag return siya ug 13 months bisan 1 year ang expiration. | chatgpt mo lang yan xD
+    const handleMembershipTimeLeft = () => {
+        const daysInMonth = 30;
         const dateExpires = new Date(memberships[0].dateExpires);
         const diffTime = dateExpires.getTime() - Date.now();
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-        if (diffDays < 29) {
+        if (diffDays < daysInMonth) {
             return `Expires in ${diffDays} days`;
         } else {
             const diffMonths = Math.floor(diffDays / 30);
-            return `Expires in ${diffMonths} months`;
+            // No idea why :C
+            // Gi minus 1 na lang nako XD
+            return `Expires in ${diffMonths - 1} months`;
         }
     }
 
-    return(
+    return (
         <>
             <div className="f-acc-bg"></div>
             <div className="f-prof-container">
                 <div>
-                    <img src={(currentUser?.photoURL) ? currentUser?.photoURL! : DefaultProfilePic} alt={currentUser?.displayName!} />
+                    {/* INFO: 'currentUser?.photoURL' this code occasionally throws 403 error, consider encasing it with a try & catch? or with a for/while loop?*/}
+                    <img draggable="false" src={(currentUser?.photoURL) ? currentUser?.photoURL! : DefaultProfilePic} alt={currentUser?.displayName!} />
                     <span>{currentUser?.displayName}</span>
                 </div>
                 <div>

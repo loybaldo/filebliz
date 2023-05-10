@@ -1,28 +1,22 @@
-@import '../../../index.scss';
-
+@import "../../../index.scss";
 
 .f-status {
-    @include marPad(0 auto, 20px);
-    
-    width: 100%;
-    max-width: 1320px;
-    
+    @include mar-pad(0 auto, 20px);
+    @include global-max-width(0);
+
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr 2fr;
-
     animation: fade 0.3s ease-in-out;
 
-    
     .f-card {
         @include card;
-        @include marPad(0px, 30px);
+        @include mar-pad(0px, 30px);
         cursor: default;
 
-        background-color: $primary-color-bg-light;
+        background-color: $bg-color-accent;
         border-radius: 15px;
 
-        // <<<<< added <<<<<
         .CircularProgressbar-path {
             stroke: $primary-color;
         }
@@ -30,7 +24,6 @@
         .CircularProgressbar-text {
             fill: $text-color;
         }
-        // >>>>>>>>>>>>>>>>>
 
         &:hover {
             filter: none;
@@ -43,7 +36,6 @@
         flex-direction: column;
 
         div:nth-child(1) {
-            width: 100%;
             max-width: 100px;
             display: flex;
             align-items: center;
@@ -79,7 +71,7 @@
             }
 
             span:nth-child(2)::before {
-                background-color: #ccc;
+                background-color: $bg-color-accent;
             }
         }
     }
@@ -102,19 +94,24 @@
     }
 }
 
-
 @keyframes fade {
-    from{
-        opacity:0;
+    from {
+        opacity: 0;
     }
-    to{
-        opacity:1;
+    to {
+        opacity: 1;
     }
 }
 
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: $media-query-mobile) {
     .f-status {
+        @include global-max-width(2);
         grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (min-width: $media-query-wide) {
+    .f-status {
+        @include global-max-width(1);
     }
 }

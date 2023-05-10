@@ -1,33 +1,13 @@
-@import '../../index.scss';
-
+@import "../../index.scss";
 
 .f-signin-container {
-    @include marPad(0, 0);
+    @include mar-pad(0, 0);
     @include wh(100vw, 100vh);
     @include flex-center;
     flex-direction: column;
-    
+
     :nth-child(2),
-    :nth-child(3)
-    {
+    :nth-child(3) {
         margin-top: 20px;
-    }
-
-    button {
-        @include no-select;
-        @include wh(30px, 30px);
-        @include flex-center;
-        @include shadow;
-        
-        margin: 0 10px;
-        box-shadow: 0 3px 6px $shadow-color;
-        border-radius: 50%;
-        background-color: $bg-color;
-        border: none;
-        cursor: pointer;
-
-        img {
-            width: 24px;
-        }
     }
 }

@@ -23,8 +23,7 @@ interface PaypalButtonInterface {
 }
 
 
-
-function PaypalButton({type, price}: PaypalButtonInterface) {
+function PaypalButton(props: PaypalButtonInterface) {
     const { currentUser } = useContext(AuthContext);
     const [{ isPending, isRejected }] = usePayPalScriptReducer();
 
@@ -32,14 +31,14 @@ function PaypalButton({type, price}: PaypalButtonInterface) {
     const handleCreateOrder = async (data: any, actions: any) => {
         console.log(currentUser?.uid);
         const order = await actions?.order?.create({
-        purchase_units: [{
-            amount: {
-                currency_code: "USD",
-                value: price.toString(),
-            },
-        }],
-    });
-    return order;
+            purchase_units: [{
+                amount: {
+                    currency_code: "USD",
+                    value: props.price.toString(),
+                },
+            }],
+        });
+        return order;
     };
 
     // This will check and handle if the user approved the payment.
@@ -49,40 +48,39 @@ function PaypalButton({type, price}: PaypalButtonInterface) {
         const premiumExpiration = new Date(currentDate.setFullYear(currentDate.getFullYear() + parseInt(process.env.REACT_APP_PREMIUM_EXPIRATION_YEARS!))).getTime();
         const purchaseInfo = {
             userId: currentUser?.uid,
-            type: type,
+            type: props.type,
             usedStorage: 0,
             datePurchased: new Date().getTime(),
-            dateExpires: (type === "pro") ? proExpiration : premiumExpiration,
+            dateExpires: (props.type === "pro") ? proExpiration : premiumExpiration,
         }
         await addDoc(collection(db, process.env.REACT_APP_PURCHASE_TABLE!), purchaseInfo);
     }
-    
+
     return (
         <>
-            {(isPending || isRejected) ? <Loader/> : null}
-            <PayPalButtons 
+            {(isPending || isRejected) ? <Loader /> : null}
+            <PayPalButtons
                 style={{ layout: "horizontal", height: 38, shape: "pill", tagline: true }}
                 createOrder={handleCreateOrder}
-                onApprove={handleOnApproved}/>
+                onApprove={handleOnApproved} />
         </>
     )
 }
 
 
-
-function PricingCard({type, price, features, action = true}: PricingCardInterface) {
-    return(
+function PricingCard(props: PricingCardInterface) {
+    return (
         <div className="f-pricing-card">
-            <div style={{padding: 25, display: "flex", flexDirection: "column", alignItems: "center"}}>
-                <span> {type} </span>
-                <span> <b>${price}</b> Per Month</span>
+            <div style={{ padding: 25, display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <span> {props.type} </span>
+                <span> <b>${props.price}</b> Per Month</span>
                 <ul>
-                    {features.map((item, index) => (<li key={index}><Icon icon={Icons.check_circle}/> {item} </li>))}
+                    {props.features.map((item, index) => (<li key={index}><Icon icon={Icons.check_circle} /> {item} </li>))}
                 </ul>
-                {(!action) ? null :
-                (<PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID! }}>
-                    <PaypalButton type={type} price={price}/>
-                </PayPalScriptProvider>)}
+                {(!props.action) ? null :
+                    (<PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID! }}>
+                        <PaypalButton type={props.type} price={props.price} />
+                    </PayPalScriptProvider>)}
             </div>
         </div>
     );
