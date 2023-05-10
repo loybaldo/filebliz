@@ -18,7 +18,7 @@ function Advert() {
                 setShowAdvert(true);
             }
         };
-        
+
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -36,7 +36,7 @@ function Advert() {
                 <i className="fa-regular fa-crown" style={{ fontSize: 24, color: "#ec6e00" }}></i>
 
                 <span>Upgrade to Premium</span>
-                
+
                 <p>Unlock the ability to upload larger files and enjoy advanced sharing features. Upgrade now for an enhanced file sharing experience.</p>
                 <Button onclick={handleClick} classItem={"primary"}>Upgrade</Button>
             </div>

@@ -4,7 +4,6 @@ import DefaultProfilePic from "../../../assets/default-profile.svg";
 import "./acc-header.scss";
 
 
-
 function AccountHeader() {
     const { currentUser, memberships } = useContext(AuthContext);
 
@@ -14,7 +13,7 @@ function AccountHeader() {
         const dateExpires = new Date(memberships[0].dateExpires);
         const diffTime = dateExpires.getTime() - Date.now();
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    
+
         if (diffDays < daysInMonth) {
             return `Expires in ${diffDays} days`;
         } else {

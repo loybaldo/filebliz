@@ -7,6 +7,6 @@
     flex-direction: column;
     
     button {
-        @include mar-pad(20px 0px, 20px);
+        @include mar-pad(20px 0px 0px 0px, 20px);
     }
 }

@@ -20,7 +20,7 @@ function Footer() {
     }, []);
 
     return (
-        <footer className="f-footer">
+        <footer className="f-footer" id="footer">
             <div ref={footerRef} className="f-container">
                 <div className={`${showFooter ? "show" : "hidden"}`}>
                     <a href="https://facebook.com" target="_blank" rel="noreferrer" title="Facebook">

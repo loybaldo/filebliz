@@ -41,7 +41,7 @@ function SigninPage() {
 					<h1>Sign In Using:</h1>
 
 					<Button onclick={handleGoogleSignIn} classItem={"btn-mini"}>
-						<img  draggable="false" src={GoogleLogo} alt="Google Logo" />
+						<img draggable="false" src={GoogleLogo} alt="Google Logo" />
 					</Button>
 					<Button onclick={handleFacebookSignIn} classItem={"btn-mini"} >
 						<img draggable="false" src={FacebookLogo} alt="Facebook Logo" />

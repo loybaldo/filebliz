@@ -8,11 +8,11 @@ interface ModalQRInterface {
     onclick: () => void;
 }
 
-export default function ModalQR({ url, onclick }: ModalQRInterface) {
+export default function ModalQR(props: ModalQRInterface) {
     return (
         <div className="f-modal-qr">
-            <QRCodeCanvas style={{ width: 200, height: 200 }} value={url} />
-            <Button onclick={onclick} classItem={"primary"}>Copy Link</Button>
+            <QRCodeCanvas style={{ width: 200, height: 200 }} value={props.url} />
+            <Button onclick={props.onclick} classItem={"primary"}>Copy Link</Button>
         </div>
     );
 }

@@ -10,13 +10,12 @@ $media-query-mobile: 768px;
 $media-query-wide: 2000px;
 // $media-query-default: 1920px;
 
-
 // ==========================
 // [    component mixins    ]
 // --------------------------
 //  Declare internal
-//  attributes with unset 
-//  value to disable 
+//  attributes with unset
+//  value to disable
 //  when applied
 // ==========================
 
@@ -27,10 +26,10 @@ $media-query-wide: 2000px;
 @mixin global-max-width($class) {
 	@if $class ==0 {
 		max-width: 80%;
-	}
-	@else if $class ==1 {
+	} @else if $class ==1 {
 		max-width: 1320px;
 	}
+
 	// FIXME some parts aren't eligible for this | PLEASE HAVE THE COMPONENTS MARGINS/PADDING GLOBALIZED FOR LEFT AND RIGHT SPACING
 	@else if $class ==2 {
 		max-width: 370px;
@@ -45,7 +44,6 @@ $media-query-wide: 2000px;
 }
 
 @mixin focus-style {
-
 	&:focus,
 	&:focus-within {
 		outline: none;
@@ -108,7 +106,6 @@ $media-query-wide: 2000px;
 	}
 }
 
-
 // ==========================
 // [    component styles    ]
 // ==========================
@@ -126,7 +123,7 @@ $media-query-wide: 2000px;
 	}
 
 	&:active {
-		filter: brightness(97%)
+		filter: brightness(97%);
 	}
 }
 
@@ -137,7 +134,7 @@ $media-query-wide: 2000px;
 	@include focus-style;
 	@include flex-center;
 
-	// extract or create a new default color for buttons 
+	// extract or create a new default color for buttons
 	background-color: $info-color;
 	border-radius: 15px;
 	border: none;
@@ -162,7 +159,6 @@ $media-query-wide: 2000px;
 		fill: unset;
 	}
 }
-
 
 // ==================================
 // [    Custom Bootstrap Methods    ]
@@ -189,7 +185,7 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $accent-color;
 	}
-	
+
 	&:active {
 		background-color: $accent-color;
 		filter: brightness(140%);
@@ -202,7 +198,7 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $safe-color;
 	}
-	
+
 	&:active {
 		background-color: $safe-color;
 		filter: brightness(140%);
@@ -215,7 +211,7 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $info-color;
 	}
-	
+
 	&:active {
 		background-color: $info-color;
 		filter: brightness(140%);
@@ -228,7 +224,7 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $warn-color;
 	}
-	
+
 	&:active {
 		background-color: $warn-color;
 		filter: brightness(140%);
@@ -241,7 +237,7 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $danger-color;
 	}
-	
+
 	&:active {
 		background-color: $danger-color;
 		filter: brightness(140%);
@@ -259,7 +255,7 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $primary-color-hover;
 	}
-	
+
 	&:active {
 		background-color: $primary-color-hover;
 		filter: brightness(140%);
@@ -305,7 +301,7 @@ $media-query-wide: 2000px;
 	&:hover {
 		background-color: $disabled-color;
 	}
-	
+
 	&:active {
 		background-color: $disabled-color;
 		filter: brightness(140%);
@@ -326,7 +322,7 @@ $media-query-wide: 2000px;
 	@include mar-pad(0, 0);
 	@include transition();
 
-	font-family: 'Poppins';
+	font-family: "Poppins";
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 	// layout debug
@@ -337,8 +333,50 @@ $media-query-wide: 2000px;
 	pointer-events: none;
 }
 
+.dragging-over {
+	outline: 4px solid $info-color;
+	outline-offset: 4px;
+	animation: outlineTransitionA 2s cubic-bezier(0.45, 0, 0.53, 1) 0s infinite normal forwards;
+}
+
+.dragging-over-active {
+	outline: 4px solid $accent-color;
+	outline-offset: 4px;
+	animation: outlineTransitionB 0.3s cubic-bezier(0.45, 0, 0.53, 1) 0s 1 normal forwards;
+	// filter: brightness(110%);
+}
+
+@keyframes outlineTransitionA {
+	0%,
+	50%,
+	100% {
+		filter: brightness(100%);
+	}
+
+	25%,
+	75% {
+		filter: brightness(130%);
+	}
+}
+
+@keyframes outlineTransitionB {
+	0% {
+		// filter: brightness(100%);
+		// transform: scale(1) translateY(-60px);
+		// transform-origin: center center;
+		outline-offset: 4px;
+	}
+
+	100% {
+		// filter: brightness(130%);
+		// transform: scale(1.01) translateY(-60px);
+		// transform-origin: center center;
+		outline-offset: 0px;
+	}
+}
+
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 body {

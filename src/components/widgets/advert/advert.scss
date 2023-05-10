@@ -1,5 +1,4 @@
-@import '../../../index.scss';
-
+@import "../../../index.scss";
 
 .f-advert {
     @include mar-pad(50px auto 100px auto, 20px);
@@ -57,7 +56,6 @@
         }
     }
 }
-
 
 @media only screen and (max-width: $media-query-mobile) {
     .f-advert {

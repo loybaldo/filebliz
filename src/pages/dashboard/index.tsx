@@ -1,7 +1,7 @@
 
 
 function Dashboard() {
-    return(
+    return (
         <>
             <div>Hello World</div>
         </>

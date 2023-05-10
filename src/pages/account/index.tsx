@@ -23,24 +23,21 @@ function AccountPage() {
             document.title = APP_NAME!;
         };
     },);
-    
-    return(
-        <>
-            <Navigation/>
-            <AccountHeader/>
 
-            
+    return (
+        <>
+            <Navigation />
+            <AccountHeader />
+
             {/* <div className="f-toast">
-                <Alert
-                    type="info"
-                    title="Subscription will expire in 3 days"
-                    message="Lorem ipsum dolor sit amet orem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit amet"
-                />
+                <Alert type="info" title="Subscription will expire in 3 days">
+                    Lorem ipsum dolor sit amet orem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit amet
+                </Alert>
             </div> */}
 
-            <Status/>
-            <UploadList/>
-            <div style={{height: 100}}></div>
+            <Status />
+            <UploadList />
+            <div style={{ height: 100 }}></div>
         </>
     );
 }

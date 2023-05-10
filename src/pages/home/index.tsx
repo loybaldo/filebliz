@@ -10,14 +10,14 @@ import Feedbacks from "../../components/widgets/feedbacks";
 function HomePage() {
     return (
         <>
-            <Navigation/>
+            <Navigation />
             <div className="mainView">
-                <Landing/>
-                <Services/>
-                <Advert/>
-                <Feedbacks/>
+                <Landing />
+                <Services />
+                <Advert />
+                <Feedbacks />
             </div>
-            <Footer/>
+            <Footer />
             <div className="f-footer-spacer"></div>
         </>
     );

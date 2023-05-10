@@ -1,5 +1,4 @@
-@import '../../../index.scss';
-
+@import "../../../index.scss";
 
 .f-prem-landing {
     color: $text-color;
@@ -19,7 +18,6 @@
     }
 }
 
-
 @keyframes fade {
     from {
         opacity: 0;
@@ -30,10 +28,8 @@
     }
 }
 
-
 @media only screen and (max-width: $media-query-mobile) {
     .f-prem-landing {
-
         .f-container {
             padding-top: unset;
             @include global-max-width(2);

@@ -1,5 +1,4 @@
-@import '../../../index.scss';
-
+@import "../../../index.scss";
 
 .f-footer {
     @include wh(100%, 40vh);
@@ -45,7 +44,7 @@
             a {
                 text-decoration: underline;
                 color: $text-color-alt;
-                
+
                 &:hover {
                     color: $primary-color;
                 }
@@ -56,7 +55,6 @@
         }
     }
 }
-
 
 @media only screen and (max-width: $media-query-mobile) {
     .f-footer {

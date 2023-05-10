@@ -1,15 +1,14 @@
-@import '../../../index.scss';
-
+@import "../../../index.scss";
 
 .f-status {
     @include mar-pad(0 auto, 20px);
     @include global-max-width(0);
-    
+
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr 2fr;
     animation: fade 0.3s ease-in-out;
-    
+
     .f-card {
         @include card;
         @include mar-pad(0px, 30px);
@@ -95,16 +94,14 @@
     }
 }
 
-
 @keyframes fade {
-    from{
-        opacity:0;
+    from {
+        opacity: 0;
     }
-    to{
-        opacity:1;
+    to {
+        opacity: 1;
     }
 }
-
 
 @media only screen and (max-width: $media-query-mobile) {
     .f-status {
