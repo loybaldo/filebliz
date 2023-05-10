@@ -88,7 +88,6 @@ function Landing() {
 
     // cancel operation
     function handleCancelClick() {
-        console.log("triggered Cancel()");
         setFile(null);
         updateLabelWithFileName('Choose a File');
         setIsUploadDisabled(false);

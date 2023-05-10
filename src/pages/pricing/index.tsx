@@ -1,33 +1,38 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../auth/auth-provider";
 import Collapse from "../../components/common/collapse";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
 import Offers from "../../components/widgets/offers";
 import PremiumLanding from "../../components/widgets/premium-landing";
+import Button from "../../components/common/button";
 import './pricing.scss'
 
 
 function FAQ() {
     const data = [
         {
-            title: "Frequently Asked Questions 1",
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quae provident maiores. Eius odit magni exercitationem neque, impedit nam eligendi reiciendis cum quo! Optio laboriosam accusantium tempora quos alias iste eos unde dolore sit a. Nesciunt officia delectus praesentium porro reprehenderit quam eligendi omnis? Veritatis odio laudantium voluptate officia, tempore inventore error aliquid sunt magnam laboriosam excepturi, iure qui at aperiam illo dolorum, nam ducimus accusamus. Temporibus, hic inventore! Molestias quibusdam odit nobis, minima dolore aliquam minus. Fuga architecto maiores quaerat molestias commodi voluptates debitis aliquam natus tempora nulla itaque sit adipisci quasi deserunt, error cupiditate deleniti doloremque reiciendis! Eum."
+            title: "What is Filebliz?",
+            desc: "Add a brief, concise, and engaging description or answer here."
         },
         {
-            title: "Frequently Asked Questions 2",
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quae provident maiores. Eius odit magni exercitationem neque, impedit nam eligendi reiciendis cum quo! Optio laboriosam accusantium tempora quos alias iste eos unde dolore sit a. Nesciunt officia delectus praesentium porro reprehenderit quam eligendi omnis? Veritatis odio laudantium voluptate officia, tempore inventore error aliquid sunt magnam laboriosam excepturi, iure qui at aperiam illo dolorum, nam ducimus accusamus. Temporibus, hic inventore! Molestias quibusdam odit nobis, minima dolore aliquam minus. Fuga architecto maiores quaerat molestias commodi voluptates debitis aliquam natus tempora nulla itaque sit adipisci quasi deserunt, error cupiditate deleniti doloremque reiciendis! Eum."
+            title: "How are files stored?",
+            desc: "Sus."
         },
         {
-            title: "Frequently Asked Questions 3",
-            desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quae provident maiores. Eius odit magni exercitationem neque, impedit nam eligendi reiciendis cum quo! Optio laboriosam accusantium tempora quos alias iste eos unde dolore sit a. Nesciunt officia delectus praesentium porro reprehenderit quam eligendi omnis? Veritatis odio laudantium voluptate officia, tempore inventore error aliquid sunt magnam laboriosam excepturi, iure qui at aperiam illo dolorum, nam ducimus accusamus. Temporibus, hic inventore! Molestias quibusdam odit nobis, minima dolore aliquam minus. Fuga architecto maiores quaerat molestias commodi voluptates debitis aliquam natus tempora nulla itaque sit adipisci quasi deserunt, error cupiditate deleniti doloremque reiciendis! Eum."
+            title: "Will my files be completely deleted when the time expires?",
+            desc: "Let our Head Dev rewrite this section."
+        },
+        {
+            title: "Where the hell is our FAQ info!?",
+            desc: "Please provide us on what to put here in a document for thanks. I will spam Lorem Ipsum everywhere. In fact... I'll do it right now. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         }
     ];
 
     return (
         <>
             <div className="f-faq-container">
-
                 <span>
                     Frequently Ask Questions
                 </span>
@@ -36,6 +41,41 @@ function FAQ() {
                         <Collapse key={index} title={item.title} desc={item.desc} />
                     ))
                 }
+            </div>
+        </>
+    );
+}
+
+function Campaign() {
+    const { currentUser, logout } = useContext(AuthContext);
+    const history = useNavigate();
+
+    let handleClickA = () => {
+        history('/signin');
+    };
+
+    let handleClickB = () => {
+        history('/account')
+    }
+
+    const handleToggle = () => {
+        if (currentUser) {
+            return (
+                <Button onclick={handleClickB} classItem={"primary special-signin"} > Go To Dashboard </Button>
+            );
+        } else {
+            return (
+                <Button onclick={handleClickA} classItem={"primary special-signin"}> Sign in </Button>
+            );
+        }
+    };
+
+    return (
+        <>
+            <div className="f-campaign">
+                <h1>Start Sharing Your Files with the World</h1>
+                <span>Get started with Filebliz Today for free</span>
+                {handleToggle()}
             </div>
         </>
     );
@@ -59,10 +99,13 @@ function PricingPage() {
     return (
         <>
             <Navigation />
-            <div style={{ marginTop: 60 }}></div>
-            <PremiumLanding />
-            <Offers />
+
+            <div className="f-premium-parent">
+                <PremiumLanding />
+                <Offers />
+            </div>
             <FAQ />
+            <Campaign/>
             <Footer />
             <div className="f-footer-spacer"></div>
         </>

@@ -6,8 +6,8 @@ import { db } from "../../../config/firebase";
 import { AuthContext } from "../../../auth/auth-provider";
 import Icon from "../../common/icon";
 import Icons from "../../common/icon/Icon";
-import "./pricing-card.scss";
 import Loader from "../../common/loader";
+import "./pricing-card.scss";
 
 
 interface PricingCardInterface {
