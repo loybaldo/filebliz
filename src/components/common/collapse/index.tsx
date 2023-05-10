@@ -26,7 +26,7 @@ function Collapse(props: CollapseInterface) {
                 <Icon icon={(visible) ? Icons.chevron_down : Icons.chevron_right} />
                 <p> {props.title} </p>
             </div>
-            <p className="f-desc" style={{ height: (visible) ? "fit-content" : 0 }}> {props.desc} </p>
+            <p className="f-desc" style={{ height: (visible) ? "fit-content" : 0, padding: (visible) ? "15px 0px 30px 0px" : "unset" }}> {props.desc} </p>
         </div>
     );
 }

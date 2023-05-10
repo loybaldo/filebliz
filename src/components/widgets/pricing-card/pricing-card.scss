@@ -12,9 +12,9 @@
         background-color: $color;
     }
 
-    &:hover {
-        transform: translateY(-10px);
-    }
+    // &:hover {
+    //     transform: translateY(-10px);
+    // }
 
     &::before {
         content: "";

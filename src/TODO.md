@@ -28,7 +28,7 @@
 
 ## TODO C (Requires: `Refactored SCSS & Adjusted/Redesigned Page Layouts`)
 
-- [ ] Style FAQ
+- [X] Style FAQ
 - [ ] Write [About Us]() page
 - [ ] Add proper information in `Footer` component
 
@@ -69,6 +69,8 @@
     - - [X] fixed a small issue with loading bar z-index
     - - [X] Rebase Alert Box (Allow Children)
 
+
 <hr/>
 
-- [ ] Preparation for TODO C 
+- [X] Preparation for TODO C 
+- [X] Partially Style Premium Page
