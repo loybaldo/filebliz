@@ -1,56 +1,42 @@
-// # Global Import
-@import "./styling/theme.scss";
+@import "./theme.scss";
 
-// ==========================
-// [    global variables    ]
-// ==========================
 
-$global-transition: 0.15s;
-$media-query-mobile: 768px;
-$media-query-wide: 2000px;
-// $media-query-default: 1920px;
-
-// ==========================
-// [    component mixins    ]
-// --------------------------
-//  Declare internal
-//  attributes with unset
-//  value to disable
-//  when applied
-// ==========================
-
-@mixin transition {
-	transition: $global-transition;
+@font-face {
+	font-family: "glacial indifference";
+	src: url("./assets/fonts/glacial-indifference/GlacialIndifference-Bold.ttf");
+	font-weight: bold;
 }
 
-@mixin global-max-width($class) {
-	@if $class ==0 {
-		max-width: 80%;
-	} @else if $class ==1 {
-		max-width: 1320px;
-	}
-
-	// FIXME some parts aren't eligible for this | PLEASE HAVE THE COMPONENTS MARGINS/PADDING GLOBALIZED FOR LEFT AND RIGHT SPACING
-	@else if $class ==2 {
-		max-width: 370px;
-	}
+@font-face {
+	font-family: poppins;
+	src: url("./assets/fonts/poppins/Poppins-Regular.ttf");
+	font-weight: normal;
 }
+
+@font-face {
+	font-family: poppins;
+	src: url("./assets/fonts/poppins/Poppins-Bold.ttf");
+	font-weight: bold;
+}
+
+
+// ### [ CUSTOM MIXIN LIBRARY ] ###
 
 @mixin absolute-pos($top, $left, $bottom, $right) {
 	top: $top;
 	left: $left;
 	bottom: $bottom;
-	right: $right;
+	right: $right;	
 }
 
 @mixin focus-style {
-	&:focus,
+	&:focus, 
 	&:focus-within {
 		outline: none;
 	}
-
+	
 	&:focus-visible {
-		outline: 3px solid $info-color;
+		outline: 3px solid $primary-color-active;
 		outline-offset: 3px;
 		transition: none;
 	}
@@ -58,23 +44,23 @@ $media-query-wide: 2000px;
 
 @mixin no-select {
 	-webkit-user-select: none;
-	// Safari
-	-ms-user-select: none;
-	// IE 10 and IE 11
-	user-select: none;
-	// Standard syntax
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
 }
 
 @mixin shadow {
 	box-shadow: 0px 10px 44px -19px $shadow-color;
-	-webkit-box-shadow: 0px 10px 44px -19px $shadow-color;
-	-moz-box-shadow: 0px 10px 44px -19px $shadow-color;
+    -webkit-box-shadow: 0px 10px 44px -19px $shadow-color;
+    -moz-box-shadow: 0px 10px 44px -19px $shadow-color;
 }
 
 @mixin flex-center {
 	display: flex;
-	align-items: center;
-	justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
 
 @mixin wh($w, $h) {
@@ -92,7 +78,7 @@ $media-query-wide: 2000px;
 	max-height: $h;
 }
 
-@mixin mar-pad($mar, $pad) {
+@mixin marPad($mar, $pad) {
 	margin: $mar;
 	padding: $pad;
 }
@@ -106,282 +92,81 @@ $media-query-wide: 2000px;
 	}
 }
 
-// ==========================
-// [    component styles    ]
-// ==========================
+// MIXIN Components
 
 @mixin card {
-	@include no-select;
-	@include mar-pad(50px, 20px);
+    @include no-select;
+	// [Do not add shadow]
+    // @include shadow;
 
-	border-radius: 15px;
-	background-color: $bg-color;
+    @include marPad(50px, 20px);
+    border-radius: 15px;
+    background-color: $bg-color;
 	cursor: pointer;
 
-	&:hover {
-		filter: brightness(102%);
-	}
+    &:hover {
+        filter: brightness(102%);
+    }
 
 	&:active {
-		filter: brightness(97%);
+		filter: brightness(97%)
 	}
 }
 
-@mixin button {
+@mixin anchor-button {
 	@include shadow;
 	@include wh(fit-content, 38px);
-	@include mar-pad(unset, 0 15px);
+	@include marPad(unset, 0 15px);
 	@include focus-style;
+
+	display: flex;
 	@include flex-center;
 
-	// extract or create a new default color for buttons
-	background-color: $info-color;
+	background-color: $primary-color;
 	border-radius: 15px;
 	border: none;
 
 	cursor: pointer;
 
-	color: $text-color-permanent;
-	fill: $text-color-permanent;
+	// hardcoded color
+	color: white;
 	font-size: 14px;
 	text-decoration: none;
 
-	&:hover {
-		background-color: $info-color;
-	}
+    &:hover {
+        background-color: $primary-color-hover;
+    }
 
-	&:active {
-		background-color: $info-color;
-		filter: brightness(140%);
-	}
-
-	img {
-		fill: unset;
-	}
+    &:active {
+        background-color: $primary-color;
+        filter: brightness(140%);
+    }
 }
 
-// ==================================
-// [    Custom Bootstrap Methods    ]
-// ==================================
 
-// # Buttons
-// TODO Can be extracted into a mixin
-.primary {
-	background-color: $primary-color;
 
-	&:hover {
-		background-color: $primary-color-hover;
-	}
-
-	&:active {
-		background-color: $primary-color;
-		filter: brightness(140%);
-	}
-}
-
-.p-accent {
-	background-color: $accent-color;
-
-	&:hover {
-		background-color: $accent-color;
-	}
-
-	&:active {
-		background-color: $accent-color;
-		filter: brightness(140%);
-	}
-}
-
-.safe {
-	background-color: $safe-color;
-
-	&:hover {
-		background-color: $safe-color;
-	}
-
-	&:active {
-		background-color: $safe-color;
-		filter: brightness(140%);
-	}
-}
-
-.info {
-	background-color: $info-color;
-
-	&:hover {
-		background-color: $info-color;
-	}
-
-	&:active {
-		background-color: $info-color;
-		filter: brightness(140%);
-	}
-}
-
-.warn {
-	background-color: $warn-color;
-
-	&:hover {
-		background-color: $warn-color;
-	}
-
-	&:active {
-		background-color: $warn-color;
-		filter: brightness(140%);
-	}
-}
-
-.danger {
-	background-color: $danger-color;
-
-	&:hover {
-		background-color: $danger-color;
-	}
-
-	&:active {
-		background-color: $danger-color;
-		filter: brightness(140%);
-	}
-}
-
-.ctrl {
-	@include flex-center();
-	@include scroll-bar-hide();
-	@include mar-pad(0, 6px);
-
-	background-color: $primary-color;
-	border-radius: 100%;
-
-	&:hover {
-		background-color: $primary-color-hover;
-	}
-
-	&:active {
-		background-color: $primary-color-hover;
-		filter: brightness(140%);
-	}
-}
-
-.ctrl-b {
-	@include flex-center();
-	@include scroll-bar-hide();
-	@include mar-pad(0, 20px);
-
-	border-radius: 100%;
-}
-
-.btn-mini {
-	@include mar-pad(0, 0);
-	@include no-select;
-	@include wh(30px, 30px);
-	@include flex-center;
-	@include shadow;
-
-	background-color: unset;
-	fill: none;
-	// box-shadow: 0 3px 6px $shadow-color;
-	border-radius: 50%;
-	border: none;
-	cursor: pointer;
-
-	&:hover,
-	&:active {
-		background-color: unset;
-	}
-
-	:nth-child(n) {
-		width: 24px;
-	}
-}
-
-.disabled {
-	background-color: $disabled-color;
-	cursor: not-allowed;
-
-	&:hover {
-		background-color: $disabled-color;
-	}
-
-	&:active {
-		background-color: $disabled-color;
-		filter: brightness(140%);
-	}
-}
-
-// # Card
-
-.card {
-	@include card();
-}
-
-// ==============
-// [    root    ]
-// ==============
+// ### [ INDEX STYLES ] ###
 
 * {
-	@include mar-pad(0, 0);
-	@include transition();
-
-	font-family: "Poppins";
+	padding: 0;
+	margin: 0;
+	font-family: poppins;
 	box-sizing: border-box;
+	transition: 0.3s;
 	scroll-behavior: smooth;
 	// layout debug
-	// outline: lime solid 1px;
-}
-
-.disable-events {
-	pointer-events: none;
-}
-
-.dragging-over {
-	outline: 4px solid $info-color;
-	outline-offset: 4px;
-	animation: outlineTransitionA 2s cubic-bezier(0.45, 0, 0.53, 1) 0s infinite normal forwards;
-}
-
-.dragging-over-active {
-	outline: 4px solid $accent-color;
-	outline-offset: 4px;
-	animation: outlineTransitionB 0.3s cubic-bezier(0.45, 0, 0.53, 1) 0s 1 normal forwards;
-	// filter: brightness(110%);
-}
-
-@keyframes outlineTransitionA {
-	0%,
-	50%,
-	100% {
-		filter: brightness(100%);
-	}
-
-	25%,
-	75% {
-		filter: brightness(130%);
-	}
-}
-
-@keyframes outlineTransitionB {
-	0% {
-		// filter: brightness(100%);
-		// transform: scale(1) translateY(-60px);
-		// transform-origin: center center;
-		outline-offset: 4px;
-	}
-
-	100% {
-		// filter: brightness(130%);
-		// transform: scale(1.01) translateY(-60px);
-		// transform-origin: center center;
-		outline-offset: 0px;
-	}
+	// outline: solid 1px;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+#root {
+	overflow-x: hidden;
 }
 
 body {
-	background-color: $bg-color;
-	color: $text-color;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -389,6 +174,9 @@ body {
 input[type="file"] {
 	display: none;
 }
+
+
+// ### [ INDEX COMPONENT STYLES ] ###
 
 a {
 	@include focus-style;
@@ -398,7 +186,7 @@ button {
 	@include focus-style;
 }
 
-@media only screen and (max-width: $media-query-mobile) {
+@media only screen and (max-width: 768px) {
 	* {
 		@include no-select;
 	}

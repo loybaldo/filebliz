@@ -5,10 +5,10 @@ interface ProgressBarInterface {
     progress: number;
 }
 
-function ProgressBar({ progress }: ProgressBarInterface) {
-    return (
+function ProgressBar({progress}: ProgressBarInterface) {
+    return(
         <div className="f-progress-bar">
-            <div className="f-progress" style={{ width: `${progress}%` }}></div>
+            <div className="f-progress" style={{width: `${progress}%`}}></div>
         </div>
     );
 }

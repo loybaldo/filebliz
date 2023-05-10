@@ -1,4 +1,5 @@
-@import "../../index.scss";
+@import '../../index.scss';
+
 
 .mainView {
     height: 100%;
@@ -9,9 +10,8 @@
     display: none;
 }
 
-@media only screen and (max-width: $media-query-mobile) {
+@media only screen and (max-width: 768px) {
     .f-footer-spacer {
-        @include global-max-width(2);
         display: block;
     }
 }

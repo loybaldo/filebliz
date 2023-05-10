@@ -1,80 +1,61 @@
 @import "../../../index.scss";
 
-// HERE change bg
+.f-feed-label {
+    width: fit-content;
+    margin: 40px auto;
+    text-align: center;
+    display: flex;
+    margin: 0 auto;
+    font-size: x-large;
+    font-weight: bold;
+}
 
-.f-feed-container {
-    @include mar-pad(unset, 140px 80px);
+.f-feed {
     width: 100%;
-    background-color: $bg-color-accent;
-    margin-bottom: 50px;
+    max-width: 1320px;
+    margin: 60px auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
 
-    .f-feed-label {
-        width: fit-content;
-        margin: auto;
-        text-align: center;
-        display: flex;
-        font-size: x-large;
-        font-weight: bold;
-    }
+    .f-feed-item {
+        border-radius: 15px;
 
-    .f-feed {
-        @include global-max-width(0);
+        .f-feed-info {
+            display: flex;
+            align-items: center;
 
-        margin: 60px auto 0 auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
+            img {
+                width: 38px;
+                height: 38px;
+                background-color: #ddd;
+                border-radius: 50%;
+            }
 
-        .f-feed-item {
-            border-radius: 15px;
-            // text-align: justify;
-
-            .f-feed-info {
+            div {
+                margin-left: 15px;
                 display: flex;
-                align-items: center;
+                flex-direction: column;
 
-                img {
-                    @include wh(38px, 38px);
-
-                    background-color: $bg-color-accent;
-                    border-radius: 50%;
+                span:nth-child(1) {
+                    font-weight: bold;
                 }
 
-                div {
-                    margin-left: 15px;
-                    display: flex;
-                    flex-direction: column;
-
-                    span:nth-child(1) {
-                        font-weight: bold;
-                    }
-
-                    span:nth-child(2) {
-                        font-size: small;
-                    }
+                span:nth-child(2) {
+                    font-size: small;
                 }
             }
+        }
 
-            p {
-                margin-top: 15px;
-            }
+        p {
+            margin-top: 15px;
         }
     }
 }
 
-@media only screen and (max-width: $media-query-mobile) {
-    .f-feed-container {
-        padding: 30px;
 
-        .f-feed {
-            grid-template-columns: repeat(1, 1fr);
-            @include global-max-width(2);
-        }
-    }
-}
-
-@media only screen and (min-width: $media-query-wide) {
+@media only screen and (max-width: 768px) {
     .f-feed {
-        @include global-max-width(1);
+        grid-template-columns: repeat(1, 1fr);
     }
 }

@@ -8,7 +8,6 @@ import ThumbnailCode from "../../../assets/thumbnail-code.svg";
 import ThumnailMusic from "../../../assets//thumbnail-music.svg";
 import ThumbnailZip from "../../../assets/thumbnail-zip.svg";
 import ThumbnailUnknown from "../../../assets/thumbnail-unknown.svg";
-import Button from "../../common/button";
 
 
 interface ListViewInterface {
@@ -20,20 +19,20 @@ interface ListViewInterface {
     date: string;
 }
 
-function ListView(props: ListViewInterface) {
-
+function ListView({fileName, size, fileExt, url, date}: ListViewInterface) {
+    
     const handleIconType = () => {
         const { AUDIOS, IMAGES, PACKAGES, CODES, VIDEOS } = fileType;
-        switch (true) {
-            case VIDEOS.includes(props.fileExt):
+        switch(true) {
+            case VIDEOS.includes(fileExt):
                 return ThumbnailVideo;
-            case AUDIOS.includes(props.fileExt):
+            case AUDIOS.includes(fileExt):
                 return ThumnailMusic;
-            case IMAGES.includes(props.fileExt):
+            case IMAGES.includes(fileExt):
                 return ThumbnailImage;
-            case PACKAGES.includes(props.fileExt):
+            case PACKAGES.includes(fileExt):
                 return ThumbnailZip;
-            case CODES.includes(props.fileExt):
+            case CODES.includes(fileExt):
                 return ThumbnailCode
             default:
                 return ThumbnailUnknown;
@@ -51,22 +50,22 @@ function ListView(props: ListViewInterface) {
         return `${gigabytes.toFixed(1)} GB`;
     }
 
-    return (
+    return(
         <div className="f-list-view">
-            <a className="f-list-clickable" href={props.url} target="_blank" rel="noreferrer">
+            <a className="f-list-clickable" href={url} target="_blank" rel="noreferrer">
                 <div className="f-list-trail">
-                    <div><img draggable="false" src={handleIconType()} alt={props.fileExt} /></div>
-                    <p> {props.fileName} </p>
+                    <div><img src={handleIconType()} alt={fileExt} /></div>
+                    <p> {fileName} </p>
                 </div>
                 <div className="f-list-info">
-                    <span>{formatFileSize(props.size)}</span>
-                    <span>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(props.date))}</span>
+                    <span>{formatFileSize(size)}</span>
+                    <span>{new Intl.DateTimeFormat("en-US", {month: "short", day: "numeric", year: "numeric"}).format(new Date(date))}</span>
                 </div>
             </a>
 
             <div className="f-list-action">
-                <Button classItem={""}><Icon icon={Icons.copy_outline_bold} title="Copy File" /></Button>
-                <Button classItem={""}><Icon icon={Icons.trash_outline_bold} title="Delete File" /></Button>
+                <button><Icon icon={Icons.copy_outline_bold} title="Copy File"/></button>
+                <button><Icon icon={Icons.trash_outline_bold} title="Delete File"/></button>
             </div>
         </div>
     );

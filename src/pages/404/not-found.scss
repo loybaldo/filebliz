@@ -1,14 +1,17 @@
 @import "../../index.scss";
 
-.f-not-found {
-    @include global-max-width(0);
-    @include mar-pad(auto, 0);
-    @include flex-center;
-    @include wh(100%, 100vh);
 
+.f-not-found {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 100px 0;
+    display: flex;
     flex-direction: column;
+    align-items: center;
 
     img {
+        width: 100%;
         max-width: 200px;
     }
 
@@ -23,11 +26,5 @@
         text-align: center;
         max-width: 500px;
         margin-bottom: 30px;
-    }
-}
-
-@media only screen and (min-width: $media-query-wide) {
-    .f-not-found {
-        @include global-max-width(1);
     }
 }

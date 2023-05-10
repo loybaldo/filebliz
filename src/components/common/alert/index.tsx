@@ -5,14 +5,14 @@ import "./alert.scss";
 
 interface AlertInterface {
     title: string;
+    message: string;
     type: "ok" | "info" | "warn" | "danger";
-    children?: React.ReactNode
 }
 
-function Alert(props: AlertInterface) {
+function Alert({title, message, type}: AlertInterface) {
 
     const handleAlertType = () => {
-        switch (props.type) {
+        switch(type) {
             case "ok":
                 return "f-alert-ok";
             case "info":
@@ -29,10 +29,10 @@ function Alert(props: AlertInterface) {
     return (
         <>
             <div className={`f-alert ${handleAlertType()}`}>
-                <Icon icon={Icons.info_circle} />
+                <Icon icon={Icons.info_circle}/>
                 <div>
-                    <p> {props.title} </p>
-                    <p> {props.children} </p>
+                    <p> {title} </p>
+                    <p> {message} </p>
                 </div>
             </div>
         </>

@@ -1,8 +1,9 @@
-@import "../../../index.scss";
+@import '../../../index.scss';
+
 
 .f-footer {
     @include wh(100%, 40vh);
-    background-color: $bg-color-accent;
+    background-color: $primary-color;
 
     .hidden {
         opacity: 0;
@@ -10,18 +11,19 @@
 
     .show {
         opacity: 1;
+        transition: 0.3s ease-in-out;
         transform: none;
     }
 
     .f-container {
         @include wh(100%, 100%);
-        @include mar-pad(0 auto, 20px);
-        @include global-max-width(0);
+        @include marPad(0 auto, 20px);
+        max-width: 1320px;
 
         @include flex-center;
         flex-direction: column-reverse;
 
-        color: $text-color-alt;
+        color: #fff;
 
         div:nth-child(1) {
             display: flex;
@@ -32,34 +34,23 @@
 
                 margin: 0px;
                 text-decoration: none;
-                color: $text-color-alt;
+                color: #fff;
+                transition: all 0.1s ease-in-out;
             }
 
             a:hover {
                 scale: 1.1;
             }
         }
-
-        div:nth-child(2) {
-            a {
-                text-decoration: underline;
-                color: $text-color-alt;
-
-                &:hover {
-                    color: $primary-color;
-                }
-                &:active {
-                    filter: brightness(50%);
-                }
-            }
-        }
     }
 }
 
-@media only screen and (max-width: $media-query-mobile) {
+
+@media only screen and (max-width: 768px) {
+
     .f-footer {
+
         .f-container {
-            @include global-max-width(2);
             flex-direction: column;
 
             div:nth-child(2) {
@@ -67,10 +58,5 @@
             }
         }
     }
-}
 
-@media only screen and (min-width: $media-query-wide) {
-    .f-container {
-        @include global-max-width(1);
-    }
 }

@@ -13,16 +13,16 @@ const root = ReactDOM.createRoot(
 
 // WARNING: Logs from dependencies are not blocked. Only the logs from our code are blocked.
 if (process.env.NODE_ENV !== "development") {
-	console.log = () => { }
-	console.error = () => { }
-	console.warn = () => { }
-	console.debug = () => { }
+	console.log = () => {}
+	console.error = () => {}
+	console.warn = () => {}
+	console.debug = () => {}
 }
 
 root.render(
 	<React.StrictMode>
 		<AuthProvider>
-			<App />
+			<App/>
 		</AuthProvider>
 	</React.StrictMode>
 );

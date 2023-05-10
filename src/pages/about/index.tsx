@@ -18,7 +18,7 @@ function About() {
             document.title = APP_NAME!;
         };
     }, [location]);
-
+    
     return (
         <>
             <Navigation />

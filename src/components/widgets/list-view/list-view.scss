@@ -1,22 +1,24 @@
-@import "../../../index.scss";
+@import '../../../index.scss';
+
 
 .f-list-view {
     @include no-select;
-    background-color: $bg-color-accent;
+    background-color: white;
     height: 60px;
     padding: 0 20px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid $text-color-alt;
-
+    border-bottom: 1px solid #ddd;
     animation: fade 0.3s ease-in-out;
 
     .f-list-clickable {
-        @include wh(100%, 100%);
-        @include flex-center;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
         justify-content: space-between;
         text-decoration: none;
-        color: $text-color;
+        color: black;
 
         .f-list-trail {
             display: flex;
@@ -26,6 +28,8 @@
                 @include flex-center;
                 @include wh(38px, 38px);
                 background-color: $primary-color;
+                // border-radius: 12px;
+                overflow: hidden;
 
                 img {
                     width: 100%;
@@ -35,6 +39,7 @@
             p {
                 margin-left: 10px;
                 white-space: nowrap;
+                overflow: hidden;
                 text-overflow: ellipsis;
             }
         }
@@ -55,23 +60,18 @@
         display: flex;
         align-items: center;
 
-        // TODO conver this into a bootstrap
         button {
             @include wh(38px, 38px);
-            @include mar-pad(0px 0px 0px 10px, 0px);
 
+            margin-left: 10px;
             border-radius: 50%;
             border: none;
             background-color: transparent;
             cursor: pointer;
+        }
 
-            &:hover {
-                background-color: $primary-color;
-            }
-
-            .f-icon {
-                fill: $text-color;
-            }
+        button:hover {
+            background-color: #ddd;
         }
     }
 
@@ -90,12 +90,15 @@
     }
 }
 
-@media only screen and (max-width: $media-query-mobile) {
+
+@media only screen and (max-width: 768px) {
     .f-list-view {
-        .f-list-clickable {
-            .f-list-info {
-                display: none;
+    
+            .f-list-clickable {
+                .f-list-info {
+    
+                    display: none;
+                }
             }
         }
-    }
 }

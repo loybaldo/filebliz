@@ -1,9 +1,12 @@
-@import "../../../index.scss";
+@import '../../../index.scss';
+
 
 .f-services {
-    @include global-max-width(0);
-    @include mar-pad(0 auto, 80px 20px);
-
+    @include marPad(0 auto, 50px 20px);
+    
+    width: 100%;
+    max-width: 1320px;
+    
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
@@ -14,15 +17,16 @@
         display: flex;
         flex-direction: column;
         text-align: center;
-
+       
         //service animation
         @keyframes fade {
-            from {
+            from{
                 opacity: 0;
             }
-            to {
+            to{
                 opacity: 1;
             }
+            
         }
 
         span {
@@ -40,23 +44,25 @@
     .f-item:nth-child(1) {
         grid-column-start: 1;
         grid-column-end: 2;
+        
     }
-
+    
     .f-item:nth-child(2) {
         grid-column-start: 2;
         grid-column-end: 3;
     }
-
+    
     .f-item:nth-child(3) {
         grid-column-start: 3;
         grid-column-end: 4;
     }
-}
+} 
 
-@media only screen and (max-width: $media-query-mobile) {
+
+@media only screen and (max-width: 768px) {
+
     .f-services {
         grid-template-columns: 1fr;
-        @include global-max-width(2);
 
         .f-item:nth-child(1) {
             grid-column-start: 1;
@@ -72,11 +78,7 @@
             grid-column-start: 1;
             grid-column-end: 2;
         }
-    }
-}
 
-@media only screen and (min-width: $media-query-wide) {
-    .f-services {
-        @include global-max-width(1);
     }
+
 }

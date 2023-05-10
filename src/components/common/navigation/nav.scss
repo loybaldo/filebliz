@@ -1,28 +1,25 @@
-@import "../../../index.scss";
+@import '../../../index.scss';
+
 
 .f-nav {
     @include no-select;
     @include flex-center;
-    @include absolute-pos(0, 0, unset, 0);
-
     justify-content: space-between;
-    // afaik you can only use values [ -1 | 0 | 1 ]
-    z-index: 1;
+
+    z-index: 800;
     position: fixed;
+
     height: 60px;
     padding: 0 20px;
-    background-color: $bg-color;
+    background-color: white;
+    
+    @include absolute-pos(0,0, unset ,0);
+    
     // border-bottom: 1px solid #ddd;
 
     .f-branding {
         @include flex-center;
         justify-content: unset;
-        background-color: unset;
-        color: $text-color;
-
-        &:hover {
-            filter: brightness(100%);
-        }
 
         img {
             @include wh(30px, 30px);
@@ -33,7 +30,7 @@
             font-weight: bold;
             font-size: 25px;
             letter-spacing: 2px;
-            font-family: "Glacial Indifference";
+            font-family: "glacial indifference";
         }
     }
 
@@ -42,80 +39,148 @@
         display: flex;
 
         .f-links-item {
-            @include flex-center;
-
             height: 100%;
             margin: 0 15px;
+
+            @include flex-center;
             flex-direction: column;
             position: relative;
             text-decoration: none;
-            color: $text-color;
+            color: black;
             border-bottom: 4px solid transparent;
+
+            .f-indicator {
+                @include wh(100%, 4px);
+                background-color: white;
+                position: absolute;
+                bottom: 0;
+                border-radius: 10px;
+            }
+
+            .f-indicator-active {
+                background-color: $primary-color;
+            }
+
         }
 
         .f-links-active {
             font-weight: bold;
-            color: $primary-color-active;
-            border-bottom: 4px solid $primary-color-active;
+            color: $primary-color;
+            border-bottom: 4px solid $primary-color;
         }
+
     }
 
-    .f-nav-functions {
-        @include flex-center;
-
-        div {
-            @include wh(0, 30px);
-            @include mar-pad(2px 10px, 0px 0.3px);
-            background-color: $text-color-permanent;
-        }
-    }
 }
 
-// ================================
-// [    duplicated for theming    ]
-// ================================
 
-.n-theme {
+
+
+
+
+.f-nav-theme {
+    @include no-select;
+    @include flex-center;
+    justify-content: space-between;
+
+    z-index: 800;
+    position: fixed;
+
+    height: 60px;
+    padding: 0 20px;
     background-color: $primary-color;
-    color: $text-color-permanent;
+
+    @include absolute-pos(0, 0, unset, 0);
+
+    // border-bottom: 1px solid #ddd;
 
     .f-branding {
-        color: $text-color-permanent;
+        @include flex-center;
+        justify-content: unset;
+
+        img {
+            @include wh(30px, 30px);
+        }
+
+        span {
+            margin-left: 10px;
+            font-weight: bold;
+            font-size: 25px;
+            letter-spacing: 2px;
+            font-family: "glacial indifference";
+            color: white;
+        }
     }
 
     .f-links {
+        height: 100%;
+        display: flex;
+
         .f-links-item {
-            color: $text-color-permanent;
+            height: 100%;
+            margin: 0 15px;
+
+            @include flex-center;
+            flex-direction: column;
+            position: relative;
+            text-decoration: none;
+            color: white;
+            border-bottom: 4px solid transparent;
+
+            .f-indicator {
+                @include wh(100%, 4px);
+                background-color: white;
+                position: absolute;
+                bottom: 0;
+                border-radius: 10px;
+            }
+
+            .f-indicator-active {
+                background-color: white;
+            }
+
         }
 
         .f-links-active {
-            border-bottom: 4px solid $text-color-permanent;
+            font-weight: bold;
+            color: white;
+            border-bottom: 4px solid white;
         }
+
     }
 
-    .special-signin {
-        border: 1px solid $text-color-permanent;
-    }
 }
 
-// Mobile Navigation
-.f-btm-nav {
-    @include absolute-pos(unset, 0, 0, 0);
 
+
+
+
+
+
+
+
+
+
+
+// Bottom Navigation
+.f-btm-nav {
     height: 60px;
-    background-color: $bg-color;
+    background-color: white;
     display: none;
     align-items: center;
     justify-content: space-around;
     position: fixed;
-    border-top: 1px solid $text-color-alt;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #ddd;
     z-index: 800;
 
     .f-btm-nav-item {
         @include wh(100%, 100%);
         @include flex-center;
         text-decoration: none;
-        color: $text-color;
+        color: black;
         display: flex;
         flex-direction: column;
 
@@ -125,7 +190,7 @@
     }
 
     .f-btm-nav-active {
-        color: $text-color;
+        color: black;
 
         span {
             font-weight: bold;
@@ -133,9 +198,8 @@
     }
 }
 
-@media only screen and (max-width: $media-query-mobile) {
-    .f-nav,
-    .f-nav-theme {
+@media only screen and (max-width: 768px) {
+    .f-nav, .f-nav-theme {
         display: none;
     }
 

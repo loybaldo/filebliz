@@ -8,7 +8,6 @@ import HomePage from './pages/home';
 import PricingPage from './pages/pricing';
 import SigninPage from './pages/signin';
 import Dashboard from './pages/dashboard';
-import ScrollToTop from './components/widgets/scroll-to-top';
 
 
 function App() {
@@ -16,15 +15,14 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<ScrollToTop />
 			<Routes>
-				<Route path="/" element={<HomePage />} />
-				<Route path="/premium" element={<PricingPage />} />
-				<Route path="/account" element={(currentUser) ? <AccountPage /> : <Navigate to="/signin" />} />
-				<Route path="/about" element={<About />} />
-				<Route path="/signin" element={(!currentUser) ? <SigninPage /> : <Navigate to="/account" />} />
-				<Route path="/dashboard" element={<Dashboard />} />
-				<Route path="*" element={<NotFoundPage />} />
+				<Route path="/" element={ <HomePage/> }/>
+				<Route path="/premium" element={ <PricingPage/> } />
+				<Route path="/account" element={ (currentUser) ? <AccountPage/> : <Navigate to="/signin"/> }/>
+				<Route path="/about" element={ <About/> }/>
+				<Route path="/signin" element={ (!currentUser) ? <SigninPage/> : <Navigate to="/account"/> }/>
+				<Route path="/dashboard" element={ <Dashboard/> }/>
+				<Route path="*" element={ <NotFoundPage/> }/>
 			</Routes>
 		</BrowserRouter>
 	);

@@ -4,7 +4,7 @@
     padding: 20px;
     display: flex;
     border-radius: 15px;
-    color: $text-color-permanent;
+    color: white;
 
     div {
         margin-left: 20px;
@@ -19,6 +19,7 @@
         }
     }
 }
+
 
 .f-alert-ok {
     background-color: $primary-color;
