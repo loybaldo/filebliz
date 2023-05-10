@@ -1,20 +1,23 @@
 import { useEffect } from "react";
-import "./not-found.scss";
+import { useNavigate } from "react-router-dom";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
 import Button from "../../components/common/button";
 import NotFoundIllustration from "../../assets/illus-error.svg";
-import { useNavigate } from "react-router-dom";
+import pageTitle from '../.scripts/pagetitle'
+import "./not-found.scss";
 
 
 function NotFoundPage() {
-    useEffect(() => {
-        const APP_NAME = process.env.REACT_APP_NAME;
-        document.title = "404 - Page Not Found";
-        return () => {
-            document.title = APP_NAME!;
-        };
-    }, []);
+    pageTitle.Page404()
+
+    // useEffect(() => {
+    //     const APP_NAME = process.env.REACT_APP_NAME;
+    //     document.title = "404 - Page Not Found";
+    //     return () => {
+    //         document.title = APP_NAME!;
+    //     };
+    // }, []);
 
     const history = useNavigate();
 

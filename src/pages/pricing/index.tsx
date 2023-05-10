@@ -1,13 +1,13 @@
-import { useContext, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../auth/auth-provider";
+import { useEffect } from "react";
+import { useLocation, } from "react-router-dom";
 import Collapse from "../../components/common/collapse";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
 import Offers from "../../components/widgets/offers";
 import PremiumLanding from "../../components/widgets/premium-landing";
-import Button from "../../components/common/button";
+import Campaign from "../../components/widgets/campaign";
 import './pricing.scss'
+import pagetitle from "../.scripts/pagetitle";
 
 
 function FAQ() {
@@ -34,7 +34,7 @@ function FAQ() {
         <>
             <div className="f-faq-container">
                 <span>
-                    Frequently Ask Questions
+                    Frequently Asked Questions
                 </span>
                 {
                     data.map((item, index) => (
@@ -46,54 +46,20 @@ function FAQ() {
     );
 }
 
-function Campaign() {
-    const { currentUser, logout } = useContext(AuthContext);
-    const history = useNavigate();
-
-    let handleClickA = () => {
-        history('/signin');
-    };
-
-    let handleClickB = () => {
-        history('/account')
-    }
-
-    const handleToggle = () => {
-        if (currentUser) {
-            return (
-                <Button onclick={handleClickB} classItem={"primary special-signin"} > Go To Dashboard </Button>
-            );
-        } else {
-            return (
-                <Button onclick={handleClickA} classItem={"primary special-signin"}> Sign in </Button>
-            );
-        }
-    };
-
-    return (
-        <>
-            <div className="f-campaign">
-                <h1>Start Sharing Your Files with the World</h1>
-                <span>Get started with Filebliz Today for free</span>
-                {handleToggle()}
-            </div>
-        </>
-    );
-}
-
 function PricingPage() {
-    const location = useLocation();
+    pagetitle.PremiumTitle()
+    // const location = useLocation();
 
-    useEffect(() => {
-        const APP_NAME = process.env.REACT_APP_NAME;
-        if (location.pathname === "/premium") {
-            document.title = `Premium - ${APP_NAME}`;
-        }
+    // useEffect(() => {
+    //     const APP_NAME = process.env.REACT_APP_NAME;
+    //     if (location.pathname === "/premium") {
+    //         document.title = `Premium - ${APP_NAME}`;
+    //     }
 
-        return () => {
-            document.title = APP_NAME!;
-        };
-    }, [location]);
+    //     return () => {
+    //         document.title = APP_NAME!;
+    //     };
+    // }, [location]);
 
 
     return (
@@ -105,7 +71,7 @@ function PricingPage() {
                 <Offers />
             </div>
             <FAQ />
-            <Campaign/>
+            <Campaign />
             <Footer />
             <div className="f-footer-spacer"></div>
         </>

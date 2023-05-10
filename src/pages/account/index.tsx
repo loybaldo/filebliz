@@ -7,22 +7,24 @@ import Status from "../../components/widgets/status";
 import UploadList from "../../components/widgets/upload-list";
 // import Alert from "../../components/common/alert";
 import './account.scss'
+import pagetitle from "../.scripts/pagetitle";
 
 
 function AccountPage() {
-    const location = useLocation();
-    const { currentUser } = useContext(AuthContext);
+    pagetitle.DashboardTitle()
+    // const location = useLocation();
+    // const { currentUser } = useContext(AuthContext);
 
-    useEffect(() => {
-        const APP_NAME = process.env.REACT_APP_NAME;
-        if (location.pathname === "/account") {
-            document.title = `${currentUser?.displayName} - ${APP_NAME}`;
-        }
+    // useEffect(() => {
+    //     const APP_NAME = process.env.REACT_APP_NAME;
+    //     if (location.pathname === "/account") {
+    //         document.title = `${currentUser?.displayName} - ${APP_NAME}`;
+    //     }
 
-        return () => {
-            document.title = APP_NAME!;
-        };
-    },);
+    //     return () => {
+    //         document.title = APP_NAME!;
+    //     };
+    // },);
 
     return (
         <>

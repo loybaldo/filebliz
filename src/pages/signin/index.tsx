@@ -7,22 +7,13 @@ import GoogleLogo from "../../assets/google.svg";
 import FacebookLogo from "../../assets/facebook.svg";
 import Button from "../../components/common/button";
 import "./signin.scss";
+import pagetitle from "../.scripts/pagetitle";
 
 
 function SigninPage() {
+	pagetitle.SigninTitle()
+
 	const { signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
-	const location = useLocation();
-
-	useEffect(() => {
-		const APP_NAME = process.env.REACT_APP_NAME;
-		if (location.pathname === "/signin") {
-			document.title = `Sign In - ${APP_NAME}`;
-		}
-
-		return () => {
-			document.title = APP_NAME!;
-		};
-	}, [location]);
 
 	const handleGoogleSignIn = async () => {
 		await signInWithGoogle();
@@ -31,6 +22,19 @@ function SigninPage() {
 	const handleFacebookSignIn = async () => {
 		await signInWithFacebook();
 	};
+
+	// const location = useLocation();
+
+	// useEffect(() => {
+	// 	const APP_NAME = process.env.REACT_APP_NAME;
+	// 	if (location.pathname === "/signin") {
+	// 		document.title = `Sign In - ${APP_NAME}`;
+	// 	}
+
+	// 	return () => {
+	// 		document.title = APP_NAME!;
+	// 	};
+	// }, [location]);
 
 
 	return (

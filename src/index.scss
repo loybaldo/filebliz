@@ -392,6 +392,16 @@ input[type="file"] {
 
 a {
 	@include focus-style;
+	text-decoration: none;
+	color: $text-color-alt;
+	
+	&:hover {
+		text-decoration: underline;
+	}
+	
+	&:active {
+		color: $primary-color;
+	}
 }
 
 button {

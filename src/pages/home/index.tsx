@@ -5,6 +5,7 @@ import Landing from "../../components/widgets/landing";
 import Navigation from "../../components/common/navigation";
 import Services from "../../components/widgets/services";
 import Feedbacks from "../../components/widgets/feedbacks";
+import Campaign from "../../components/widgets/campaign";
 
 
 function HomePage() {
@@ -14,8 +15,9 @@ function HomePage() {
             <div className="mainView">
                 <Landing />
                 <Services />
-                <Advert />
                 <Feedbacks />
+                <Advert />
+                <Campaign />
             </div>
             <Footer />
             <div className="f-footer-spacer"></div>
