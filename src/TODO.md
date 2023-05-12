@@ -63,3 +63,4 @@
 - [X] Preparation for TODO C 
 - [X] Partially Style Premium Page
 - [x] Migrated title "renamer"
+- [X] Stylation of Login/Signin page

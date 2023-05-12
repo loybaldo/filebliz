@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./footer.scss";
 import Button from "../button";
+import Divider from "../divider";
 
 
 function Footer() {
@@ -63,16 +64,18 @@ function Footer() {
                     <span>FILEBLIZ</span>
                 </Button>
                 <span>
-                    Filebliz, Copyright&copy; {appFirstPublished} {((new Date().getFullYear()) > appFirstPublished) ? ` - ${new Date().getFullYear()}` : null}. All Rights Reserved.
+                    Filebliz, &copy; Copyright {appFirstPublished} {((new Date().getFullYear()) > appFirstPublished) ? ` - ${new Date().getFullYear()}` : null}- All Rights Reserved.
                     {/* By using Filebliz, you agree to our&nbsp;
                     <Link to="/privacy">privacy policy</Link> and&nbsp;
                     <Link to="/terms" >terms &amp; conditions</Link>. */}
                 </span>
                 <div>
+                    <Divider />
                     <span>Mindanao, Philippines</span>
-                    <span>+123 456 7890</span>
-                    <span>nonexisting@filebliz.com</span>
+                    <span>+000 000 0000</span>
+                    <span>expomawd@gmail.com</span>
                 </div>
+
                 <div className="f-footer-links">
                     <a href="https://facebook.com" target="_blank" rel="noreferrer" title="Facebook">
                         <i className="fa-brands fa-facebook" style={{ fontSize: 24 }}></i>
@@ -96,10 +99,13 @@ function Footer() {
                         <Link className={""} to="/premium">Premium</Link>
                     </span>
                     <span>
-                        <Link className={""} to="/account">Account</Link>
-                    </span>
-                    <span>
                         <Link className={""} to="/about">About</Link>
+                    </span>
+                    
+                    <div></div>
+
+                    <span>
+                        <Link className={""} to="/account">Account Dashboard</Link>
                     </span>
                 </div>
             </div>
@@ -111,13 +117,7 @@ function Footer() {
                         <Link className={""} to="/premium">Pricing</Link>
                     </span>
                     <span>
-                        <Link className={""} to="/documentation">File Formats</Link>
-                    </span>
-                    <span>
                         <Link className={""} to="/documentation">How to Send Files</Link>
-                    </span>
-                    <span>
-                        <Link className={""} to="/documentation">Understand Filebliz</Link>
                     </span>
                 </div>
             </div>
@@ -125,7 +125,6 @@ function Footer() {
             <div className="f-container">
                 <h3>Support</h3>
                 <div>
-                    <Link className={""} to="/documentation">Feedback</Link>
                     <Link className={""} to="/documentation">Privacy Policy</Link>
                     <Link className={""} to="/documentation">Terms of Use</Link>
                     <Link className={""} to="/documentation">Contact Us</Link>

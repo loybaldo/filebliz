@@ -48,14 +48,18 @@
 
     .f-s-container {
         @include flex-center;
+        flex-direction: column;
+        gap: 20px;
         width: 100%;
+        background-color: $bg-color-accent;
 
         .card {
             @include shadow;
             width: 45%;
-            // @include wh(45%, 50%);
+            // @include wh(45%, 45%);
             @include mar-pad(0, 40px);
 
+            outline: 1px solid $bg-color-accent-x;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -70,7 +74,7 @@
             .item-under {
                 font-size: smaller;
                 margin: 10px 0px;
-
+                
                 a {
                     color: $primary-color;
                 }
@@ -80,7 +84,7 @@
                 @include flex-center;
                 flex-direction: column;
                 gap: 5px;
-
+                
                 div {
                     gap: 10px;
                     display: flex;

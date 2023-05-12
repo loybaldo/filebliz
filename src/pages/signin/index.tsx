@@ -1,12 +1,11 @@
-import { useContext, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../auth/auth-provider";
-import Footer from "../../components/common/footer";
-import Navigation from "../../components/common/navigation";
 import GoogleLogo from "../../assets/google.svg";
 import FacebookLogo from "../../assets/facebook.svg";
 import Button from "../../components/common/button";
 import pagetitle from "../.scripts/pagetitle";
+import Loader from "../../components/common/loader";
 import "./signin.scss";
 
 
@@ -14,6 +13,7 @@ function SigninPage() {
 	pagetitle.SigninTitle()
 
 	const { signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
+	const appFirstPublished = parseInt(process.env.REACT_APP_FIRST_PUBLISHED!);
 
 	const handleGoogleSignIn = async () => {
 		await signInWithGoogle();
@@ -23,50 +23,53 @@ function SigninPage() {
 		await signInWithFacebook();
 	};
 
-	// const location = useLocation();
-
-	// useEffect(() => {
-	// 	const APP_NAME = process.env.REACT_APP_NAME;
-	// 	if (location.pathname === "/signin") {
-	// 		document.title = `Sign In - ${APP_NAME}`;
-	// 	}
-
-	// 	return () => {
-	// 		document.title = APP_NAME!;
-	// 	};
-	// }, [location]);
-
-
 	return (
 		<>
+			<div className="f-loader-cover">
+				<Loader />
+			</div>
+
 			<div className="f-signin-container">
 
 				<div className="f-s-background"></div>
 
 				<div className="f-s-container">
 					<div className="card">
-						<h3>Sign In with email</h3>
 
 						<form action="">
-							<input type="email" name="" id="" />
-							<input type="password" />
-							<input className="f-btn" type="submit" value="Sign In" />
-							<span>have an account? Login
-								<Link to={"/signin"}>here</Link>
+							<h3>Sign In with email</h3>
+							<input type="email" name="" id="" placeholder="sample@mail.com" />
+							<div style={{ marginTop: 20 }}></div>
+
+							<input type="password" placeholder="Password" />
+							<input type="password" placeholder="Confirm Password" />
+							<div className="item-under">Already have an account? <Link to={"/login"}>Log in</Link></div>
+
+							<span className="f-submit-container">
+								<input className="f-btn primary" type="submit" value="Sign In" />
 							</span>
 						</form>
 
-						<span>or Sign In using</span>
+						<div className="f-thirid-party">
+							<span>- or Sign In using -</span>
 
-						<Button onclick={handleGoogleSignIn} classItem={"btn-mini"}>
-							<img draggable="false" src={GoogleLogo} alt="Google Logo" />
-						</Button>
-						<Button onclick={handleFacebookSignIn} classItem={"btn-mini"} >
-							<img draggable="false" src={FacebookLogo} alt="Facebook Logo" />
-						</Button>
-
-						<Link to={"/"}>go back</Link>
+							<div>
+								<Button onclick={handleGoogleSignIn} classItem={"btn-mini"}>
+									<img draggable="false" src={GoogleLogo} alt="Google Logo" />
+								</Button>
+								<Button onclick={handleFacebookSignIn} classItem={"btn-mini"} >
+									<img draggable="false" src={FacebookLogo} alt="Facebook Logo" />
+								</Button>
+							</div>
+						</div>
 					</div>
+
+					<span style={{
+						display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"
+					}}>
+						Filebliz, &copy; Copyright {appFirstPublished} {((new Date().getFullYear()) > appFirstPublished) ? ` - ${new Date().getFullYear()}` : null}- All Rights Reserved.
+						<Link to={"/"}>Back to Home</Link>
+					</span>
 				</div>
 			</div>
 		</>

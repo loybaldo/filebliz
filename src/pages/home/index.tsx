@@ -14,9 +14,9 @@ function HomePage() {
             <Navigation />
             <div className="mainView">
                 <Landing />
+                <Advert />
                 <Services />
                 <Feedbacks />
-                <Advert />
                 <Campaign />
             </div>
             <Footer />
