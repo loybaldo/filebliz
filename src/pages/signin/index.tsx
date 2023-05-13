@@ -37,7 +37,7 @@ function SigninPage() {
 					<div className="card">
 
 						<form action="">
-							<h3>Sign In with email</h3>
+							<h3>Sign Up with email</h3>
 							<input type="email" name="" id="" placeholder="sample@mail.com" />
 							<div style={{ marginTop: 20 }}></div>
 
@@ -46,12 +46,12 @@ function SigninPage() {
 							<div className="item-under">Already have an account? <Link to={"/login"}>Log in</Link></div>
 
 							<span className="f-submit-container">
-								<input className="f-btn primary" type="submit" value="Sign In" />
+								<input className="f-btn primary" type="submit" value="Sign Up" />
 							</span>
 						</form>
 
 						<div className="f-thirid-party">
-							<span>- or Sign In using -</span>
+							<span>- or Sign Up using -</span>
 
 							<div>
 								<Button onclick={handleGoogleSignIn} classItem={"btn-mini"}>

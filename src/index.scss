@@ -335,6 +335,7 @@ input[type="password"],
 input[type="file"],
 input[type="text"],
 input[type="reset"],
+textarea,
 select {
 	@include button;
 
@@ -342,14 +343,17 @@ select {
 	color: $text-color;
 	outline: 1px solid $text-color-alt;
 	border-radius: 5px;
+
+	resize: none;
 	@include mar-pad(10px 0px, 10px);
 	@include wh(100%, 30px);
 
 	&:hover {
 		background-color: $bg-color-accent;
 	}
-
+	
 	&:active {
+		background-color: $bg-color-accent;
 		filter: unset;
 	}
 

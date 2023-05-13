@@ -41,7 +41,7 @@ function SigninPage() {
 							<h3> Login with email</h3>
 							<input type="email" name="" id="" placeholder="sample@mail.com" />
 							<input type="password" placeholder="Password" />
-							<div className="item-under">Don't have an account? <Link to={"/signin"}>Sign in</Link></div>
+							<div className="item-under">Don't have an account? <Link to={"/signin"}>Sign Up</Link></div>
 
 							<span className="f-submit-container">
 								<input className="f-btn primary" type="submit" value="Log In" />
@@ -49,7 +49,7 @@ function SigninPage() {
 						</form>
 
 						<div className="f-thirid-party">
-							<span>- or Sign In using -</span>
+							<span>- or Log in using -</span>
 
 							<div>
 								<Button onclick={handleGoogleSignIn} classItem={"btn-mini"}>

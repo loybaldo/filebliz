@@ -1,7 +1,71 @@
 @import "../../index.scss";
 
-.h1 {
-    @include wh(100vw, 100vh);
-    @include flex-center;
-    text-align: center;
+.f-wrapper {
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .card {
+        @include wh(100%, unset);
+        @include mar-pad(unset, 60px);
+
+        -webkit-user-select: unset;
+        -ms-user-select: unset;
+        user-select: unset;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        cursor: default;
+
+        &:active,
+        &:hover {
+            filter: unset;
+        }
+
+        div {
+            @include global-max-width(0);
+
+            h1 {
+                @include no-select;
+            }
+        }
+    }
+
+    .f-mv-w {
+        background-color: $bg-color-accent;
+
+        .f-mv {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    .f-contact {
+        @include flex-center;
+        @include wh(100%, 100%);
+        padding: 50px;
+        background-image: url("../../assets/landing-bg.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: unset;
+
+        .card {
+            @include mar-pad(30px, 50px);
+            @include wh(50%, inherit);
+
+            form {             
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                textarea {
+                    margin-top: 20px;
+                    height: 120px;
+                }
+            }
+        }
+    }
 }
