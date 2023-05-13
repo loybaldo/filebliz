@@ -1,0 +1,17 @@
+@import "../../../index.scss";
+
+.f-campaign {
+    @include flex-center;
+    @include wh(100%, 420px);
+    flex-direction: column;
+    background-color: $bg-color-accent;
+
+    h1,
+    span {
+        padding: 5px;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+}

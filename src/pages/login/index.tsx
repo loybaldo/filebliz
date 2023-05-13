@@ -5,8 +5,8 @@ import GoogleLogo from "../../assets/google.svg";
 import FacebookLogo from "../../assets/facebook.svg";
 import Button from "../../components/common/button";
 import pagetitle from "../.scripts/pagetitle";
+import "./login.scss";
 import Loader from "../../components/common/loader";
-import "./signin.scss";
 
 
 function SigninPage() {
@@ -23,6 +23,7 @@ function SigninPage() {
 		await signInWithFacebook();
 	};
 
+
 	return (
 		<>
 			<div className="f-loader-cover">
@@ -35,23 +36,20 @@ function SigninPage() {
 
 				<div className="f-s-container">
 					<div className="card">
-
 						<form action="">
-							<h3>Sign Up with email</h3>
+							{/* <Link to={"/"} style={{ textDecoration: "none" }}>&lt; Back</Link> */}
+							<h3> Login with email</h3>
 							<input type="email" name="" id="" placeholder="sample@mail.com" />
-							<div style={{ marginTop: 20 }}></div>
-
 							<input type="password" placeholder="Password" />
-							<input type="password" placeholder="Confirm Password" />
-							<div className="item-under">Already have an account? <Link to={"/login"}>Log in</Link></div>
+							<div className="item-under">Don't have an account? <Link to={"/signin"}>Sign Up</Link></div>
 
 							<span className="f-submit-container">
-								<input className="f-btn primary" type="submit" value="Sign Up" />
+								<input className="f-btn primary" type="submit" value="Log In" />
 							</span>
 						</form>
 
 						<div className="f-thirid-party">
-							<span>- or Sign Up using -</span>
+							<span>- or Log in using -</span>
 
 							<div>
 								<Button onclick={handleGoogleSignIn} classItem={"btn-mini"}>

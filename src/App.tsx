@@ -9,6 +9,7 @@ import PricingPage from './pages/pricing';
 import SigninPage from './pages/signin';
 import Dashboard from './pages/dashboard';
 import ScrollToTop from './components/widgets/scroll-to-top';
+import Login from './pages/login';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 				<Route path="/about" element={<About />} />
 				<Route path="/signin" element={(!currentUser) ? <SigninPage /> : <Navigate to="/account" />} />
 				<Route path="/dashboard" element={<Dashboard />} />
+				<Route path="/login" element={<Login/>} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</BrowserRouter>

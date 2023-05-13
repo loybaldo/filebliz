@@ -329,6 +329,42 @@ $media-query-wide: 2000px;
 	// outline: lime solid 1px;
 }
 
+input[type="button"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+input[type="text"],
+input[type="reset"],
+textarea,
+select {
+	@include button;
+
+	background-color: $bg-color;
+	color: $text-color;
+	outline: 1px solid $text-color-alt;
+	border-radius: 5px;
+
+	resize: none;
+	@include mar-pad(10px 0px, 10px);
+	@include wh(100%, 30px);
+
+	&:hover {
+		background-color: $bg-color-accent;
+	}
+	
+	&:active {
+		background-color: $bg-color-accent;
+		filter: unset;
+	}
+
+	&:disabled,
+	&[disabled] {
+		cursor: not-allowed;
+		filter: none;
+		opacity: 0.5;
+	}
+}
+
 .disable-events {
 	pointer-events: none;
 }
@@ -392,6 +428,16 @@ input[type="file"] {
 
 a {
 	@include focus-style;
+	text-decoration: none;
+	color: $text-color-alt;
+	
+	&:hover {
+		text-decoration: underline;
+	}
+	
+	&:active {
+		color: $primary-color;
+	}
 }
 
 button {

@@ -1,17 +1,5 @@
 # TODO (For Programmers)
 
-## TODO A
-
-- [X] Refactor all SCSS files
-- [X] Redesign Page Layouts (covers: majority) !! postponed half of it once everything is finished
-- [X] *Migrate modal system (making it reusable and customizable)
-- [X] Rebase Alert Box (Allow Children)
-- [X] fix press enter function when selecting files
-- [X] Refactor Button and remove `<Link/>` (elimenate anchor tags, allow children)
-- [X] implement theme switcher
-
-<hr/>
-
 ## TODO B (Requires: `Refactored & Rewritten <Button/>`)
 
 - [ ] Change navigation component
@@ -69,4 +57,10 @@
     - - [X] fixed a small issue with loading bar z-index
     - - [X] Rebase Alert Box (Allow Children)
 
+
+<hr/>
+
+- [X] Preparation for TODO C 
 - [X] Partially Style Premium Page
+- [x] Migrated title "renamer"
+- [X] Stylation of Login/Signin page

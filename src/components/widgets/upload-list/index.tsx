@@ -7,34 +7,34 @@ import ListView from "../list-view";
 import "./upload-list.scss";
 
 
-interface FileDataInterface {
-    id: string;
-    uploader: string;
-    name: string;
-    size: number;
-    type: string;
-    downloadURL: string;
-    dateUploaded: string;
-}
+// interface FileDataInterface {
+//     id: string;
+//     uploader: string;
+//     name: string;
+//     size: number;
+//     type: string;
+//     downloadURL: string;
+//     dateUploaded: string;
+// }
 
 function UploadList() {
-    const { currentUser } = useContext(AuthContext);
-    const [files, setFiles] = useState<DocumentData>([]);
+    const { currentUser, files, getFiles } = useContext(AuthContext);
 
-    const getData = useCallback(() => {
-        const filesRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
-        const q = query(filesRef, where("uploader", "==", currentUser?.uid), orderBy("dateUploaded", "desc"));
-        const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
-            const filesList = snapshot.docs.map((doc) => ({ ...doc.data(), docId: doc.id }));
-            setFiles(filesList);
-        });
-        return unsubscribe;
-    }, [currentUser?.uid])
+    // const getData = useCallback(() => {
+    //     const filesRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
+    //     const q = query(filesRef, where("uploader", "==", currentUser?.uid), orderBy("dateUploaded", "desc"));
+    //     const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
+    //         const filesList = snapshot.docs.map((doc) => ({ ...doc.data(), docId: doc.id }));
+    //         setFiles(filesList);
+    //     });
+    //     return unsubscribe;
+    // }, [currentUser?.uid])
 
     useEffect(() => {
-        const unsubscribe = getData();
+        const unsubscribe = getFiles();
+
         return unsubscribe;
-    }, [getData]);
+    }, [getFiles]);
 
     const handleDeleteAll = async () => {
         const fileRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
@@ -55,7 +55,7 @@ function UploadList() {
                 (<div className="f-upload-list-no-data">
                     <p>No Data</p>
                 </div>) : null}
-            {files.map((file: FileDataInterface) => (<ListView key={Math.random()} id={file.id} fileName={file.name} size={file.size} fileExt={file.type.split("/")[1]} url={file.downloadURL} date={file.dateUploaded.split("T")[0]} />))}
+            {files.map((file) => (<ListView key={Math.random()} id={file.id} fileName={file.name} size={file.size} fileExt={file.type.split("/")[1]} url={file.downloadURL} date={file.dateUploaded.split("T")[0]} />))}
         </div>
     );
 }

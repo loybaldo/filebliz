@@ -2,6 +2,11 @@
 
 .f-footer {
     @include wh(100%, 40vh);
+    @include flex-center;
+
+    padding: 0px 140px;
+    flex-direction: row;
+    align-items: unset;
     background-color: $bg-color-accent;
 
     .hidden {
@@ -15,44 +20,98 @@
 
     .f-container {
         @include wh(100%, 100%);
-        @include mar-pad(0 auto, 20px);
+        @include mar-pad(0px, 20px);
         @include global-max-width(0);
 
-        @include flex-center;
-        flex-direction: column-reverse;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
 
         color: $text-color-alt;
 
-        div:nth-child(1) {
+        h3 {
+            margin-top: 5px;
+            margin-bottom: 14px;
+        }
+
+        button {
+            margin-bottom: 20px;
+        }
+
+        .f-footer-links {
+            flex-direction: row;
+            align-items: center;
+            gap: 14px;
+
+            i {
+                color: $text-color-alt;
+            }
+        }
+
+        div {
             display: flex;
+            flex-direction: column;
+            margin: 10px 0px;
+        }
 
-            a {
-                @include flex-center;
-                @include wh(44px, 44px);
+        .f-branding {
+            padding: 0;
+            @include flex-center;
+            justify-content: unset;
+            background-color: unset;
+            color: $text-color;
 
-                margin: 0px;
-                text-decoration: none;
-                color: $text-color-alt;
+            &:hover {
+                filter: brightness(100%);
             }
 
-            a:hover {
-                scale: 1.1;
+            img {
+                @include wh(30px, 30px);
+            }
+
+            span {
+                margin-left: 10px;
+                font-weight: bold;
+                font-size: 25px;
+                letter-spacing: 2px;
+                font-family: "Glacial Indifference";
             }
         }
 
-        div:nth-child(2) {
-            a {
-                text-decoration: underline;
-                color: $text-color-alt;
+        // div:nth-child(1) {
+        //     display: flex;
 
-                &:hover {
-                    color: $primary-color;
-                }
-                &:active {
-                    filter: brightness(50%);
-                }
-            }
-        }
+        //     a {
+        //         @include flex-center;
+        //         @include wh(44px, 44px);
+
+        //         margin: 0px;
+        //         text-decoration: none;
+        //         color: $text-color-alt;
+        //     }
+
+        //     a:hover {
+        //         scale: 1.1;
+        //     }
+        // }
+
+        // div:nth-child(2) {
+        //     a {
+        //         text-decoration: underline;
+        //         color: $text-color-alt;
+
+        //         &:hover {
+        //             color: $primary-color;
+        //         }
+        //         &:active {
+        //             filter: brightness(50%);
+        //         }
+        //     }
+        // }
+    }
+
+    .main {
+        margin-right: 140px;
     }
 }
 
@@ -70,7 +129,7 @@
 }
 
 @media only screen and (min-width: $media-query-wide) {
-    .f-container {
+    .f-footer {
         @include global-max-width(1);
     }
 }
