@@ -1,13 +1,10 @@
-import { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { AuthContext } from "../../auth/auth-provider";
 import AccountHeader from "../../components/widgets/acc-header";
 import Navigation from "../../components/common/navigation";
 import Status from "../../components/widgets/status";
 import UploadList from "../../components/widgets/upload-list";
 // import Alert from "../../components/common/alert";
-import './account.scss'
 import pagetitle from "../.scripts/pagetitle";
+import './account.scss'
 
 
 function AccountPage() {

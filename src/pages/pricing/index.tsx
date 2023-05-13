@@ -1,13 +1,11 @@
-import { useEffect } from "react";
-import { useLocation, } from "react-router-dom";
 import Collapse from "../../components/common/collapse";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
 import Offers from "../../components/widgets/offers";
 import PremiumLanding from "../../components/widgets/premium-landing";
 import Campaign from "../../components/widgets/campaign";
-import './pricing.scss'
 import pagetitle from "../.scripts/pagetitle";
+import './pricing.scss'
 
 
 function FAQ() {

@@ -1,8 +1,8 @@
 import { CircularProgressbar } from "react-circular-progressbar";
-import 'react-circular-progressbar/dist/styles.css';
-import Button from "../../common/button";
-import "./status.scss";
 import { useNavigate } from "react-router-dom";
+import Button from "../../common/button";
+import 'react-circular-progressbar/dist/styles.css';
+import "./status.scss";
 
 
 function Status() {

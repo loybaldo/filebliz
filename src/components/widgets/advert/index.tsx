@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ImagePlaceholder from "../../../assets/image-placeholder.svg";
 import Button from "../../common/button";
 import "./advert.scss";
-import { useNavigate } from "react-router-dom";
 
 
 function Advert() {

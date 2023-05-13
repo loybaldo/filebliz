@@ -5,8 +5,8 @@ import GoogleLogo from "../../assets/google.svg";
 import FacebookLogo from "../../assets/facebook.svg";
 import Button from "../../components/common/button";
 import pagetitle from "../.scripts/pagetitle";
-import "./login.scss";
 import Loader from "../../components/common/loader";
+import "./login.scss";
 
 
 function SigninPage() {

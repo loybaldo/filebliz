@@ -1,6 +1,7 @@
 import { useLocation, } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
+
 export default function ScrollToTop() {
     const [isLoaded, setIsLoaded] = useState(false);
     const location = useLocation();

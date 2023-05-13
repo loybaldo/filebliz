@@ -3,6 +3,7 @@ import React from 'react';
 import Button from '../button';
 import './modal.scss';
 
+
 interface ModalProps {
     modalTitle: string
     isOpen: boolean
