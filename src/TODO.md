@@ -14,14 +14,6 @@
 
 <hr/>
 
-## TODO C (Requires: `Refactored SCSS & Adjusted/Redesigned Page Layouts`)
-
-- [X] Style FAQ
-- [ ] Write [About Us]() page
-- [ ] Add proper information in `Footer` component
-
-<hr/>
-
 ### TODO D (Requires: `Refactored SCSS`)
 
 - [ ] Style [Dashboard]()
