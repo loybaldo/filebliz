@@ -22,12 +22,16 @@ interface PaypalButtonInterface {
     price: number;
 }
 
-
+// ============================================
+//     A component for Paypal button
+// ============================================
 function PaypalButton(props: PaypalButtonInterface) {
     const { currentUser } = useContext(AuthContext);
     const [{ isPending, isRejected }] = usePayPalScriptReducer();
 
-    // This will create the order of the user.
+    // =============================================
+	//     This will create the order of the user
+	// =============================================
     const handleCreateOrder = async (data: any, actions: any) => {
         console.log(currentUser?.uid);
         const order = await actions?.order?.create({
@@ -41,7 +45,9 @@ function PaypalButton(props: PaypalButtonInterface) {
         return order;
     };
 
-    // This will check and handle if the user approved the payment.
+    // ====================================================================
+	//     This will check and handle if the user approved the payment
+	// ====================================================================
     const handleOnApproved = async (data: OnApproveData, actions: OnApproveActions) => {
         const currentDate = new Date();
         const proExpiration = new Date(currentDate.setMonth(currentDate.getMonth() + parseInt(process.env.REACT_APP_PRO_EXPIRATION_MONTHS!))).getTime();
@@ -67,7 +73,9 @@ function PaypalButton(props: PaypalButtonInterface) {
     )
 }
 
-
+// ===================================
+//     Pricing Card Component
+// ===================================
 function PricingCard(props: PricingCardInterface) {
     return (
         <div className="f-pricing-card">

@@ -7,6 +7,9 @@ import "./acc-header.scss";
 function AccountHeader() {
     const { currentUser, memberships } = useContext(AuthContext);
 
+    // =================================================
+	//     Calculate the expiration of membership
+	// =================================================
     // May bugs.... Balikan ra nako ni, kay mag return siya ug 13 months bisan 1 year ang expiration. | chatgpt mo lang yan xD
     const handleMembershipTimeLeft = () => {
         const daysInMonth = 30;

@@ -64,7 +64,7 @@ function Footer() {
                     <span>FILEBLIZ</span>
                 </Button>
                 <span>
-                    Filebliz, &copy; Copyright {appFirstPublished} {((new Date().getFullYear()) > appFirstPublished) ? ` - ${new Date().getFullYear()}` : null}- All Rights Reserved.
+                    Filebliz, &copy; Copyright {appFirstPublished} {((new Date().getFullYear()) > appFirstPublished) ? ` - ${new Date().getFullYear()}` : null} - All Rights Reserved.
                     {/* By using Filebliz, you agree to our&nbsp;
                     <Link to="/privacy">privacy policy</Link> and&nbsp;
                     <Link to="/terms" >terms &amp; conditions</Link>. */}

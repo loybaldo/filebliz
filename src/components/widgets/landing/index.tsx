@@ -27,6 +27,9 @@ function Landing() {
     const onHoverOutside = 'notHovering';
     const element = document.getElementById("dropdown-location");
 
+    // ==========================================
+	//     Handles Drag and Drop features
+	// ==========================================
     function handleDragOver(param: any, e: React.DragEvent<HTMLDivElement>): void {
         e.preventDefault();
         e.stopPropagation();

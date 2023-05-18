@@ -7,6 +7,9 @@ interface Props {
   	children: ReactNode;
 }
 
+// ============================================
+//     Authentication Properties
+// ============================================
 interface AuthContextProps {
 	currentUser: User | null;
 	memberships: DocumentData[];
@@ -34,6 +37,9 @@ export const AuthProvider = ({ children }: Props) => {
 	const [memberships, setMemberships] = useState<DocumentData[]>([]);
 	const [files, setFiles] = useState<DocumentData[]>([]);
 
+	// ============================================
+	//     Get the membership of the user
+	// ============================================
 	const getMembership = () => {
 		const filesRef = collection(db, process.env.REACT_APP_PURCHASE_TABLE!);
 		const q = query(
@@ -48,6 +54,9 @@ export const AuthProvider = ({ children }: Props) => {
 		return unsubscribe;
 	};
 
+	// ============================================
+	//     Get the files uploaded by the user
+	// ============================================
 	const getFiles = useCallback(() => {
 		const filesRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
 		const q = query(filesRef, where("uploader", "==", currentUser?.uid), orderBy("dateUploaded", "desc"));
@@ -55,7 +64,7 @@ export const AuthProvider = ({ children }: Props) => {
 			const filesList = snapshot.docs.map((doc) => ({ ...doc.data(), docId: doc.id }));
 			setFiles(filesList);
 		});
-		return () => unsubscribe(); // Return a callback that unsubscribes from the Firestore listener
+		return () => unsubscribe();
 	}, [currentUser?.uid]);
   
 
@@ -75,12 +84,18 @@ export const AuthProvider = ({ children }: Props) => {
 		}
 	}, [currentUser?.uid]);
 
+	// ============================================
+	//     Logout the user
+	// ============================================
 	const logout = () => {
 		signOut(auth).catch((err) => {
 			console.error(err);
 		});
 	};
 
+	// ============================================
+	//     Signin using Google account
+	// ============================================
 	const signInWithGoogle = async () => {
 		try {
 			const result = await signInWithPopup(auth, googleAuthProvider);
@@ -91,6 +106,9 @@ export const AuthProvider = ({ children }: Props) => {
 		}
 	};
 
+	// ============================================
+	//     Signin using Facebook account
+	// ============================================
 	const signInWithFacebook = async () => {
 		try {
 			const result = await signInWithPopup(auth, facebookAuthProvider);
