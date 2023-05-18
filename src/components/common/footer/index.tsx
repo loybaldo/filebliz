@@ -125,8 +125,8 @@ function Footer() {
             <div className="f-container">
                 <h3>Support</h3>
                 <div>
-                    <Link className={""} to="/documentation">Privacy Policy</Link>
-                    <Link className={""} to="/documentation">Terms of Use</Link>
+                    <Link className={""} to="/privacy">Privacy Policy</Link>
+                    <Link className={""} to="/terms">Terms of Use</Link>
                     <Link className={""} to="/documentation">Contact Us</Link>
                 </div>
             </div>

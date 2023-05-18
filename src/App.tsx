@@ -10,6 +10,7 @@ import SigninPage from './pages/signin';
 import Dashboard from './pages/dashboard';
 import ScrollToTop from './components/widgets/scroll-to-top';
 import Login from './pages/login';
+import PrivacyPolicy from './pages/privacy';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
 				<Route path="/signin" element={(!currentUser) ? <SigninPage /> : <Navigate to="/account" />} />
 				<Route path="/dashboard" element={<Dashboard />} />
 				<Route path="/login" element={<Login/>} />
+				<Route path='/privacy' element={<PrivacyPolicy/>} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</BrowserRouter>
