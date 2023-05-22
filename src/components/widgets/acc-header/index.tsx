@@ -25,6 +25,8 @@ function AccountHeader() {
             // Gi minus 1 na lang nako XD
             return `Expires in ${diffMonths - 1} months`;
         }
+
+        
     }
 
     return (
@@ -33,8 +35,9 @@ function AccountHeader() {
             <div className="f-prof-container">
                 <div>
                     {/* INFO: 'currentUser?.photoURL' this code occasionally throws 403 error, consider encasing it with a try & catch? or with a for/while loop?*/}
+                    
                     <img draggable="false" src={(currentUser?.photoURL) ? currentUser?.photoURL! : DefaultProfilePic} alt={currentUser?.displayName!} />
-                    <span>{currentUser?.displayName}</span>
+                    <span>{(currentUser?.displayName) ? currentUser?.displayName : currentUser?.email}</span>
                 </div>
                 <div>
                     <span>{(memberships.length > 0) ? `${memberships[0]?.type} member` : "Free Member"}</span>

@@ -29,6 +29,8 @@ function UploadList() {
     }
 
     return (
+        <>
+        {console.log(currentUser)}
         <div className="f-upload-list">
             <div className="f-del-all-wrapper">
                 <span className="f-label">Uploaded ({files.length})</span>
@@ -36,10 +38,11 @@ function UploadList() {
             </div>
             {(files.length === 0) ?
                 (<div className="f-upload-list-no-data">
-                    <p>No Data</p>
+                    <p>No Uploaded Files</p>
                 </div>) : null}
             {files.map((file) => (<ListView key={Math.random()} id={file.id} fileName={file.name} size={file.size} fileExt={file.type.split("/")[1]} url={file.downloadURL} date={file.dateUploaded.split("T")[0]} />))}
         </div>
+        </>
     );
 }
 
