@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useCallback, useEffect, useState } from 'react';
-import { User, signOut, signInWithPopup } from 'firebase/auth';
+import { User, signOut, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, googleAuthProvider, facebookAuthProvider, db } from '../config/firebase';
 import { collection, DocumentData, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 
@@ -15,6 +15,7 @@ interface AuthContextProps {
 	memberships: DocumentData[];
 	files: DocumentData[];
 	logout: () => void;
+	signInWithEmail: (email: string, password: string) => Promise<User | null>;
 	signInWithGoogle: () => Promise<User | null>;
 	signInWithFacebook: () => Promise<User | null>;
 	getMembership: () => () => void;
@@ -26,6 +27,7 @@ export const AuthContext = createContext<AuthContextProps>({
 	memberships: [],
 	files: [],
 	logout: () => null,
+	signInWithEmail: () => Promise.resolve(null),
 	signInWithGoogle: () => Promise.resolve(null),
 	signInWithFacebook: () => Promise.resolve(null),
 	getMembership: () => () => null,
@@ -94,6 +96,21 @@ export const AuthProvider = ({ children }: Props) => {
 	};
 
 	// ============================================
+	//     Signin using Email account
+	// ============================================
+	const signInWithEmail = async (email: string, password: string) => {
+		try {
+			// TODO: Sign in with email
+			const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    		return userCredential.user;
+			
+		} catch (err) {
+			console.error(err);
+			return null;
+		}
+	};
+
+	// ============================================
 	//     Signin using Google account
 	// ============================================
 	const signInWithGoogle = async () => {
@@ -125,6 +142,7 @@ export const AuthProvider = ({ children }: Props) => {
 			memberships,
 			files,
 			logout,
+			signInWithEmail,
 			signInWithGoogle,
 			signInWithFacebook,
 			getMembership,
