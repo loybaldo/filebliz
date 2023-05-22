@@ -27,7 +27,7 @@ function App() {
 				<Route path="/about" element={<About />} />
 				<Route path="/signin" element={(!currentUser) ? <SigninPage /> : <Navigate to="/account" />} />
 				<Route path="/dashboard" element={<Dashboard />} />
-				<Route path="/login" element={<Login/>} />
+				<Route path="/login" element={(!currentUser) ? <Login/> : <Navigate to="/account"/>} />
 				<Route path='/privacy' element={<PrivacyPolicy/>} />
 				<Route path='/terms' element={<TermsOfUse/>} />
 				<Route path="*" element={<NotFoundPage />} />

@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import validator from "email-validator";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../auth/auth-provider";
 import GoogleLogo from "../../assets/google.svg";
@@ -10,10 +11,35 @@ import "./signin.scss";
 
 
 function SigninPage() {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [password2, setPassword2] = useState("");
+
 	pagetitle.SigninTitle()
 
-	const { signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
+	const { signUpWithEmail, signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
 	const appFirstPublished = parseInt(process.env.REACT_APP_FIRST_PUBLISHED!);
+
+	const handleEmailSignIn = async () => {
+		console.log({
+			email,
+			password,
+			password2
+		})
+		const isEmail = validator.validate(email);
+		if (!isEmail) {
+			alert("Email is not valid!");
+			return;
+		}
+		if (password !== password2) {
+			alert("Password not confirmed!");
+			return;
+		}
+		const data = await signUpWithEmail(email, password);
+		if (!data) {
+			alert("Email already used by other user!\nOr email address does not exist!")
+		}
+	}
 
 	const handleGoogleSignIn = async () => {
 		await signInWithGoogle();
@@ -36,19 +62,19 @@ function SigninPage() {
 				<div className="f-s-container">
 					<div className="card">
 
-						<form action="">
+						<div className="form-s">
 							<h3>Sign Up with email</h3>
-							<input type="email" name="" id="" placeholder="sample@mail.com" />
+							<input type="email" placeholder="sample@mail.com" onChange={ (e) => setEmail(e.target.value) }/>
 							<div style={{ marginTop: 20 }}></div>
 
-							<input type="password" placeholder="Password" />
-							<input type="password" placeholder="Confirm Password" />
+							<input type="password" placeholder="Password" onChange={ (e) => setPassword(e.target.value) }/>
+							<input type="password" placeholder="Confirm Password" onChange={(e) => setPassword2(e.target.value) }/>
 							<div className="item-under">Already have an account? <Link to={"/login"}>Log in</Link></div>
 
 							<span className="f-submit-container">
-								<input className="f-btn primary" type="submit" value="Sign Up" />
+								<button className="f-btn primary" onClick={handleEmailSignIn}>Sign Up</button>
 							</span>
-						</form>
+						</div>
 
 						<div className="f-thirid-party">
 							<span>- or Sign Up using -</span>

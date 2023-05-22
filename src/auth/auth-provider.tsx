@@ -15,6 +15,7 @@ interface AuthContextProps {
 	memberships: DocumentData[];
 	files: DocumentData[];
 	logout: () => void;
+	signUpWithEmail: (email: string, password: string) => Promise<User | null>;
 	signInWithEmail: (email: string, password: string) => Promise<User | null>;
 	signInWithGoogle: () => Promise<User | null>;
 	signInWithFacebook: () => Promise<User | null>;
@@ -27,6 +28,7 @@ export const AuthContext = createContext<AuthContextProps>({
 	memberships: [],
 	files: [],
 	logout: () => null,
+	signUpWithEmail: () => Promise.resolve(null),
 	signInWithEmail: () => Promise.resolve(null),
 	signInWithGoogle: () => Promise.resolve(null),
 	signInWithFacebook: () => Promise.resolve(null),
@@ -96,18 +98,34 @@ export const AuthProvider = ({ children }: Props) => {
 	};
 
 	// ============================================
-	//     Signin using Email account
+	//     Signup using Email account
 	// ============================================
-	const signInWithEmail = async (email: string, password: string) => {
+	const signUpWithEmail = async (email: string, password: string) => {
 		try {
-			// TODO: Sign in with email
-			const userCredential = await signInWithEmailAndPassword(auth, email, password);
+			const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     		return userCredential.user;
 			
 		} catch (err) {
 			console.error(err);
 			return null;
 		}
+		
+	};
+
+	// ============================================
+	//     Signin using Email account
+	// ============================================
+	const signInWithEmail = async (email: string, password: string) => {
+		try {
+			const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    		return userCredential.user;
+			
+		} catch (err) {
+			console.error(err);
+			alert("Invalid email or password!");
+			return null;
+		}
+		
 	};
 
 	// ============================================
@@ -142,6 +160,7 @@ export const AuthProvider = ({ children }: Props) => {
 			memberships,
 			files,
 			logout,
+			signUpWithEmail,
 			signInWithEmail,
 			signInWithGoogle,
 			signInWithFacebook,
