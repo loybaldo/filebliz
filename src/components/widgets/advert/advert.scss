@@ -3,7 +3,6 @@
 .f-advert {
     @include mar-pad(50px auto 100px auto, 20px);
     @include global-max-width(0);
-  
 
     background-color: $bg-color-accent;
     border-radius: 15px;

@@ -35,7 +35,7 @@ function About() {
                             Vision: To be the leader in innovative and relevant education that nurtures individuals to become competent and responsible members of society.
 
                         </span>
-                        <img width="100%" src={splashMission} alt="mission splash" />
+                        <img src={splashMission} alt="mission splash" />
                     </div>
                 </div>
 

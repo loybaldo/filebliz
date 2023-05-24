@@ -1,7 +1,7 @@
 @import "../../../index.scss";
 
 .f-footer {
-    @include wh(100%, auto);
+    @include wh(100%, 40vh);
     @include flex-center;
 
     padding: 0px 140px;
@@ -117,15 +117,12 @@
 
 @media only screen and (max-width: $media-query-mobile) {
     .f-footer {
-        flex-direction: column;
-        padding: unset;
-        padding: 0 50px;
         .f-container {
             @include global-max-width(2);
-            
+            flex-direction: column;
 
             div:nth-child(2) {
-                margin: 20px 0;
+                margin: 20px 10px;
             }
         }
     }
