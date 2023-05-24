@@ -96,7 +96,7 @@ function Landing() {
         setIsUploadDisabled(false);
 
         /**********/                           //   FIXME OPTIONAL I did setFile(null); but apparently it cannot do it again twice "properly" soooo I need help for this.
-        /**********/ window.location.reload(); //   temporary fix
+        // /**********/ window.location.reload(); //   temporary fix
     };
 
     // extracted filename handler
@@ -120,10 +120,78 @@ function Landing() {
     }
 
     // Set upload task
-    async function handleUpload() {
-        if (file == null) {
-          return;
-        }
+    // async function handleUpload() {
+    //     if (file == null) {
+    //       return;
+    //     }
+
+    //     if (!currentUser || (memberships.length <= 0)) {
+    //         const allowedTypes = ["video/mpeg","video/mp4", "image/png", "image/jpg", "image/jpeg", "application/pdf", "application/msword"];
+    
+    //         if (!allowedTypes.includes(file.type)) {
+    //           alert("FREE MEMBER\nInvalid file type. Only videos, photos, and documents are allowed.");
+    //           return;
+    //         }
+    //     }
+      
+    //     setIsUploadDisabled(false);
+      
+    //     const fileRef = ref(
+    //       storage,
+    //       `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}`
+    //     );
+      
+    //     const uploadTask = uploadBytesResumable(fileRef, file);
+      
+    //     uploadTask.on(
+    //       "state_changed",
+    //       (snapshot) => {
+    //         const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(1);
+    //         setProgress(+progress);
+    //       },
+    //       (err) => {
+    //         console.error(err);
+    //       },
+    //       async () => {
+    //         if (!currentUser) {
+      
+    //           try {
+    //             const url = await getDownloadURL(fileRef);
+    //             setDownloadURL(url);
+    //             openModal();
+    //           } catch (err) {
+    //             console.error(err);
+    //           }
+    //         } else {
+    //           try {
+    //             const downloadURL = await getDownloadURL(fileRef);
+    //             const fileInfo = {
+    //               uploader: currentUser.uid,
+    //               id: uuidv4(),
+    //               name: file.name,
+    //               type: file.type,
+    //               size: file.size,
+    //               dateUploaded: new Date().toISOString(),
+    //               downloadURL: downloadURL
+    //             };
+      
+    //             await addDoc(
+    //               collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!),
+    //               fileInfo
+    //             );
+      
+    //             setDownloadURL(downloadURL);
+    //             openModal();
+    //           } catch (err) {
+    //             console.error(err);
+    //           }
+    //         }
+    //       }
+    //     );
+    //   }
+
+      function handleUpload() {
+        if (file == null) return;
 
         if (!currentUser || (memberships.length <= 0)) {
             const allowedTypes = ["video/mpeg","video/mp4", "image/png", "image/jpg", "image/jpeg", "application/pdf", "application/msword"];
@@ -133,62 +201,60 @@ function Landing() {
               return;
             }
         }
-      
+
         setIsUploadDisabled(false);
-      
-        const fileRef = ref(
-          storage,
-          `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}`
-        );
-      
+
+        // reference file path
+        const fileRef = ref(storage, `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}`);
+
+        // incorporate file data to be passed for a task
         const uploadTask = uploadBytesResumable(fileRef, file);
-      
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
+
+        // Track the upload percentage.
+        uploadTask.on("state_changed", (snapshot) => {
             const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(1);
             setProgress(+progress);
-          },
-          (err) => {
-            console.error(err);
-          },
-          async () => {
-            if (!currentUser) {
-      
-              try {
-                const url = await getDownloadURL(fileRef);
-                setDownloadURL(url);
-                openModal();
-              } catch (err) {
+        },
+            (err) => {
                 console.error(err);
-              }
-            } else {
-              try {
-                const downloadURL = await getDownloadURL(fileRef);
-                const fileInfo = {
-                  uploader: currentUser.uid,
-                  id: uuidv4(),
-                  name: file.name,
-                  type: file.type,
-                  size: file.size,
-                  dateUploaded: new Date().toISOString(),
-                  downloadURL: downloadURL
-                };
-      
-                await addDoc(
-                  collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!),
-                  fileInfo
-                );
-      
-                setDownloadURL(downloadURL);
-                openModal();
-              } catch (err) {
-                console.error(err);
-              }
-            }
-          }
-        );
-      }
+            },
+            // async task: push to cloud
+            async () => {
+                // Save the file for unknown users.         
+                if (!currentUser) {
+                    getDownloadURL(fileRef).then((url) => {
+                        setDownloadURL(url);
+                        openModal();
+                    });
+                }
+                else {
+                    // Save the file for authenticated users.
+                    console.log("Saving data....")
+                    try {
+                        const downloadURL = await getDownloadURL(fileRef);
+                        const fileInfo =
+                        {
+                            uploader: currentUser.uid,
+                            id: uuidv4(),
+                            name: file.name,
+                            type: file.type,
+                            size: file.size,
+                            dateUploaded: new Date().toISOString(),
+                            downloadURL: downloadURL
+                        };
+
+                        await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
+                        setDownloadURL(downloadURL);
+
+                        openModal();
+                    }
+                    catch (err) {
+                        console.error(err);
+                    }
+                }
+            });
+    };
+
       
 
     function handleCopyLink() {
@@ -198,7 +264,7 @@ function Landing() {
             alert("Link copied to clipboard.");
 
             // added, reload to temporarily get rid of file selected in system since we dont have a cancel method yet. check Line 125 for referemce
-            window.location.reload();
+            // window.location.reload();
 
             /**********/ // NOTE
             /**********/ // Might wanna implement resetting
@@ -242,7 +308,7 @@ function Landing() {
         document.body.style.overflow = 'unset';
 
         // ,.... yes, reload the window to ez bug fix kekw
-        window.location.reload();
+        // window.location.reload();
     };
 
     // Disable mouse events

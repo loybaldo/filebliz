@@ -8,9 +8,13 @@ import UploadList from "../../components/widgets/upload-list";
 // import Alert from "../../components/common/alert";
 import './account.scss'
 import pagetitle from "../.scripts/pagetitle";
+import { collection, query, where, getDocs, deleteDoc } from "firebase/firestore";
+import { db } from "../../config/firebase";
 
 
 function AccountPage() {
+    const { currentUser, memberships, getMembership } = useContext(AuthContext);   
+    
     pagetitle.DashboardTitle()
     // const location = useLocation();
     // const { currentUser } = useContext(AuthContext);
@@ -25,6 +29,27 @@ function AccountPage() {
     //         document.title = APP_NAME!;
     //     };
     // },);
+
+    const handleDeleteAll = async () => {
+        console.log(memberships);
+        console.log(memberships);
+        if (memberships.length > 0) {
+            return;
+        }
+        if ((memberships.length > 0) && (memberships[0].dateExpires - new Date().getTime()) > 0) {
+			return;
+		}
+        const fileRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
+        const q = query(fileRef, where("uploader", "==", currentUser?.uid));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            deleteDoc(doc.ref);
+        });
+    }
+
+    useEffect(() => {
+        handleDeleteAll();
+    })
 
     return (
         <>

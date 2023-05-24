@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useCallback, useEffect, useState } from 'react';
 import { User, signOut, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, googleAuthProvider, facebookAuthProvider, db } from '../config/firebase';
-import { collection, DocumentData, onSnapshot, orderBy, query, where } from 'firebase/firestore';
+import { collection, deleteDoc, DocumentData, getDocs, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 
 interface Props {
   	children: ReactNode;
