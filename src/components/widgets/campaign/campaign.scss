@@ -5,10 +5,15 @@
     @include wh(100%, 420px);
     flex-direction: column;
     background-color: $bg-color-accent;
+    // added
+    padding: 30px;
+   
 
     h1,
     span {
         padding: 5px;
+        // added
+        text-align: center;
     }
 
     button {

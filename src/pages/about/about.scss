@@ -5,10 +5,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    overflow-x: hidden;
+  
     .card {
         @include wh(100%, unset);
-        @include mar-pad(unset, 60px);
+        @include mar-pad(unset,10px);
 
         -webkit-user-select: unset;
         -ms-user-select: unset;
@@ -44,9 +45,9 @@
     }
 
     .f-contact {
+       
         @include flex-center;
         @include wh(100%, 100%);
-        padding: 50px;
         background-image: url("../../assets/landing-bg.svg");
         background-repeat: no-repeat;
         background-size: cover;
@@ -54,7 +55,8 @@
 
         .card {
             @include mar-pad(30px, 50px);
-            @include wh(50%, inherit);
+            max-width:690px;
+            @include wh(100%, inherit);
 
             form {             
                 display: flex;
@@ -69,3 +71,11 @@
         }
     }
 }
+@media only screen and (max-width: 768px) {
+
+    .f-wrapper .f-mv-w .f-mv {
+        flex-direction: column;
+    }
+
+}
+

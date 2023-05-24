@@ -2,7 +2,7 @@
 
 .f-premium-parent {
     @include flex-center;
-    @include wh(100%, 100vh);
+    @include wh(100%, auto);
     padding-top: 60px;
     flex-direction: column;
     overflow: hidden;
