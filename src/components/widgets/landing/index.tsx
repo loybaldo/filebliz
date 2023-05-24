@@ -19,7 +19,7 @@ function Landing() {
     /*********/
     const [progress, setProgress] = useState(0);                        // sets progress bar
     const [downloadURL, setDownloadURL] = useState("");                 // download url container
-    const { currentUser } = useContext(AuthContext);                    // authentication
+    const { currentUser, memberships } = useContext(AuthContext);                    // authentication
 
 
     // use drag and drop
@@ -120,60 +120,76 @@ function Landing() {
     }
 
     // Set upload task
-    function handleUpload() {
-        if (file == null) return;
+    async function handleUpload() {
+        if (file == null) {
+          return;
+        }
 
+        if (!currentUser || (memberships.length <= 0)) {
+            const allowedTypes = ["video/mpeg","video/mp4", "image/png", "image/jpg", "image/jpeg", "application/pdf", "application/msword"];
+    
+            if (!allowedTypes.includes(file.type)) {
+              alert("FREE MEMBER\nInvalid file type. Only videos, photos, and documents are allowed.");
+              return;
+            }
+        }
+      
         setIsUploadDisabled(false);
-
-        // reference file path
-        const fileRef = ref(storage, `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}`);
-
-        // incorporate file data to be passed for a task
+      
+        const fileRef = ref(
+          storage,
+          `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}`
+        );
+      
         const uploadTask = uploadBytesResumable(fileRef, file);
-
-        // Track the upload percentage.
-        uploadTask.on("state_changed", (snapshot) => {
+      
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
             const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(1);
             setProgress(+progress);
-        },
-            (err) => {
+          },
+          (err) => {
+            console.error(err);
+          },
+          async () => {
+            if (!currentUser) {
+      
+              try {
+                const url = await getDownloadURL(fileRef);
+                setDownloadURL(url);
+                openModal();
+              } catch (err) {
                 console.error(err);
-            },
-            // async task: push to cloud
-            async () => {
-                // Save the file for unknown users.         
-                if (!currentUser) {
-                    getDownloadURL(fileRef).then((url) => {
-                        setDownloadURL(url);
-                        openModal();
-                    });
-                }
-                else {
-                    // Save the file for authenticated users.
-                    try {
-                        const downloadURL = await getDownloadURL(fileRef);
-                        const fileInfo =
-                        {
-                            uploader: currentUser.uid,
-                            id: uuidv4(),
-                            name: file.name,
-                            type: file.type,
-                            size: file.size,
-                            dateUploaded: new Date().toISOString(),
-                            downloadURL: downloadURL
-                        };
-
-                        await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
-                        setDownloadURL(downloadURL);
-
-                        openModal();
-                    }
-                    catch (err) {
-                        console.error(err);
-                    }
-                }
-            });
-    };
+              }
+            } else {
+              try {
+                const downloadURL = await getDownloadURL(fileRef);
+                const fileInfo = {
+                  uploader: currentUser.uid,
+                  id: uuidv4(),
+                  name: file.name,
+                  type: file.type,
+                  size: file.size,
+                  dateUploaded: new Date().toISOString(),
+                  downloadURL: downloadURL
+                };
+      
+                await addDoc(
+                  collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!),
+                  fileInfo
+                );
+      
+                setDownloadURL(downloadURL);
+                openModal();
+              } catch (err) {
+                console.error(err);
+              }
+            }
+          }
+        );
+      }
+      
 
     function handleCopyLink() {
         navigator.clipboard.writeText(downloadURL).then(() => {
