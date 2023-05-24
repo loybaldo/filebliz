@@ -40,6 +40,9 @@ function ListView(props: ListViewInterface) {
         }
     }
 
+    // ==================================================
+	//     Calculate the file size to unit KB, MB, and GB
+	// ==================================================
     const formatFileSize = (size: number) => {
         const CONVERSION_UNIT = 1024;
         const kilobytes = size / CONVERSION_UNIT;

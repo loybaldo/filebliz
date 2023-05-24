@@ -1,4 +1,4 @@
-import { collection, where, query, deleteDoc, getDocs } from "firebase/firestore";
+import { collection, where, query, onSnapshot, DocumentData, orderBy, deleteDoc, getDocs } from "firebase/firestore";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../auth/auth-provider";
 import { db } from "../../../config/firebase";
@@ -7,28 +7,8 @@ import ListView from "../list-view";
 import "./upload-list.scss";
 
 
-// interface FileDataInterface {
-//     id: string;
-//     uploader: string;
-//     name: string;
-//     size: number;
-//     type: string;
-//     downloadURL: string;
-//     dateUploaded: string;
-// }
-
 function UploadList() {
     const { currentUser, files, getFiles } = useContext(AuthContext);
-
-    // const getData = useCallback(() => {
-    //     const filesRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
-    //     const q = query(filesRef, where("uploader", "==", currentUser?.uid), orderBy("dateUploaded", "desc"));
-    //     const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
-    //         const filesList = snapshot.docs.map((doc) => ({ ...doc.data(), docId: doc.id }));
-    //         setFiles(filesList);
-    //     });
-    //     return unsubscribe;
-    // }, [currentUser?.uid])
 
     useEffect(() => {
         const unsubscribe = getFiles();
@@ -36,6 +16,9 @@ function UploadList() {
         return unsubscribe;
     }, [getFiles]);
 
+  // =============================================
+	//     Delete all files uploaded by the user
+	// =============================================
     const handleDeleteAll = async () => {
         const fileRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
         const q = query(fileRef, where("uploader", "==", currentUser?.uid));
@@ -46,6 +29,8 @@ function UploadList() {
     }
 
     return (
+        <>
+        {console.log(currentUser)}
         <div className="f-upload-list">
             <div className="f-del-all-wrapper">
                 <span className="f-label">Uploaded ({files.length})</span>
@@ -53,10 +38,11 @@ function UploadList() {
             </div>
             {(files.length === 0) ?
                 (<div className="f-upload-list-no-data">
-                    <p>No Data</p>
+                    <p>No Uploaded Files</p>
                 </div>) : null}
             {files.map((file) => (<ListView key={Math.random()} id={file.id} fileName={file.name} size={file.size} fileExt={file.type.split("/")[1]} url={file.downloadURL} date={file.dateUploaded.split("T")[0]} />))}
         </div>
+        </>
     );
 }
 

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../auth/auth-provider";
 import GoogleLogo from "../../assets/google.svg";
@@ -10,10 +10,17 @@ import "./login.scss";
 
 
 function SigninPage() {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
 	pagetitle.SigninTitle()
 
-	const { signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
+	const { signInWithEmail, signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
 	const appFirstPublished = parseInt(process.env.REACT_APP_FIRST_PUBLISHED!);
+
+	const handleEmailSignin = async () => {
+		await signInWithEmail(email, password);
+	}
 
 	const handleGoogleSignIn = async () => {
 		await signInWithGoogle();
@@ -36,17 +43,17 @@ function SigninPage() {
 
 				<div className="f-s-container">
 					<div className="card">
-						<form action="">
+						<div>
 							{/* <Link to={"/"} style={{ textDecoration: "none" }}>&lt; Back</Link> */}
 							<h3> Login with email</h3>
-							<input type="email" name="" id="" placeholder="sample@mail.com" />
-							<input type="password" placeholder="Password" />
+							<input type="email" placeholder="sample@mail.com" onChange={ (e) => setEmail(e.target.value) }/>
+							<input type="password" placeholder="Password" onChange={ (e) => setPassword(e.target.value) }/>
 							<div className="item-under">Don't have an account? <Link to={"/signin"}>Sign Up</Link></div>
 
 							<span className="f-submit-container">
-								<input className="f-btn primary" type="submit" value="Log In" />
+								<button className="f-btn primary" onClick={handleEmailSignin}>Log In</button>
 							</span>
-						</form>
+						</div>
 
 						<div className="f-thirid-party">
 							<span>- or Log in using -</span>

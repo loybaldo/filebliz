@@ -63,7 +63,7 @@ function Footer() {
                     <span>FILEBLIZ</span>
                 </Button>
                 <span>
-                    Filebliz, &copy; Copyright {appFirstPublished} {((new Date().getFullYear()) > appFirstPublished) ? ` - ${new Date().getFullYear()}` : null}- All Rights Reserved.
+                    Filebliz, &copy; Copyright {appFirstPublished} {((new Date().getFullYear()) > appFirstPublished) ? ` - ${new Date().getFullYear()}` : null} - All Rights Reserved.
                     {/* By using Filebliz, you agree to our&nbsp;
                     <Link to="/privacy">privacy policy</Link> and&nbsp;
                     <Link to="/terms" >terms &amp; conditions</Link>. */}
@@ -124,8 +124,8 @@ function Footer() {
             <div className="f-container">
                 <h3>Support</h3>
                 <div>
-                    <Link className={""} to="/documentation">Privacy Policy</Link>
-                    <Link className={""} to="/documentation">Terms of Use</Link>
+                    <Link className={""} to="/privacy">Privacy Policy</Link>
+                    <Link className={""} to="/terms">Terms of Use</Link>
                     <Link className={""} to="/documentation">Contact Us</Link>
                 </div>
             </div>
