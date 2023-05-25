@@ -5,6 +5,7 @@
     @include wh(100%, 420px);
     flex-direction: column;
     background-color: $bg-color-accent;
+    padding:25px 0; //added
 
     h1,
     span {
@@ -13,5 +14,22 @@
 
     button {
         margin-top: 20px;
+    }
+}
+//added
+@media only screen and (max-width: $media-query-mobile) {
+    .f-campaign {
+        text-align: center;
+        padding:0 15px;
+        // @include global-max-width(2); dunno how this work.
+        h1{
+            font-size: 28px; //added
+        }
+    }
+}
+
+@media only screen and (min-width: $media-query-wide) {
+    .f-campaign {
+        @include global-max-width(1);
     }
 }

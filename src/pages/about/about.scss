@@ -7,7 +7,7 @@
     align-items: center;
 
     .card {
-        @include wh(100%, unset);
+        @include wh(100%, auto);
         @include mar-pad(unset, 60px);
 
         -webkit-user-select: unset;
@@ -54,7 +54,8 @@
 
         .card {
             @include mar-pad(30px, 50px);
-            @include wh(50%, inherit);
+            @include wh(100%, inherit);
+            max-width: 500px;
 
             form {             
                 display: flex;
@@ -67,5 +68,24 @@
                 }
             }
         }
+    }
+}
+@media only screen and (max-width: $media-query-mobile) {
+    .f-wrapper {
+         text-align: center;
+       .f-mv-w {
+         .f-mv  {      
+             flex-direction:column;
+             align-items: center;
+             img{
+                width:300px;
+               
+             }
+       }     
+    }
+ }  
+
+    .f-wrapper {
+        @include global-max-width(1);
     }
 }
