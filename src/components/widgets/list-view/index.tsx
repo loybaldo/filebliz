@@ -10,10 +10,13 @@ import ThumbnailUnknown from "../../../assets/thumbnail-unknown.svg";
 import Button from "../../common/button";
 import "./list-view.scss";
 import { Link } from "react-router-dom";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../../config/firebase";
 
 
 interface ListViewInterface {
     id: string;
+    docId: string;
     fileName: string;
     fileExt: string;
     size: number;
@@ -62,6 +65,16 @@ function ListView(props: ListViewInterface) {
         }).catch((err) => console.error('Could not copy text: ', err));
     }
 
+    const handleDelete = async () => {
+        try {
+            await deleteDoc(doc(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!, props.docId));
+            console.log('Document successfully deleted!');
+        } catch (error) {
+            console.error('Error removing document:', error);
+        }
+    };
+
+
     return (
         <div className="f-list-view">
             <Link className="f-list-clickable" to={`/download?id=${props.id}`}>
@@ -77,7 +90,7 @@ function ListView(props: ListViewInterface) {
 
             <div className="f-list-action">
                 <button className="f-btn" onClick={handleCopyLink}><Icon icon={Icons.copy_outline_bold} title="Copy File" /></button>
-                <button className={"f-btn"} onClick={() => alert("Under development!")}><Icon icon={Icons.trash_outline_bold} title="Delete File" /></button>
+                <button className={"f-btn"} onClick={handleDelete}><Icon icon={Icons.trash_outline_bold} title="Delete File" /></button>
             </div>
         </div>
     );
