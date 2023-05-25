@@ -2,7 +2,7 @@
 
 ![Filebliz Banner](./src/assets/banner.jpg)
 
-Fileblizz is a file-sharing website designed to simplify the process of sharing files for students, teachers, creatives, and small business owners. With its intuitive interface, users can easily upload, share, and manage files, making it an ideal solution for collaborating on group projects or sending essential documents.
+Filebliz is a file-sharing website designed to simplify the process of sharing files for students, teachers, creatives, and small business owners. With its intuitive interface, users can easily upload, share, and manage files, making it an ideal solution for collaborating on group projects or sending essential documents.
 
 ## Requirements
 
@@ -25,7 +25,7 @@ npm install -g create-react-app
 
 To get started with Fileblizz, follow these steps:
 
-1. Download the code from <https://github.com/loybaldo/fileblizz> or use [Github Desktop](https://desktop.github.com/) to clone this repository.
+1. Download the code from <https://github.com/loybaldo/filebliz> or use [Github Desktop](https://desktop.github.com/) to clone this repository.
 
 2. Open the project in VS Code.
 
