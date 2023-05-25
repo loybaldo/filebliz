@@ -7,7 +7,6 @@ import ThumbnailCode from "../../../assets/thumbnail-code.svg";
 import ThumnailMusic from "../../../assets//thumbnail-music.svg";
 import ThumbnailZip from "../../../assets/thumbnail-zip.svg";
 import ThumbnailUnknown from "../../../assets/thumbnail-unknown.svg";
-import Button from "../../common/button";
 import "./list-view.scss";
 import { Link } from "react-router-dom";
 import { deleteDoc, doc } from "firebase/firestore";

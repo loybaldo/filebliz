@@ -1,4 +1,4 @@
-import { collection, where, query, onSnapshot, DocumentData, orderBy, deleteDoc, getDocs } from "firebase/firestore";
+import { collection, where, query, deleteDoc, getDocs } from "firebase/firestore";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../auth/auth-provider";
 import { db } from "../../../config/firebase";
