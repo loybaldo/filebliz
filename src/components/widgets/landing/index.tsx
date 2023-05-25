@@ -178,7 +178,6 @@ function Landing() {
                         };
                         await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
                         // Add the storage
-                        console.log(memberships)
                         const purchaseDocRef = doc(db, process.env.REACT_APP_PURCHASE_TABLE!, memberships[0].id);
                         await updateDoc(purchaseDocRef, { usedStorage: memberships[0].usedStorage + file.size });
 
@@ -270,20 +269,8 @@ function Landing() {
         progressValue = "Processing...";
     }
 
-    // ************** THIS WAS A TEST **************
-    //
-    // let scrollToFooter = () => {
-    //     console.log("clicked");
-
-    //     const element = document.getElementById("footer")
-    //     element?.scrollIntoView();
-    //     console.log(element);
-    // };
-
-
     return (
         <>
-            {console.log(useLocation().pathname)}
             <Modal isOpen={showModal} onClose={handleCopyLink} onMouseEnter={handleMouseEnter} modalTitle={'Quick Share'}>
                 <ModalQR url={downloadURL} onclick={handleCopyLink} />
             </Modal>

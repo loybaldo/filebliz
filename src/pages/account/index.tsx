@@ -31,8 +31,6 @@ function AccountPage() {
     // },);
 
     const handleDeleteAll = async () => {
-        console.log(memberships);
-        console.log(memberships);
         if (memberships.length > 0) {
             return;
         }
@@ -48,7 +46,7 @@ function AccountPage() {
     }
 
     useEffect(() => {
-        handleDeleteAll();
+        // handleDeleteAll();
     })
 
     return (
