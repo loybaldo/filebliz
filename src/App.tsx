@@ -12,6 +12,7 @@ import ScrollToTop from './components/widgets/scroll-to-top';
 import Login from './pages/login';
 import PrivacyPolicy from './pages/privacy';
 import TermsOfUse from './pages/terms';
+import DownloadPage from './pages/download';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
 				<Route path="/login" element={(!currentUser) ? <Login/> : <Navigate to="/account"/>} />
 				<Route path='/privacy' element={<PrivacyPolicy/>} />
 				<Route path='/terms' element={<TermsOfUse/>} />
+				<Route path='/download' element={<DownloadPage/>} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</BrowserRouter>

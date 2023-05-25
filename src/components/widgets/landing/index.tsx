@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 import { AuthContext } from "../../../auth/auth-provider";
 import { db, storage } from "../../../config/firebase";
@@ -9,6 +9,7 @@ import GirlSmile from "../../../assets/illus-ok.svg";
 import ModalQR from "../../widgets/modal-qr";
 import Modal from "../../common/modal-wrapper";
 import "./landing.scss";
+import { useLocation } from "react-router-dom";
 
 
 function Landing() {
@@ -20,6 +21,9 @@ function Landing() {
     const [progress, setProgress] = useState(0);                        // sets progress bar
     const [downloadURL, setDownloadURL] = useState("");                 // download url container
     const { currentUser, memberships } = useContext(AuthContext);                    // authentication
+    const host = window.location.hostname === "localhost"
+        ? `${window.location.hostname}:${window.location.port}`
+        : window.location.hostname;
 
 
     // use drag and drop
@@ -120,77 +124,8 @@ function Landing() {
     }
 
     // Set upload task
-    // async function handleUpload() {
-    //     if (file == null) {
-    //       return;
-    //     }
-
-    //     if (!currentUser || (memberships.length <= 0)) {
-    //         const allowedTypes = ["video/mpeg","video/mp4", "image/png", "image/jpg", "image/jpeg", "application/pdf", "application/msword"];
-    
-    //         if (!allowedTypes.includes(file.type)) {
-    //           alert("FREE MEMBER\nInvalid file type. Only videos, photos, and documents are allowed.");
-    //           return;
-    //         }
-    //     }
-      
-    //     setIsUploadDisabled(false);
-      
-    //     const fileRef = ref(
-    //       storage,
-    //       `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}`
-    //     );
-      
-    //     const uploadTask = uploadBytesResumable(fileRef, file);
-      
-    //     uploadTask.on(
-    //       "state_changed",
-    //       (snapshot) => {
-    //         const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(1);
-    //         setProgress(+progress);
-    //       },
-    //       (err) => {
-    //         console.error(err);
-    //       },
-    //       async () => {
-    //         if (!currentUser) {
-      
-    //           try {
-    //             const url = await getDownloadURL(fileRef);
-    //             setDownloadURL(url);
-    //             openModal();
-    //           } catch (err) {
-    //             console.error(err);
-    //           }
-    //         } else {
-    //           try {
-    //             const downloadURL = await getDownloadURL(fileRef);
-    //             const fileInfo = {
-    //               uploader: currentUser.uid,
-    //               id: uuidv4(),
-    //               name: file.name,
-    //               type: file.type,
-    //               size: file.size,
-    //               dateUploaded: new Date().toISOString(),
-    //               downloadURL: downloadURL
-    //             };
-      
-    //             await addDoc(
-    //               collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!),
-    //               fileInfo
-    //             );
-      
-    //             setDownloadURL(downloadURL);
-    //             openModal();
-    //           } catch (err) {
-    //             console.error(err);
-    //           }
-    //         }
-    //       }
-    //     );
-    //   }
-
       function handleUpload() {
+        const genID = uuidv4();
         if (file == null) return;
 
         if (!currentUser || (memberships.length <= 0)) {
@@ -223,28 +158,31 @@ function Landing() {
                 // Save the file for unknown users.         
                 if (!currentUser) {
                     getDownloadURL(fileRef).then((url) => {
-                        setDownloadURL(url);
+                        setDownloadURL(`${host}/download?id=${genID}`);
                         openModal();
                     });
                 }
                 else {
                     // Save the file for authenticated users.
-                    console.log("Saving data....")
                     try {
                         const downloadURL = await getDownloadURL(fileRef);
                         const fileInfo =
                         {
                             uploader: currentUser.uid,
-                            id: uuidv4(),
+                            id: genID,
                             name: file.name,
                             type: file.type,
                             size: file.size,
                             dateUploaded: new Date().toISOString(),
                             downloadURL: downloadURL
                         };
-
                         await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
-                        setDownloadURL(downloadURL);
+                        // Add the storage
+                        console.log(memberships)
+                        const purchaseDocRef = doc(db, process.env.REACT_APP_PURCHASE_TABLE!, memberships[0].id);
+                        await updateDoc(purchaseDocRef, { usedStorage: memberships[0].usedStorage + file.size });
+
+                        setDownloadURL(`${host}/download?id=${genID}`);
 
                         openModal();
                     }
@@ -345,6 +283,7 @@ function Landing() {
 
     return (
         <>
+            {console.log(useLocation().pathname)}
             <Modal isOpen={showModal} onClose={handleCopyLink} onMouseEnter={handleMouseEnter} modalTitle={'Quick Share'}>
                 <ModalQR url={downloadURL} onclick={handleCopyLink} />
             </Modal>

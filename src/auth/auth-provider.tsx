@@ -52,11 +52,12 @@ export const AuthProvider = ({ children }: Props) => {
 			orderBy('datePurchased', 'desc')
 		);
 		const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
-			const membershipList = snapshot.docs.map((doc) => doc.data());
+			const membershipList = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 			setMemberships(membershipList);
 		});
 		return unsubscribe;
 	};
+	  
 
 	// ============================================
 	//     Get the files uploaded by the user

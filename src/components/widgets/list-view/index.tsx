@@ -9,6 +9,7 @@ import ThumnailMusic from "../../../assets//thumbnail-music.svg";
 import ThumbnailZip from "../../../assets/thumbnail-zip.svg";
 import ThumbnailUnknown from "../../../assets/thumbnail-unknown.svg";
 import Button from "../../common/button";
+import { Link } from "react-router-dom";
 
 
 interface ListViewInterface {
@@ -56,7 +57,7 @@ function ListView(props: ListViewInterface) {
 
     return (
         <div className="f-list-view">
-            <a className="f-list-clickable" href={props.url} target="_blank" rel="noreferrer">
+            <Link className="f-list-clickable" to={`/download?id=${props.id}`}>
                 <div className="f-list-trail">
                     <div><img draggable="false" src={handleIconType()} alt={props.fileExt} /></div>
                     <p> {props.fileName} </p>
@@ -65,7 +66,7 @@ function ListView(props: ListViewInterface) {
                     <span>{formatFileSize(props.size)}</span>
                     <span>{new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(new Date(props.date))}</span>
                 </div>
-            </a>
+            </Link>
 
             <div className="f-list-action">
                 <Button classItem={""}><Icon icon={Icons.copy_outline_bold} title="Copy File" /></Button>
