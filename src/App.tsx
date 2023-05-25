@@ -8,7 +8,6 @@ import HomePage from './pages/home';
 import PricingPage from './pages/pricing';
 import SigninPage from './pages/signin';
 import Dashboard from './pages/dashboard';
-import ScrollToTop from './components/widgets/scroll-to-top';
 import Login from './pages/login';
 import PrivacyPolicy from './pages/privacy';
 import TermsOfUse from './pages/terms';

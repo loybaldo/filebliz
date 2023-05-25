@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import "./download.scss";
 import { useEffect, useState } from "react";
+import "./download.scss";
 import { collection, query, where, onSnapshot, DocumentData } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
@@ -31,18 +30,26 @@ function DownloadPage() {
     }, []);
 
     if (loading) {
-        return <div style={{height: 300, display: "flex", alignItems: "center", justifyContent: "center"}}>Loading...</div>;
+        return (
+            <div style={{height: 300, display: "flex", alignItems: "center", justifyContent: "center"}}>
+            Loading...
+            </div>
+        );
     }
 
     if (error || (files.length <= 0)) {
-        return <div>{error}</div>;
+        return (
+            <div style={{height: 300, padding: "100px 30px", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center"}}>
+            There was a problem getting the file.
+            </div>
+        );
     }
 
     return (
         <>
             <div className="f-dl-wrapper">
                 <h1>{(files.length > 0) ? files[0].name : null}</h1>
-                <a className="f-btn" href={(files.length > 0) ? files[0].downloadURL : "#"} download>
+                <a className="f-btn" href={(files.length > 0) ? files[0].downloadURL : null} download="dewf.jpg">
                     Download
                 </a>
             </div>

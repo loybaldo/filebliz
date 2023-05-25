@@ -54,7 +54,6 @@ function PaypalButton(props: PaypalButtonInterface) {
         const purchaseInfo = {
             userId: currentUser?.uid,
             type: props.type,
-            usedStorage: 0,
             datePurchased: new Date().getTime(),
             dateExpires: (props.type === "pro") ? proExpiration : premiumExpiration,
         }

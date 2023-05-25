@@ -55,6 +55,13 @@ function ListView(props: ListViewInterface) {
         return `${gigabytes.toFixed(1)} GB`;
     }
 
+    const handleCopyLink = () => {
+        const host = window.location.hostname === "localhost" ? `${window.location.hostname}:${window.location.port}` : window.location.hostname;
+        navigator.clipboard.writeText(`${host}/download?id=${props.id}`).then(() => {
+            alert("Link copied to clipboard.");
+        }).catch((err) => console.error('Could not copy text: ', err));
+    }
+
     return (
         <div className="f-list-view">
             <Link className="f-list-clickable" to={`/download?id=${props.id}`}>
@@ -69,8 +76,8 @@ function ListView(props: ListViewInterface) {
             </Link>
 
             <div className="f-list-action">
-                <Button classItem={""}><Icon icon={Icons.copy_outline_bold} title="Copy File" /></Button>
-                <Button classItem={""}><Icon icon={Icons.trash_outline_bold} title="Delete File" /></Button>
+                <button className="f-btn" onClick={handleCopyLink}><Icon icon={Icons.copy_outline_bold} title="Copy File" /></button>
+                <button className={"f-btn"} onClick={() => alert("Under development!")}><Icon icon={Icons.trash_outline_bold} title="Delete File" /></button>
             </div>
         </div>
     );

@@ -59,7 +59,7 @@ function Footer() {
 
             <div className="f-container main">
                 <Button classItem="f-branding" onclick={handleClick}>
-                    <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
+                    <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Filebliz Logo" />
                     <span>FILEBLIZ</span>
                 </Button>
                 <span>

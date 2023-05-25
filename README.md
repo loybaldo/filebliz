@@ -23,7 +23,7 @@ npm install -g create-react-app
 
 ## Usage
 
-To get started with Fileblizz, follow these steps:
+To get started with Filebliz, follow these steps:
 
 1. Download the code from <https://github.com/loybaldo/filebliz> or use [Github Desktop](https://desktop.github.com/) to clone this repository.
 

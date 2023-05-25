@@ -12,7 +12,7 @@ import { db } from "../../config/firebase";
 
 
 function AccountPage() {
-    const { currentUser, memberships, getMembership } = useContext(AuthContext);   
+    const { totalUsedStorage, currentUser, memberships, getMembership } = useContext(AuthContext);   
     
     pagetitle.DashboardTitle()
     // const location = useLocation();
@@ -52,13 +52,6 @@ function AccountPage() {
         <>
             <Navigation />
             <AccountHeader />
-
-            {/* <div className="f-toast">
-                <Alert type="info" title="Subscription will expire in 3 days">
-                    Lorem ipsum dolor sit amet orem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit amet
-                </Alert>
-            </div> */}
-
             <Status />
             <UploadList />
             <div style={{ height: 100 }}></div>
