@@ -30,7 +30,6 @@ function UploadList() {
 
     return (
         <>
-        {console.log(currentUser)}
         <div className="f-upload-list">
             <div className="f-del-all-wrapper">
                 <span className="f-label">Uploaded ({files.length})</span>

@@ -21,11 +21,6 @@ function SigninPage() {
 	const appFirstPublished = parseInt(process.env.REACT_APP_FIRST_PUBLISHED!);
 
 	const handleEmailSignIn = async () => {
-		console.log({
-			email,
-			password,
-			password2
-		})
 		const isEmail = validator.validate(email);
 		if (!isEmail) {
 			alert("Email is not valid!");

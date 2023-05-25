@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useCallback, useEffect, useState } from 'react';
 import { User, signOut, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, googleAuthProvider, facebookAuthProvider, db } from '../config/firebase';
-import { collection, DocumentData, onSnapshot, orderBy, query, where } from 'firebase/firestore';
+import { collection, deleteDoc, DocumentData, getDocs, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 
 interface Props {
   	children: ReactNode;
@@ -11,6 +11,7 @@ interface Props {
 //     Authentication Properties
 // ============================================
 interface AuthContextProps {
+	totalUsedStorage: number;
 	currentUser: User | null;
 	memberships: DocumentData[];
 	files: DocumentData[];
@@ -24,6 +25,7 @@ interface AuthContextProps {
 }
 
 export const AuthContext = createContext<AuthContextProps>({
+	totalUsedStorage: 0,
 	currentUser: null,
 	memberships: [],
 	files: [],
@@ -37,6 +39,7 @@ export const AuthContext = createContext<AuthContextProps>({
 });
 
 export const AuthProvider = ({ children }: Props) => {
+	const [totalUsedStorage, setTotalUsedStorage] = useState(0);
 	const [currentUser, setCurrentUser] = useState<User | null>(null);
 	const [memberships, setMemberships] = useState<DocumentData[]>([]);
 	const [files, setFiles] = useState<DocumentData[]>([]);
@@ -52,11 +55,12 @@ export const AuthProvider = ({ children }: Props) => {
 			orderBy('datePurchased', 'desc')
 		);
 		const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
-			const membershipList = snapshot.docs.map((doc) => doc.data());
+			const membershipList = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 			setMemberships(membershipList);
 		});
 		return unsubscribe;
 	};
+	  
 
 	// ============================================
 	//     Get the files uploaded by the user
@@ -64,8 +68,13 @@ export const AuthProvider = ({ children }: Props) => {
 	const getFiles = useCallback(() => {
 		const filesRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
 		const q = query(filesRef, where("uploader", "==", currentUser?.uid), orderBy("dateUploaded", "desc"));
+		let storage = 0;
 		const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
-			const filesList = snapshot.docs.map((doc) => ({ ...doc.data(), docId: doc.id }));
+			const filesList = snapshot.docs.map((doc) => {
+				storage = storage + doc.data().size;
+				return ({ ...doc.data(), docId: doc.id })
+			});
+			setTotalUsedStorage(storage);
 			setFiles(filesList);
 		});
 		return () => unsubscribe();
@@ -156,6 +165,7 @@ export const AuthProvider = ({ children }: Props) => {
 
   	return (
 		<AuthContext.Provider value={{
+			totalUsedStorage,
 			currentUser,
 			memberships,
 			files,

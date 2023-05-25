@@ -65,13 +65,13 @@ export default function Navigation() {
             */}
 
                 <Button classItem="f-branding" onclick={handleClickB}>
-                    <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
+                    <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Filebliz Logo" />
                     <span>FILEBLIZ</span>
                 </Button>
                 {/* INFO: applied clickability to Logo
 
                     <div className="f-branding">
-                    <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Fileblizz Logo" />
+                    <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Filebliz Logo" />
                     <span>FILEBLIZ</span>
                     </div> 
                 */}

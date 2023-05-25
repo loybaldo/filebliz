@@ -33,7 +33,6 @@ function PaypalButton(props: PaypalButtonInterface) {
 	//     This will create the order of the user
 	// =============================================
     const handleCreateOrder = async (data: any, actions: any) => {
-        console.log(currentUser?.uid);
         const order = await actions?.order?.create({
             purchase_units: [{
                 amount: {
@@ -55,7 +54,6 @@ function PaypalButton(props: PaypalButtonInterface) {
         const purchaseInfo = {
             userId: currentUser?.uid,
             type: props.type,
-            usedStorage: 0,
             datePurchased: new Date().getTime(),
             dateExpires: (props.type === "pro") ? proExpiration : premiumExpiration,
         }

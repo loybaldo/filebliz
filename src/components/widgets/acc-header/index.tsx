@@ -25,8 +25,6 @@ function AccountHeader() {
             // Gi minus 1 na lang nako XD
             return `Expires in ${diffMonths - 1} months`;
         }
-
-        
     }
 
     return (

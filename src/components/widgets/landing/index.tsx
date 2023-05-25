@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 import { AuthContext } from "../../../auth/auth-provider";
 import { db, storage } from "../../../config/firebase";
@@ -12,14 +12,16 @@ import "./landing.scss";
 
 
 function Landing() {
-    const [showModal, setShowModal] = useState(false);                  // Universal Modal Handler
-    /*********/
-    const [file, setFile] = useState<File | null>(null);                // Update DOM with filename
-    const [isUploadDisabled, setIsUploadDisabled] = useState(false);    // Update DOM Enable/disable upload buttons
-    /*********/
-    const [progress, setProgress] = useState(0);                        // sets progress bar
-    const [downloadURL, setDownloadURL] = useState("");                 // download url container
-    const { currentUser } = useContext(AuthContext);                    // authentication
+    const [showModal, setShowModal] = useState(false);
+    const [file, setFile] = useState<File | null>(null);
+    const [isUploadDisabled, setIsUploadDisabled] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const [downloadURL, setDownloadURL] = useState("");
+    const { currentUser, memberships } = useContext(AuthContext);
+
+    const host = window.location.hostname === "localhost"
+        ? `${window.location.hostname}:${window.location.port}`
+        : window.location.hostname;
 
 
     // use drag and drop
@@ -52,7 +54,6 @@ function Landing() {
         e.stopPropagation();
 
         updateLabelWithFileName('Choose a File');
-
         removeClass()
     }
 
@@ -94,9 +95,6 @@ function Landing() {
         setFile(null);
         updateLabelWithFileName('Choose a File');
         setIsUploadDisabled(false);
-
-        /**********/                           //   FIXME OPTIONAL I did setFile(null); but apparently it cannot do it again twice "properly" soooo I need help for this.
-        /**********/ window.location.reload(); //   temporary fix
     };
 
     // extracted filename handler
@@ -119,75 +117,58 @@ function Landing() {
         }
     }
 
-    // Set upload task
+    // ==========================================
+	//     Handles Upload Task
+	// ==========================================
     function handleUpload() {
+        const genID = uuidv4();
         if (file == null) return;
-
+        if (!currentUser || (memberships.length <= 0)) {
+            const allowedTypes = ["video/mpeg","video/mp4", "image/png", "image/jpg", "image/jpeg", "application/pdf", "application/msword"];
+            if (!allowedTypes.includes(file.type)) {
+                alert("FREE MEMBER\nInvalid file type. Only videos, photos, and documents are allowed.");
+                return;
+            }
+        }
         setIsUploadDisabled(false);
 
         // reference file path
         const fileRef = ref(storage, `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}`);
-
         // incorporate file data to be passed for a task
         const uploadTask = uploadBytesResumable(fileRef, file);
-
         // Track the upload percentage.
         uploadTask.on("state_changed", (snapshot) => {
             const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(1);
             setProgress(+progress);
-        },
-            (err) => {
+        }, (err) => {
+            console.error(err);
+        }, async () => {
+            try {
+                const downloadURL = await getDownloadURL(fileRef);
+                const fileInfo = {
+                    uploader: (!currentUser) ? null : currentUser.uid,
+                    id: genID,
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    dateUploaded: new Date().toISOString(),
+                    downloadURL: downloadURL
+                };
+                await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
+
+                setDownloadURL(`${host}/download?id=${genID}`);
+                openModal();
+            } catch (err) {
                 console.error(err);
-            },
-            // async task: push to cloud
-            async () => {
-                // Save the file for unknown users.         
-                if (!currentUser) {
-                    getDownloadURL(fileRef).then((url) => {
-                        setDownloadURL(url);
-                        openModal();
-                    });
-                }
-                else {
-                    // Save the file for authenticated users.
-                    try {
-                        const downloadURL = await getDownloadURL(fileRef);
-                        const fileInfo =
-                        {
-                            uploader: currentUser.uid,
-                            id: uuidv4(),
-                            name: file.name,
-                            type: file.type,
-                            size: file.size,
-                            dateUploaded: new Date().toISOString(),
-                            downloadURL: downloadURL
-                        };
-
-                        await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
-                        setDownloadURL(downloadURL);
-
-                        openModal();
-                    }
-                    catch (err) {
-                        console.error(err);
-                    }
-                }
-            });
-    };
+            }
+        });
+    }
 
     function handleCopyLink() {
         navigator.clipboard.writeText(downloadURL).then(() => {
             setDownloadURL("");
             closeModal();
             alert("Link copied to clipboard.");
-
-            // added, reload to temporarily get rid of file selected in system since we dont have a cancel method yet. check Line 125 for referemce
-            window.location.reload();
-
-            /**********/ // NOTE
-            /**********/ // Might wanna implement resetting
-            /**********/ // 'setProgress' value back to 0
-
         }).catch((err) => console.error('Could not copy text: ', err));
     }
 
@@ -215,25 +196,17 @@ function Landing() {
     function closeModal() {
         setShowModal(false);
         document.removeEventListener('keydown', handleEscapeKeyPress);
-
-        /******/  // may not be necessarry
-        /******/  const outsideElements = document.querySelectorAll('a, div, button');
-        /******/  outsideElements.forEach((element) => {
-        /******/      element.removeAttribute('tabindex');
-            /******/
-});
-
+        const outsideElements = document.querySelectorAll('a, div, button');
+        outsideElements.forEach((element) => {
+            element.removeAttribute('tabindex');
+        });
         document.body.style.overflow = 'unset';
-
-        // ,.... yes, reload the window to ez bug fix kekw
-        window.location.reload();
     };
 
     // Disable mouse events
     function handleMouseEnter() {
         document.body.classList.remove('disable-events');
     };
-
 
     // final DOM progress bar
     let progressValue;
@@ -250,17 +223,6 @@ function Landing() {
         progressValue = "Processing...";
     }
 
-    // ************** THIS WAS A TEST **************
-    //
-    // let scrollToFooter = () => {
-    //     console.log("clicked");
-
-    //     const element = document.getElementById("footer")
-    //     element?.scrollIntoView();
-    //     console.log(element);
-    // };
-
-
     return (
         <>
             <Modal isOpen={showModal} onClose={handleCopyLink} onMouseEnter={handleMouseEnter} modalTitle={'Quick Share'}>
@@ -270,14 +232,8 @@ function Landing() {
             <div className="f-landing" onDragOver={(e) => handleDragOver(onHoverOutside, e)} onDragLeave={handleDragLeave}>
                 <div className="f-container">
                     <div className="f-info">
-
                         <h1>Effortlessly Share Your Files with Filebliz</h1>
                         <p>With Filebliz, you can easily share your files with anyone, anytime. Our user-friendly platform ensures that you can quickly upload and send your files to your friends, family, and colleagues without any hassle.</p>
-
-                        {/* <Button classItem={""} onclick={openModal}>Debug: Open Modal</Button> */}
-                        {/* <Button classItem={""} onclick={scrollToFooter}>Scroll to somewhere</Button> */}
-
-
                         <div className="f-progress-bar"
                             id="progress-bar"
                             style={{
@@ -314,15 +270,9 @@ function Landing() {
                                 <span style={{ display: isUploadDisabled ? "inline-block" : "none" }}>
                                     <Button onclick={handleCancelClick} classItem={"danger"} tabIndex={2}>Cancel</Button>
                                 </span>
-
-                                {/* FIXME OPTIONAL this button cannot listen for an enter key automatically since `f-form` is listening for it*/}
                                 <Button onclick={handleUpload} classItem={isUploadDisabled ? "primary" : "disabled"} disabled={isUploadDisabled ? false : true} tabIndex={3}>
                                     <span>
-                                        {
-                                            progressValue
-                                            // changed since it's a bad practice and quite unreadable
-                                            // (progress > 1) ? `(${progress}%)` : (progress === 100) ? "Processing..." : "Upload"
-                                        }
+                                        { progressValue }
                                     </span>
                                 </Button>
                             </div>

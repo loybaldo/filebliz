@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import validator from "email-validator";
+import { v4 as uuidv4 } from "uuid";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
 import pagetitle from "../.scripts/pagetitle";
@@ -8,6 +13,32 @@ import './about.scss';
 
 
 function About() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [feedback, setFeedback] = useState("");
+
+    const handleSubmit = async () => {
+        if ((name == "") || (email == "") || (feedback == "")) {
+            alert("Please write something!");
+			return;
+        }
+        const isEmail = validator.validate(email);
+        if (!isEmail) {
+			alert("Email is not valid!");
+			return;
+		}
+
+        const feedInfo = {
+            id: uuidv4(),
+            name,
+            email,
+            feedback,
+            dateCreated: new Date().getTime(),
+        };
+        await addDoc(collection(db, process.env.REACT_APP_FEEDBACK_TABLE!), feedInfo);
+        alert("Feedback submitted!");
+    }
+
     pagetitle.AboutTitle()
 
     return (
@@ -66,13 +97,13 @@ function About() {
                             Sumbit your queries here and we'll get back to you as soon as possible.
                         </span>
 
-                        <form action="">
-                            <input type="text" name="" id="" placeholder="Email Title" />
-                            <input type="email" name="" id="" placeholder="yourmail@mail.com"/>
+                        <div className="f-about-form">
+                            <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)}/>
+                            <input type="email" placeholder="Email address" onChange={(e) => setEmail(e.target.value)}/>
 
-                            <textarea name="" id="" cols={90} rows={100} placeholder="Hello! I have a feedback..."></textarea>
-                            <input type="submit" value="submit" className="f-btn primary"/>
-                        </form>
+                            <textarea cols={90} rows={100} placeholder="Write your feedback..." onChange={(e) => setFeedback(e.target.value)}></textarea>
+                            <button className="f-btn primary" onClick={handleSubmit}>Submit</button>
+                        </div>
                     </div>
                 </div>
 

@@ -57,7 +57,7 @@
             @include wh(100%, inherit);
             max-width: 500px;
 
-            form {             
+            .f-about-form {             
                 display: flex;
                 flex-direction: column;
                 align-items: center;

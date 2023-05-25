@@ -1,13 +1,19 @@
+import { useContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { AuthContext } from "../../auth/auth-provider";
 import AccountHeader from "../../components/widgets/acc-header";
 import Navigation from "../../components/common/navigation";
 import Status from "../../components/widgets/status";
 import UploadList from "../../components/widgets/upload-list";
 // import Alert from "../../components/common/alert";
 import pagetitle from "../.scripts/pagetitle";
-import './account.scss'
+import { collection, query, where, getDocs, deleteDoc } from "firebase/firestore";
+import { db } from "../../config/firebase";
 
 
 function AccountPage() {
+    const { totalUsedStorage, currentUser, memberships, getMembership } = useContext(AuthContext);   
+    
     pagetitle.DashboardTitle()
     // const location = useLocation();
     // const { currentUser } = useContext(AuthContext);
@@ -23,17 +29,29 @@ function AccountPage() {
     //     };
     // },);
 
+    const handleDeleteAll = async () => {
+        if (memberships.length > 0) {
+            return;
+        }
+        if ((memberships.length > 0) && (memberships[0].dateExpires - new Date().getTime()) > 0) {
+			return;
+		}
+        const fileRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
+        const q = query(fileRef, where("uploader", "==", currentUser?.uid));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            deleteDoc(doc.ref);
+        });
+    }
+
+    useEffect(() => {
+        // handleDeleteAll();
+    })
+
     return (
         <>
             <Navigation />
             <AccountHeader />
-
-            {/* <div className="f-toast">
-                <Alert type="info" title="Subscription will expire in 3 days">
-                    Lorem ipsum dolor sit amet orem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit ametorem ipsum dolor sit amet
-                </Alert>
-            </div> */}
-
             <Status />
             <UploadList />
             <div style={{ height: 100 }}></div>
