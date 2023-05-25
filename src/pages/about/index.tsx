@@ -1,4 +1,8 @@
+import { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../config/firebase";
 import validator from "email-validator";
+import { v4 as uuidv4 } from "uuid";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";
 import pagetitle from "../.scripts/pagetitle";
@@ -6,7 +10,7 @@ import splashMission from '../../assets/about splash.png'
 import Loader from "../../components/common/loader";
 import Campaign from "../../components/widgets/campaign";
 import './about.scss';
-import { useState } from "react";
+
 
 
 function About() {
@@ -14,7 +18,7 @@ function About() {
     const [email, setEmail] = useState("");
     const [feedback, setFeedback] = useState("");
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if ((name == "") || (email == "") || (feedback == "")) {
             alert("Please write something!");
 			return;
@@ -24,6 +28,16 @@ function About() {
 			alert("Email is not valid!");
 			return;
 		}
+
+        const feedInfo = {
+            id: uuidv4(),
+            name,
+            email,
+            feedback,
+            dateCreated: new Date().getTime(),
+        };
+        await addDoc(collection(db, process.env.REACT_APP_FEEDBACK_TABLE!), feedInfo);
+        alert("Feedback submitted!");
     }
 
     pagetitle.AboutTitle()
