@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../auth/auth-provider";
 import AccountHeader from "../../components/widgets/acc-header";
 import Navigation from "../../components/common/navigation";

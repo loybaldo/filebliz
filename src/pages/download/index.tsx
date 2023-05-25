@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./download.scss";
-import { useCallback, useEffect, useState } from "react";
-import { collection, query, where, orderBy, onSnapshot, DocumentData } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { collection, query, where, onSnapshot, DocumentData } from "firebase/firestore";
 import { db } from "../../config/firebase";
 
 function DownloadPage() {
@@ -34,15 +34,17 @@ function DownloadPage() {
         return <div style={{height: 300, display: "flex", alignItems: "center", justifyContent: "center"}}>Loading...</div>;
     }
 
-    if (error) {
+    if (error || (files.length <= 0)) {
         return <div>{error}</div>;
     }
 
     return (
         <>
             <div className="f-dl-wrapper">
-                <h1>{files[0].name}</h1>
-                <a className="f-btn" href={(files.length > 0) ? files[0].downloadURL : "#"} download>Download</a>
+                <h1>{(files.length > 0) ? files[0].name : null}</h1>
+                <a className="f-btn" href={(files.length > 0) ? files[0].downloadURL : "#"} download>
+                    Download
+                </a>
             </div>
         </>
     );

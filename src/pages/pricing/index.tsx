@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useLocation, } from "react-router-dom";
 import Collapse from "../../components/common/collapse";
 import Footer from "../../components/common/footer";
 import Navigation from "../../components/common/navigation";

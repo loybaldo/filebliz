@@ -5,7 +5,6 @@ import splashMission from '../../assets/about splash.png'
 import Loader from "../../components/common/loader";
 import Campaign from "../../components/widgets/campaign";
 import './about.scss';
-import Divider from "../../components/common/divider";
 
 
 function About() {

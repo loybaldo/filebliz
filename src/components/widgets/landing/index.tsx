@@ -9,7 +9,6 @@ import GirlSmile from "../../../assets/illus-ok.svg";
 import ModalQR from "../../widgets/modal-qr";
 import Modal from "../../common/modal-wrapper";
 import "./landing.scss";
-import { useLocation } from "react-router-dom";
 
 
 function Landing() {
