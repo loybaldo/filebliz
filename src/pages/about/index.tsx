@@ -69,7 +69,7 @@ function About() {
                     </div>
                 </div>
 
-                <div className="card">
+                {/* <div className="card">
                     <div>
 
                         <h1>Meet The Team</h1>
@@ -88,7 +88,7 @@ function About() {
                             </span>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="f-contact">
                     <div className="card">

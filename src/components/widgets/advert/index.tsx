@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ImagePlaceholder from "../../../assets/image-placeholder.svg";
+import AdvertisementImage from "../../../assets/advertisement.svg";
 import Button from "../../common/button";
 import "./advert.scss";
 
@@ -31,7 +32,7 @@ function Advert() {
 
     return (
         <div ref={advertRef} className="f-advert">
-            <img draggable="false" src={ImagePlaceholder} alt="Advertisement" />
+            <img draggable="false" src={AdvertisementImage} alt="Advertisement" />
             <div className={`${showAdvert ? "show" : "hidden"}`}>
                 <i className="fa-regular fa-crown" style={{ fontSize: 24, color: "#ec6e00" }}></i>
 
