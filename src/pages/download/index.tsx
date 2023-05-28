@@ -48,8 +48,8 @@ function DownloadPage() {
     return (
         <>
             <div className="f-dl-wrapper">
-                <h1>{(files.length > 0) ? files[0].name : null}</h1>
-                <a className="f-btn" href={(files.length > 0) ? files[0].downloadURL : null} download="dewf.jpg">
+                <h1 style={{textAlign: "center"}}>{(files.length > 0) ? files[0].name : null}</h1>
+                <a className="f-btn" href={(files.length > 0) ? files[0].downloadURL : null} download={files[0].name}>
                     Download
                 </a>
             </div>
