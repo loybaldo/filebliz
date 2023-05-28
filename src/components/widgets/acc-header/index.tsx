@@ -15,17 +15,36 @@ function AccountHeader() {
         const daysInMonth = 30;
         const dateExpires = new Date(memberships[0].dateExpires);
         const diffTime = dateExpires.getTime() - Date.now();
-        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-        if (diffDays < daysInMonth) {
-            return `Expires in ${diffDays} days`;
-        } else {
-            const diffMonths = Math.floor(diffDays / 30);
-            // No idea why :C
-            // Gi minus 1 na lang nako XD
-            return `Expires in ${diffMonths - 1} months`;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+        if (memberships[0].type === "pro") {
+            if (diffDays === 1) {
+                return "Expires in 1 day";
+            } else {
+                return `Expires in ${diffDays} days`;
+            }
+        } else if (memberships[0].type === "premium") {
+            const diffMonths = Math.floor(diffDays / daysInMonth);
+            const remainingDays = diffDays % daysInMonth;
+    
+            const monthsText = diffMonths === 1 ? 'month' : 'months';
+            const daysText = remainingDays === 1 ? 'day' : 'days';
+    
+            if (diffMonths === 0) {
+                return `Expires in ${remainingDays} ${daysText}`;
+            } else if (remainingDays === 0) {
+                return `Expires in ${diffMonths} ${monthsText}`;
+            } else {
+                return `Expires in ${diffMonths - 1} ${monthsText}`;
+            }
         }
-    }
+    
+        return '';
+    };
+    
+    
+    
+    
 
     return (
         <>

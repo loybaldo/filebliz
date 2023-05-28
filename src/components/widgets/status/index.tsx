@@ -28,21 +28,21 @@ function Status() {
     }
 
     const handleStoragePercent = (): number => {
-        // calculate the percentage
         if (memberships.length <= 0) {
             // Total storage is 100MB
-            return (totalUsedStorage / 1000000) * 100; // Changed division by 100000000 to 1000000
+            return (totalUsedStorage / 100000000) * 100;
         }
         if (memberships[0].type === "pro") {
             // Total storage is 3GB
-            return (totalUsedStorage / 3000000000) * 100; // Changed division by 100000000 to 3000000000
+            return (totalUsedStorage / 3000000000) * 100;
         }
         if (memberships[0].type === "premium") {
             // Total storage is 18GB
-            return (totalUsedStorage / 18000000000) * 100; // Changed division by 100000000 to 18000000000
+            return (totalUsedStorage / 18000000000) * 100;
         }
         return 0;
-    }
+    };
+    
 
     const color = handleStoragePercent();
     
