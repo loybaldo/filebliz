@@ -103,3 +103,27 @@
         }
     }
 }
+
+
+
+@media only screen and (max-width: $media-query-mobile) {
+    .f-signin-container {
+        flex-direction: column;
+
+        .f-s-background {
+            width: 100%;
+        }
+        .f-s-container {
+            padding: 0 30px;
+
+            .card {
+                width: 100%;
+                transform: translateY(-100px);
+            }
+        }
+
+        span {
+            padding-bottom: 50px;
+        }
+    }
+}

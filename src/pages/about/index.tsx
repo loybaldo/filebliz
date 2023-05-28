@@ -49,8 +49,10 @@ function About() {
             <div className="f-wrapper">
                 <div className="card">
                     <div>
-                        <h1>About Filebliz</h1>
-                        <span>Filebliz is a filesharing service blah blah blah consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                        <h1  style={{marginBottom: 30}}>About Filebliz</h1>
+                        <span>
+                        FileBliz is a versatile platform for sharing files, catering to various file types and sizes. It provides a user-friendly experience, allowing effortless uploading of files regardless of their format or dimensions. With FileBliz, file sharing becomes a hassle-free process, simplifying the task of uploading files of any type and size.
+                        </span>
                     </div>
                 </div>
 
@@ -58,12 +60,8 @@ function About() {
 
                     <div className="f-mv">
                         <span>
-                            <h1>Our Mission</h1>
-                            MMmmmmmm vision mission statement... We are an institution committed to provide knowledge through the development and delivery of superior learning systems.
-                            We strive to provide optimum value to all our stakeholders — our students, our faculty members, our employees, our partners, our shareholders, and our community.
-                            We will pursue this mission with utmost integrity, dedication, transparency, and creativity.
-                            Vision: To be the leader in innovative and relevant education that nurtures individuals to become competent and responsible members of society.
-
+                            <h1 style={{marginBottom: 30}}>Our Mission</h1 >
+                            Our institution is committed to providing superior learning systems, while FileBliz shares a mission to deliver a secure, user-friendly, and efficient file sharing platform. With a focus on simplicity and reliability, FileBliz empowers individuals, teams, and organizations by providing a seamless solution for storing, accessing, and sharing files of any type and size. Privacy and data security are paramount, as we aim to enhance productivity, foster collaboration, and streamline file management for users worldwide. We will pursue this mission with utmost integrity, dedication, transparency, and creativity.
                         </span>
                         <img src={splashMission} alt="mission splash" />
                     </div>

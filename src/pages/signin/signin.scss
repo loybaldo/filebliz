@@ -99,3 +99,10 @@
         }
     }
 }
+
+
+@media only screen and (max-width: $media-query-mobile) {
+    .f-signin-container {
+        flex-direction: column;
+    }
+}

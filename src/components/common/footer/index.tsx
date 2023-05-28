@@ -76,14 +76,14 @@ function Footer() {
                 </div>
 
                 <div className="f-footer-links">
-                    <a href="https://facebook.com" target="_blank" rel="noreferrer" title="Facebook">
+                    <a href="https://www.facebook.com/sharewithfilebliz" target="_blank" rel="noreferrer" title="Facebook">
                         <i className="fa-brands fa-facebook" style={{ fontSize: 24 }}></i>
                     </a>
-                    <a href="https://instagram.com" target="_blank" rel="noreferrer" title="Instragram">
+                    <a href="https://www.instagram.com/sharewithfilebliz" target="_blank" rel="noreferrer" title="Instragram">
                         <i className="fa-brands fa-instagram" style={{ fontSize: 24 }}></i>
                     </a>
-                    <a href="https://twitter.com" target="_blank" rel="noreferrer" title="Twitter">
-                        <i className="fa-brands fa-twitter" style={{ fontSize: 24 }}></i>
+                    <a href="https://www.tiktok.com/@filebliz" target="_blank" rel="noreferrer" title="TikTok">
+                        <i className="fa-brands fa-tiktok" style={{ fontSize: 24 }}></i>
                     </a>
                 </div>
             </div>

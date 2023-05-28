@@ -76,7 +76,9 @@
 // ================================
 
 .n-theme {
-    background-color: $primary-color;
+    background-image: url("../../../assets/bg-blur.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
     color: $text-color-permanent;
 
     .f-branding {

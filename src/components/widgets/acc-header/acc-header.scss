@@ -2,7 +2,9 @@
 
 .f-acc-bg {
     @include wh(100%, 300px);
-    background-color: $primary-color;
+    background-image: url("../../../assets/bg-blur.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .f-prof-container {
