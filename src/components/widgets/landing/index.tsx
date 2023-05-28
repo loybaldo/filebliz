@@ -133,7 +133,7 @@ function Landing() {
         setIsUploadDisabled(false);
 
         // reference file path
-        const fileRef = ref(storage, `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}`);
+        const fileRef = ref(storage, `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}.${file?.name.split(".")[1]}`);
         // incorporate file data to be passed for a task
         const uploadTask = uploadBytesResumable(fileRef, file);
         // Track the upload percentage.
