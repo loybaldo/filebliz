@@ -24,6 +24,33 @@ function DownloadPage() {
         return unsubscribe;
     };
 
+    function downloadFile(file: any) {
+        if (file && file.downloadURL) {
+            fetch(file.downloadURL)
+                .then(response => response.blob())
+                .then(blob => {
+                    // Create a temporary anchor element
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.style.display = "none";
+                    a.href = url;
+                    a.download = file.name;
+                    document.body.appendChild(a);
+                    
+                    // Trigger the click event
+                    a.click();
+                    
+                    // Clean up the temporary element
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    console.error("Error downloading the file:", error);
+                });
+        }
+    }
+    
+
     useEffect(() => {
         const unsubscribe = getFile();
         return () => unsubscribe();
@@ -49,10 +76,11 @@ function DownloadPage() {
         <>
             <div className="f-dl-wrapper">
                 <h1 style={{textAlign: "center"}}>{(files.length > 0) ? files[0].name : null}</h1>
-                <a className="f-btn" href={(files.length > 0) ? files[0].downloadURL : null} download={files[0].name}>
+                <button className="f-btn" onClick={() => downloadFile(files[0])}>
                     Download
-                </a>
+                </button>
             </div>
+
         </>
     );
 }
