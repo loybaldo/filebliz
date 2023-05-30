@@ -1,9 +1,11 @@
 import "./terms.scss"
-
+import { Link } from "react-router-dom";
 
 function TermsOfUse() {
     return (
         <>
+            <Link to={"/"}><button className="f-home-btn" style={{position: "fixed" , animation:"none"}}>
+			<i className="fa-solid fa-house" style={ { color: "#ec6e00"}}></i> </button></Link>
             <div  className="f-wrapper-info">
                 <h1 style={{textAlign: "center"}}>Terms Of Use</h1>
                 <br />

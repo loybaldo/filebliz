@@ -42,6 +42,8 @@ function SigninPage() {
 			</div>
 
 			<div className="f-signin-container">
+			        <Link to={"/"}><button className="f-home-btn">
+				 	<i className="fa-solid fa-house" style={ { color: "#ec6e00"}}></i> </button></Link>
 
 				<div className="f-s-background"></div>
 
@@ -84,7 +86,6 @@ function SigninPage() {
 						display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"
 					}}>
 						Filebliz, &copy; Copyright {appFirstPublished} {((new Date().getFullYear()) > appFirstPublished) ? ` - ${new Date().getFullYear()}` : null}- All Rights Reserved.
-						<Link to={"/"}>Back to Home</Link>
 					</span>
 				</div>
 			</div>
