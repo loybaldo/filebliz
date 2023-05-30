@@ -55,12 +55,21 @@ function AccountHeader() {
                     
                     <img draggable="false" src={(currentUser?.photoURL) ? currentUser?.photoURL! : DefaultProfilePic} alt={currentUser?.displayName!} />
                     <span>{(currentUser?.displayName) ? currentUser?.displayName : currentUser?.email}</span>
+                    <div className="icon-container">
+                      <button className="icon-button" title="Change Profile">
+                       <i className="fa-regular fa-user-crown" style={{ color: "#ec6e00" }}></i>
+                      </button>
+                    </div>
+
+
                 </div>
                 <div>
                     <span>{(memberships.length > 0) ? `${memberships[0]?.type} member` : "Free Member"}</span>
                     <span>{(memberships.length > 0) ? handleMembershipTimeLeft() : "--"}</span>
                 </div>
             </div>
+          
+
         </>
     );
 }
