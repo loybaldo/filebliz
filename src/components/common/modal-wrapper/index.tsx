@@ -24,13 +24,9 @@ export default function Modal(props: ModalProps) {
                     HEADER
                 */}
                 <div className='f-modal-header'>
-                    <h1>{props.modalTitle}</h1>
-                    <Button classItem={'ctrl'} onclick={props.onClose}><Close /></Button>
+                    <h3>{props.modalTitle}</h3>
+                    <button className='ctrl' onClick={props.onClose}><Close /></button>
                 </div>
-
-                {/* 
-                    MODAL CONTENT
-                */}
                 {props.children}
             </div>
 

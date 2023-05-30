@@ -6,11 +6,14 @@
     position: fixed;
     pointer-events: all;
     z-index: 800;
+    padding: 0 30px;
 
     .f-modal-wrapper {
         @include mar-pad(auto, 30px 30px 10px 30px);
         // @include wh(50%, 50%);
 
+        width: 100%;
+        max-width: 600px;
         z-index: 1000;
         display: flex;
         flex-direction: column;
@@ -20,12 +23,15 @@
         .f-modal-header {
             @include flex-center;
             justify-content: space-between;
-            border-bottom: 1px solid $text-color-alt;
+            margin-bottom: 20px;
+            // border-bottom: 1px solid $text-color-alt;
 
             button {
                 pointer-events: all;
-                @include wh(30px, 30px);
+                @include wh(38px, 38px);
                 display: inline-flex;
+                background-color: transparent;
+                border: none;
             }
         }
     }
