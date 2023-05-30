@@ -51,10 +51,12 @@ function SigninPage() {
 							{/* <Link to={"/"} style={{ textDecoration: "none" }}>&lt; Back</Link> */}
 							<h3> Login with email</h3>
 							<input type="email" placeholder="sample@mail.com" onChange={ (e) => setEmail(e.target.value) }/>
+							<div className="password-input">
 							<input  type={showPassword ? "text" : "password"}  placeholder="Password"  value={password}  onChange={(e) => {setPassword(e.target.value);}}/>
 							{/* eye icon below */}
 							<div className="password-toggle">
     						{password && ( <i className={`fa-regular ${showPassword ? "fa-eye-slash" : "fa-eye"}`} onClick={() => setShowPassword(!showPassword)} title={showPassword ? "Hide password" : "Show password"}/>)}
+							</div>
 							</div>
 							<div className="item-under">Don't have an account? <Link to={"/signin"}>Sign Up</Link></div>
 
@@ -91,6 +93,5 @@ function SigninPage() {
 }
 
 
-// i delete rani kai nag error inig pag push nako .
 
 export default SigninPage;

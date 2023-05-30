@@ -1,6 +1,7 @@
 @import "../../index.scss";
 
 .f-loader-cover {
+    z-index: 1;
     @include wh(100vw, 100vh);
     @include flex-center;
     position: absolute;
@@ -105,15 +106,27 @@
 }
 
 // showpassword design
-.password-toggle {
+.password-input {
+    position: relative;
+}
+
+.password-input input {
+    padding-right: 40px; /* Add space for the eye icon */
+}
+
+.password-input i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
     cursor: pointer;
-  }
-  
+}
 
-
+// why this media is connected to signin.css :( 
 @media only screen and (max-width: $media-query-mobile) {
     .f-signin-container {
         flex-direction: column;
+        min-height:790px; 
 
         .f-s-background {
             width: 100%;
@@ -134,6 +147,3 @@
 }
 
 
-
-
-// i delete rani kai nag error inig pag push nako .

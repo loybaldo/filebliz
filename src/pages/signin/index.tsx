@@ -66,17 +66,19 @@ function SigninPage() {
 							<h3>Sign Up with email</h3>
 							<input type="email" placeholder="sample@mail.com" onChange={ (e) => setEmail(e.target.value) }/>
 							<div style={{ marginTop: 20 }}></div>
-
+                            <div className="password-input">
 							<input type={showPassword ? "text" : "password"} placeholder="Password" value={password} onChange={ (e) => setPassword(e.target.value) }/>
 							{/* eye icon below */}
 							<div className="password-toggle">
     						{password && ( <i className={`fa-regular ${showPassword ? "fa-eye-slash" : "fa-eye"}`}   onClick={() => setShowPassword(!showPassword)} title={showPassword ? "Hide password" : "Show password"}/>)}
 							</div>
-
+							</div>
+							<div className="password-input">
 							<input type={showPassword2 ? "text" : "password"} placeholder="Confirm Password" value={password2} onChange={(e) => setPassword2(e.target.value) }/>
 							{/* eye icon 2 below */}
 							<div className="password-toggle">
     						{password2 && ( <i className={`fa-regular ${showPassword2 ? "fa-eye-slash" : "fa-eye"}`}   onClick={() => setShowPassword2(!showPassword2)} title={showPassword2 ? "Hide password" : "Show password"}/>)}
+							</div>
 							</div>
 							<div className="item-under">Already have an account? <Link to={"/login"}>Log in</Link></div>
 
@@ -112,5 +114,4 @@ function SigninPage() {
 	);
 }
 
-// i delete rani kai nag error inig pag push nako .
 export default SigninPage;
