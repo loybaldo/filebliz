@@ -17,6 +17,7 @@ function Landing() {
     const [isUploadDisabled, setIsUploadDisabled] = useState(false);
     const [progress, setProgress] = useState(0);
     const [downloadURL, setDownloadURL] = useState("");
+    const [upBtnVal, setUpBtnVal] = useState("Upload");
     const { currentUser, memberships } = useContext(AuthContext);
 
     const host = window.location.hostname === "localhost"
@@ -140,6 +141,7 @@ function Landing() {
         uploadTask.on("state_changed", (snapshot) => {
             const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(1);
             setProgress(+progress);
+            setUpBtnVal("Uploading...")
         }, (err) => {
             console.error(err);
         }, async () => {
@@ -157,6 +159,8 @@ function Landing() {
                 await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
 
                 setDownloadURL(`${host}/download?id=${genID}`);
+                setUpBtnVal("Upload");
+                setProgress(0);
                 openModal();
             } catch (err) {
                 console.error(err);
@@ -208,21 +212,6 @@ function Landing() {
         document.body.classList.remove('disable-events');
     };
 
-    // final DOM progress bar
-    let progressValue;
-
-    if (progress < 1) {
-        progressValue = "Upload";
-    } else if (progress < 100) {
-        progressValue = `${progress}%`;
-    } else {
-        const styleChange = document.getElementById("progress-bar");
-        if (styleChange) {
-            styleChange.style.width = "0";
-        }
-        progressValue = "Processing...";
-    }
-
     return (
         <>
             <Modal isOpen={showModal} onClose={handleCopyLink} onMouseEnter={handleMouseEnter} modalTitle={'Quick Share'}>
@@ -272,7 +261,7 @@ function Landing() {
                                 </span>
                                 <Button onclick={handleUpload} classItem={isUploadDisabled ? "primary" : "disabled"} disabled={isUploadDisabled ? false : true} tabIndex={3}>
                                     <span>
-                                        { progressValue }
+                                        { upBtnVal }
                                     </span>
                                 </Button>
                             </div>
