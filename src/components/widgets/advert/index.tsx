@@ -24,10 +24,10 @@ function Advert() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-
-    let handleClick = () => {
+    const handleClick = () => {
+        window.scrollTo(0, 0);
         history('/premium');
-    };
+      };
 
 
     return (

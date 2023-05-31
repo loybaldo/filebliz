@@ -8,12 +8,14 @@ export default function Campaign() {
     const { currentUser, logout } = useContext(AuthContext);
     const history = useNavigate();
 
-    let handleClickA = () => {
+    const handleClickA = () => {
         history('/signin');
+        window.scrollTo(0, 0);
     };
 
-    let handleClickB = () => {
+    const handleClickB = () => {
         history('/account')
+        window.scrollTo(0, 0);
     }
 
     const handleToggle = () => {
