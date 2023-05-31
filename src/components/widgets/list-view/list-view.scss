@@ -2,12 +2,12 @@
 
 .f-list-view {
     @include no-select;
-    background-color: $bg-color-accent;
+    // background-color: $bg-color-accent;
     height: 60px;
     padding: 0 20px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid $text-color-alt;
+    // border-bottom: 1px solid $text-color-alt;
 
     animation: fade 0.3s ease-in-out;
 
@@ -76,7 +76,7 @@
     }
 
     &:hover {
-        filter: brightness(95%);
+        background-color: rgba(0, 0, 0, 0.1);
     }
 }
 
