@@ -10,7 +10,6 @@ function AccountHeader() {
     // =================================================
 	//     Calculate the expiration of membership
 	// =================================================
-    // May bugs.... Balikan ra nako ni, kay mag return siya ug 13 months bisan 1 year ang expiration. | chatgpt mo lang yan xD
     const handleMembershipTimeLeft = () => {
         const daysInMonth = 30;
         const dateExpires = new Date(memberships[0].dateExpires);
@@ -51,14 +50,12 @@ function AccountHeader() {
             <div className="f-acc-bg"></div>
             <div className="f-prof-container">
                 <div>
-                    {/* INFO: 'currentUser?.photoURL' this code occasionally throws 403 error, consider encasing it with a try & catch? or with a for/while loop?*/}
-                    
                     <img draggable="false" src={(currentUser?.photoURL) ? currentUser?.photoURL! : DefaultProfilePic} alt={currentUser?.displayName!} />
                     <span>{(currentUser?.displayName) ? currentUser?.displayName : currentUser?.email}</span>
                     <div className="icon-container">
-                      <button className="icon-button" title="Change Profile">
-                       <i className="fa-regular fa-user-crown" style={{ color: "#ec6e00" }}></i>
-                      </button>
+                        <button className="icon-button" title="Change Profile">
+                            <i className="fa-regular fa-arrows-rotate"></i>
+                        </button>
                     </div>
 
 
