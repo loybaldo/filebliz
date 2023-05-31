@@ -21,9 +21,16 @@ function Footer() {
     //     return () => window.removeEventListener("scroll", handleScroll);
     // }, []);
 
-    let handleClick = () => {
+    const handleClick = () => {
         history('/');
+        window.scrollTo(0, 0);
+        
     };
+
+    
+    const handleClickA = () => {
+        window.scrollTo(0, 0);
+      };
 
     return (
         <footer className="f-footer" id="footer">
@@ -92,19 +99,19 @@ function Footer() {
                 <h3>Navigation</h3>
                 <div>
                     <span>
-                        <Link className={""} to="/">Home</Link>
+                        <Link className={""} to="/" onClick={handleClickA}>Home</Link>
                     </span>
                     <span>
-                        <Link className={""} to="/premium">Premium</Link>
+                        <Link className={""} to="/premium" onClick={handleClickA} >Premium</Link>
                     </span>
                     <span>
-                        <Link className={""} to="/about">About</Link>
+                        <Link className={""} to="/about" onClick={handleClickA} >About</Link>
                     </span>
                     
                     <div></div>
 
                     <span>
-                        <Link className={""} to="/account">Account Dashboard</Link>
+                        <Link className={""} to="/account" onClick={handleClickA} >Account Dashboard</Link>
                     </span>
                 </div>
             </div>
@@ -113,10 +120,10 @@ function Footer() {
                 <h3>Learn More</h3>
                 <div>
                     <span>
-                        <Link className={""} to="/premium">Pricing</Link>
+                        <Link className={""} to="/premium" onClick={handleClickA} >Pricing</Link>
                     </span>
                     <span>
-                        <Link className={""} to="/documentation">How to Send Files</Link>
+                        <Link className={""} to="/documentation"  onClick={handleClickA}>How to Send Files</Link>
                     </span>
                 </div>
             </div>
@@ -124,9 +131,9 @@ function Footer() {
             <div className="f-container">
                 <h3>Support</h3>
                 <div>
-                    <Link className={""} to="/privacy">Privacy Policy</Link>
-                    <Link className={""} to="/terms">Terms of Use</Link>
-                    <Link className={""} to="/documentation">Contact Us</Link>
+                    <Link className={""} to="/privacy" onClick={handleClickA} >Privacy Policy</Link>
+                    <Link className={""} to="/terms" onClick={handleClickA} >Terms of Use</Link>
+                    <Link className={""} to="/documentation" onClick={handleClickA} >Contact Us</Link>
                 </div>
             </div>
         </footer>
