@@ -33,6 +33,7 @@
 .f-signin-container {
     @include mar-pad(0, 0);
     @include wh(100%, 100vh);
+    min-height: 600px;
     display: flex;
     flex-direction: row;
 
