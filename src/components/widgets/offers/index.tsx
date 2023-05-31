@@ -8,13 +8,13 @@ function Offers() {
     const { memberships, currentUser } = useContext(AuthContext);
     const data = {
         free: [
-            "Send up to 100Mb",
+            "Send up to 2GB",
             "Expires in 7 days",
             "Photos, videos, and docs only",
             "Share to anyone"
         ],
         pro: [
-            "Send up to 3Gb",
+            "Send up to 5Gb",
             "Expires in 30 days",
             "All file type can be uploaded",
             "Share to anyone"

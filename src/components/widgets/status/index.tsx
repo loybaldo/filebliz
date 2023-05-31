@@ -29,12 +29,12 @@ function Status() {
 
     const handleStoragePercent = (): number => {
         if (memberships.length <= 0) {
-            // Total storage is 100MB
-            return (totalUsedStorage / 100000000) * 100;
+            // Total storage is 2GB
+            return (totalUsedStorage / 2000000000) * 100;
         }
         if (memberships[0].type === "pro") {
-            // Total storage is 3GB
-            return (totalUsedStorage / 3000000000) * 100;
+            // Total storage is 5GB
+            return (totalUsedStorage / 5000000000) * 100;
         }
         if (memberships[0].type === "premium") {
             // Total storage is 18GB
@@ -49,10 +49,10 @@ function Status() {
 
     const handleStorage = (): string => {
         if (memberships.length <= 0) {
-            return "100MB"
+            return "2GB"
         }
         if (memberships[0].type == "pro") {
-            return "3GB";
+            return "5GB";
         }
         if (memberships[0].type == "premium") {
             return "10GB";
