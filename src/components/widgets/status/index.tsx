@@ -51,10 +51,10 @@ function Status() {
         if (memberships.length <= 0) {
             return "2GB"
         }
-        if (memberships[0].type == "pro") {
+        if (memberships[0].type === "pro") {
             return "5GB";
         }
-        if (memberships[0].type == "premium") {
+        if (memberships[0].type === "premium") {
             return "10GB";
         }
         return "";

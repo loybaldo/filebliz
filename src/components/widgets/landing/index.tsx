@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 import { AuthContext } from "../../../auth/auth-provider";
 import { db, storage } from "../../../config/firebase";

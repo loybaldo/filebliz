@@ -52,11 +52,11 @@ function AccountHeader() {
                 <div>
                     <img draggable="false" src={(currentUser?.photoURL) ? currentUser?.photoURL! : DefaultProfilePic} alt={currentUser?.displayName!} />
                     <span>{(currentUser?.displayName) ? currentUser?.displayName : currentUser?.email}</span>
-                    <div className="icon-container">
+                    {/* <div className="icon-container">
                         <button className="icon-button" title="Change Profile">
                             <i className="fa-regular fa-arrows-rotate"></i>
                         </button>
-                    </div>
+                    </div> */}
 
 
                 </div>
