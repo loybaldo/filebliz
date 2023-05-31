@@ -5,7 +5,9 @@
     @include scroll-bar-hide;
     // NOTE revert : [Do not set the landing component to vh]
     @include wh(100%, 100vh);
+    min-height: 600px;
     color: $text-color-permanent;
+    position: relative;
     // overflow-y: scroll;
 
     .f-container {
@@ -163,6 +165,7 @@
 @media only screen and (max-width: $media-query-mobile) {
     .f-landing {
         padding-top: unset;
+        min-height: 900px;
 
         .f-container {
             grid-template-columns: repeat(1, 1fr);
