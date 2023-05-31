@@ -9,6 +9,7 @@ import GirlSmile from "../../../assets/illus-ok.svg";
 import ModalQR from "../../widgets/modal-qr";
 import Modal from "../../common/modal-wrapper";
 import "./landing.scss";
+import { Link } from "react-router-dom";
 
 
 function Landing() {
@@ -273,7 +274,7 @@ function Landing() {
                     </div>
                 </div>
                 <div className="f-background"></div>
-                <div className="ff-agreement"><p>By accessing or using our services, you agreed to our <a href="/privacy">privacy policy</a> and <a href="#">terms of use</a>.</p></div>
+                <div className="ff-agreement"><p>By accessing or using our services, you agreed to our <Link to="/privacy">privacy policy</Link> and <Link to="/terms">terms of use</Link>.</p></div>
             </div>
         </>
     );

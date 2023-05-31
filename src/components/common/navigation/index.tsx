@@ -50,45 +50,22 @@ export default function Navigation() {
 
     return (
         <>  
-            {/* Desktop Navigation 
-
-                TODO: OPTIONAL
-                Rebase this code to only add an
-                additional class instead of 
-                changing the entire class name.
-                
-                vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-            */}
             <div className={(pathName === "/") ? "f-nav n-theme" : "f-nav"} style={{ top: (visible) ? 0 : -60 }}>
-            {/*
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-            */}
-
                 <Button classItem="f-branding" onclick={handleClickB}>
                     <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Filebliz Logo" />
                     <span>FILEBLIZ</span>
                 </Button>
-                {/* INFO: applied clickability to Logo
-
-                    <div className="f-branding">
-                    <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Filebliz Logo" />
-                    <span>FILEBLIZ</span>
-                    </div> 
-                */}
-
                 <nav className="f-links">
                     <Link className={(pathName === "/") ? "f-links-item f-links-active" : "f-links-item"} to="/">Home</Link>
                     <Link className={(pathName === "/premium") ? "f-links-item f-links-active" : "f-links-item"} to="/premium">Premium</Link>
                     <Link className={(pathName === "/account") ? "f-links-item f-links-active" : "f-links-item"} to="/account">Account</Link>
                     <Link className={(pathName === "/about") ? "f-links-item f-links-active" : "f-links-item"} to="/about">About</Link>
                 </nav>
-
                 <div className="f-nav-functions">
                     <ThemeSwitcher/>
                     <div></div>
                     {handleToggle()}
                 </div>
-
             </div>
             
             {/* Mobile Navigation */}
