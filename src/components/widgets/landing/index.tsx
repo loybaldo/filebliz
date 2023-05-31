@@ -273,6 +273,7 @@ function Landing() {
                     </div>
                 </div>
                 <div className="f-background"></div>
+                <div className="ff-agreement"><p>By accessing or using our services, you agreed to our <a href="/privacy">privacy policy</a> and <a href="#">terms of use</a>.</p></div>
             </div>
         </>
     );

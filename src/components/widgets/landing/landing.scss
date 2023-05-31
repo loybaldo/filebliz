@@ -135,6 +135,23 @@
         // background-position: bottom;
         filter: $splash-filter;
     }
+
+    .ff-agreement {
+        padding: 20px 30px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        color: white;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+        font-size: small;
+
+        a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    }
 }
 
 
@@ -165,7 +182,7 @@
 @media only screen and (max-width: $media-query-mobile) {
     .f-landing {
         padding-top: unset;
-        min-height: 900px;
+        min-height: 1100px;
 
         .f-container {
             grid-template-columns: repeat(1, 1fr);
