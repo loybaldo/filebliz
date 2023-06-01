@@ -20,7 +20,7 @@ function FAQ() {
         },
         {
             title: "Are my files safe?",
-            desc: "Our top priorities are your safety, privacy, and the integrity of your uploaded files. As a result, we are taking all reasonable measures to ensure their security. All communications between the Filebliz and the servers use the ________ (chuchu since wako kabalo if unsa inyung gamit na security) to ensure the integrity and confidentiality of the data being transferred."
+            desc: "Our top priorities are your safety, privacy, and the integrity of your uploaded files. As a result, we are taking all reasonable measures to ensure their security."
         },
         {
             title: "Will my files be completely deleted when the time expires?",
