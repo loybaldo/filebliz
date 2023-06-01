@@ -5,6 +5,7 @@ import Button from "../button";
 import Icon from "../icon";
 import Icons from "../icon/Icon";
 import ThemeSwitcher from "../../widgets/ThemeSwitcher";
+import Modal from '../modal-wrapper'
 // import Divider from "../divider";
 import "./nav.scss";
 
@@ -14,6 +15,55 @@ export default function Navigation() {
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
     const pathName = useLocation().pathname;
+
+    const [showModal, setShowModal] = useState(false);
+    
+     // Open Modal
+     function openModal() {
+         setShowModal(true);
+         document.body.classList.add('disable-events');
+         document.addEventListener('keydown', handleEscapeKeyPress);
+    
+         // you could also add other selectors e.g.; ...rAll('button, div, a, ...');
+         const outsideElements = document.querySelectorAll('button');
+         outsideElements.forEach((element) => {
+             element.setAttribute('tabindex', '-1');
+         });
+     };
+    
+     function handleMouseEnter() {
+         document.body.classList.remove('disable-events');
+     };
+    
+     // Keybind Listner
+     function handleEscapeKeyPress(event: KeyboardEvent) {
+         if (event.key === 'Escape') {
+             closeModal("");
+         }
+     };
+    
+     // Closes Modal
+     function closeModal(balls: string) {
+        if (balls === "notLogout") {
+         setShowModal(false);
+         document.removeEventListener('keydown', handleEscapeKeyPress);
+    
+         const outsideElements = document.querySelectorAll('button');
+         outsideElements.forEach((element) => {
+             element.removeAttribute('tabindex');
+         });
+        } else {
+            setShowModal(false);
+            logout()
+         document.removeEventListener('keydown', handleEscapeKeyPress);
+    
+         const outsideElements = document.querySelectorAll('button');
+         outsideElements.forEach((element) => {
+             element.removeAttribute('tabindex');
+         });
+        }
+     };
+
 
     /********/ const history = useNavigate();
 
@@ -37,10 +87,12 @@ export default function Navigation() {
     const handleToggle = () => {
         if (currentUser) {
             return (
-                <Button onclick={logout} classItem={"primary special-signin"} > Logout </Button>
-            );
-        } else {
-            return (
+                // <Button onclick={logout} classItem={"primary special-signin"} > Logout </Button>
+                <Button onclick={openModal} classItem={"primary special-signin"} > Logout </Button>
+                );
+            } else {
+                return (
+                // <Button onclick={openModal} classItem={"primary special-signin"} > Logout </Button>
                 <Button onclick={handleClickA} classItem={"primary special-signin"}> Sign in </Button>
             );
         }
@@ -57,7 +109,13 @@ export default function Navigation() {
     }, [prevScrollPos, visible]);
 
     return (
-        <>  
+        <>
+            <Modal isOpen={showModal} onClose={() => closeModal("notLogout")} onMouseEnter={handleMouseEnter} modalTitle={'Confirm Log out'}>
+                <span>Are you sure you want to log out?</span>
+                <Button onclick={() => closeModal("yesLogout")} classItem={"primary special-signin"} > Logout </Button>
+            </Modal>
+
+
             <div className={(pathName === "/") ? "f-nav n-theme" : "f-nav"} style={{ top: (visible) ? 0 : -60 }}>
                 <Button classItem="f-branding" onclick={handleClickB}>
                     <img draggable="false" src={require("../../../assets/logo-full192.png")} alt="Filebliz Logo" />
