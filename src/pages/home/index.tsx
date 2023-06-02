@@ -20,7 +20,7 @@ function HomePage() {
                 <Feedbacks />
                 <Campaign />
             </div>
-            <AdsenseView />
+            {/* <AdsenseView /> */}
             <Footer />
             <div className="f-footer-spacer"></div>
         </>
