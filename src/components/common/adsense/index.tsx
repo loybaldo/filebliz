@@ -17,6 +17,7 @@ function AdsenseView() {
         } catch (err) {
             console.log(err)
         }
+        console.log("Adsense here!")
     }, []);
 
     return (
