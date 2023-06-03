@@ -56,8 +56,11 @@ function SigninPage() {
 			</div>
 
 			<div className="f-signin-container">
-			        <Link to={"/"}><button className="f-home-btn">
-				 	<i className="fa-solid fa-house" style={ { color: "#ec6e00"}}></i> </button></Link>
+			        <Link to="/">
+						<button className="f-home-btn">
+				 			<i className="fa-solid fa-arrow-left"></i>
+						</button>
+					</Link>
 
 				<div className="f-s-background"></div>
 			

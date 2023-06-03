@@ -1,12 +1,12 @@
+import Footer from "../../components/common/footer";
+import Navigation from "../../components/common/navigation";
 import "./terms.scss"
-import { Link } from "react-router-dom";
 
 function TermsOfUse() {
     return (
         <>
-            <Link to={"/"}><button className="f-home-btn" style={{position: "fixed" , animation:"none"}}>
-			<i className="fa-solid fa-house" style={ { color: "#ec6e00"}}></i> </button></Link>
-            <div  className="f-wrapper-info">
+            <Navigation/>
+            <div  className="f-wrapper-info" style={{paddingTop: 100}}>
                 <h1 style={{textAlign: "center"}}>Terms Of Use</h1>
                 <br />
                 <p>These Terms of Use govern your use of the website Filebliz. Please read these terms carefully before accessing or using the website. By accessing or using Filebliz, you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you may not access or use Filebliz.</p>
@@ -68,6 +68,7 @@ function TermsOfUse() {
 
 
             </div>
+            <Footer/>
         </>
     );
 }

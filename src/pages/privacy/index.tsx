@@ -1,12 +1,13 @@
+import Footer from "../../components/common/footer";
+import Navigation from "../../components/common/navigation";
 import "./privacy.scss";
 import { Link } from "react-router-dom";
 
 function PrivacyPolicy() {
     return (
         <>
-            <Link to={"/"}><button className="f-home-btn" style={{position: "fixed" , animation:"none"}}>
-			<i className="fa-solid fa-house" style={ { color: "#ec6e00"}}></i> </button></Link>
-            <div className="f-wrapper-info">
+            <Navigation/>
+            <div className="f-wrapper-info" style={{paddingTop: 100}}>
                 <h1 style={{textAlign: "center"}}>Privacy Policy</h1>
                 <br/>
                 <br/>
@@ -63,6 +64,7 @@ function PrivacyPolicy() {
                 <br />
 
             </div>
+            <Footer/>
         </>
     );
 }

@@ -19,12 +19,10 @@ function Landing() {
     const [progress, setProgress] = useState(0);
     const [downloadURL, setDownloadURL] = useState("");
     const [upBtnVal, setUpBtnVal] = useState("Upload");
-    const { currentUser, memberships } = useContext(AuthContext);
     const [memErr, setMemErr] = useState(false);
+    const { currentUser, memberships } = useContext(AuthContext);
 
-    const host = window.location.hostname === "localhost"
-        ? `${window.location.hostname}:${window.location.port}`
-        : window.location.hostname;
+    const host = (window.location.hostname === "localhost") ? `${window.location.hostname}:${window.location.port}` : window.location.hostname;
 
 
     // use drag and drop
@@ -127,9 +125,16 @@ function Landing() {
         const genID = uuidv4();
         if (file == null) return;
         if (!currentUser || (memberships.length <= 0)) {
-            const allowedTypes = ["video/mpeg","video/mp4", "image/png", "image/jpg", "image/jpeg", "application/pdf", "application/msword"];
+            const allowedTypes = [
+                "video/mpeg",
+                "video/mp4",
+                "image/png",
+                "image/jpg",
+                "image/jpeg",
+                "application/pdf",
+                "application/msword",
+            ];
             if (!allowedTypes.includes(file.type)) {
-                // alert("FREE MEMBER\nInvalid file type. Only videos, photos, and documents are allowed.");
                 setMemErr(true);
                 return;
             }

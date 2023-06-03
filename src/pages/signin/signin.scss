@@ -33,7 +33,6 @@
 .f-signin-container {
     @include mar-pad(0, 0);
     @include wh(100%, 100vh);
-    min-height: 600px;
     display: flex;
     flex-direction: row;
 
@@ -122,18 +121,19 @@
     z-index: 1;
     @include flex-center;
     position:absolute;
-    background: #fff;
+    background-color: transparent;
     margin: 15px;
     padding: 15px;
     border: none;
     border-radius: 50%;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    // box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     font-size: 24px;
     box-sizing: content-box;
     width: 24px;
     height: 24px;
-    animation: fade-btn 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    // animation: fade-btn 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    color: white;
 }
 @keyframes fade-btn {
     0% {
@@ -157,6 +157,7 @@
 @media only screen and (max-width: $media-query-mobile) {
     .f-signin-container {
         flex-direction: column;
+        min-height: 900px;
     }
     .f-home-btn{
         position: fixed;
