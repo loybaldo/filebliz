@@ -89,8 +89,9 @@ function DownloadPage() {
             <>
                 <Navigation/>
                 <div style={{height: "100vh", padding: "100px 30px", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", flexDirection: "column"}}>
-                    <i className="fa-regular fa-face-worried" style={{fontSize: 40, marginBottom: 30}}></i>
-                    <h3>There was a problem getting the file.</h3>
+                    <i className="fa-regular fa-face-worried" style={{fontSize: 60, marginBottom: 50}}></i>
+                    <h2>Oops! We encountered an issue.</h2>
+                    <p style={{maxWidth: 500, marginTop: 20}}>It seems that either the owner of the file has removed it, or there may be another problem that is preventing us from accessing it.</p>
                 </div>
                 <Footer/>
             </>

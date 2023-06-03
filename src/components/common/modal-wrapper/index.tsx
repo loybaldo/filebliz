@@ -25,7 +25,7 @@ export default function Modal(props: ModalProps) {
                 */}
                 <div className='f-modal-header'>
                     <h3>{props.modalTitle}</h3>
-                    <button className='ctrl' onClick={props.onClose}><Close /></button>
+                    <button className='ctrl' onClick={props.onClose}><i className="fas fa-close"></i></button>
                 </div>
                 {props.children}
             </div>

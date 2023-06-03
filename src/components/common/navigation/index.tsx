@@ -112,7 +112,7 @@ export default function Navigation() {
         <>
             <Modal isOpen={showModal} onClose={() => closeModal("notLogout")} onMouseEnter={handleMouseEnter} modalTitle={'Confirm Log out'}>
                 <span>Are you sure you want to log out?</span>
-                <Button onclick={() => closeModal("yesLogout")} classItem={"primary special-signin"} > Logout </Button>
+                <button onClick={() => closeModal("yesLogout")} className="f-btn primary special-signin" style={{margin: "30px 0 20px 0"}}> Logout </button>
             </Modal>
 
 

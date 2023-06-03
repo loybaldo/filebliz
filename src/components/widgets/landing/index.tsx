@@ -20,6 +20,7 @@ function Landing() {
     const [downloadURL, setDownloadURL] = useState("");
     const [upBtnVal, setUpBtnVal] = useState("Upload");
     const { currentUser, memberships } = useContext(AuthContext);
+    const [memErr, setMemErr] = useState(false);
 
     const host = window.location.hostname === "localhost"
         ? `${window.location.hostname}:${window.location.port}`
@@ -128,7 +129,8 @@ function Landing() {
         if (!currentUser || (memberships.length <= 0)) {
             const allowedTypes = ["video/mpeg","video/mp4", "image/png", "image/jpg", "image/jpeg", "application/pdf", "application/msword"];
             if (!allowedTypes.includes(file.type)) {
-                alert("FREE MEMBER\nInvalid file type. Only videos, photos, and documents are allowed.");
+                // alert("FREE MEMBER\nInvalid file type. Only videos, photos, and documents are allowed.");
+                setMemErr(true);
                 return;
             }
         }
@@ -217,6 +219,11 @@ function Landing() {
         <>
             <Modal isOpen={showModal} onClose={handleCopyLink} onMouseEnter={handleMouseEnter} modalTitle={'Quick Share'}>
                 <ModalQR url={downloadURL} onclick={handleCopyLink} />
+            </Modal>
+
+            <Modal isOpen={memErr} onClose={() => setMemErr(false)} modalTitle="Free Member">
+                <span>Only videos, photos, and documents are allowed.</span>
+                <button onClick={() => setMemErr(false)} className="f-btn primary special-signin" style={{margin: "30px 0 20px 0"}}> Got it </button>
             </Modal>
 
             <div className="f-landing" onDragOver={(e) => handleDragOver(onHoverOutside, e)} onDragLeave={handleDragLeave}>
