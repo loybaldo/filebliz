@@ -9,19 +9,19 @@ function Offers() {
     const data = {
         free: [
             "Send up to 2GB",
-            "Expires in 7 days",
+            "File expires in 7 days",
             "Photos, videos, and docs only",
             "Share to anyone"
         ],
         pro: [
             "Send up to 5Gb",
-            "Expires in 30 days",
+            "No file expiration",
             "All file type can be uploaded",
             "Share to anyone"
         ],
         premium: [
             "Send up to 10Gb",
-            "Expires in 12 months",
+            "No file expiration",
             "All file type can be uploaded",
             "Share to anyone"
         ]

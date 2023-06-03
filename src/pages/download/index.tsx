@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import "./download.scss";
 import { collection, query, where, onSnapshot, DocumentData } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import Footer from "../../components/common/footer";
+import Navigation from "../../components/common/navigation";
+import Loader from "../../components/common/loader";
+import { QRCodeCanvas } from "qrcode.react";
 
 function DownloadPage() {
     const queryParameters = new URLSearchParams(window.location.search);
@@ -9,6 +13,10 @@ function DownloadPage() {
     const [files, setFiles] = useState<DocumentData[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+
+    const host = window.location.hostname === "localhost"
+        ? `${window.location.hostname}:${window.location.port}`
+        : window.location.hostname;
 
     const getFile = () => {
         const filesRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
@@ -23,6 +31,17 @@ function DownloadPage() {
         });
         return unsubscribe;
     };
+
+     const formatFileSize = (size: number) => {
+        const CONVERSION_UNIT = 1024;
+        const kilobytes = size / CONVERSION_UNIT;
+        const megabytes = kilobytes / CONVERSION_UNIT;
+        const gigabytes = megabytes / CONVERSION_UNIT;
+
+        if (kilobytes < CONVERSION_UNIT) { return `${kilobytes % 1 === 0 ? kilobytes : kilobytes.toFixed(kilobytes < 10 ? 1 : 0)} KB` }
+        if (megabytes < CONVERSION_UNIT) { return `${megabytes % 1 === 0 ? megabytes : megabytes.toFixed(megabytes < 10 ? 1 : 0)} MB` }
+        return `${gigabytes.toFixed(1)} GB`;
+    }
 
     function downloadFile(file: any) {
         if (file && file.downloadURL) {
@@ -59,7 +78,7 @@ function DownloadPage() {
     if (loading) {
         return (
             <div style={{height: 300, display: "flex", alignItems: "center", justifyContent: "center"}}>
-            Loading...
+                <Loader/>
             </div>
         );
     }
@@ -74,13 +93,22 @@ function DownloadPage() {
 
     return (
         <>
+            {console.log(files[0])}
+            <Navigation/>
             <div className="f-dl-wrapper">
-                <h1 style={{textAlign: "center"}}>{(files.length > 0) ? files[0].name : null}</h1>
-                <button className="f-btn" onClick={() => downloadFile(files[0])}>
-                    Download
-                </button>
+                <div>
+                    <h1 style={{textAlign: "center"}}>{(files.length > 0) ? files[0].name : null}</h1>
+                    <span>Size: {formatFileSize(files[0].size)}</span>
+                    <button className="f-btn" onClick={() => downloadFile(files[0])}>
+                        <i className="fa-solid fa-arrow-down-to-line"></i>
+                        Download
+                    </button>
+                </div>
+                <div>
+                    <QRCodeCanvas style={{ width: 250, height: 250 }} value={`${host}/download?id=${files[0].id}`} />
+                </div>
             </div>
-
+            <Footer/>
         </>
     );
 }

@@ -79,8 +79,9 @@ function PricingCard(props: PricingCardInterface) {
         <div className="f-pricing-card">
             <div style={{ padding: 25, display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <span> {props.type} </span>
-                <span> <b>${props.price}</b> Per Month</span>
-                <ul>
+                {(props.type === "free") ? null : (<span> <b>${props.price}</b> Per {(props.type === "premium") ? "Year" : "Month"}</span>)}
+                
+                <ul style={{marginTop: (props.type === "free") ? 30 : 0}}>
                     {props.features.map((item, index) => (<li key={index}><Icon icon={Icons.check_circle} /> {item} </li>))}
                 </ul>
                 {(!props.action) ? null :

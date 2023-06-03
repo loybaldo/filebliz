@@ -1,12 +1,51 @@
-.f-dl-wrapper {
-    padding: 100px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+@import "../../index.scss";
 
-    h1 {
-        margin-bottom: 50px;
+.f-dl-wrapper {
+    max-width: 700px;
+    min-height: 500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    div:nth-child(1) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        
+        span {
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .f-btn {
+            i {
+                margin-right: 10px;
+                font-size: 24px;
+            }
+        }
     }
+
+    div:nth-child(2) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+
+        canvas {
+            border: 20px solid white;
+        }
+
+    }
+    
 }
 
+@media only screen and (max-width: $media-query-mobile) {
+    .f-dl-wrapper {
+        grid-template-columns: 1fr;
+
+        div:nth-child(2) {
+            padding: 100px 30px;
+        }
+    }
+}
