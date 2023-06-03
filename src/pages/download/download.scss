@@ -1,13 +1,15 @@
 @import "../../index.scss";
 
 .f-dl-wrapper {
-    max-width: 700px;
-    min-height: 500px;
+    max-width: 1000px;
+    height: 100vh;
+    min-height: 600px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
     div:nth-child(1) {
+        padding: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -15,10 +17,15 @@
         
         span {
             margin-top: 30px;
-            margin-bottom: 50px;
+            margin-bottom: 70px;
+            font-size:larger;
         }
         
         .f-btn {
+            height: 44px;
+            padding: 0 20px;
+            background-color: $primary-color;
+
             i {
                 margin-right: 10px;
                 font-size: 24px;
@@ -34,6 +41,8 @@
 
         canvas {
             border: 20px solid white;
+            border-radius: 20px;
+            box-shadow: 0 3px 12px $shadow-color;
         }
 
     }
@@ -43,6 +52,7 @@
 @media only screen and (max-width: $media-query-mobile) {
     .f-dl-wrapper {
         grid-template-columns: 1fr;
+        min-height: 850px;
 
         div:nth-child(2) {
             padding: 100px 30px;

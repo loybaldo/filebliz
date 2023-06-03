@@ -77,17 +77,23 @@ function DownloadPage() {
 
     if (loading) {
         return (
-            <div style={{height: 300, display: "flex", alignItems: "center", justifyContent: "center"}}>
+            <div style={{height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
                 <Loader/>
+                <span>Please wait...</span>
             </div>
         );
     }
 
     if (error || (files.length <= 0)) {
         return (
-            <div style={{height: 300, padding: "100px 30px", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center"}}>
-            There was a problem getting the file.
-            </div>
+            <>
+                <Navigation/>
+                <div style={{height: "100vh", padding: "100px 30px", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", flexDirection: "column"}}>
+                    <i className="fa-regular fa-face-worried" style={{fontSize: 40, marginBottom: 30}}></i>
+                    <h3>There was a problem getting the file.</h3>
+                </div>
+                <Footer/>
+            </>
         );
     }
 
