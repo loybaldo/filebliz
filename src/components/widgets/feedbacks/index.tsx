@@ -1,4 +1,4 @@
-import { collection, query, onSnapshot, DocumentData, getDocs } from "firebase/firestore";
+import { collection, query, onSnapshot, DocumentData, getDocs, limit } from "firebase/firestore";
 import { useCallback, useEffect, useState } from "react";
 import DefaultProfilePic from "../../../assets/default-profile.svg";
 import { db } from "../../../config/firebase";
@@ -10,7 +10,7 @@ function Feedbacks() {
 
     const getFeed = () => {
         const feedRef = collection(db, process.env.REACT_APP_FEEDBACK_TABLE!);
-        const q = query(feedRef);
+        const q = query(feedRef, limit(3));
       
         const unsubscribe = onSnapshot<DocumentData>(q, (snapshot) => {
           const feedList = snapshot.docs.map((doc) => {

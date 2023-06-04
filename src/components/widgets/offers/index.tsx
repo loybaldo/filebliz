@@ -44,8 +44,8 @@ function Offers() {
         <>
             <div className="f-offers">
                 <PricingCard type="free" price={0} features={data.free} action={false} />
-                <PricingCard type="pro" price={10} features={data.pro} action={(!isMembershipValid() && currentUser) ? true : false} />
-                <PricingCard type="premium" price={18} features={data.premium} action={(!isMembershipValid() && currentUser) ? true : false} />
+                <PricingCard type="pro" price={2.99} features={data.pro} action={(!isMembershipValid() && currentUser) ? true : false} />
+                <PricingCard type="premium" price={5.99} features={data.premium} action={(!isMembershipValid() && currentUser) ? true : false} />
             </div>
         </>
     );
