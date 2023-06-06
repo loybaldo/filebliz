@@ -8,10 +8,10 @@ import HomePage from './pages/home';
 import PricingPage from './pages/pricing';
 import SigninPage from './pages/signin';
 import Dashboard from './pages/dashboard';
-import Login from './pages/login';
 import PrivacyPolicy from './pages/privacy';
 import TermsOfUse from './pages/terms';
 import DownloadPage from './pages/download';
+import SignupPage from './pages/signup';
 
 
 function App() {
@@ -25,9 +25,9 @@ function App() {
 				<Route path="/premium" element={<PricingPage />} />
 				<Route path="/account" element={(currentUser) ? <AccountPage /> : <Navigate to="/signin" />} />
 				<Route path="/about" element={<About />} />
-				<Route path="/signin" element={(!currentUser) ? <SigninPage /> : <Navigate to="/account" />} />
 				<Route path="/dashboard" element={<Dashboard />} />
-				<Route path="/login" element={(!currentUser) ? <Login/> : <Navigate to="/account"/>} />
+				<Route path="/signin" element={(!currentUser) ? <SigninPage/> : <Navigate to="/account"/>} />
+				<Route path="/signup" element={(!currentUser) ? <SignupPage/> : <Navigate to="/account" />} />
 				<Route path='/privacy' element={<PrivacyPolicy/>} />
 				<Route path='/terms' element={<TermsOfUse/>} />
 				<Route path='/download' element={<DownloadPage/>} />

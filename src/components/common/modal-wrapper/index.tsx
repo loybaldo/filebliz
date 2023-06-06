@@ -1,6 +1,4 @@
-import { ReactComponent as Close } from '@material-design-icons/svg/filled/close.svg';
 import React from 'react';
-import Button from '../button';
 import './modal.scss';
 
 
