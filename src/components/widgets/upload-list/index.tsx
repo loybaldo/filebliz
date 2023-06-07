@@ -106,8 +106,8 @@ function UploadList() {
         <>
             <div className="f-upload-box">
                 <div className="drop-area">
-                    <label htmlFor="file-upload"
-                        className="account-file-upload">
+                    <label htmlFor="file-upload" className="account-file-upload" style={{display: "flex", justifyContent: "center"}}>
+                        <i className="fa-regular fa-cloud-arrow-up" style={{marginRight: 15, fontSize: "x-large"}}></i>
                         <span>Drop Files Here</span>
                         <input id="file-upload" type="file" onChange={handleUpload}/>
                     </label>

@@ -30,9 +30,9 @@ function Footer() {
                 </span>
                 <div>
                     <Divider />
-                    <span><i className="fas fa-phone"></i> Mindanao, Philippines</span>
-                    <span><i className="fas fa-phone"></i> +63921-738-0430</span>
-                    <span><i className="fas fa-email"></i> expomawd@gmail.com</span>
+                    <span><i className="fa-regular fa-location-dot" style={{width: 35, textAlign: "center"}}></i> Mindanao, Philippines</span>
+                    <span><i className="fa-regular fa-phone" style={{width: 35, textAlign: "center"}}></i> +63921-738-0430</span>
+                    <span><i className="fa-regular fa-envelope" style={{width: 35, textAlign: "center"}}></i> expomawd@gmail.com</span>
                 </div>
 
                 <div className="f-footer-links">
@@ -52,19 +52,19 @@ function Footer() {
                 <h3>Navigation</h3>
                 <div>
                     <span>
-                        <Link className={""} to="/" onClick={handleClickA}>Home</Link>
+                        <Link to="/" onClick={handleClickA}>Home</Link>
                     </span>
                     <span>
-                        <Link className={""} to="/premium" onClick={handleClickA} >Premium</Link>
+                        <Link to="/premium" onClick={handleClickA} >Premium</Link>
                     </span>
                     <span>
-                        <Link className={""} to="/about" onClick={handleClickA} >About</Link>
+                        <Link to="/about" onClick={handleClickA} >About</Link>
                     </span>
                     
                     <div></div>
 
                     <span>
-                        <Link className={""} to="/account" onClick={handleClickA} >Account Dashboard</Link>
+                        <Link to="/account" onClick={handleClickA} >Account Dashboard</Link>
                     </span>
                 </div>
             </div>
@@ -73,10 +73,10 @@ function Footer() {
                 <h3>Learn More</h3>
                 <div>
                     <span>
-                        <Link className={""} to="/premium" onClick={handleClickA} >Pricing</Link>
+                        <Link to="/premium" onClick={handleClickA} >Pricing</Link>
                     </span>
                     <span>
-                        <Link className={""} to="/documentation"  onClick={handleClickA}>How to Send Files</Link>
+                        <Link to="/documentation"  onClick={handleClickA}>How to Send Files</Link>
                     </span>
                 </div>
             </div>
@@ -84,9 +84,9 @@ function Footer() {
             <div className="f-container">
                 <h3>Support</h3>
                 <div>
-                    <Link className={""} to="/privacy" onClick={handleClickA} >Privacy Policy</Link>
-                    <Link className={""} to="/terms" onClick={handleClickA} >Terms of Use</Link>
-                    <Link className={""} to="/documentation" onClick={handleClickA} >Contact Us</Link>
+                    <Link to="/privacy" onClick={handleClickA} >Privacy Policy</Link>
+                    <Link to="/terms" onClick={handleClickA} >Terms of Use</Link>
+                    <Link to="/documentation" onClick={handleClickA} >Contact Us</Link>
                 </div>
             </div>
         </footer>
