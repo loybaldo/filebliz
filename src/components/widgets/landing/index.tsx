@@ -4,15 +4,15 @@ import { collection, addDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 import { AuthContext } from "../../../auth/auth-provider";
 import { db, storage } from "../../../config/firebase";
+import { Link } from "react-router-dom";
 import Button from "../../common/button";
 import GirlSmile from "../../../assets/illus-ok.svg";
 import ModalQR from "../../widgets/modal-qr";
 import Modal from "../../common/modal-wrapper";
 import "./landing.scss";
-import { Link } from "react-router-dom";
 
 
-function Landing() {
+export default function Landing() {
     const [showModal, setShowModal] = useState(false);
     const [file, setFile] = useState<File | null>(null);
     const [isUploadDisabled, setIsUploadDisabled] = useState(false);
@@ -31,8 +31,8 @@ function Landing() {
     const element = document.getElementById("dropdown-location");
 
     // ==========================================
-	//     Handles Drag and Drop features
-	// ==========================================
+    //     Handles Drag and Drop features
+    // ==========================================
     function handleDragOver(param: any, e: React.DragEvent<HTMLDivElement>): void {
         e.preventDefault();
         e.stopPropagation();
@@ -119,8 +119,8 @@ function Landing() {
     }
 
     // ==========================================
-	//     Handles Upload Task
-	// ==========================================
+    //     Handles Upload Task
+    // ==========================================
     function handleUpload() {
         const genID = uuidv4();
         if (file == null) return;
@@ -228,7 +228,7 @@ function Landing() {
 
             <Modal isOpen={memErr} onClose={() => setMemErr(false)} modalTitle="Free Member">
                 <span>Only videos, photos, and documents are allowed.</span>
-                <button onClick={() => setMemErr(false)} className="f-btn primary special-signin" style={{margin: "30px 0 20px 0"}}> Got it </button>
+                <button onClick={() => setMemErr(false)} className="f-btn primary special-signin" style={{ margin: "30px 0 20px 0" }}> Got it </button>
             </Modal>
 
             <div className="f-landing" onDragOver={(e) => handleDragOver(onHoverOutside, e)} onDragLeave={handleDragLeave}>
@@ -274,7 +274,7 @@ function Landing() {
                                 </span>
                                 <Button onclick={handleUpload} classItem={isUploadDisabled ? "primary" : "disabled"} disabled={isUploadDisabled ? false : true} tabIndex={3}>
                                     <span>
-                                        { upBtnVal }
+                                        {upBtnVal}
                                     </span>
                                 </Button>
                             </div>
@@ -291,5 +291,3 @@ function Landing() {
         </>
     );
 }
-
-export default Landing;

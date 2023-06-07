@@ -16,9 +16,9 @@ function UploadList() {
         return unsubscribe;
     }, [getFiles]);
 
-  // =============================================
-	//     Delete all files uploaded by the user
-	// =============================================
+    // =============================================
+    //     Delete all files uploaded by the user
+    // =============================================
     const handleDeleteAll = async () => {
         const fileRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
         const q = query(fileRef, where("uploader", "==", currentUser?.uid));
@@ -29,19 +29,35 @@ function UploadList() {
     }
 
     return (
+        // CHECK UPLOAD SCHEMA IN '../landing'
         <>
-        {console.log(files)}
-        <div className="f-upload-list">
-            <div className="f-del-all-wrapper">
-                <span className="f-label">Uploaded ({files.length})</span>
-                <Button onclick={handleDeleteAll} classItem={"danger"}> Delete All </Button>
+            <div className="f-upload-box">
+                <div className="drop-area">
+                    <label htmlFor="file-upload"
+                        className="account-file-upload">
+                        <span>Drop Files Here</span>
+                        <input id="file-upload" type="file" />
+                    </label>
+
+                    {/* possibly make it so that it automatically uploads */}
+                    {/* <Button classItem={"primary disabled"}>
+                        Upload
+                    </Button> */}
+                </div>
             </div>
-            {(files.length === 0) ?
-                (<div className="f-upload-list-no-data">
-                    <p>No Uploaded Files</p>
-                </div>) : null}
-            {files.map((file) => (<ListView key={Math.random()} id={file.id} docId={file.docId} fileName={file.name} size={file.size} fileExt={file.type.split("/")[1]} url={file.downloadURL} date={file.dateUploaded.split("T")[0]} />))}
-        </div>
+
+            {console.log(files)}
+            <div className="f-upload-list">
+                <div className="f-del-all-wrapper">
+                    <span className="f-label">Uploaded ({files.length})</span>
+                    <Button onclick={handleDeleteAll} classItem={"danger"}> Delete All </Button>
+                </div>
+                {(files.length === 0) ?
+                    (<div className="f-upload-list-no-data">
+                        <p>No Uploaded Files</p>
+                    </div>) : null}
+                {files.map((file) => (<ListView key={Math.random()} id={file.id} docId={file.docId} fileName={file.name} size={file.size} fileExt={file.type.split("/")[1]} url={file.downloadURL} date={file.dateUploaded.split("T")[0]} />))}
+            </div>
         </>
     );
 }

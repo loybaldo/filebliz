@@ -1,5 +1,36 @@
 @import "../../../index.scss";
 
+.f-upload-box {
+    // @include flex-center;
+    @include global-max-width(0);
+    @include mar-pad(0 auto, 20px);
+
+    padding-top: 0px;
+
+    // background-color: unset;
+
+    .drop-area {
+        @include card;
+        @include flex-center;
+        @include mar-pad(0, 50px);
+        
+        flex-direction: column;
+        gap: 20px;
+        cursor: default;
+        background-color: $bg-color-accent;
+        outline: 1px dashed $primary-color;
+        outline-offset: -30px;
+
+        &:hover {
+            filter: unset;
+        }
+
+        &:active {
+            filter: unset;
+        }
+    }
+}
+
 .f-upload-list {
     @include global-max-width(0);
     @include mar-pad(0 auto, 0 0 50px 0);
@@ -64,13 +95,15 @@
         text-overflow: ellipsis;
     }
 
+    .f-upload-box,
     .f-upload-list {
         @include global-max-width(2);
     }
 }
 
 @media only screen and (min-width: $media-query-wide) {
-    .f-upload-list {
+    .f-upload-list,
+    .f-upload-box {
         @include global-max-width(1);
     }
 }
