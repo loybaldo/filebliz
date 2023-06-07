@@ -7,7 +7,7 @@ import FacebookLogo from "../../assets/facebook.svg";
 import Button from "../../components/common/button";
 import pagetitle from "../.scripts/pagetitle";
 import Loader from "../../components/common/loader";
-import "./signin.scss";
+import "./signup.scss";
 
 
 function SignupPage() {

@@ -6,7 +6,7 @@ import FacebookLogo from "../../assets/facebook.svg";
 import Button from "../../components/common/button";
 import pagetitle from "../.scripts/pagetitle";
 import Loader from "../../components/common/loader";
-import "./login.scss";
+import "./signin.scss";
 
 
 function SigninPage() {

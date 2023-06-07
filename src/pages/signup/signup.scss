@@ -53,8 +53,8 @@
 
         .card {
             @include shadow;
-            width: 45%;
-            // @include wh(45%, 50%);
+            width: 100%;
+            max-width: 400px;
             @include mar-pad(0, 40px);
 
             display: flex;
@@ -158,6 +158,10 @@
     .f-signin-container {
         flex-direction: column;
         min-height: 900px;
+
+        .f-s-background {
+            width: 100%;
+        }
     }
     .f-home-btn{
         position: fixed;
