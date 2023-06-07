@@ -100,7 +100,6 @@ function DownloadPage() {
 
     return (
         <>
-            {console.log(files[0])}
             <Navigation/>
             <div className="f-dl-wrapper">
                 <div>

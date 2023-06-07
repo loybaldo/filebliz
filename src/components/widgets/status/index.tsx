@@ -60,10 +60,6 @@ function Status() {
         return "";
     }
 
-    useEffect(() => {
-        console.log(memberships)
-    })
-
     return (
         <>
             <div className="f-status">

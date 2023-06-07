@@ -30,7 +30,7 @@ function Feedbacks() {
       
 
     return (
-        <>{console.log(feedbacks)}
+        <>
             <div className="f-feed-container" style={{}}>
                 <span className="f-feed-label">Feedbacks</span>
                 <div className="f-feed">

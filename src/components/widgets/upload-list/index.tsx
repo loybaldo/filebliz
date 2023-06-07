@@ -1,18 +1,21 @@
-import { collection, where, query, deleteDoc, getDocs } from "firebase/firestore";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { collection, where, query, deleteDoc, getDocs, addDoc } from "firebase/firestore";
+import { v4 as uuidv4 } from "uuid";
 import { AuthContext } from "../../../auth/auth-provider";
-import { db } from "../../../config/firebase";
+import { db, storage } from "../../../config/firebase";
 import Button from "../../common/button";
 import ListView from "../list-view";
 import "./upload-list.scss";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 
 function UploadList() {
-    const { currentUser, files, getFiles } = useContext(AuthContext);
+    const [uploadFiles, setUploadFiles] = useState<File | null>(null);
+    const [progress, setProgress] = useState(0);
+    const { currentUser, memberships, files, getFiles } = useContext(AuthContext);
 
     useEffect(() => {
         const unsubscribe = getFiles();
-
         return unsubscribe;
     }, [getFiles]);
 
@@ -28,6 +31,76 @@ function UploadList() {
         });
     }
 
+    const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const filesToUpload = e.target.files;
+        if (!filesToUpload || filesToUpload.length === 0) {
+          return;
+        }
+      
+        const fileToUpload = filesToUpload[0];
+      
+        // Handle upload
+        if (memberships.length <= 0) {
+          const allowedTypes = [
+            "video/mpeg",
+            "video/mp4",
+            "image/png",
+            "image/jpg",
+            "image/jpeg",
+            "application/pdf",
+            "application/msword",
+          ];
+      
+          if (!allowedTypes.includes(fileToUpload.type)) {
+            alert("Free Member\nOnly videos, photos, and documents are allowed.");
+            return;
+          }
+        }
+      
+        console.log("Code run here");
+      
+        const genID = uuidv4();
+        const fileExtension = fileToUpload.name.split(".").pop() || "";
+        const filePath = `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}.${fileExtension}`;
+        const fileRef = ref(storage, filePath);
+      
+        // Incorporate file data to be passed for a task
+        const uploadTask = uploadBytesResumable(fileRef, fileToUpload);
+      
+        // Track the upload percentage
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(1);
+            setProgress(+progress);
+            // ======================================
+            //    Set Upload indicator or a loader
+            // ======================================
+          },
+          (err) => {
+            console.error(err);
+          },
+          async () => {
+            try {
+              const downloadURL = await getDownloadURL(fileRef);
+              const fileInfo = {
+                uploader: currentUser ? currentUser.uid : null,
+                id: genID,
+                name: fileToUpload.name,
+                type: fileToUpload.type,
+                size: fileToUpload.size,
+                dateUploaded: new Date().toISOString(),
+                downloadURL: downloadURL,
+              };
+              await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
+            } catch (err) {
+              console.error(err);
+            }
+          }
+        );
+    };
+      
+
     return (
         // CHECK UPLOAD SCHEMA IN '../landing'
         <>
@@ -36,17 +109,10 @@ function UploadList() {
                     <label htmlFor="file-upload"
                         className="account-file-upload">
                         <span>Drop Files Here</span>
-                        <input id="file-upload" type="file" />
+                        <input id="file-upload" type="file" onChange={handleUpload}/>
                     </label>
-
-                    {/* possibly make it so that it automatically uploads */}
-                    {/* <Button classItem={"primary disabled"}>
-                        Upload
-                    </Button> */}
                 </div>
             </div>
-
-            {console.log(files)}
             <div className="f-upload-list">
                 <div className="f-del-all-wrapper">
                     <span className="f-label">Uploaded ({files.length})</span>

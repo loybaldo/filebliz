@@ -5,7 +5,6 @@ import AccountHeader from "../../components/widgets/acc-header";
 import Navigation from "../../components/common/navigation";
 import Status from "../../components/widgets/status";
 import UploadList from "../../components/widgets/upload-list";
-// import Alert from "../../components/common/alert";
 import pagetitle from "../.scripts/pagetitle";
 import { collection, query, where, getDocs, deleteDoc } from "firebase/firestore";
 import { db } from "../../config/firebase";
