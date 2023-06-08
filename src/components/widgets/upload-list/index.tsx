@@ -12,7 +12,7 @@ import Progress from "../../common/progress";
 function UploadList() {
 	const [uploadFiles, setUploadFiles] = useState<FileList | null>(null);
 	const [progress, setProgress] = useState(0);
-	const { currentUser, memberships, files, getFiles } = useContext(AuthContext);
+	const { totalUsedStorage, currentUser, memberships, files, getFiles } = useContext(AuthContext);
 
 	useEffect(() => {
 		const unsubscribe = getFiles();
@@ -37,6 +37,9 @@ function UploadList() {
 
 	const handleUpload = async (fileToUpload: File) => {
 		let expiration: number | null = null;
+		const MAX_FREE_STORAGE = 20000;
+		const MAX_PRO_STORAGE = 50000;
+		const MAX_PREM_STORAGE = 100000;
 		// Handle upload
 		if (memberships.length <= 0) {
 			expiration = new Date().getTime();
@@ -53,6 +56,19 @@ function UploadList() {
 				alert("Free Member\nOnly videos, photos, and documents are allowed.");
 				return;
 			}
+			if (totalUsedStorage > MAX_FREE_STORAGE) {
+				alert("FREE MEMBER\nFull storage!");
+				return;
+			}
+		}
+
+		if ((memberships[0].type === "pro") && totalUsedStorage > MAX_PRO_STORAGE) {
+			alert("PRO MEMBER\nFull storage!");
+			return;
+		}
+		if ((memberships[0].type === "premium") && totalUsedStorage > MAX_PREM_STORAGE) {
+			alert("PRO MEMBER\nFull storage!");
+			return;
 		}
 
 		const genID = uuidv4();
