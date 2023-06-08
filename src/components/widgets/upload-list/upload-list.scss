@@ -12,11 +12,11 @@
     .drop-area {
         @include card;
         @include flex-center;
-        @include mar-pad(0, 50px);
+        @include mar-pad(0, 0);
         
         flex-direction: column;
         gap: 20px;
-        cursor: default;
+        // cursor: default;
         background-color: $bg-color-accent;
         outline: 1px dashed $primary-color;
         outline-offset: -30px;
@@ -27,6 +27,12 @@
 
         &:active {
             filter: unset;
+        }
+
+        label {
+            padding: 50px;
+            width: 100%;
+            cursor: pointer;
         }
     }
 }
