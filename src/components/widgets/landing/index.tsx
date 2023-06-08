@@ -20,7 +20,7 @@ export default function Landing() {
     const [downloadURL, setDownloadURL] = useState("");
     const [upBtnVal, setUpBtnVal] = useState("Upload");
     const [memErr, setMemErr] = useState(false);
-    const { currentUser, memberships } = useContext(AuthContext);
+    const { totalUsedStorage, currentUser, memberships } = useContext(AuthContext);
 
     const host = (window.location.hostname === "localhost") ? `${window.location.hostname}:${window.location.port}` : window.location.hostname;
 
@@ -124,6 +124,9 @@ export default function Landing() {
     function handleUpload() {
         const genID = uuidv4();
         let expiration: number | null = null;
+        const MAX_FREE_STORAGE = 2000000000;
+		const MAX_PRO_STORAGE = 5000000000;
+		const MAX_PREM_STORAGE = 18000000000;
         if (file == null) return;
         if (!currentUser || (memberships.length <= 0)) {
             expiration = new Date().getTime();
@@ -140,7 +143,19 @@ export default function Landing() {
                 setMemErr(true);
                 return;
             }
+            if (totalUsedStorage > MAX_FREE_STORAGE) {
+				alert("FREE MEMBER\nFull storage!");
+				return;
+			}
         }
+        if ((memberships.length > 0) && (memberships[0].type === "pro") && totalUsedStorage > MAX_PRO_STORAGE) {
+			alert("PRO MEMBER\nFull storage!");
+			return;
+		}
+		if ((memberships.length > 0) && (memberships[0].type === "premium") && totalUsedStorage > MAX_PREM_STORAGE) {
+			alert("PRO MEMBER\nFull storage!");
+			return;
+		}
         setIsUploadDisabled(false);
         const fileExtension = file.name.split(".").pop() || "";
         const genName = uuidv4() + "." + fileExtension;
