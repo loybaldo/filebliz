@@ -123,8 +123,10 @@ export default function Landing() {
     // ==========================================
     function handleUpload() {
         const genID = uuidv4();
+        let expiration: number | null = null;
         if (file == null) return;
         if (!currentUser || (memberships.length <= 0)) {
+            expiration = new Date().getTime();
             const allowedTypes = [
                 "video/mpeg",
                 "video/mp4",
@@ -163,8 +165,9 @@ export default function Landing() {
                     name: file.name,
                     type: file.type,
                     size: file.size,
+                    expiration: expiration,
                     dateUploaded: new Date().toISOString(),
-                    downloadURL: downloadURL
+                    downloadURL: downloadURL,
                 };
                 await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
 

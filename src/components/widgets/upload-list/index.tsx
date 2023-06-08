@@ -7,6 +7,7 @@ import Button from "../../common/button";
 import ListView from "../list-view";
 import "./upload-list.scss";
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
+import Progress from "../../common/progress";
 
 
 function UploadList() {
@@ -37,15 +38,15 @@ function UploadList() {
 	}
 
 	const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+		let expiration: number | null = null;
 		const filesToUpload = e.target.files;
 		if (!filesToUpload || filesToUpload.length === 0) {
 			return;
 		}
-
 		const fileToUpload = filesToUpload[0];
-
 		// Handle upload
 		if (memberships.length <= 0) {
+			expiration = new Date().getTime();
 			const allowedTypes = [
 				"video/mpeg",
 				"video/mp4",
@@ -55,7 +56,6 @@ function UploadList() {
 				"application/pdf",
 				"application/msword",
 			];
-
 			if (!allowedTypes.includes(fileToUpload.type)) {
 				alert("Free Member\nOnly videos, photos, and documents are allowed.");
 				return;
@@ -94,10 +94,12 @@ function UploadList() {
 						genName: genName,
 						type: fileToUpload.type,
 						size: fileToUpload.size,
+						expiration: expiration,
 						dateUploaded: new Date().toISOString(),
 						downloadURL: downloadURL,
 					};
 					await addDoc(collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!), fileInfo);
+					setProgress(0);
 				} catch (err) {
 					console.error(err);
 				}
@@ -183,6 +185,8 @@ function UploadList() {
 
 	return (
 		<>
+			<Progress show={(progress > 0) ? true : false} percent={progress}/>
+
 			<div className="f-upload-box" onDragOver={(e) => handleDragOver(onHoverOutside, e)} onDragLeave={handleDragLeave}>
 				<div className="drop-area"
 					id="dropdown-location"
