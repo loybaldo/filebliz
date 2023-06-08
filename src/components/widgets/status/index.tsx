@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../common/button";
 import 'react-circular-progressbar/dist/styles.css';
 import "./status.scss";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../../auth/auth-provider";
 
 
