@@ -62,11 +62,11 @@ function UploadList() {
 			}
 		}
 
-		if ((memberships[0].type === "pro") && totalUsedStorage > MAX_PRO_STORAGE) {
+		if ((memberships.length > 0) && (memberships[0].type === "pro") && totalUsedStorage > MAX_PRO_STORAGE) {
 			alert("PRO MEMBER\nFull storage!");
 			return;
 		}
-		if ((memberships[0].type === "premium") && totalUsedStorage > MAX_PREM_STORAGE) {
+		if ((memberships.length > 0) && (memberships[0].type === "premium") && totalUsedStorage > MAX_PREM_STORAGE) {
 			alert("PRO MEMBER\nFull storage!");
 			return;
 		}
