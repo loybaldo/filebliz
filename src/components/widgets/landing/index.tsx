@@ -124,9 +124,9 @@ export default function Landing() {
     function handleUpload() {
         const genID = uuidv4();
         let expiration: number | null = null;
-        const MAX_FREE_STORAGE = 20000;
-		const MAX_PRO_STORAGE = 50000;
-		const MAX_PREM_STORAGE = 100000;
+        const MAX_FREE_STORAGE = 2000000000;
+		const MAX_PRO_STORAGE = 5000000000;
+		const MAX_PREM_STORAGE = 18000000000;
         if (file == null) return;
         if (!currentUser || (memberships.length <= 0)) {
             expiration = new Date().getTime();
@@ -152,7 +152,7 @@ export default function Landing() {
 			alert("PRO MEMBER\nFull storage!");
 			return;
 		}
-		if ((memberships.length > 0) && (memberships[0].type === "premium") && totalUsedStorage > MAX_PRO_STORAGE) {
+		if ((memberships.length > 0) && (memberships[0].type === "premium") && totalUsedStorage > MAX_PREM_STORAGE) {
 			alert("PRO MEMBER\nFull storage!");
 			return;
 		}

@@ -37,9 +37,9 @@ function UploadList() {
 
 	const handleUpload = async (fileToUpload: File) => {
 		let expiration: number | null = null;
-		const MAX_FREE_STORAGE = 20000;
-		const MAX_PRO_STORAGE = 50000;
-		const MAX_PREM_STORAGE = 100000;
+		const MAX_FREE_STORAGE = 2000000000;
+		const MAX_PRO_STORAGE = 5000000000;
+		const MAX_PREM_STORAGE = 18000000000;
 		// Handle upload
 		if (memberships.length <= 0) {
 			expiration = new Date().getTime();
