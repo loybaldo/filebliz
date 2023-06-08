@@ -6,7 +6,7 @@ import { db, storage } from "../../../config/firebase";
 import Button from "../../common/button";
 import ListView from "../list-view";
 import "./upload-list.scss";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage";
 
 
 function UploadList() {
@@ -26,8 +26,11 @@ function UploadList() {
         const fileRef = collection(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!);
         const q = query(fileRef, where("uploader", "==", currentUser?.uid));
         const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-            deleteDoc(doc.ref);
+        querySnapshot.forEach(async (doc) => {
+          console.log(doc.data().name);
+            const docRef = ref(storage, process.env.REACT_APP_UPLOAD_PATH + "/" + doc.data().genName);
+            await deleteObject(docRef);
+            await deleteDoc(doc.ref);
         });
     }
 
@@ -61,7 +64,8 @@ function UploadList() {
       
         const genID = uuidv4();
         const fileExtension = fileToUpload.name.split(".").pop() || "";
-        const filePath = `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}.${fileExtension}`;
+        const genName = uuidv4() + "." + fileExtension;
+        const filePath = `${process.env.REACT_APP_UPLOAD_PATH}/${genName}`;
         const fileRef = ref(storage, filePath);
       
         // Incorporate file data to be passed for a task
@@ -87,6 +91,7 @@ function UploadList() {
                 uploader: currentUser ? currentUser.uid : null,
                 id: genID,
                 name: fileToUpload.name,
+                genName: genName,
                 type: fileToUpload.type,
                 size: fileToUpload.size,
                 dateUploaded: new Date().toISOString(),
