@@ -10,13 +10,15 @@ import ThumbnailUnknown from "../../../assets/thumbnail-unknown.svg";
 import "./list-view.scss";
 import { Link } from "react-router-dom";
 import { deleteDoc, doc } from "firebase/firestore";
-import { db } from "../../../config/firebase";
+import { db, storage } from "../../../config/firebase";
+import { ref, deleteObject } from "firebase/storage";
 
 
 interface ListViewInterface {
     id: string;
     docId: string;
     fileName: string;
+    genFileName: string;
     fileExt: string;
     size: number;
     url: string;
@@ -66,6 +68,10 @@ function ListView(props: ListViewInterface) {
 
     const handleDelete = async () => {
         try {
+            // Delete the file
+            const docRef = ref(storage, process.env.REACT_APP_UPLOAD_PATH + "/" + props.genFileName);
+            await deleteObject(docRef);
+            // Delete the file record
             await deleteDoc(doc(db, process.env.REACT_APP_UPLOAD_FIRESTORE_PATH!, props.docId));
             console.log('Document successfully deleted!');
         } catch (error) {

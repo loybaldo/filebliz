@@ -28,8 +28,10 @@ function UploadList() {
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach(async (doc) => {
           console.log(doc.data().name);
+            // Delete file
             const docRef = ref(storage, process.env.REACT_APP_UPLOAD_PATH + "/" + doc.data().genName);
             await deleteObject(docRef);
+            // Delete file record
             await deleteDoc(doc.ref);
         });
     }
@@ -127,7 +129,7 @@ function UploadList() {
                     (<div className="f-upload-list-no-data">
                         <p>No Uploaded Files</p>
                     </div>) : null}
-                {files.map((file) => (<ListView key={Math.random()} id={file.id} docId={file.docId} fileName={file.name} size={file.size} fileExt={file.type.split("/")[1]} url={file.downloadURL} date={file.dateUploaded.split("T")[0]} />))}
+                {files.map((file) => (<ListView key={Math.random()} id={file.id} docId={file.docId} fileName={file.name} genFileName={file.genName} size={file.size} fileExt={file.type.split("/")[1]} url={file.downloadURL} date={file.dateUploaded.split("T")[0]} />))}
             </div>
         </>
     );
