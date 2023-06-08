@@ -140,9 +140,11 @@ export default function Landing() {
             }
         }
         setIsUploadDisabled(false);
+        const fileExtension = file.name.split(".").pop() || "";
+        const genName = uuidv4() + "." + fileExtension;
 
         // reference file path
-        const fileRef = ref(storage, `${process.env.REACT_APP_UPLOAD_PATH}/${uuidv4()}.${file?.name.split(".")[-1]}`);
+        const fileRef = ref(storage, `${process.env.REACT_APP_UPLOAD_PATH}/${genName}`);
         // incorporate file data to be passed for a task
         const uploadTask = uploadBytesResumable(fileRef, file);
         // Track the upload percentage.
